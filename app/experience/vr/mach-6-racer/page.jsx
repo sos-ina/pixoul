@@ -1,0 +1,96 @@
+import GameMetaGrid from "@/components/game/GameMetaGrid";
+import GameGlowSection from "@/components/game/GameGlowSection";
+import GameSection from "@/components/game/GameSection";
+import GameCTA from "@/components/game/GameCTA";
+import Hero from "@/components/ui/Hero";
+import GameImageStrip from "@/components/game/GameImageStrip";
+
+export const metadata = {
+  title: "Mach 6 Racer | Pixoul Gaming",
+};
+
+export default function Mach6RacerPage() {
+  const meta = [
+    { label: "Players", value: "1" },
+    { label: "Genre", value: "Racing" },
+    { label: "Experience", value: "Lap-Based Racing" },
+    { label: "Intensity", value: "High" },
+  ];
+
+  const images = [
+    "/images/PG-0116.jpg",
+    "/images/PG-0063.jpg",
+  ];
+
+  return (
+    <>
+      {/* HERO */}
+      <Hero
+        videoSrc="/videos/GameVid.mp4"
+        overlay={true}
+      />
+
+      {/* TITLE */}
+      <section className="py-20">
+        <div className="max-w-5xl mx-auto px-6">
+          <h1 className="text-4xl font-bold mb-4">
+            MACH 6 RACER
+          </h1>
+          <p className="text-gray-400 max-w-2xl">
+            A high-speed VR racing spectacle where only the fastest survive
+            the track.
+          </p>
+        </div>
+      </section>
+
+      {/* META */}
+      <GameMetaGrid meta={meta} />
+
+      {/* IMAGES */}
+      <GameImageStrip images={images} />
+
+      {/* GLOW */}
+      <GameGlowSection>
+        <p>
+          Mach 6 Racer places players behind the wheel in a high-profile
+          racing event set within the capital city of Pixoul Planet.
+        </p>
+        <p>
+          Watched by the planet’s Elites and streamed across the
+          interplanetary network, the race demands flawless execution at
+          extreme speeds.
+        </p>
+      </GameGlowSection>
+
+      {/* SKILLS */}
+      <GameSection title="User Skills">
+        <p>
+          Fast reflexes and precise control are essential to success.
+        </p>
+        <p>
+          Players must anticipate opponents, navigate corners at high
+          speed, and make split-second decisions to secure first place.
+        </p>
+      </GameSection>
+
+      {/* FLOW */}
+      <GameSection title="Game Flow">
+        <p>
+          The experience begins with a ceremonial introduction as players
+          are placed into their racing karts.
+        </p>
+        <p>
+          Once the start signal is given, the race begins, launching players
+          into a lap-based competition across the city’s elite tracks.
+        </p>
+        <p>
+          Victory is achieved by outpacing opponents and crossing the
+          finish line first.
+        </p>
+      </GameSection>
+
+      {/* CTA */}
+      <GameCTA experienceId="mach-6-racer" />
+    </>
+  );
+}
