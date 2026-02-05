@@ -117,7 +117,7 @@ export default function ArcadeGamesPage(){
     return(
         <>
         <Hero
-        imageSrc="/images/PG-0204.jpg"
+        imageSrc="/images/PG-0272.jpg"
         overlay={true}
         >
             <div className="flex flex-col items-center justify-center h-full text-center px-6">

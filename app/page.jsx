@@ -8,7 +8,7 @@ import Title from "@/components/ui/Title";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Pixoul Gaming",
+  title: "Home | Pixoul Gaming",
 };
 
 {/*quick cards */}
@@ -24,20 +24,20 @@ const exploreItems = [
   {
     title: "VR Experiences",
     description: "Step into immersive virtual worlds.",
-    image: "/images/PG-0116.jpg",
+    image: "images/PG-0116.jpg",
     href: "/experience/vr",
   },
   {
     title: "Birthday Parties",
     description: "Unforgettable celebrations for all ages.",
-    image: "/images/birthday.jpg",
-    href: "/events/birthdays",
+    image: "images/birthday.jpg",
+    href: "/events/vip-lounge",
   },
   {
     title: "The Hall",
     description: "Host events in our futuristic venue.",
-    image: "/images/The Hall.png",
-    href: "/hall",
+    image: "images/The Hall.png",
+    href: "/events/hall",
   },
 ];
 
@@ -45,7 +45,7 @@ const exploreItems = [
 
 const carouselItems = [
   {
-    image: "/images/PG-0030.jpg",
+    image: "/images/PG-0116.jpg",
     title: "Pixoul Gaming",
     subtitle: "Immersive VR worlds designed to thrill.",
   },
@@ -67,7 +67,7 @@ export default function Home() {
   return (
     <>
       <Hero 
-      videoSrc="/videos/GameVid.mp4" 
+      videoSrc="/videos/Pixoul gaming trailer.mp4" 
       overlay={true}
       >
   <div className="flex flex-col items-center justify-center h-full text-center px-6">
@@ -97,6 +97,7 @@ export default function Home() {
           <Link href="/"><BookNowButton className="px-8 py-4 text-base" /></Link>
 
           {/* Secondary CTA */}
+          <Link href="/experience/vr">
           <button className="
             px-8 py-4
             border border-[#38C2D9]
@@ -106,8 +107,10 @@ export default function Home() {
             hover:bg-[#38C2D9]/10
             transition
           ">
-            Explore Experiences
+             Explore Experiences
           </button>
+          </Link>
+           
 
         </div>
 

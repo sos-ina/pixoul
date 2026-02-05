@@ -6,6 +6,13 @@
 @tailwind components;
 @tailwind utilities;
 
+button {
+  appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
+  line-height: 1;
+}
+
 
 /* Klapt Font Family */
 @font-face {
@@ -14,6 +21,10 @@
        url('/fonts/Klapt-Light.otf') format('opentype');
   font-weight: 300;
   font-display: swap;
+
+  unicode-range: 
+    U+0041-005A,  /* A–Z */
+    U+0061-007A;  /* a–z */
 }
 
 @font-face {
@@ -22,6 +33,10 @@
        url('/fonts/Klapt-Regular.otf') format('opentype');
   font-weight: 400;
   font-display: swap;
+
+  unicode-range: 
+    U+0041-005A,  /* A–Z */
+    U+0061-007A;  /* a–z */
 }
 
 @font-face {
@@ -30,6 +45,10 @@
        url('/fonts/Klapt-Medium.otf') format('opentype');
   font-weight: 500;
   font-display: swap;
+
+  unicode-range: 
+    U+0041-005A,  /* A–Z */
+    U+0061-007A;  /* a–z */
 }
 
 @font-face {
@@ -38,42 +57,30 @@
        url('/fonts/Klapt-Bold.otf') format('opentype');
   font-weight: 700;
   font-display: swap;
+
+  unicode-range: 
+    U+0041-005A,  /* A–Z */
+    U+0061-007A;  /* a–z */
 }
 
-
-
-@layer components {
-  .dropdown-item {
-    @apply hover:text-[#38C2D9] cursor-pointer;
-     padding: 0.1rem 0.1rem;  
-  }
-
-  .footer-item {
-    @apply hover:text-[#38C2D9] cursor-pointer;
-  }
-}
-
-/* Default to dark theme globally */
-:root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Browser Normalization - keeps existing sizes */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  scrollbar-gutter: stable;
 }
 
 body {
   background-color: #000;
   color: #fff;
-  font-family: 'Klapt', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", 'Lato', 'Amiri', sans-serif;
-  font-feature-settings: 'liga' 0, 'dlig' 0, 'calt' 0, 'ss01' 0, 'ss02' 0, 'ss03' 0, 'ss04' 0, 'ss05' 0, 'swsh' 0, 'hist' 0;
-  -webkit-font-feature-settings: 'liga' 0, 'dlig' 0, 'calt' 0, 'ss01' 0, 'ss02' 0, 'ss03' 0, 'ss04' 0, 'ss05' 0, 'swsh' 0, 'hist' 0;
+  font-family: 'Klapt', 'Lato', 'Amiri', sans-serif;
   @apply bg-black text-white;
-  
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  overflow-x: hidden;
 }
 
 * {
@@ -122,20 +129,10 @@ body {
   padding: 1px;
 }
 
-@font-face {
-  font-family: "Klapt Arabic";
-  src: url("/public/fonts/Klapt-Medium.woff2") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
+.dropdown-item{
 
-@font-face {
-  font-family: "Klapt Arabic";
-  src: url("/public/fonts/Klapt-Bold.woff2") format("opentype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 
 

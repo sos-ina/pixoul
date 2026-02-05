@@ -4,6 +4,7 @@ import GameSection from "@/components/game/GameSection";
 import GameCTA from "@/components/game/GameCTA";
 import Hero from "@/components/ui/Hero";
 import GameImageStrip from "@/components/game/GameImageStrip";
+import { experiences } from "../page";
 
 
 export const metadata = {
@@ -11,6 +12,7 @@ export const metadata = {
 };
 
 export default function HexaLooperPage() {
+  const experience = experiences.find((exp) => exp.experience_id === "hexa-looper");
   const meta = [
     { label: "Players", value: "1" },
     { label: "Genre", value: "Thriller / Adventure" },
@@ -19,8 +21,8 @@ export default function HexaLooperPage() {
   ];
 
   const images = [
-    "/images/PG-0116.jpg",
-    "/images/PG-0063.jpg",
+    "https://placehold.net/default.png",
+    "https://placehold.net/default.png",
   ];
 
   return (
@@ -32,7 +34,7 @@ export default function HexaLooperPage() {
       />
 
       {/* TITLE */}
-      <section className="py-20">
+      <section className="py-15">
         <div className="max-w-5xl mx-auto px-6">
           <h1 className="text-4xl font-bold mb-4">
             HEXA LOOPER
@@ -96,7 +98,7 @@ export default function HexaLooperPage() {
       </GameSection>
 
       {/* CTA */}
-      <GameCTA experienceId="hexa-looper" />
+      <GameCTA experience={experience} />
     </>
   );
 }

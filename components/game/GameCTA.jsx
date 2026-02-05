@@ -1,11 +1,11 @@
-import BookNowButton from "../ui/BookNowButton";
+import AddToSessionButton from '@/components/cart/AddToSession';
 
-export default function GameCTA({ experienceId }) {
+export default function GameCTA({ experience }) {
   return (
-    <section className="py-24 text-center">
-      <BookNowButton
+    <section className="py-20 text-center">
+      <AddToSessionButton
+        experience={experience}
         className="px-10 py-4 text-lg"
-        experienceId={experienceId}
       />
     </section>
   );

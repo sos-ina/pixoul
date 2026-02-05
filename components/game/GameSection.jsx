@@ -1,6 +1,6 @@
 export default function GameSection({ title, children }) {
   return (
-    <section className="py-10">
+    <section className="py-15">
       <div className="max-w-5xl mx-auto px-6">
 
         {title && (

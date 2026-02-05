@@ -4,12 +4,14 @@ import GameSection from "@/components/game/GameSection";
 import GameCTA from "@/components/game/GameCTA";
 import Hero from "@/components/ui/Hero";
 import GameImageStrip from "@/components/game/GameImageStrip";
+import { experiences } from "../page";
 
 export const metadata = {
   title: "Pixel Recon | Pixoul Gaming",
 };
 
 export default function PixelReconPage() {
+  const experience = experiences.find((exp) => exp.experience_id === "pixel-recon");
   const meta = [
     { label: "Players", value: "4" },
     { label: "Genre", value: "Strategy" },
@@ -18,8 +20,8 @@ export default function PixelReconPage() {
   ];
 
   const images = [
-    "/images/PG-0116.jpg",
-    "/images/PG-0063.jpg",
+    "https://placehold.net/default.png",
+    "https://placehold.net/default.png",
   ];
 
   return (
@@ -31,7 +33,7 @@ export default function PixelReconPage() {
       />
 
       {/* TITLE */}
-      <section className="py-20">
+      <section className="py-15">
         <div className="max-w-5xl mx-auto px-6">
           <h1 className="text-4xl font-bold mb-4">
             PIXEL RECON
@@ -97,7 +99,7 @@ export default function PixelReconPage() {
       </GameSection>
 
       {/* CTA */}
-      <GameCTA experienceId="pixel-recon" />
+      <GameCTA experience={experience} />
     </>
   );
 }

@@ -1,4 +1,4 @@
-"use client";
+
 
 import StorySection from "@/components/story/StorySection";
 import TechnologyBlock from "@/components/story/TechnologyBlock";
@@ -21,13 +21,13 @@ export default function VRStoryPage() {
     },
     {
         name: "Uoglox",
-        image: "/images/COGLOX.png",
+        image: "/images/UOGLOX.png",
         description:"Having been friends with Lebro for many years, he was the first person to stand behind him when the decision was made to colonize space and establish Pixoul planet. The trip and Pixoul research were funded by him using all his fortune.",
 
     },
     {
         name: "Sezero",
-        image: "/images/CEZERO.png",
+        image: "/images/SEZERO.png",
         description:"An absolute genius in robotics and programming, the youngest member of the founders of pixoul planet, his purpose and drive are not as clear as the other founders, as it seems he’s just into this whole trip for the thrill of it! But the amount of work he’s put in shows a clear dedication to the vision of Pixoul Planet.",
     },
     {
@@ -37,17 +37,17 @@ export default function VRStoryPage() {
     },
     {
         name: "Fallacia",
-        image: "/images/Fallacia.png",
+        image: "/images/FALLACIA.png",
         description:"The Captain of the Elite’s massive warship! And the prodigy of Oxima.",
     },
     {
         name: "Avaruz",
-        image: "/images/Avaruz.png",
+        image: "/images/AVARUZ.png",
         description:"The master of the underground sector of Hexa city, who traded his soul and pixoul for bio tech, turning him into an unforgiving dictator, and the prodigy of Uoglox.",
     },
     {
         name: "Malos",
-        image: "/images/Malos.png",
+        image: "/images/MALOS.png",
         description:"It is believed that Malos was once a bright student of the founders, but greed for power and fear of losing control corrupted him over time, causing him to abuse the Pixoul energy in order to extend his life and take over Pixoul planet with the help of the Elite organization.",
     },
   ];
@@ -56,7 +56,7 @@ export default function VRStoryPage() {
 
     <>
     <Hero 
-          videoSrc="/videos/GameVid.mp4" 
+          videoSrc="/videos/Pixoul_Metaverse_Trailer.mp4" 
           overlay={true}
           >
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">

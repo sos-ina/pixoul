@@ -4,12 +4,14 @@ import GameSection from "@/components/game/GameSection";
 import GameCTA from "@/components/game/GameCTA";
 import Hero from "@/components/ui/Hero";
 import GameImageStrip from "@/components/game/GameImageStrip";
+import { experiences } from "../page";
 
 export const metadata = {
   title: "The Lift | Pixoul Gaming",
 };
 
 export default function TheLiftPage() {
+  const experience = experiences.find((exp) => exp.experience_id === "the-lift");
   const meta = [
     { label: "Players", value: "4" },
     { label: "Genre", value: "Action / Thriller" },
@@ -18,20 +20,20 @@ export default function TheLiftPage() {
   ];
 
    const images = [
-    "/images/PG-0116.jpg",
-    "/images/PG-0063.jpg",
+    "https://placehold.net/default.png",
+    "https://placehold.net/default.png",
   ];
 
   return (
     <>
     <Hero 
-    videoSrc="/videos/GameVid.mp4" 
+    imageSrc="/images/THE-LIFT.png" 
     overlay={true}>
     </Hero>
 
     
       {/* TITLE */}
-      <section className="py-20">
+      <section className="py-15">
         <div className="max-w-5xl mx-auto px-6">
           <h1 className="text-4xl font-bold mb-4">
             THE LIFT
@@ -92,7 +94,7 @@ export default function TheLiftPage() {
       </GameSection>
 
       {/* CTA */}
-      <GameCTA experienceId="the-lift" />
+      <GameCTA experience={experience} />
     </>
   );
 }

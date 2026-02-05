@@ -4,12 +4,14 @@ import GameSection from "@/components/game/GameSection";
 import GameCTA from "@/components/game/GameCTA";
 import Hero from "@/components/ui/Hero";
 import GameImageStrip from "@/components/game/GameImageStrip";
+import { experiences } from "../page";
 
 export const metadata = {
   title: "Parashift | Pixoul Gaming",
 };
 
 export default function ParashiftPage() {
+  const experience = experiences.find((exp) => exp.experience_id === "parashift");
   const meta = [
     { label: "Players", value: "1" },
     { label: "Genre", value: "Action / Adventure" },
@@ -18,8 +20,8 @@ export default function ParashiftPage() {
   ];
 
   const images = [
-    "/images/parashift-1.jpg",
-    "/images/parashift-2.jpg",
+    "https://placehold.net/default.png",
+    "https://placehold.net/default.png",
   ];
 
   return (
@@ -31,7 +33,7 @@ export default function ParashiftPage() {
       />
 
       {/* TITLE */}
-      <section className="py-20">
+      <section className="py-15">
         <div className="max-w-5xl mx-auto px-6">
           <h1 className="text-4xl font-bold mb-4">
             PARASHIFT
@@ -90,7 +92,7 @@ export default function ParashiftPage() {
       </GameSection>
 
       {/* CTA */}
-      <GameCTA experienceId="parashift" />
+      <GameCTA experience={experience} />
     </>
   );
 }

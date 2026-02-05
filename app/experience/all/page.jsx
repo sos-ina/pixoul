@@ -11,7 +11,7 @@ export const allExperiences = [
     title: "The Lift",
     slug: "the-lift",
     category_name: "vr",
-    image_url: "/images/PG-0063.jpg",
+    image_url: "https://placehold.net/default.png",
     genre: "action / thriller",
 
     can_book: true,
@@ -28,7 +28,7 @@ export const allExperiences = [
     title: "Pixel Recon",
     slug: "pixel-recon",
     category_name: "vr",
-    image_url: "/images/PG-0063.jpg",
+    image_url: "https://placehold.net/default.png",
     genre: "strategy",
 
     can_book: true,
@@ -46,7 +46,7 @@ export const allExperiences = [
     title: "Fortnite",
     slug: "fortnite",
     category_name: "pc",
-    image_url: "/images/PG-0063.jpg",
+    image_url: "https://placehold.net/default.png",
     genre: "battle royale",
 
     can_book: false,
@@ -63,7 +63,7 @@ export const allExperiences = [
     title: "Valorant",
     slug: "valorant",
     category_name: "pc",
-    image_url: "/images/PG-0063.jpg",
+    image_url: "https://placehold.net/default.png",
     genre: "tactical shooter",
 
     can_book: false,
@@ -81,7 +81,7 @@ export const allExperiences = [
     title: "Air Hockey",
     slug: "air-hockey",
     category_name: "arcade",
-    image_url: "/images/PG-0151.jpg",
+    image_url: "https://placehold.net/default.png",
     genre: "arcade sports",
 
     can_book: false,
@@ -98,7 +98,7 @@ export const allExperiences = [
     title: "Whack-A-Mole",
     slug: "whack-a-mole",
     category_name: "arcade",
-    image_url: "/images/PG-0151.jpg",
+    image_url: "https://placehold.net/default.png",
     genre: "reaction",
 
     can_book: false,
@@ -116,7 +116,7 @@ export const allExperiences = [
     title: "Pac-Man",
     slug: "pac-man",
     category_name: "retro",
-    image_url: "/images/PG-0151.jpg",
+    image_url: "https://placehold.net/default.png",
     genre: "arcade classic",
 
     can_book: false,
@@ -133,7 +133,7 @@ export const allExperiences = [
     title: "Street Fighter II",
     slug: "street-fighter-ii",
     category_name: "retro",
-    image_url: "/images/PG-0151.jpg",
+    image_url: "https://placehold.net/default.png",
     genre: "fighting",
 
     can_book: false,
@@ -151,7 +151,7 @@ export const allExperiences = [
     title: "Tekken 7",
     slug: "tekken-7",
     category_name: "console",
-    image_url: "/images/PG-0151.jpg",
+    image_url: "https://placehold.net/default.png",
     genre: "fighting",
 
     can_book: false,
@@ -168,7 +168,7 @@ export const allExperiences = [
     title: "NBA 2K",
     slug: "nba-2k",
     category_name: "console",
-    image_url: "/images/PG-0151.jpg",
+    image_url: "https://placehold.net/default.png",
     genre: "sports",
 
     can_book: false,

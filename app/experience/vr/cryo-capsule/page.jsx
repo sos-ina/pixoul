@@ -4,12 +4,15 @@ import GameSection from "@/components/game/GameSection";
 import GameCTA from "@/components/game/GameCTA";
 import Hero from "@/components/ui/Hero";
 import GameImageStrip from "@/components/game/GameImageStrip";
+import { experiences } from "../page";
 
 export const metadata = {
   title: "Cryo Capsule | Pixoul Gaming",
 };
 
 export default function CryoCapsulePage() {
+  const experience = experiences.find((exp) => exp.experience_id === "cryo-capsule");
+
   const meta = [
     { label: "Players", value: "1" },
     { label: "Genre", value: "Adventure" },
@@ -18,8 +21,8 @@ export default function CryoCapsulePage() {
   ];
 
   const images = [
-    "/images/PG-0116.jpg",
-    "/images/PG-0063.jpg",
+    "https://placehold.net/default.png",
+    "https://placehold.net/default.png",
   ];
 
   return (
@@ -31,7 +34,7 @@ export default function CryoCapsulePage() {
       />
 
       {/* TITLE */}
-      <section className="py-20">
+      <section className="py-15">
         <div className="max-w-5xl mx-auto px-6">
           <h1 className="text-4xl font-bold mb-4">
             CRYO CAPSULE
@@ -97,7 +100,7 @@ export default function CryoCapsulePage() {
       </GameSection>
 
       {/* CTA */}
-      <GameCTA experienceId="cryo-capsule" />
+      <GameCTA experience={experience} />
     </>
   );
 }

@@ -4,12 +4,15 @@ import GameSection from "@/components/game/GameSection";
 import GameCTA from "@/components/game/GameCTA";
 import Hero from "@/components/ui/Hero";
 import GameImageStrip from "@/components/game/GameImageStrip";
+import { experiences } from "../page";
 
 export const metadata = {
   title: "Battle Rush | Pixoul Gaming",
 };
 
 export default function BattleRushPage() {
+    const experience = experiences.find((exp) => exp.experience_id === "battle-rush");
+  
   const meta = [
     { label: "Players", value: "4" },
     { label: "Genre", value: "Action / Adventure" },
@@ -18,8 +21,8 @@ export default function BattleRushPage() {
   ];
 
   const images = [
-    "/images/PG-0116.jpg",
-    "/images/PG-0063.jpg",
+    "https://placehold.net/default.png",
+    "https://placehold.net/default.png",
   ];
 
   return (
@@ -31,7 +34,7 @@ export default function BattleRushPage() {
       />
 
       {/* TITLE */}
-      <section className="py-20">
+      <section className="py-15">
         <div className="max-w-5xl mx-auto px-6">
           <h1 className="text-4xl font-bold mb-4">
             BATTLE RUSH
@@ -95,7 +98,7 @@ export default function BattleRushPage() {
       </GameSection>
 
       {/* CTA */}
-      <GameCTA experienceId="battle-rush" />
+      <GameCTA experience={experience} />
     </>
   );
 }

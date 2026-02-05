@@ -35,7 +35,7 @@ export default function SportGamesPage(){
     return(
         <>
         <Hero
-        imageSrc="/images/PG-0204.jpg"
+        imageSrc="https://placehold.net/default.png"
         overlay={true}
         >
             <div className="flex flex-col items-center justify-center h-full text-center px-6">
