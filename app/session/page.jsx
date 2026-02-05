@@ -45,7 +45,7 @@ export default function SessionPage() {
       {/* Back */}
       <div className="mt-10">
         <Link
-          href="/experiences/vr"
+          href="/experience/vr"
           className="text-[#38C2D9] hover:underline"
         >
           ← Add More Games

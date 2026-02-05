@@ -15,18 +15,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="bg-black text-white">
         <SessionCartProvider>
-        <Navbar />
-        {children}
-        </SessionCartProvider>
-
-        <SessionCartProvider>
+          <Navbar />
           <main className="pt-20">
-          {children}
-        </main>
+            {children}
+          </main>
+          <Footer />
         </SessionCartProvider>
-        
-        
-        <Footer />
       </body>
     </html>
   );

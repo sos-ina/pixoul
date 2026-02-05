@@ -4,12 +4,15 @@ import GameSection from "@/components/game/GameSection";
 import GameCTA from "@/components/game/GameCTA";
 import Hero from "@/components/ui/Hero";
 import GameImageStrip from "@/components/game/GameImageStrip";
+import { experiences } from "../page";
 
 export const metadata = {
   title: "Cryo Capsule | Pixoul Gaming",
 };
 
 export default function CryoCapsulePage() {
+  const experience = experiences.find((exp) => exp.experience_id === "cryo-capsule");
+
   const meta = [
     { label: "Players", value: "1" },
     { label: "Genre", value: "Adventure" },
@@ -97,7 +100,7 @@ export default function CryoCapsulePage() {
       </GameSection>
 
       {/* CTA */}
-      <GameCTA experienceId="cryo-capsule" />
+      <GameCTA experience={experience} />
     </>
   );
 }

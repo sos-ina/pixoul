@@ -4,12 +4,14 @@ import GameSection from "@/components/game/GameSection";
 import GameCTA from "@/components/game/GameCTA";
 import Hero from "@/components/ui/Hero";
 import GameImageStrip from "@/components/game/GameImageStrip";
+import { experiences } from "../page";
 
 export const metadata = {
   title: "The Lift | Pixoul Gaming",
 };
 
 export default function TheLiftPage() {
+  const experience = experiences.find((exp) => exp.experience_id === "the-lift");
   const meta = [
     { label: "Players", value: "4" },
     { label: "Genre", value: "Action / Thriller" },
@@ -92,7 +94,7 @@ export default function TheLiftPage() {
       </GameSection>
 
       {/* CTA */}
-      <GameCTA experienceId="the-lift" />
+      <GameCTA experience={experience} />
     </>
   );
 }

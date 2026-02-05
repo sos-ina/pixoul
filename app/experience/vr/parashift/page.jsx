@@ -4,12 +4,14 @@ import GameSection from "@/components/game/GameSection";
 import GameCTA from "@/components/game/GameCTA";
 import Hero from "@/components/ui/Hero";
 import GameImageStrip from "@/components/game/GameImageStrip";
+import { experiences } from "../page";
 
 export const metadata = {
   title: "Parashift | Pixoul Gaming",
 };
 
 export default function ParashiftPage() {
+  const experience = experiences.find((exp) => exp.experience_id === "parashift");
   const meta = [
     { label: "Players", value: "1" },
     { label: "Genre", value: "Action / Adventure" },
@@ -90,7 +92,7 @@ export default function ParashiftPage() {
       </GameSection>
 
       {/* CTA */}
-      <GameCTA experienceId="parashift" />
+      <GameCTA experience={experience} />
     </>
   );
 }

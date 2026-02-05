@@ -19,7 +19,7 @@ export default function AddToSessionButton({ experience, className = "" }) {
         ${className}
       `}
     >
-      Add to Session
+      Add to Cart
     </button>
   );
 }

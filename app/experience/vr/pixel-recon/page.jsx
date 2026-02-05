@@ -4,12 +4,14 @@ import GameSection from "@/components/game/GameSection";
 import GameCTA from "@/components/game/GameCTA";
 import Hero from "@/components/ui/Hero";
 import GameImageStrip from "@/components/game/GameImageStrip";
+import { experiences } from "../page";
 
 export const metadata = {
   title: "Pixel Recon | Pixoul Gaming",
 };
 
 export default function PixelReconPage() {
+  const experience = experiences.find((exp) => exp.experience_id === "pixel-recon");
   const meta = [
     { label: "Players", value: "4" },
     { label: "Genre", value: "Strategy" },
@@ -97,7 +99,7 @@ export default function PixelReconPage() {
       </GameSection>
 
       {/* CTA */}
-      <GameCTA experienceId="pixel-recon" />
+      <GameCTA experience={experience} />
     </>
   );
 }

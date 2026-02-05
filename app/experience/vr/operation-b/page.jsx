@@ -4,12 +4,14 @@ import GameSection from "@/components/game/GameSection";
 import GameCTA from "@/components/game/GameCTA";
 import Hero from "@/components/ui/Hero";
 import GameImageStrip from "@/components/game/GameImageStrip";
+import { experiences } from "../page";
 
 export const metadata = {
   title: "Operation B | Pixoul Gaming",
 };
 
 export default function OperationBPage() {
+  const experience = experiences.find((exp) => exp.experience_id === "operation-b");
   const meta = [
     { label: "Players", value: "2" },
     { label: "Genre", value: "Action / Adventure" },
@@ -90,7 +92,7 @@ export default function OperationBPage() {
       </GameSection>
 
       {/* CTA */}
-      <GameCTA experienceId="operation-b" />
+      <GameCTA experience={experience} />
     </>
   );
 }

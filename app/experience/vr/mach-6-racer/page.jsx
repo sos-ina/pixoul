@@ -4,12 +4,15 @@ import GameSection from "@/components/game/GameSection";
 import GameCTA from "@/components/game/GameCTA";
 import Hero from "@/components/ui/Hero";
 import GameImageStrip from "@/components/game/GameImageStrip";
+import { experiences } from "../page";
 
 export const metadata = {
   title: "Mach 6 Racer | Pixoul Gaming",
 };
 
 export default function Mach6RacerPage() {
+    const experience = experiences.find((exp) => exp.experience_id === "mach-6-racer");
+  
   const meta = [
     { label: "Players", value: "1" },
     { label: "Genre", value: "Racing" },
@@ -90,7 +93,7 @@ export default function Mach6RacerPage() {
       </GameSection>
 
       {/* CTA */}
-      <GameCTA experienceId="mach-6-racer" />
+      <GameCTA experience={experience} />
     </>
   );
 }

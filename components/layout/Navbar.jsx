@@ -92,7 +92,7 @@ export default function Navbar() {
 
             <NavItem
                 label="Experiences"
-                isActive={pathname.includes("/games")}
+                isActive={pathname.includes("/experience")}
                 onClick={() => toggleDropdown("experiences")}
             >
                 <Dropdown isOpen={openDropdown === "experiences"} >
