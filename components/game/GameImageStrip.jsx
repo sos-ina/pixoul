@@ -2,7 +2,7 @@ export default function GameImageStrip({ images }) {
   if (!images || images.length === 0) return null;
 
   return (
-    <section className="py-10">
+    <section className="py-15">
       <div className="max-w-6xl mx-auto px-6">
 
         <div

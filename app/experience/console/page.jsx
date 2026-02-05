@@ -15,7 +15,7 @@ export const consoleGames = [
     title: "Tekken 7",
     slug: "tekken-7",
     category_name: "console",
-    image_url: "/images/PG-0133.jpg",
+    image_url: "https://placehold.net/default.png",
     genre: "fighting",
 
     can_book: false,
@@ -32,7 +32,7 @@ export const consoleGames = [
     title: "Mortal Kombat 11",
     slug: "mortal-kombat-11",
     category_name: "console",
-    image_url: "/images/PG-0133.jpg",
+    image_url: "https://placehold.net/default.png",
     genre: "fighting",
 
     can_book: false,
@@ -49,7 +49,7 @@ export const consoleGames = [
     title: "Gran Turismo",
     slug: "gran-turismo",
     category_name: "console",
-    image_url: "/images/PG-0133.jpg",
+    image_url: "https://placehold.net/default.png",
     genre: "racing",
 
     can_book: false,
@@ -66,7 +66,7 @@ export const consoleGames = [
     title: "NBA 2K",
     slug: "nba-2k",
     category_name: "console",
-    image_url: "/images/PG-0133.jpg",
+    image_url: "https://placehold.net/default.png",
     genre: "sports",
 
     can_book: false,
@@ -83,7 +83,7 @@ export const consoleGames = [
     title: "Call of Duty",
     slug: "call-of-duty-console",
     category_name: "console",
-    image_url: "/images/PG-0133.jpg",
+    image_url: "https://placehold.net/default.png",
     genre: "shooter",
 
     can_book: false,
@@ -100,7 +100,7 @@ export const consoleGames = [
     title: "EA Sports FC",
     slug: "ea-sports-fc-console",
     category_name: "console",
-    image_url: "/images/PG-0133.jpg",
+    image_url: "https://placehold.net/default.png",
     genre: "sports",
 
     can_book: false,
@@ -123,7 +123,7 @@ export default function ConsoleGamesPage(){
     return(
         <>
         <Hero
-        imageSrc="/images/PG-0204.jpg"
+        imageSrc="/images/MOBILE-GAMING.png"
         overlay={true}
         >
             <div className="flex flex-col items-center justify-center h-full text-center px-6">

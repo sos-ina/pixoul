@@ -1,6 +1,7 @@
 import Link from "next/link";
 import BookNowButton from '@/components/ui/BookNowButton';
 import { routes } from "@/lib/routes";
+import AddToSessionButton from "@/components/cart/AddToSession";
 
 
 export default function GameCard({ experience }) {
@@ -108,9 +109,9 @@ export default function GameCard({ experience }) {
 
           {/* BOOK NOW (only if allowed) */}
           {can_book && (
-            <BookNowButton
+            <AddToSessionButton
               className="px-4 py-2 text-sm"
-              experienceId={experience_id}
+              experience={experience}
             />
           )}
 

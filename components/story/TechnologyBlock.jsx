@@ -1,5 +1,3 @@
-"use client";
-
 export default function TechnologyBlock({ title, children }) {
   return (
     <div

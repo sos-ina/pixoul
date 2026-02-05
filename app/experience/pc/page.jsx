@@ -123,7 +123,7 @@ export default function PcGamesPage(){
     return(
         <>
         <Hero
-        imageSrc="/images/PG-0204.jpg"
+        imageSrc="/images/PG-0316.jpg"
         overlay={true}
         >
             <div className="flex flex-col items-center justify-center h-full text-center px-6">

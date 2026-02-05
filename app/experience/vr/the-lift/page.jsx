@@ -18,20 +18,20 @@ export default function TheLiftPage() {
   ];
 
    const images = [
-    "/images/PG-0116.jpg",
-    "/images/PG-0063.jpg",
+    "https://placehold.net/default.png",
+    "https://placehold.net/default.png",
   ];
 
   return (
     <>
     <Hero 
-    videoSrc="/videos/GameVid.mp4" 
+    imageSrc="/images/THE-LIFT.png" 
     overlay={true}>
     </Hero>
 
     
       {/* TITLE */}
-      <section className="py-20">
+      <section className="py-15">
         <div className="max-w-5xl mx-auto px-6">
           <h1 className="text-4xl font-bold mb-4">
             THE LIFT

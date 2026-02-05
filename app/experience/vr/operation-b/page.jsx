@@ -18,8 +18,8 @@ export default function OperationBPage() {
   ];
 
   const images = [
-    "/images/operation-b-1.jpg",
-    "/images/operation-b-2.jpg",
+    "https://placehold.net/default.png",
+    "https://placehold.net/default.png",
   ];
 
   return (
@@ -31,7 +31,7 @@ export default function OperationBPage() {
       />
 
       {/* TITLE */}
-      <section className="py-20">
+      <section className="py-15">
         <div className="max-w-5xl mx-auto px-6">
           <h1 className="text-4xl font-bold mb-4">
             OPERATION B

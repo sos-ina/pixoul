@@ -16,7 +16,7 @@ export const experiences = [
     title: "Cryo Capsule",
     slug: "cryo-capsule",
     category_name: "vr",
-    image_url: "/images/PG-0116.jpg",
+    image_url: "/images/CRYO-GENESIS.png",
     genre: "adventure",
 
     can_book: true,
@@ -33,7 +33,7 @@ export const experiences = [
     title: "The Lift",
     slug: "the-lift",
     category_name: "vr",
-    image_url: "/images/PG-0116.jpg",
+    image_url: "/images/THE-LIFT.png",
     genre: "action / thriller",
 
     can_book: true,
@@ -50,7 +50,7 @@ export const experiences = [
     title: "Operation B",
     slug: "operation-b",
     category_name: "vr",
-    image_url: "/images/PG-0116.jpg",
+    image_url: "/images/OPERATION-B.png",
     genre: "action / adventure",
 
     can_book: true,
@@ -67,7 +67,7 @@ export const experiences = [
     title: "Parashift",
     slug: "parashift",
     category_name: "vr",
-    image_url: "/images/PG-0116.jpg",
+    image_url: "/images/PARASHIFT.png",
     genre: "action / adventure",
 
     can_book: true,
@@ -84,7 +84,7 @@ export const experiences = [
     title: "Hexa Looper",
     slug: "hexa-looper",
     category_name: "vr",
-    image_url: "/images/PG-0116.jpg",
+    image_url: "/images/HEXA-LOOPER.png",
     genre: "thriller / adventure",
 
     can_book: true,
@@ -101,7 +101,7 @@ export const experiences = [
     title: "Planked!",
     slug: "planked",
     category_name: "vr",
-    image_url: "/images/PG-0116.jpg",
+    image_url: "/images/PLANKED.png",
     genre: "vr thriller",
 
     can_book: true,
@@ -118,7 +118,7 @@ export const experiences = [
     title: "Mach 6 Racer",
     slug: "mach-6-racer",
     category_name: "vr",
-    image_url: "/images/PG-0116.jpg",
+    image_url: "/images/SPEED-RACER.png",
     genre: "racing",
 
     can_book: true,
@@ -135,7 +135,7 @@ export const experiences = [
     title: "Solosoul",
     slug: "solosoul",
     category_name: "vr",
-    image_url: "/images/PG-0116.jpg",
+    image_url: "/images/SOLOSOUL.png",
     genre: "action / adventure",
 
     can_book: true,
@@ -152,7 +152,7 @@ export const experiences = [
     title: "Battle Rush",
     slug: "battle-rush",
     category_name: "vr",
-    image_url: "/images/PG-0116.jpg",
+    image_url: "/images/BATTLE-RUSH.png",
     genre: "action / adventure",
 
     can_book: true,
@@ -169,7 +169,7 @@ export const experiences = [
     title: "Pixel Recon",
     slug: "pixel-recon",
     category_name: "vr",
-    image_url: "/images/PG-0116.jpg",
+    image_url: "/images/PIXEL-RECON.png",
     genre: "strategy",
 
     can_book: true,
@@ -231,7 +231,7 @@ export default function VrGamesPage(){
               description="Try our Pixoul Pass! Get access to multiple experiences at a discounted rate. Perfect for first-timers."
               primaryAction={{
                 label: "View All Games",
-                href: "/",
+                href: "/experience/all",
               }}
             />
 

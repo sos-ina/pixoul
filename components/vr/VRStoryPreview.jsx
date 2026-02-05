@@ -6,7 +6,7 @@ export default function VRStoryPreview({
   storyHref,
 }) {
   return (
-    <section className="py-24 relative w-full hover:shadow-[0_0_60px_rgba(56,194,217,0.15)] transition">
+    <section className="py-20 relative w-full hover:shadow-[0_0_60px_rgba(56,194,217,0.15)] transition">
       <div className="flex items-center justify-center px-4 sm:px-6">
 
         <div

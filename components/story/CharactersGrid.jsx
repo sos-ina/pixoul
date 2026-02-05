@@ -3,7 +3,7 @@ import CharacterCard from "./CharacterCard";
 
 export default function CharactersGrid({ characters }) {
   return (
-    <section className="py-10">
+    <section className="py-15">
       <div className="max-w-7xl mx-auto px-6">
 
         <h2 className="text-3xl font-semibold mb-12vt text-center pb-10">

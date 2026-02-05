@@ -16,7 +16,7 @@ export const retroGames = [
     title: "Pac-Man",
     slug: "pac-man",
     category_name: "retro",
-    image_url: "/images/PG-0180.jpg",
+    image_url: "https://placehold.net/default.png",
     genre: "arcade classic",
 
     can_book: false,
@@ -33,7 +33,7 @@ export const retroGames = [
     title: "Space Invaders",
     slug: "space-invaders",
     category_name: "retro",
-    image_url: "/images/PG-0180.jpg",
+    image_url: "https://placehold.net/default.png",
     genre: "arcade shooter",
 
     can_book: false,
@@ -50,7 +50,7 @@ export const retroGames = [
     title: "Donkey Kong",
     slug: "donkey-kong",
     category_name: "retro",
-    image_url: "/images/PG-0180.jpg",
+    image_url: "https://placehold.net/default.png",
     genre: "platformer",
 
     can_book: false,
@@ -67,7 +67,7 @@ export const retroGames = [
     title: "Galaga",
     slug: "galaga",
     category_name: "retro",
-    image_url: "/images/PG-0180.jpg",
+    image_url: "https://placehold.net/default.png",
     genre: "arcade shooter",
 
     can_book: false,
@@ -84,7 +84,7 @@ export const retroGames = [
     title: "Street Fighter II",
     slug: "street-fighter-ii",
     category_name: "retro",
-    image_url: "/images/PG-0180.jpg",
+    image_url: "https://placehold.net/default.png",
     genre: "fighting",
 
     can_book: false,
@@ -101,7 +101,7 @@ export const retroGames = [
     title: "Metal Slug",
     slug: "metal-slug",
     category_name: "retro",
-    image_url: "/images/PG-0180.jpg",
+    image_url: "https://placehold.net/default.png",
     genre: "run and gun",
 
     can_book: false,
@@ -120,7 +120,7 @@ export default function RetroGamesPage(){
     return(
         <>
         <Hero
-        imageSrc="/images/PG-0204.jpg"
+        imageSrc="/images/PG-0272.jpg"
         overlay={true}
         >
             <div className="flex flex-col items-center justify-center h-full text-center px-6">
