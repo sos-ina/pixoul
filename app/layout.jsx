@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import { SessionCartProvider } from "@/components/cart/SessionCartProvider";
+import Chatbot from "@/components/chatbot/Chatbot";
 
 
 export const metadata = {
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
           <main className="pt-20">
             {children}
           </main>
+          <Chatbot />
           <Footer />
         </SessionCartProvider>
       </body>
