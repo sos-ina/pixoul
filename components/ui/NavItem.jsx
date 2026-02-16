@@ -1,16 +1,14 @@
 export default function NavItem({
   label,
   isActive = false,
-  onClick,
   children,
 }) {
   const hasDropdown = !!children;
 
   return (
-    <li className="relative group">
-      <button
-        onClick={onClick}
-        className="relative hover:text-[#38C2D9] transition-colors text-sm lg:text-sm xl:text-base whitespace-nowrap flex items-center gap-1"
+    <li className="relative group list-none">
+      <div
+        className="relative text-white hover:text-[#38C2D9] cursor-pointer transition-colors text-sm lg:text-sm xl:text-base whitespace-nowrap flex items-center gap-1 py-2"
       >
         {label}
         
@@ -26,13 +24,14 @@ export default function NavItem({
           </svg>
         )}
 
-        {/* underline */}
+        {/* Underline */}
         <span
-          className={`absolute left-0 -bottom-1 h-[2px] bg-[#38C2D9] transition-all duration-300
+          className={`absolute left-0 -bottom-0 h-[2px] bg-[#38C2D9] transition-all duration-300
           ${isActive ? "w-full" : "w-0 group-hover:w-full"}`}
         />
-      </button>
+      </div>
 
+      {/* This renders the Dropdown component passed as a child */}
       {children}
     </li>
   );
