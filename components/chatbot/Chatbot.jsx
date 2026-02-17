@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { intents } from "@/lib/chatbotIntents";
-import ChatBotIcon from "./Image/ChatBot.png";
+import ChatBotIcon from "@/public/logos/chat-icon.png";
 
 const GREETING_MESSAGE = "Hi! I can help you navigate Pixoul. What are you looking for?";
 const FALLBACK_MESSAGE =
@@ -84,13 +84,13 @@ export default function Chatbot() {
     <div className="fixed right-4 top-[60%] -translate-y-1/2 z-[60]">
       <div className="flex flex-col items-center">
         {isOpen && (
-          <div className="mb-3 w-[22rem] max-w-[calc(100vw-2rem)] rounded-2xl border border-white/10 bg-black/90 backdrop-blur-md shadow-2xl">
-          <div className="flex items-center justify-between px-4 py-3 border-b border-white/10">
+          <div className="mb-3 w-[22rem] max-w-[calc(100vw-2rem)] rounded-2xl border dark:border-white/10 border-white/10 dark:bg-black/90 bg-white/90 backdrop-blur-md shadow-2xl">
+          <div className="flex items-center justify-between px-4 py-3 border-b dark:border-white/10 border-white/10">
             <div className="text-sm font-semibold">Pixoul Assistant</div>
             <button
               type="button"
               onClick={() => setIsOpen(false)}
-              className="text-white/70 hover:text-white text-sm"
+              className="dark:text-white/70 text-black/70 hover:dark:text-white hover:text-black text-sm"
               aria-label="Close chatbot"
             >
               ✕
@@ -111,8 +111,8 @@ export default function Chatbot() {
                 <div
                   className={
                     m.from === "user"
-                      ? "max-w-[85%] rounded-2xl rounded-br-md bg-[#007EC6] px-3 py-2 text-sm text-white"
-                      : "max-w-[85%] rounded-2xl rounded-bl-md bg-white/10 px-3 py-2 text-sm text-white"
+                      ? "max-w-[85%] rounded-2xl rounded-br-md bg-[#007EC6] px-3 py-2 text-sm dark:text-white text-black"
+                      : "max-w-[85%] rounded-2xl rounded-bl-md dark:bg-white/10 bg-black/10 px-3 py-2 text-sm dark:text-white text-black"
                   }
                 >
                   {m.text}
@@ -129,13 +129,13 @@ export default function Chatbot() {
                 if (e.key === "Enter") sendMessage();
               }}
               placeholder="Type a message..."
-              className="flex-1 rounded-xl bg-black/40 border border-white/10 px-3 py-2 text-sm outline-none focus:border-white/30"
+              className="flex-1 rounded-xl bg-white dark:bg-black/40 border border-white/10 px-3 py-2 text-sm outline-none focus:border-white/30"
             />
             <button
               type="button"
               onClick={sendMessage}
               disabled={!canSend}
-              className="rounded-xl bg-white text-black px-3 py-2 text-sm font-semibold disabled:opacity-50"
+              className="rounded-xl bg-white dark:bg-black text-black dark:text-white px-3 py-2 text-sm font-semibold disabled:opacity-50"
             >
               Send
             </button>

@@ -26,6 +26,7 @@ export const experiences = [
     min_players: 1,
     max_players: 1,
     min_age: 12,
+    price: 50,
   },
 
   {
@@ -43,6 +44,7 @@ export const experiences = [
     min_players: 1,
     max_players: 4,
     min_age: 12,
+    price: 60,
   },
 
   {
@@ -60,6 +62,7 @@ export const experiences = [
     min_players: 2,
     max_players: 2,
     min_age: 12,
+    price: 55,
   },
 
   {
@@ -77,6 +80,7 @@ export const experiences = [
     min_players: 1,
     max_players: 1,
     min_age: 10,
+    price: 45,
   },
 
   {
@@ -94,6 +98,7 @@ export const experiences = [
     min_players: 1,
     max_players: 1,
     min_age: 10,
+    price: 30,
   },
 
   {
@@ -111,6 +116,7 @@ export const experiences = [
     min_players: 1,
     max_players: 1,
     min_age: 13,
+    price: 40,
   },
 
   {
@@ -128,6 +134,7 @@ export const experiences = [
     min_players: 1,
     max_players: 1,
     min_age: 10,
+    price: 35,
   },
 
   {
@@ -145,6 +152,7 @@ export const experiences = [
     min_players: 1,
     max_players: 1,
     min_age: 12,
+    price: 50,
   },
 
   {
@@ -162,6 +170,7 @@ export const experiences = [
     min_players: 4,
     max_players: 4,
     min_age: 13,
+    price: 60,
   },
 
   {
@@ -179,6 +188,7 @@ export const experiences = [
     min_players: 4,
     max_players: 4,
     min_age: 13,
+    price: 70,
   },
 ];
 

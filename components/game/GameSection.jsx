@@ -9,7 +9,7 @@ export default function GameSection({ title, children }) {
           </h2>
         )}
 
-        <div className="text-gray-300 leading-relaxed space-y-4">
+        <div className="dark:text-gray-300 text-gray-600 leading-relaxed space-y-4">
           {children}
         </div>
 

@@ -20,6 +20,7 @@ export default function GameCard({ experience }) {
     min_players,
     max_players,
     min_age,
+      price,
   } = experience;
 
   const categorySlug = category_name.toLowerCase();
@@ -53,7 +54,7 @@ export default function GameCard({ experience }) {
         />
 
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 dark:bg-black/40 bg-white/40" />
 
         {/* CATEGORY TAG */}
         <div
@@ -79,7 +80,7 @@ export default function GameCard({ experience }) {
               px-2 py-1
               border border-red-400/50
               text-red-400
-              bg-black/60
+              dark:bg-black/60 bg-white/60
             "
           >
             Walk-In Only
@@ -90,13 +91,20 @@ export default function GameCard({ experience }) {
       {/* CONTENT */}
       <div className="p-4 flex flex-col gap-3">
 
-        {/* TITLE */}
-        <h3 className="text-lg font-semibold leading-tight">
-          {title}
-        </h3>
+        {/* TITLE  and price*/}
+        <div className="flex items-center justify-between">
+          <h3 className="text-lg font-semibold leading-tight">
+            {title}
+          </h3>
+
+          <h3 className="text-md font-semibold leading-tight text-[#38C2D9]">
+            AED {price}
+          </h3>
+        </div>
+
 
         {/* META */}
-        <div className="text-xs text-gray-400 flex gap-4">
+        <div className="text-xs dark:text-gray-400 text-gray-600 flex gap-4">
           {duration_minutes && <span>{duration_minutes} min</span>}
           {min_players && max_players && (
             <span>{min_players}–{max_players} players</span>

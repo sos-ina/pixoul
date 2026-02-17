@@ -7,12 +7,15 @@ import Link from "next/link";
 import BookNowButton from '../ui/BookNowButton';
 
 import { useCart } from "@/components/cart/SessionCartProvider";
+import ThemeToggle from "../ui/ThemeToggle";
+import LanguageToggle from "../ui/LanguageToggle";
+
 
 function CartIcon() {
   const { items } = useCart();
 
   return (
-    <Link href="/session" className="relative">
+    <Link href="/session-cart" className="relative">
       <img
         src="/logos/cart.png"
         alt="cart"
@@ -57,9 +60,14 @@ export default function Navbar() {
 
   return (
     <nav 
-      className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-cover bg-center"
+      className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-cover bg-center text-black dark:text-white"
       
     >
+      <div>
+        <ThemeToggle />
+        <LanguageToggle />
+      </div>
+
       <div className="max-w-7xl h-[80px] mx-auto px-4 sm:px-6 lg:px-8 py-3 md:py-4 flex items-center justify-between">
 
         {/* Logo */}
@@ -81,14 +89,12 @@ export default function Navbar() {
 
         <ul className="hidden lg:flex gap-6 xl:gap-8 text-sm xl:text-base">
 
-          <Link href="/">
-            <NavItem
-                label="Home"
-                isActive={pathname === "/"}
-                onClick={() => setOpenDropdown(null)}
-            />
-            </Link>
-
+          <NavItem
+            href="/"
+            label="Home"
+            isActive={pathname === "/"}
+            onClick={() => setOpenDropdown(null)}
+          />
 
             <NavItem
                 label="Experiences"
@@ -106,6 +112,13 @@ export default function Navbar() {
 
                 </Dropdown>
             </NavItem>
+            
+          <NavItem
+            href="/birthday"
+            label="Birthday"
+            isActive={pathname === "/birthday"}
+            onClick={() => setOpenDropdown(null)}
+          />
 
             <NavItem
                 label="Events & Groups"
@@ -168,27 +181,28 @@ export default function Navbar() {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
-              <span className={`w-6 h-0.5 bg-white transition-all ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-              <span className={`w-6 h-0.5 bg-white transition-all ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
-              <span className={`w-6 h-0.5 bg-white transition-all ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+              <span className={`w-6 h-0.5 bg-black dark:bg-white transition-all ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+              <span className={`w-6 h-0.5 bg-black dark:bg-white transition-all ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
+              <span className={`w-6 h-0.5 bg-black dark:bg-white transition-all ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
             </button>
         </div>
 
       </div>
 
       {/* Mobile Menu */}
-      <div className={`lg:hidden fixed top-[80px] left-0 w-full bg-black/95 backdrop-blur-md transition-all duration-300 ${mobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+      <div className={`lg:hidden fixed top-[80px] left-0 w-full bg-white/95 dark:bg-black/95 backdrop-blur-md transition-all duration-300 ${mobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
         <ul className="flex flex-col px-4 py-4 gap-2">
-          
-          <Link href="/" onClick={closeMobileMenu}>
-            <div className={`py-3 px-2 transition-colors border-b border-gray-700 ${pathname === "/" ? 'text-[#38C2D9]' : 'text-white hover:text-[#007EC6]'}`}>
-              Home
-            </div>
-          </Link>
+          <li>
+            <Link href="/" onClick={closeMobileMenu}>
+              <div className={`py-3 px-2 transition-colors border-b border-gray-700 ${pathname === "/" ? 'text-[#38C2D9]' : 'text-black dark:text-white hover:text-[#007EC6]'}`}>
+                Home
+              </div>
+            </Link>
+          </li>
 
-          <div className="border-b border-gray-700">
+          <li className="border-b border-gray-700">
             <button
-              className="w-full text-left py-3 px-2 text-white hover:text-[#007EC6] transition-colors flex justify-between items-center"
+              className="w-full text-left py-3 px-2 text-black dark:text-white hover:text-[#007EC6] transition-colors flex justify-between items-center"
               onClick={() => { toggleDropdown("experiences"); }}
             >
               <span className={`inline-block relative ${pathname.includes("/experience") ? 'text-[#38C2D9]' : ''}`}>
@@ -206,42 +220,34 @@ export default function Navbar() {
             </button>
             {openDropdown === "experiences" && (
               <div className="pl-4 pb-2">
-
                 <Link href="/experience/vr" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-300 hover:text-[#007EC6]">VR Games</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6]">VR Games</p>
                 </Link>
-
                 <Link href="/experience/pc" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-300 hover:text-[#007EC6]">PC Games</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6]">PC Games</p>
                 </Link>
-
                 <Link href="/experience/retro" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-300 hover:text-[#007EC6]">Retro Games</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6]">Retro Games</p>
                 </Link>
-
                 <Link href="/experience/console" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-300 hover:text-[#007EC6]">Console Games</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6]">Console Games</p>
                 </Link>
-
                 <Link href="/experience/arcade" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-300 hover:text-[#007EC6]">Arcade Games</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6]">Arcade Games</p>
                 </Link>
-
                 <Link href="/experience/sport" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-300 hover:text-[#007EC6]">Sport</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6]">Sport</p>
                 </Link>
-
                 <Link href="/experience/all" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-300 hover:text-[#007EC6]">All Games</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6]">All Games</p>
                 </Link>
-                
               </div>
             )}
-          </div>
+          </li>
 
-          <div className="border-b border-gray-700">
+          <li className="border-b border-gray-700">
             <button
-              className="w-full text-left py-3 px-2 text-white hover:text-[#007EC6] transition-colors flex justify-between items-center"
+              className="w-full text-left py-3 px-2 text-black dark:text-white hover:text-[#007EC6] transition-colors flex justify-between items-center"
               onClick={() => { toggleDropdown("eventsGroups"); }}
             >
               <span className={`inline-block relative ${pathname.includes("/events") ? 'text-[#38C2D9]' : ''}`}>
@@ -260,27 +266,27 @@ export default function Navbar() {
             {openDropdown === "eventsGroups" && (
               <div className="pl-4 pb-2">
                 <Link href="/events/hall" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-300 hover:text-[#007EC6] cursor-pointer">The Hall</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer">The Hall</p>
                 </Link>
                 <Link href="/events/social-room" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-300 hover:text-[#007EC6] cursor-pointer">Social Room</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer">Social Room</p>
                 </Link>
                 <Link href="/events/vip-lounge" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-300 hover:text-[#007EC6] cursor-pointer">VIP Lounge</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer">VIP Lounge</p>
                 </Link>
                 <Link href="/events/observation-deck" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-300 hover:text-[#007EC6] cursor-pointer">Observation Deck</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer">Observation Deck</p>
                 </Link>
                 <Link href="/events/school-visit" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-300 hover:text-[#007EC6] cursor-pointer">School Visit</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer">School Visit</p>
                 </Link>
               </div>
             )}
-          </div>
+          </li>
 
-          <div className="border-b border-gray-700">
+          <li className="border-b border-gray-700">
             <button
-              className="w-full text-left py-3 px-2 text-white hover:text-[#007EC6] transition-colors flex justify-between items-center"
+              className="w-full text-left py-3 px-2 text-black dark:text-white hover:text-[#007EC6] transition-colors flex justify-between items-center"
               onClick={() => { toggleDropdown("community"); }}
             >
               <span className={`inline-block relative ${pathname.includes("/community") ? 'text-[#38C2D9]' : ''}`}>
@@ -298,19 +304,19 @@ export default function Navbar() {
             </button>
             {openDropdown === "community" && (
               <div className="pl-4 pb-2">
-                <p className="py-2 text-gray-300 hover:text-[#007EC6] cursor-pointer" onClick={closeMobileMenu}>Player Profile</p>
-                <p className="py-2 text-gray-300 hover:text-[#007EC6] cursor-pointer" onClick={closeMobileMenu}>Reviews</p>
-                <p className="py-2 text-gray-300 hover:text-[#007EC6] cursor-pointer" onClick={closeMobileMenu}>Forums</p>
-                <p className="py-2 text-gray-300 hover:text-[#007EC6] cursor-pointer" onClick={closeMobileMenu}>Challenges</p>
-                <p className="py-2 text-gray-300 hover:text-[#007EC6] cursor-pointer" onClick={closeMobileMenu}>Fan Art</p>
-                <p className="py-2 text-gray-300 hover:text-[#007EC6] cursor-pointer" onClick={closeMobileMenu}>Dev Updates</p>
+                <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer" onClick={closeMobileMenu}>Player Profile</p>
+                <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer" onClick={closeMobileMenu}>Reviews</p>
+                <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer" onClick={closeMobileMenu}>Forums</p>
+                <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer" onClick={closeMobileMenu}>Challenges</p>
+                <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer" onClick={closeMobileMenu}>Fan Art</p>
+                <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer" onClick={closeMobileMenu}>Dev Updates</p>
               </div>
             )}
-          </div>
+          </li>
 
-          <div className="border-b border-gray-700">
+          <li className="border-b border-gray-700">
             <button
-              className="w-full text-left py-3 px-2 text-white hover:text-[#007EC6] transition-colors flex justify-between items-center"
+              className="w-full text-left py-3 px-2 text-black dark:text-white hover:text-[#007EC6] transition-colors flex justify-between items-center"
               onClick={() => { toggleDropdown("planYourVisit"); }}
             >
               <span className={`inline-block relative ${pathname.includes("/plan") ? 'text-[#38C2D9]' : ''}`}>
@@ -328,19 +334,18 @@ export default function Navbar() {
             </button>
             {openDropdown === "planYourVisit" && (
               <div className="pl-4 pb-2">
-                <p className="py-2 text-gray-300 hover:text-[#007EC6] cursor-pointer" onClick={closeMobileMenu}>How Pixoul Works</p>
-                <p className="py-2 text-gray-300 hover:text-[#007EC6] cursor-pointer" onClick={closeMobileMenu}>What to Expect</p>
-                <p className="py-2 text-gray-300 hover:text-[#007EC6] cursor-pointer" onClick={closeMobileMenu}>Safety &Comfort</p>
-                <p className="py-2 text-gray-300 hover:text-[#007EC6] cursor-pointer" onClick={closeMobileMenu}>Pricing</p>
-                <p className="py-2 text-gray-300 hover:text-[#007EC6] cursor-pointer" onClick={closeMobileMenu}>FAQs</p>
+                <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer" onClick={closeMobileMenu}>How Pixoul Works</p>
+                <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer" onClick={closeMobileMenu}>What to Expect</p>
+                <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer" onClick={closeMobileMenu}>Safety &Comfort</p>
+                <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer" onClick={closeMobileMenu}>Pricing</p>
+                <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer" onClick={closeMobileMenu}>FAQs</p>
               </div>
             )}
-          </div>
+          </li>
 
-          <div className="py-4">
+          <li className="py-4">
             <BookNowButton className="w-full" />
-          </div>
-
+          </li>
         </ul>
       </div>
     </nav>

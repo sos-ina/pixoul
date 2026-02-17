@@ -123,13 +123,13 @@ export default function ObservationDeckPage() {
             A New Perspective on Events
           </h2>
 
-          <p className="text-gray-300 leading-relaxed mb-6">
+          <p className="dark:text-gray-300 text-gray-600 leading-relaxed mb-6">
             The Observation Deck is one of Pixoul’s most unique venues — a space
             designed for guests who want something elevated, immersive, and
             visually unforgettable.
           </p>
 
-          <p className="text-gray-400 leading-relaxed mb-10">
+          <p className="dark:text-gray-400 text-gray-500 leading-relaxed mb-10">
             Whether you're planning a school visit, hosting a private gathering,
             or organizing a corporate group experience, the Deck provides an
             inspiring atmosphere unlike any other.
@@ -158,8 +158,8 @@ export default function ObservationDeckPage() {
               <div
                 key={service.title}
                 className="
-                  bg-black/70
-                  border border-white/10
+                  dark:bg-black/70 bg-white/70
+                  border dark:border-white/10 border-black/10
                   p-6
                   rounded-none
                   hover:border-[#38C2D9]/70
@@ -170,7 +170,7 @@ export default function ObservationDeckPage() {
                 <h3 className="text-lg font-semibold mb-3 text-[#38C2D9]">
                   {service.title}
                 </h3>
-                <p className="text-sm text-gray-400 leading-relaxed">
+                <p className="text-sm dark:text-gray-400 text-gray-600 leading-relaxed">
                   {service.description}
                 </p>
               </div>

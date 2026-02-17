@@ -6,6 +6,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Tailwind v4: enable dark: variant when .dark is on html (required for next-themes) */
+@custom-variant dark (&:where(.dark, .dark *));
+
 button {
   appearance: none;
   -webkit-appearance: none;
@@ -24,7 +29,10 @@ button {
 
   unicode-range: 
     U+0041-005A,  /* A–Z */
-    U+0061-007A;  /* a–z */
+    U+0061-007A,  /* a–z */
+
+    U+0600-06FF;  /* Arabic */
+
 }
 
 @font-face {
@@ -35,8 +43,10 @@ button {
   font-display: swap;
 
   unicode-range: 
-    U+0041-005A,  /* A–Z */
-    U+0061-007A;  /* a–z */
+   U+0041-005A,  /* A–Z */
+    U+0061-007A,  /* a–z */
+
+    U+0600-06FF;  /* Arabic */
 }
 
 @font-face {
@@ -48,7 +58,9 @@ button {
 
   unicode-range: 
     U+0041-005A,  /* A–Z */
-    U+0061-007A;  /* a–z */
+    U+0061-007A,  /* a–z */
+
+    U+0600-06FF;  /* Arabic */
 }
 
 @font-face {
@@ -60,7 +72,9 @@ button {
 
   unicode-range: 
     U+0041-005A,  /* A–Z */
-    U+0061-007A;  /* a–z */
+    U+0061-007A,  /* a–z */
+
+    U+0600-06FF;  /* Arabic */
 }
 
 /* Browser Normalization - keeps existing sizes */
@@ -70,13 +84,12 @@ html {
   text-rendering: optimizeLegibility;
   -webkit-text-size-adjust: 100%;
   scrollbar-gutter: stable;
+  @apply bg-white text-black dark:bg-black dark:text-white;
 }
 
 body {
-  background-color: #000;
-  color: #fff;
   font-family: 'Klapt', 'Lato', 'Amiri', sans-serif;
-  @apply bg-black text-white;
+  /*@apply bg-black text-white;*/
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
@@ -133,6 +146,33 @@ body {
 
   padding-top: 2px;
   padding-bottom: 2px;
+}
+
+
+
+
+
+
+/* Add RTL support */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Flip elements that need to be mirrored in RTL */
+[dir="rtl"] .flex-row {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .border-l {
+  border-left: none;
+  border-right: 1px solid;
+}
+
+/* Keep numbers LTR in RTL context */
+[dir="rtl"] .ltr-numbers {
+  direction: ltr;
+  display: inline-block;
 }
 
 

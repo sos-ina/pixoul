@@ -6,7 +6,8 @@ export default function EventTypeGrid({ types }) {
           key={type.title}
           className="
             border border-white/10
-            bg-black/60
+            bg-white/60
+            dark:bg-black/60
             p-5
             rounded-none
             hover:border-[#38C2D9]

@@ -11,7 +11,7 @@ export default function BookNowButton({ onClick, className = "" }) {
         relative
         px-5 py-2
         bg-[#38C2D9
-        text-white
+        dark:text-white text-black
         font-semibold
         tracking-wide
         rounded-none
