@@ -26,7 +26,7 @@ export const experiences = [
     min_players: 1,
     max_players: 1,
     min_age: 12,
-    price: 50,
+    price: 35,
   },
 
   {
@@ -44,7 +44,7 @@ export const experiences = [
     min_players: 1,
     max_players: 4,
     min_age: 12,
-    price: 60,
+    price: 35,
   },
 
   {
@@ -62,7 +62,7 @@ export const experiences = [
     min_players: 2,
     max_players: 2,
     min_age: 12,
-    price: 55,
+    price: 35,
   },
 
   {
@@ -80,7 +80,7 @@ export const experiences = [
     min_players: 1,
     max_players: 1,
     min_age: 10,
-    price: 45,
+    price: 35,
   },
 
   {
@@ -98,7 +98,7 @@ export const experiences = [
     min_players: 1,
     max_players: 1,
     min_age: 10,
-    price: 30,
+    price: 35,
   },
 
   {
@@ -116,7 +116,7 @@ export const experiences = [
     min_players: 1,
     max_players: 1,
     min_age: 13,
-    price: 40,
+    price: 35,
   },
 
   {
@@ -152,7 +152,7 @@ export const experiences = [
     min_players: 1,
     max_players: 1,
     min_age: 12,
-    price: 50,
+    price: 35,
   },
 
   {
@@ -170,7 +170,7 @@ export const experiences = [
     min_players: 4,
     max_players: 4,
     min_age: 13,
-    price: 60,
+    price: 35,
   },
 
   {
@@ -188,8 +188,27 @@ export const experiences = [
     min_players: 4,
     max_players: 4,
     min_age: 13,
-    price: 70,
+    price: 35,
   },
+
+  {
+  experience_id: "transformers-vr",
+  title: "Transformers",
+  slug: "transformers",
+  category_name: "vr",
+  image_url: "/images/TRANSFORMERS.png",
+  genre: "action",
+
+  can_book: true,
+  has_details: false,
+
+  duration_minutes: 45,
+  min_players: 1,
+  max_players: 4,
+  min_age: 10,
+  price: 35,
+}
+
 ];
 
 

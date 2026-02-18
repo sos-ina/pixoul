@@ -75,9 +75,10 @@ export default function Navbar() {
         {/* Logo */}
         <div className="flex items-center gap-2">
           <Link href="/">
-            <img src="/logos/Pixoul Logo.ico" alt="Pixoul Logo" className="h-10 w-auto" />
+            <img src="/logos/Pixoul Logo.ico" alt="Pixoul Logo" className="h-full w-auto" />
           </Link>
         </div>
+
         <Link href="/virtual-tour">
           <img src="/logos/360 icon.png" alt="3D icon" className="h-8 w-8 sm:h-9 sm:w-9 border border-[#007EC6] rounded cursor-pointer" />
         </Link>
