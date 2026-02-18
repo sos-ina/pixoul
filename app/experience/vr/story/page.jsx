@@ -59,7 +59,7 @@ export default function VRStoryPage() {
           videoSrc="/videos/Pixoul_Metaverse_Trailer.mp4" 
           overlay={true}
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
          The Pixoul Megaverse</h1>
           </Hero>
    

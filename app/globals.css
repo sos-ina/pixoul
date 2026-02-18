@@ -84,7 +84,7 @@ html {
   text-rendering: optimizeLegibility;
   -webkit-text-size-adjust: 100%;
   scrollbar-gutter: stable;
-  @apply bg-white text-black dark:bg-black dark:text-white;
+  @apply bg-[#F1F5F9] text-black dark:bg-black dark:text-white;
 }
 
 body {

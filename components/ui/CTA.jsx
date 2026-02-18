@@ -24,7 +24,7 @@ export default function CallToActionBanner({
 
           {/* Heading */}
           {title && (
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
               {highlight ? (
                 <>
                   {title.replace(highlight, "")}

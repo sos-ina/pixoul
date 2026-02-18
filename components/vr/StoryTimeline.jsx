@@ -30,11 +30,11 @@ const StoryTimeline = () => {
   ];
 
   return (
-    <div className="py-20 bg-black/50 rounded-[3rem] border border-white/5 my-20">
+    <div className="py-20 dark:bg-black/50 bg-white/50 rounded-[3rem] border border-white/5 my-20">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-[#38C2D9] text-[10px] font-black uppercase tracking-[0.5em] mb-4">The Narrative</h2>
-          <h3 className="text-4xl font-black italic uppercase italic">Mission <span className="text-[#38C2D9]">Background</span></h3>
+          <h3 className="text-4xl font-black  uppercase ">Mission <span className="text-[#38C2D9]">Background</span></h3>
         </div>
 
         <div className="relative border-l border-white/10 ml-6 space-y-12">
@@ -48,7 +48,7 @@ const StoryTimeline = () => {
                   <span className="text-xl">{event.icon}</span>
                   <span className="text-[10px] font-black text-[#38C2D9] uppercase tracking-widest">{event.period}</span>
                 </div>
-                <h4 className="text-xl font-black italic uppercase mb-2">{event.title}</h4>
+                <h4 className="text-xl font-black  uppercase mb-2">{event.title}</h4>
                 <p className="text-sm text-gray-400 leading-relaxed font-medium">
                   {event.description}
                 </p>

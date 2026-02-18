@@ -7,7 +7,7 @@ export default function SettingsPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white pt-28 px-6">
       <div className="max-w-3xl mx-auto bg-white/5 border border-white/10 rounded-[2rem] p-8 md:p-12">
-        <h1 className="text-3xl font-black uppercase italic mb-8">Edit <span className="text-[#38C2D9]">Profile</span></h1>
+        <h1 className="text-3xl font-black uppercase mb-8">Edit <span className="text-[#38C2D9]">Profile</span></h1>
         
         <div className="space-y-8">
           {/* Avatar Change */}

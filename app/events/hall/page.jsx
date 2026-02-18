@@ -97,7 +97,7 @@ export default function HallPage() {
         <div className="flex flex-col items-center justify-center h-full text-center px-6">
 
         {/* Main headline */}
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white dark:text-white">
           WELCOME TO THE
           <br />
           <span className="text-[#38C2D9]">THE HALL</span>

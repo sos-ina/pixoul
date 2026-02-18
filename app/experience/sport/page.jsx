@@ -19,13 +19,14 @@ export const sportGames = [
     image_url: "/images/PG-0180.jpg",
     genre: "sport classic",
 
-    can_book: false,
+    can_book: true,
     has_details: false,
 
     duration_minutes: null,
     min_players: 1,
     max_players: 1,
     min_age: 5,
+    price: 50,
   },
 ];
 

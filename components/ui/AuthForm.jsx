@@ -31,7 +31,7 @@ export default function AuthForm() {
   };
 
   return (
-    <div className="w-full max-w-md p-8 bg-[#1A1A1A]/90 backdrop-blur-xl border border-white/5 rounded-sm shadow-2xl">
+    <div className="w-full max-w-md p-8 dark:bg-[#1A1A1A]/90 bg-white backdrop-blur-xl border border-white/5 rounded-sm shadow-2xl">
       {/* Tabs */}
       <div className="flex mb-8 border-b border-white/10">
         {['SIGN IN', 'JOIN'].map((tab) => (

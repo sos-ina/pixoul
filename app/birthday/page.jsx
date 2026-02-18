@@ -56,12 +56,12 @@ export default function BirthdayPartiesPage() {
       {/* HERO */}
       <Hero imageSrc="/images/birthday.jpg" overlay={true}>
         <div className="flex flex-col items-center justify-center h-full text-center px-6">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white dark:text-white">
             BIRTHDAY PARTIES AT{" "}
             <span className="text-[#38C2D9]">PIXOUL</span>
           </h1>
 
-          <p className="dark:text-gray-300 text-gray-600 max-w-2xl mb-10 text-base md:text-lg">
+          <p className="text-gray-300  max-w-2xl mb-10 text-base md:text-lg">
             Celebrate your next birthday inside Abu Dhabi’s most immersive VR and
             gaming universe — where parties become adventures.
           </p>
@@ -178,7 +178,8 @@ export default function BirthdayPartiesPage() {
           </p>
 
           {/* Venue Cards */}
-          <ExploreGrid items={venues} />
+          <ExploreGrid 
+          items={venues} />
         </div>
       </section>
 

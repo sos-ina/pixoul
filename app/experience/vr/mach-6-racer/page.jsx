@@ -39,7 +39,7 @@ export default function Mach6RacerPage() {
           <h1 className="text-4xl font-bold mb-4">
             MACH 6 RACER
           </h1>
-          <p className="text-gray-400 max-w-2xl">
+          <p className="dark:text-gray-400 text-gray-700 max-w-2xl">
             A high-speed VR racing spectacle where only the fastest survive
             the track.
           </p>

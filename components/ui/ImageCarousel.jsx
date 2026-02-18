@@ -26,18 +26,18 @@ export default function ImageCarousel({ items }) {
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 dark:bg-black/50 bg-white/50" />
+      <div className="absolute inset-0 dark:bg-black/50 bg-white/20" />
 
       {/* Content */}
       <div className="relative z-10 h-full flex items-end px-6 pb-10">
         <div className="max-w-7xl mx-auto w-full">
 
-          <h3 className="text-3xl md:text-4xl font-bold mb-2">
+          <h3 className="text-3xl md:text-4xl font-bold mb-2 text-white dark:text-white">
             {activeItem.title}
           </h3>
 
           {activeItem.subtitle && (
-            <p className="text-gray-300 max-w-xl">
+            <p className="dark:text-gray-300 text-white max-w-xl">
               {activeItem.subtitle}
             </p>
           )}
@@ -48,7 +48,7 @@ export default function ImageCarousel({ items }) {
       {/* Left arrow */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 dark:bg-black/60 bg-white/60 p-3 rounded-full hover:dark:bg-black/80 hover:bg-white/80 transition"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 dark:bg-black/70 bg-white/60 p-3 rounded-full hover:dark:bg-black/80 hover:bg-white/80 transition"
       >
         ←
       </button>

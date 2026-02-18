@@ -53,13 +53,13 @@ export default function FAQPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white pt-28 px-6 pb-24">
+    <div className="min-h-screen dark:bg-[#0a0a0a] dark:text-white bg-white text-black pt-28 px-6 pb-24">
       <div className="max-w-4xl mx-auto">
         
         {/* Header */}
         <div className="mb-16">
           <h2 className="text-[#38C2D9] text-xs font-black uppercase tracking-[0.5em] mb-4 text-center">Support</h2>
-          <h1 className="text-6xl italic font-black tracking-tighter text-center uppercase">
+          <h1 className="text-6xl font-black tracking-tighter text-center uppercase">
             Frequently Asked <span className="text-[#38C2D9]">Questions</span>
           </h1>
         </div>

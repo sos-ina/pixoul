@@ -33,13 +33,13 @@ export default function PricingPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white pt-31 px-6 pb-24">
+    <div className="min-h-screen dark:bg-[#0a0a0a] dark:text-white bg-white text-black pt-31 px-6 pb-24">
       <div className="max-w-6xl mx-auto">
         
         {/* Header */}
         <div className="text-center mb-20">
           <h2 className="text-[#38C2D9] text-xs font-black uppercase tracking-[0.5em] mb-4">Investment</h2>
-          <h1 className="text-7xl font-black italic uppercase tracking-tighter mb-6">
+          <h1 className="text-7xl font-black  uppercase tracking-tighter mb-6">
             Access <span className="text-[#38C2D9]">Tiers</span>
           </h1>
           <p className="max-w-xl mx-auto text-gray-400 text-sm leading-relaxed">

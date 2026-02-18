@@ -78,7 +78,7 @@ export default function Home() {
         </span>
 
         {/* Main headline */}
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white dark:text-white">
           WELCOME TO THE
           <br />
           <span className="text-[#38C2D9]">FUTURE OF PLAY</span>

@@ -39,7 +39,7 @@ export default function HexaLooperPage() {
           <h1 className="text-4xl font-bold mb-4">
             HEXA LOOPER
           </h1>
-          <p className="text-gray-400 max-w-2xl">
+          <p className="dark:text-gray-400 text-gray-700 max-w-2xl">
             A high-speed VR tour through Hexa City, revealing its scale,
             beauty, and danger from every angle.
           </p>

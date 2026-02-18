@@ -6,8 +6,11 @@ export default function CharacterCard({ name, image, description }) {
       className="
         group
         relative
-        bg-white/90 dark:bg-black/90
-        border border-white/10
+        bg-white/90 
+        dark:bg-black/90
+        border 
+        border-white/10
+        dark:border-black/10
         overflow-hidden
         transition
         hover:border-[#38C2D9]/60
@@ -64,7 +67,7 @@ export default function CharacterCard({ name, image, description }) {
         <div className="h-px w-12 bg-[#38C2D9]/60 mb-3" />
 
         {/* Description */}
-        <p className="text-sm text-gray-300 leading-relaxed">
+        <p className="text-sm text-black dark:text-gray-300 leading-relaxed">
           {description}
         </p>
       </div>

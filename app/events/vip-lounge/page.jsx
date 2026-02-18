@@ -101,7 +101,7 @@ export default function VipLoungePage() {
         overlay={true}
       >
         <div className="flex flex-col items-center justify-center h-full text-center px-6">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
             THE{" "}
             <span className="text-[#38C2D9]">VIP LOUNGE</span>
           </h1>
@@ -157,8 +157,11 @@ export default function VipLoungePage() {
               <div
                 key={service.title}
                 className="
-                  bg-black/70
-                  border border-white/10
+                  dark:bg-black/70
+                  bg-white/70
+                  border 
+                  dark:border-white/10
+                  border-black/10
                   p-6
                   rounded-none
                   hover:border-[#38C2D9]/70

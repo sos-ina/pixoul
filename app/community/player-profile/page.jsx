@@ -4,7 +4,7 @@ import Link from 'next/link';
 // This is your main page for /community/player-profile
 export default function PlayerProfilePage() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white p-4 md:p-10 font-sans">
+    <div className="min-h-screen bg-[#0a0a0a] dark:bg-black bg-white dark:text-white text-black p-4 md:p-10 font-sans">
       <div className="max-w-6xl mx-auto space-y-16">
         
         {/* --- SECTION 1: PLAYER HEADER & STATS --- */}
@@ -13,11 +13,11 @@ export default function PlayerProfilePage() {
           <div className="bg-gradient-to-b from-gray-900 to-black border border-white/10 p-8 rounded-[2rem] text-center shadow-2xl">
             <div className="relative w-32 h-32 mx-auto mb-6">
               <div className="w-full h-full rounded-full bg-gray-800 border-4 border-[#38C2D9] animate-pulse-slow"></div>
-              <div className="absolute -bottom-2 -right-2 bg-[#38C2D9] text-black text-xs font-black px-3 py-1 rounded-full">
+              <div className="absolute -bottom-2 -right-2 bg-[#38C2D9] dark:text-black text-white text-xs dark:font-black font-white px-3 py-1 rounded-full">
                 LVL 24
               </div>
             </div>
-            <h1 className="text-3xl font-black tracking-tighter uppercase">Shadow_Player</h1>
+            <h1 className="text-3xl dark:font-black font-white tracking-tighter uppercase">Shadow_Player</h1>
             <p className="text-[#38C2D9] font-mono text-sm mt-1">PIXOUL ELITE MEMBER</p>
            <Link href="/community/player-profile/settings">
               <button className="w-full mt-6 py-3 border border-[#38C2D9] text-[#38C2D9] rounded-xl font-bold text-xs uppercase hover:bg-[#38C2D9] hover:text-black transition-all">
@@ -46,7 +46,7 @@ export default function PlayerProfilePage() {
         {/* --- SECTION 2: TOP PLAYERS THIS MONTH (THE PODIUM) --- */}
         <section>
           <div className="text-center mb-10">
-            <h2 className="text-4xl font-black uppercase italic tracking-tighter">Top Players <span className="text-[#38C2D9]">This Month</span></h2>
+            <h2 className="text-4xl font-black uppercase tracking-tighter">Top Players <span className="text-[#38C2D9]">This Month</span></h2>
             <p className="text-gray-500 text-sm">Real-time leaderboard rankings across all Pixoul gaming zones.</p>
           </div>
 

@@ -14,13 +14,14 @@ export default function ForumsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white pt-28 px-6 pb-20">
+    <div className="min-h-screen dark:bg-[#0a0a0a]  dark:text-white text-black bg-white dark
+   pt-28 px-6 pb-20">
       <div className="max-w-6xl mx-auto">
         
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
           <div>
-            <h1 className="text-5xl font-black italic uppercase tracking-tighter">Community <span className="text-[#38C2D9]">Forums</span></h1>
+            <h1 className="text-5xl font-black uppercase tracking-tighter">Community <span className="text-[#38C2D9]">Forums</span></h1>
             <p className="text-gray-500 mt-2 uppercase text-xs font-bold tracking-widest">Connect • Strategize • Dominate</p>
           </div>
           <button 
@@ -41,7 +42,7 @@ export default function ForumsPage() {
               className="bg-white/5 border border-white/10 p-6 rounded-[2rem] flex items-center justify-between hover:border-[#38C2D9]/50 hover:bg-white/[0.02] transition-all cursor-pointer group block"
             >
               <div className="flex items-center gap-6">
-                <div className="w-14 h-14 bg-black rounded-2xl border border-white/10 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 dark:bg-black bg-white rounded-2xl border border-white/10 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
                   {cat.icon}
                 </div>
                 <div>

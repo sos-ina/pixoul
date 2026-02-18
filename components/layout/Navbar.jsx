@@ -63,7 +63,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-[#0a0a0a]/80 border-b border-white/5 text-black dark:text-white"
+      className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/40 border-b border-white/5 text-black dark:text-white"
     >
       <div>
         <ThemeToggle />
@@ -113,8 +113,6 @@ export default function Navbar() {
                 <Link href="/events/vip-lounge" onClick={() => setOpenDropdown(null)} className="dropdown-item block">VIP Lounge</Link>
                 <Link href="/events/observation-deck" onClick={() => setOpenDropdown(null)} className="dropdown-item block">Observation Deck</Link>
                 <Link href="/events/school-visit" onClick={() => setOpenDropdown(null)} className="dropdown-item block">School Visit</Link>
-                <Link href="/events/birthdays" onClick={() => setOpenDropdown(null)} className="dropdown-item block">Birthday Parties</Link>
-                <Link href="/events/corporate" onClick={() => setOpenDropdown(null)} className="dropdown-item block">Corporate Events</Link>
               </Dropdown>
             </NavItem>
           </div>

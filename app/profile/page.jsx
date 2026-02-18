@@ -30,12 +30,12 @@ export default function ProfilePage() {
     checkUser();
   }, [router, supabase]);
 
-  if (loading) return <div className="min-h-screen bg-black flex items-center justify-center text-white">Loading Pixoul...</div>;
+  if (loading) return <div className="min-h-screen dark:bg-black dark:text-white bg-white text-black flex items-center justify-center">Loading Pixoul...</div>;
 
   // Barrier: Show this if the email isn't confirmed yet
   if (user && !user.email_confirmed_at) {
     return (
-      <div className="min-h-screen bg-[#0D0D0D] flex items-center justify-center text-white px-4">
+      <div className="min-h-screen dark:bg-[#0D0D0D] dark:text-white bg-white text-black flex items-center justify-center px-4">
         <div className="text-center p-10 border border-[#B04198] bg-[#B04198]/5 rounded-sm max-w-md">
           <h2 className="text-3xl font-bold mb-4 text-[#38C2D9]">CHECK YOUR INBOX</h2>
           <p className="text-gray-400 mb-6">

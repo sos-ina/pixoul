@@ -38,7 +38,7 @@ export default function TheLiftPage() {
           <h1 className="text-4xl font-bold mb-4">
             THE LIFT
           </h1>
-          <p className="text-gray-400 max-w-2xl">
+          <p className="dark:text-gray-400 text-gray-700 max-w-2xl">
             Survive a vertical nightmare as you fight your way through a
             malfunctioning elevator filled with hostile mutants.
           </p>

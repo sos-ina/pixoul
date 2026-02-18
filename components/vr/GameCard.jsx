@@ -31,7 +31,8 @@ export default function GameCard({ experience }) {
       className="
         group
         relative
-        bg-black/80
+        dark:bg-black/80
+        bg-[#F1F5F9]
         border border-white/10
         transition
         overflow-hidden
@@ -54,7 +55,7 @@ export default function GameCard({ experience }) {
         />
 
         {/* Dark overlay */}
-        <div className="absolute inset-0 dark:bg-black/40 bg-white/40" />
+        <div className="absolute inset-0 dark:bg-black/40 bg-white/20" />
 
         {/* CATEGORY TAG */}
         <div
@@ -64,7 +65,8 @@ export default function GameCard({ experience }) {
             uppercase tracking-widest
             px-2 py-1
             border border-white/30
-            bg-black/60
+            dark:bg-black/60
+            bg-white/60
           "
         >
           {category_name}
@@ -129,10 +131,13 @@ export default function GameCard({ experience }) {
               href={routes.experience(categorySlug, slug)}
               className="
                 px-4 py-2 text-sm
-                border border-white/30
+                border 
+                dark:border-white/30
+                border-black/30
                 hover:border-[#38C2D9]
                 hover:text-[#38C2D9]
                 transition
+
               "
             >
               Learn More

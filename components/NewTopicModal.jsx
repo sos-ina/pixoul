@@ -13,7 +13,7 @@ export default function NewTopicModal({ onClose, categories }) {
       {/* 2. CLICK-AWAY BACKDROP */}
       {/* This div is the dark background. Clicking it triggers onClose */}
       <div 
-        className="absolute inset-0 bg-black/90 backdrop-blur-md cursor-pointer" 
+        className="absolute inset-0 dark:bg-black/90 bg-white/90 backdrop-blur-md cursor-pointer" 
       ></div>
 
         {/* Modal Content */}
@@ -32,7 +32,7 @@ export default function NewTopicModal({ onClose, categories }) {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Give your topic a clear name..."
-              className="w-full bg-black/40 border border-white/10 rounded-xl p-4 text-white focus:border-[#38C2D9] outline-none transition-all"
+              className="w-full dark:bg-black/40 bg-white/40 border border-white/10 rounded-xl p-4 text-white focus:border-[#38C2D9] outline-none transition-all"
             />
           </div>
 
@@ -42,7 +42,7 @@ export default function NewTopicModal({ onClose, categories }) {
             <select 
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="w-full bg-black/40 border border-white/10 rounded-xl p-4 text-white focus:border-[#38C2D9] outline-none appearance-none cursor-pointer"
+              className="w-full dark:bg-black/40 bg-white/40 border border-white/10 rounded-xl p-4 text-white focus:border-[#38C2D9] outline-none appearance-none cursor-pointer"
             >
               {/* --- HERE ARE YOUR OPTIONS --- */}
               <option value="" disabled className="bg-[#111]">Choose a category...</option>
@@ -62,7 +62,7 @@ export default function NewTopicModal({ onClose, categories }) {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="What's on your mind?"
-              className="w-full bg-black/40 border border-white/10 rounded-2xl p-4 h-48 text-white focus:border-[#38C2D9] outline-none transition-all resize-none"
+              className="w-full dark:bg-black/40 bg-white/40 border border-white/10 rounded-2xl p-4 h-48 text-white focus:border-[#38C2D9] outline-none transition-all resize-none"
             />
           </div>
 

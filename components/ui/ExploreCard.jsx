@@ -26,23 +26,23 @@ export default function ExploreCard({
       />
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 dark:bg-black/60 bg-white/60 group-hover:dark:bg-black/50 group-hover:bg-white/50 transition" />
+      <div className="absolute inset-0 bg-white/20 dark:bg-black/60  group-hover:dark:bg-black/50 group-hover:bg-white/30 transition" />
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-end p-6">
-        <h3 className="text-2xl font-bold mb-2">
+        <h3 className="text-2xl font-bold mb-2 text-white dark:text-white">
           {title}
         </h3>
 
         {description && (
-          <p className="text-sm dark:text-gray-300 text-gray-600 mb-4">
+          <p className="text-sm dark:text-gray-300  text-white dark:text-gray-600 mb-4">
             {description}
           </p>
         )}
 
         <Link
           href={href}
-          className="inline-block w-fit px-4 py-2 text-sm border border-[#38C2D9] dark:text-white text-black rounded-sm hover:bg-[#38C2D9] hover:dark:text-black hover:text-white transition"
+          className="inline-block w-fit px-4 py-2 text-sm border border-[#38C2D9] dark:text-white text-white rounded-sm hover:bg-[#38C2D9] hover:dark:text-black hover:text-white transition"
         >
           Learn More
         </Link>

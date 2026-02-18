@@ -3,7 +3,8 @@ export default function GameMetaCard({ label, value }) {
     <div
       className="
         border border-[#38C2D9]
-        bg-white/70 dark:bg-black/70
+        bg-white/70 
+        dark:bg-black/70
         px-4 py-3
       "
     >

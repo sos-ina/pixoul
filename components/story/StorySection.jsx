@@ -9,7 +9,7 @@ export default function StorySection({ title, children }) {
           {title}
         </h2>
 
-        <div className="text-gray-300 leading-relaxed space-y-4">
+        <div className=" text-black dark:text-gray-300 leading-relaxed space-y-4">
           {children}
         </div>
 
