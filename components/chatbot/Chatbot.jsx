@@ -10,12 +10,27 @@ const GREETING_MESSAGE = "Hi! I can help you navigate Pixoul. What are you looki
 const FALLBACK_MESSAGE =
   "I can help you navigate the site. Try asking about VR games, events, or the community.";
 
+function escapeRegExp(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function matchesKeyword(normalizedInput, keyword) {
+  const normalizedKeyword = keyword.toLowerCase().trim();
+  if (!normalizedKeyword) return false;
+
+  const isPhrase = /\s/.test(normalizedKeyword);
+  if (isPhrase) return normalizedInput.includes(normalizedKeyword);
+
+  const re = new RegExp(`\\b${escapeRegExp(normalizedKeyword)}\\b`, "i");
+  return re.test(normalizedInput);
+}
+
 function resolveIntent(input) {
   const normalized = input.toLowerCase();
 
   return (
     intents.find((intent) =>
-      intent.keywords.some((keyword) => normalized.includes(keyword))
+      intent.keywords.some((keyword) => matchesKeyword(normalized, keyword))
     ) || null
   );
 }
@@ -26,6 +41,7 @@ export default function Chatbot() {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
   const [hasGreeted, setHasGreeted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const scrollRef = useRef(null);
 
@@ -54,19 +70,26 @@ export default function Chatbot() {
     el.scrollTop = el.scrollHeight;
   }, [isOpen, messages.length]);
 
-  function sendMessage() {
+  async function sendMessage() {
     const userText = input.trim();
     if (!userText) return;
+
+    if (isLoading) return;
 
     setInput("");
 
     const intent = resolveIntent(userText);
 
+    const shouldCallApi =
+      !intent || intent.type === "casual" || intent.type === "recommendation";
+
+    const loadingId = `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+
     setMessages((prev) => {
       const next = [...prev, { from: "user", text: userText }];
 
-      if (!intent) {
-        return [...next, { from: "bot", text: FALLBACK_MESSAGE }];
+      if (shouldCallApi) {
+        return [...next, { id: loadingId, from: "bot", text: "Thinking..." }];
       }
 
       return [...next, { from: "bot", text: intent.response }];
@@ -75,8 +98,38 @@ export default function Chatbot() {
     if (intent?.route) {
       setTimeout(() => {
         router.push(intent.route);
-        setIsOpen(false);
       }, 150);
+      return;
+    }
+
+    if (!shouldCallApi) return;
+
+    setIsLoading(true);
+    try {
+      const resp = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userText }),
+      });
+
+      const data = await resp.json().catch(() => null);
+      const reply = typeof data?.reply === "string" ? data.reply : "";
+
+      if (!reply) throw new Error("chat_failed");
+
+      setMessages((prev) =>
+        prev.map((m) => (m.id === loadingId ? { ...m, text: reply } : m))
+      );
+    } catch (e) {
+      setMessages((prev) =>
+        prev.map((m) =>
+          m.id === loadingId
+            ? { ...m, text: "Sorry, I'm having trouble right now. Please try again. For now I can only help you navigate the site." }
+            : m
+        )
+      );
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -134,8 +187,8 @@ export default function Chatbot() {
             <button
               type="button"
               onClick={sendMessage}
-              disabled={!canSend}
-              className="rounded-xl bg-white dark:bg-black text-black dark:text-white px-3 py-2 text-sm font-semibold disabled:opacity-50"
+              disabled={!canSend || isLoading}
+              className="rounded-xl bg-white text-black px-3 py-2 text-sm font-semibold disabled:opacity-50"
             >
               Send
             </button>
