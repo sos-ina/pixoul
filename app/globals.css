@@ -89,7 +89,6 @@ html {
 
 body {
   font-family: 'Klapt', 'Lato', 'Amiri', sans-serif;
-  /*@apply bg-black text-white;*/
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;

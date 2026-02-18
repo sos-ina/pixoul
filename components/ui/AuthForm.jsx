@@ -41,7 +41,7 @@ export default function AuthForm() {
             onClick={() => setIsLogin(tab === 'SIGN IN')}
             className={`flex-1 pb-4 text-xs font-bold tracking-widest transition-all ${
               (isLogin && tab === 'SIGN IN') || (!isLogin && tab === 'JOIN')
-                ? 'border-b-2 text-white'
+                ? 'border-b-2 dark:text-white text-black'
                 : 'text-gray-500 hover:text-gray-300'
             }`}
             style={{ borderBottomColor: ((isLogin && tab === 'SIGN IN') || (!isLogin && tab === 'JOIN')) ? brand.teal : 'transparent' }}
