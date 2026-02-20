@@ -134,16 +134,16 @@ export default function Chatbot() {
   }
 
   return (
-    <div className="fixed right-4 top-[60%] -translate-y-1/2 z-[60] font-lato">
+    <div className="fixed right-4 top-[60%] -translate-y-1/2 z-[60] fort-lato">
       <div className="flex flex-col items-center">
         {isOpen && (
-          <div className="mb-3 w-[22rem] max-w-[calc(100vw-2rem)] rounded-2xl border dark:border-white/10 border-white/10 dark:bg-black/90 bg-white/90 backdrop-blur-md shadow-2xl">
+          <div className="mb-3 w-[22rem] max-w-[calc(100vw-2rem)] rounded-2xl border border-white/10 dark:bg-black/90 bg-white/90 backdrop-blur-md shadow-2xl">
           <div className="flex items-center justify-between px-4 py-3 border-b dark:border-white/10 border-white/10">
             <div className="text-sm font-semibold">Pixoul Assistant</div>
             <button
               type="button"
               onClick={() => setIsOpen(false)}
-              className="dark:text-white/70 text-black/70 hover:dark:text-white hover:text-black text-sm"
+              className="dark:text-white/70 text-black/70 hover:text-white text-sm"
               aria-label="Close chatbot"
             >
               ✕
@@ -164,8 +164,8 @@ export default function Chatbot() {
                 <div
                   className={
                     m.from === "user"
-                      ? "max-w-[85%] rounded-2xl rounded-br-md bg-[#007EC6] px-3 py-2 text-sm dark:text-white text-black"
-                      : "max-w-[85%] rounded-2xl rounded-bl-md dark:bg-white/10 bg-black/10 px-3 py-2 text-sm dark:text-white text-black"
+                      ? "max-w-[85%] rounded-2xl rounded-br-md bg-[#007EC6] px-3 py-2 text-sm dark:text-white text-dark"
+                      : "max-w-[85%] rounded-2xl rounded-bl-md bg-white/10 px-3 py-2 text-sm dark:text-white text-dark"
                   }
                 >
                   {m.text}
@@ -182,7 +182,7 @@ export default function Chatbot() {
                 if (e.key === "Enter") sendMessage();
               }}
               placeholder="Type a message..."
-              className="flex-1 rounded-xl bg-white dark:bg-black/40 border border-white/10 px-3 py-2 text-sm outline-none focus:border-white/30"
+              className="flex-1 rounded-xl bg-black/40 border border-white/10 px-3 py-2 text-sm outline-none focus:border-white/30"
             />
             <button
               type="button"

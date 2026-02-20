@@ -65,17 +65,14 @@ export default function Navbar() {
     <nav
       className="fixed top-0 left-0 w-full z-50 backdrop-blur-md dark:bg-black/40 bg-white/40 border-b border-white/5 text-black dark:text-white"
     >
-      <div className="flex gap-4">
-        <ThemeToggle />
-        <LanguageToggle />
-      </div>
+      
 
       <div className="max-w-7xl h-[80px] mx-auto px-4 sm:px-6 lg:px-8 py-3 md:py-4 flex items-center justify-between">
 
         {/* Logo */}
         <div className="flex items-center gap-2">
           <Link href="/">
-            <img src="/logos/Pixoul Logo.ico" alt="Pixoul Logo" className="h-20 w-auto" />
+            <img src="/logos/Pixoul Logo.ico" alt="Pixoul Logo" className="h-full w-auto" />
           </Link>
         </div>
 
@@ -148,6 +145,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3 sm:gap-4">
           <CartIcon />
           {/*<BookNowButton className="hidden sm:block" />*/}
+          <BookNowButton />
 
           {/* Dynamic Login/Profile Link */}
           <Link href={isLoggedIn ? "/community/player-profile" : "/login"}>
@@ -159,6 +157,8 @@ export default function Navbar() {
               />
             </div>
           </Link>
+
+         
 
           {/* Mobile Menu Button */}
           <button
@@ -172,7 +172,10 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-
+  <div className="flex gap-4 justify-end px-8">
+        <ThemeToggle />
+        <LanguageToggle />
+      </div>
       {/* Mobile Menu */}
       <div className={`lg:hidden fixed top-[80px] left-0 w-full bg-white/95 dark:bg-black/95 backdrop-blur-md border-t border-white/5 transition-all duration-300 ${mobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
         <ul className="flex flex-col px-4 py-4 gap-2">
