@@ -75,7 +75,7 @@ export default function Navbar() {
             <img src="/logos/Pixoul Logo.ico" alt="Pixoul Logo" className="h-full w-auto" />
           </Link>
         </div>
-        <div className="flex gap 2">
+        <div className="flex gap 2 px-2">
            <Link href="/virtual-tour">
           <img src="/logos/360 icon.png" alt="3D icon" className="h-8 w-8 sm:h-9 sm:w-9 border border-[#007EC6] rounded cursor-pointer" />
           </Link>
@@ -144,7 +144,7 @@ export default function Navbar() {
         </ul>
 
         {/* Right Buttons */}
-        <div className="flex items-center gap-3 sm:gap-4">
+        <div className="flex items-center gap-3 sm:gap-4 px-2">
           <CartIcon />
           {/*<BookNowButton className="hidden sm:block" />*/}
           <BookNowButton />
