@@ -173,7 +173,9 @@ export default function HallPage() {
                 key={service.title}
                 className="
                   dark:bg-black/70 bg-white/70
-                  border border-white/10
+                  border 
+                  dark:border-white/10
+                  border-black/10
                   p-6
                   rounded-none
                   hover:border-[#38C2D9]/70

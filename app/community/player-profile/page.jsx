@@ -10,14 +10,14 @@ export default function PlayerProfilePage() {
         {/* --- SECTION 1: PLAYER HEADER & STATS --- */}
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           {/* Identity Card */}
-          <div className="bg-gradient-to-b from-gray-900 to-black border border-white/10 p-8 rounded-[2rem] text-center shadow-2xl">
+          <div className="dark:bg-gradient-to-b dark:from-gray-900 dark:to-black bg-white border border-white/10 p-8 rounded-[2rem] text-center shadow-2xl">
             <div className="relative w-32 h-32 mx-auto mb-6">
-              <div className="w-full h-full rounded-full bg-gray-800 border-4 border-[#38C2D9] animate-pulse-slow"></div>
-              <div className="absolute -bottom-2 -right-2 bg-[#38C2D9] dark:text-black text-white text-xs dark:font-black font-white px-3 py-1 rounded-full">
+              <div className="w-full h-full rounded-full dark:bg-gray-800 bg-white border-4 border-[#38C2D9] animate-pulse-slow"></div>
+              <div className="absolute -bottom-2 -right-2 bg-[#38C2D9] dark:text-black text-white text-xs font-black px-3 py-1 rounded-full">
                 LVL 24
               </div>
             </div>
-            <h1 className="text-3xl dark:font-black font-white tracking-tighter uppercase">Shadow_Player</h1>
+            <h1 className="text-3xl font-black tracking-tighter uppercase">Shadow_Player</h1>
             <p className="text-[#38C2D9] font-mono text-sm mt-1">PIXOUL ELITE MEMBER</p>
            <Link href="/community/player-profile/settings">
               <button className="w-full mt-6 py-3 border border-[#38C2D9] text-[#38C2D9] rounded-xl font-bold text-xs uppercase hover:bg-[#38C2D9] hover:text-black transition-all">

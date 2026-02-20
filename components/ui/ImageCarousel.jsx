@@ -26,7 +26,8 @@ export default function ImageCarousel({ items }) {
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 dark:bg-black/50 bg-white/20" />
+        {/*dark:bg-black/50 bg-white/20*/}
+      <div className="absolute inset-0 " />
 
       {/* Content */}
       <div className="relative z-10 h-full flex items-end px-6 pb-10">

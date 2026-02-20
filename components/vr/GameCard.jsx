@@ -55,7 +55,8 @@ export default function GameCard({ experience }) {
         />
 
         {/* Dark overlay */}
-        <div className="absolute inset-0 dark:bg-black/40 bg-white/20" />
+        {/*dark:bg-black/40 bg-white/20*/}
+        <div className="absolute inset-0 " />
 
         {/* CATEGORY TAG */}
         <div

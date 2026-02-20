@@ -134,7 +134,7 @@ export default function Chatbot() {
   }
 
   return (
-    <div className="fixed right-4 top-[60%] -translate-y-1/2 z-[60]">
+    <div className="fixed right-4 top-[60%] -translate-y-1/2 z-[60] font-lato">
       <div className="flex flex-col items-center">
         {isOpen && (
           <div className="mb-3 w-[22rem] max-w-[calc(100vw-2rem)] rounded-2xl border dark:border-white/10 border-white/10 dark:bg-black/90 bg-white/90 backdrop-blur-md shadow-2xl">

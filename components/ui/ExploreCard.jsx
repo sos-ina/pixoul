@@ -26,7 +26,8 @@ export default function ExploreCard({
       />
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-white/20 dark:bg-black/60  group-hover:dark:bg-black/50 group-hover:bg-white/30 transition" />
+      {/*bg-white/20 dark:bg-black/60*/}
+      <div className="absolute inset-0  group-hover:dark:bg-black/50 group-hover:bg-white/30 transition" />
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-end p-6">
@@ -34,8 +35,10 @@ export default function ExploreCard({
           {title}
         </h3>
 
+        {/* Description*/}
+        {/*dark:text-gray-600 */}
         {description && (
-          <p className="text-sm dark:text-gray-300  text-white dark:text-gray-600 mb-4">
+          <p className="text-sm dark:text-gray-300 text-white mb-4">
             {description}
           </p>
         )}

@@ -14,10 +14,10 @@ export default function ChallengesHub() {
       <div className="max-w-6xl mx-auto">
         
         {/* Header Section */}
-        <div className="bg-gradient-to-br from-[#111] to-black border border-white/10 rounded-[3rem] p-10 mb-12 flex flex-col md:flex-row justify-between items-center shadow-2xl relative overflow-hidden">
+        <div className="dark:bg-gradient-to-br dark:from-[#111] dark:to-black bg-whiteborder border-white/10 rounded-[3rem] p-10 mb-12 flex flex-col md:flex-row justify-between items-center shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#38C2D9]/5 blur-[100px] rounded-full"></div>
           <div className="relative z-10">
-            <h1 className="text-6xl font-black italic uppercase tracking-tighter mb-2">Challenge <span className="text-[#38C2D9]">Hub</span></h1>
+            <h1 className="text-6xl font-black uppercase tracking-tighter mb-2">Challenge <span className="text-[#38C2D9]">Hub</span></h1>
             <p className="text-gray-500 font-bold uppercase text-[10px] tracking-[0.3em]">Level up your Pixoul ranking</p>
           </div>
           <div className="flex gap-10 mt-8 md:mt-0 relative z-10">
@@ -26,7 +26,7 @@ export default function ChallengesHub() {
               <p className="text-[10px] uppercase text-gray-500 font-black tracking-widest">Rank</p>
             </div>
             <div className="text-center">
-              <p className="text-4xl font-black text-white">12.4k</p>
+              <p className="text-4xl font-black dark:text-white text-balck">12.4k</p>
               <p className="text-[10px] uppercase text-gray-500 font-black tracking-widest">Total XP</p>
             </div>
           </div>
@@ -40,7 +40,7 @@ export default function ChallengesHub() {
               href={`/community/challenges/${m.id}`} // THE CORRECT NESTED PATH
               className="group">
                 
-              <div className="bg-white/[0.02] border border-white/30 p-8 rounded-[2.5rem] hover:border-[#38C2D9]/50 hover:bg-white/[0.05] transition-all duration-500 cursor-pointer h-full flex flex-col">
+              <div className="bg-white/[0.02] border dark:border-white/30 border-black/30 p-8 rounded-[2.5rem] hover:border-[#38C2D9]/50 hover:bg-white/[0.05] transition-all duration-500 cursor-pointer h-full flex flex-col">
                 <div className="flex justify-between items-start mb-8">
                   <div className="w-16 h-16 bg-black rounded-2xl flex items-center justify-center text-4xl border border-white/5 group-hover:scale-110 group-hover:border-[#38C2D9]/30 transition-all">
                     {m.icon}

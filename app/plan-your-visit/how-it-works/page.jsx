@@ -45,8 +45,8 @@ export default function HowItWorks() {
         {/* The 3-Step Process Grid */}
         <div className="grid md:grid-cols-3 gap-12 mb-32">
           {steps.map((step) => (
-            <div key={step.num} className="group relative p-8 bg-white/5 border border-white/10 rounded-[2.5rem] hover:border-[#38C2D9]/50 transition-all">
-              <div className="text-5xl font-black italic text-white/5 absolute top-6 right-8">{step.num}</div>
+            <div key={step.num} className="group relative p-8 dark:bg-white/5 bg-black/5 border dark:border-white/10 border-black/10 rounded-[2.5rem] hover:border-[#38C2D9]/50 transition-all">
+              <div className="text-5xl font-black italic dark:text-white/5 text-black/5 absolute top-6 right-8">{step.num}</div>
               <span className="text-4xl mb-6 block">{step.icon}</span>
               <h3 className="text-2xl font-black italic uppercase mb-4">{step.title}</h3>
               <p className="text-gray-500 text-sm leading-relaxed">{step.desc}</p>

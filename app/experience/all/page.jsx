@@ -679,7 +679,7 @@ export default function AllGamesPage(){
             <div className="flex flex-col items-center justify-center h-full text-center px-6">
 
         {/* Main headline */}
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white dark:text-white">
          GAME 
           <br />
           <span className="text-[#38C2D9]">LIBRARY</span>

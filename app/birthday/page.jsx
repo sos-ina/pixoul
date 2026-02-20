@@ -3,6 +3,9 @@ import Title from "@/components/ui/Title";
 import CallToActionBanner from "@/components/ui/CTA";
 import ExploreGrid from '@/components/ui/ExploreGrid';
 
+//import BlurModal from "@/components/ui/BlurModal";
+//import BirthdayBookingForm from "@/components/forms/BirthdayBookingForm";
+
 export const metadata = {
   title: "Birthday Parties | Pixoul Gaming",
 };
@@ -186,11 +189,11 @@ export default function BirthdayPartiesPage() {
       {/* FINAL CTA */}
       <CallToActionBanner
         title="Ready to Celebrate at Pixoul?"
-        highlight="Celebrate"
+        highlight="at Pixoul?"
         description="Build your birthday session today or contact our events team for custom packages."
         primaryAction={{
-          label: "Start Planning",
-          href: "/session",
+          label: "Book For Your Birthday",
+          href: "/birthday/form",
         }}
       />
     </>

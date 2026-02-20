@@ -22,7 +22,7 @@ export default function AchievementGallery() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white pt-28 px-6 pb-20">
+    <div className="min-h-screen dark:bg-[#0a0a0a]  dark:text-white text-black bg-white pt-28 px-6 pb-20">
       <div className="max-w-6xl mx-auto">
         
         {/* Header */}
@@ -31,7 +31,7 @@ export default function AchievementGallery() {
             <Link href="/community/player-profile" className="text-[10px] font-black uppercase text-gray-500 hover:text-[#38C2D9] mb-4 block transition-all">
               ← Back to Profile
             </Link>
-            <h1 className="text-6xl font-black italic uppercase tracking-tighter">Trophy <span className="text-[#38C2D9]">Case</span></h1>
+            <h1 className="text-6xl font-black uppercase tracking-tighter">Trophy <span className="text-[#38C2D9]">Case</span></h1>
           </div>
           <div className="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 flex gap-8">
             <div className="text-center">
@@ -59,12 +59,12 @@ export default function AchievementGallery() {
                 </span>
               </div>
               
-              <h3 className="text-xl font-black uppercase italic mb-1 text-white">{ach.title}</h3>
+              <h3 className="text-xl font-black uppercase italic mb-1 dark:text-white text-black">{ach.title}</h3>
               <p className="text-xs text-gray-400 font-medium leading-relaxed mb-4">{ach.desc}</p>
               
               <div className="pt-4 border-t border-white/5 flex justify-between items-center">
                 <span className="text-[9px] font-black uppercase text-gray-500">Earned On</span>
-                <span className="text-[9px] font-mono text-white">{ach.date}</span>
+                <span className="text-[9px] font-mono dark:text-white text-black">{ach.date}</span>
               </div>
             </div>
           ))}

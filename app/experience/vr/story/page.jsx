@@ -82,6 +82,10 @@ export default function VRStoryPage() {
         </p>
       </StorySection>
 
+      <div className="py-12 flex items-center justify-center text-center">
+        <img src="/images/story.jpeg" alt="Pixoul story mode" className="w-200 rounded-lg shadow-lg" />
+      </div>
+
       {/* TECHNOLOGY */}
       <StorySection title="Technology">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

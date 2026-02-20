@@ -68,17 +68,17 @@ export default function FAQPage() {
         <div className="space-y-12">
           {faqData.map((section, sIdx) => (
             <div key={sIdx}>
-              <h3 className="text-[#38C2D9] text-[10px] font-black uppercase tracking-widest mb-6 border-b border-white/10 pb-2">
+              <h3 className="text-[#38C2D9] text-[10px] font-black uppercase tracking-widest mb-6 border-b dark:border-white/10 border-black/10 pb-2">
                 {section.category}
               </h3>
               <div className="space-y-4">
                 {section.questions.map((item, qIdx) => (
-                  <details key={qIdx} className="overflow-hidden transition-all border group bg-white/5 border-white/10 rounded-2xl hover:border-white/20">
+                  <details key={qIdx} className="overflow-hidden transition-all border group dark:bg-white/5 bg-black/5 dark:border-white/10 border-black/10 rounded-2xl hover:border-[#38C2D9]/50">
                     <summary className="flex items-center justify-between p-6 text-sm italic font-bold tracking-tight uppercase list-none cursor-pointer">
                       {item.q}
                       <span className="text-[#38C2D9] group-open:rotate-45 transition-transform">+</span>
                     </summary>
-                    <div className="p-6 pt-0 text-sm leading-relaxed text-gray-400 border-t border-white/5">
+                    <div className="p-6 pt-0 text-sm leading-relaxed dark:text-gray-400 text-gray-500 border-t dark:border-white/5 border-black/10">
                       {item.a}
                     </div>
                   </details>

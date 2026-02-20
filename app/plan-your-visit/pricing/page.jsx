@@ -42,7 +42,7 @@ export default function PricingPage() {
           <h1 className="text-7xl font-black  uppercase tracking-tighter mb-6">
             Access <span className="text-[#38C2D9]">Tiers</span>
           </h1>
-          <p className="max-w-xl mx-auto text-gray-400 text-sm leading-relaxed">
+          <p className="max-w-xl mx-auto dark:text-gray-400 text-gray-500 text-sm leading-relaxed">
             Entry to Pixoul Gaming is free. Choose your mission level below to begin your journey into the metaverse.
           </p>
         </div>
@@ -55,7 +55,7 @@ export default function PricingPage() {
               className={`relative p-10 rounded-[3rem] border transition-all duration-500 ${
                 tier.highlight 
                 ? 'bg-[#38C2D9]/5 border-[#38C2D9] shadow-[0_0_40px_rgba(56,194,217,0.1)]' 
-                : 'bg-white/5 border-white/10 hover:border-white/20'
+                : 'bg-white/5 dark:border-white/10 border-black/10 dark:hover:border-white/20 hover:border-black/20'
               }`}
             >
               {tier.highlight && (
@@ -73,7 +73,7 @@ export default function PricingPage() {
 
               <ul className="space-y-4 mb-10">
                 {tier.features.map((feature, fIdx) => (
-                  <li key={fIdx} className="flex items-center gap-3 text-sm text-gray-300">
+                  <li key={fIdx} className="flex items-center gap-3 text-sm dark:text-gray-300 text-gray-500">
                     <span className="text-[#38C2D9]">▶</span> {feature}
                   </li>
                 ))}
@@ -82,7 +82,7 @@ export default function PricingPage() {
               <button className={`w-full py-5 rounded-2xl font-black uppercase text-xs transition-all italic ${
                 tier.highlight 
                 ? 'bg-[#38C2D9] text-black hover:scale-[1.02]' 
-                : 'bg-white/10 text-white hover:bg-white/20'
+                : 'dark:bg-white/10 dark:text-white dark:hover:bg-white/20 bg-black/10 text-black hover:bg-black/20'
               }`}>
                 {tier.buttonText}
               </button>
@@ -91,7 +91,7 @@ export default function PricingPage() {
         </div>
 
         {/* Additional Rates (Esports & Retro) */}
-        <div className="bg-white/[0.02] border border-white/5 rounded-[3rem] p-12">
+        <div className="bg-white/[0.02] border dark:border-white/5 border-black/10 rounded-[3rem] p-12">
           <h4 className="text-center text-[10px] font-black uppercase tracking-[0.5em] text-gray-500 mb-10">Other Experiences</h4>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             <div className="text-center">

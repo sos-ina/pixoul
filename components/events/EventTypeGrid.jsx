@@ -5,7 +5,8 @@ export default function EventTypeGrid({ types }) {
         <div
           key={type.title}
           className="
-            border border-white/10
+            border dark:border-white/10
+            border-black/10
             bg-white/60
             dark:bg-black/60
             p-5

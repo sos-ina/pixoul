@@ -16,15 +16,18 @@ export default function CallToActionBanner({
             relative
             px-8 py-16
             text-center
-            bg-gradient-to-r from-[#0b2a33] via-[#0e1b2d] to-[#2a0f3d]
-            border border-white/10
+            dark:bg-gradient-to-r dark:from-[#0b2a33] dark:via-[#0e1b2d] dark:to-[#2a0f3d]
+            bg-gradient-to-r from-slate-200 via-sky-100 to-purple-80
+            border 
+            dark:border-white/10
+            border-black/10
             shadow-[0_0_60px_rgba(56,194,217,0.15)]
           "
         >
 
           {/* Heading */}
           {title && (
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 dark:text-white text-black">
               {highlight ? (
                 <>
                   {title.replace(highlight, "")}
@@ -40,7 +43,7 @@ export default function CallToActionBanner({
 
           {/* Description */}
           {description && (
-            <p className="text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+            <p className="dark:text-gray-300 text-gray-700 max-w-2xl mx-auto mb-10 leading-relaxed">
               {description}
             </p>
           )}
@@ -55,7 +58,8 @@ export default function CallToActionBanner({
                   text-lg
                   font-semibold
                   border border-[#38C2D9]
-                  text-white
+                  text-black
+                  dark:text-white
                   rounded-none
                   hover:bg-[#38C2D9]/10
                   transition

@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en"  suppressHydrationWarning>
        
-      <body className="bg-white text-black dark:bg-black dark:text-white">
+      <body suppressHydrationWarning className="bg-white text-black dark:bg-black dark:text-white">
         <Providers>
 
           <CartProvider>

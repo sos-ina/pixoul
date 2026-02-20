@@ -16,8 +16,8 @@ export default function ReviewsPage() {
     <div className="min-h-screen dark:bg-[#060606] bg-white dark:text-white text-black pt-28 pb-20 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         <header className="mb-12">
-          <h1 className="text-5xl font-black italic tracking-tighter mb-2">REVIEWS & <span className="text-[#38C2D9]">RATINGS</span></h1>
-          <p className="text-gray-400">See what our community has to say about their Pixoul experiences.</p>
+          <h1 className="text-5xl font-black tracking-tighter mb-2">REVIEWS & <span className="text-[#38C2D9]">RATINGS</span></h1>
+          <p className="dark:text-gray-400 text-gray-500">See what our community has to say about their Pixoul experiences.</p>
         </header>
 
         <div className="flex flex-col lg:flex-row gap-8">
@@ -28,7 +28,7 @@ export default function ReviewsPage() {
               <div className="flex flex-col items-center mb-8">
                 <span className="text-7xl font-black text-[#38C2D9]">4.8</span>
                 <div className="flex text-yellow-400 my-2">★★★★★</div>
-                <p className="text-gray-500 text-sm">1,247 reviews</p>
+                <p className="dark:text-gray-500 text-gray-700 text-sm">1,247 reviews</p>
               </div>
 
               <div className="space-y-3 mb-8">
@@ -99,7 +99,7 @@ function ReviewCard({ name, date, tag, text, initials, bgColor = "bg-blue-500" }
       <span className="inline-block px-3 py-1 bg-[#38C2D9]/10 text-[#38C2D9] text-[10px] font-bold rounded-md mb-4 uppercase tracking-tighter">
         {tag}
       </span>
-      <p className="text-gray-300 leading-relaxed text-sm">{text}</p>
+      <p className="dark:text-gray-300 text-gray-700 leading-relaxed text-sm">{text}</p>
       <div className="mt-6 pt-6 border-t border-white/5 flex items-center gap-2 text-xs text-gray-500">
         <button className="hover:text-white flex items-center gap-1">👍 Helpful (24)</button>
       </div>
@@ -115,11 +115,11 @@ function ReviewModal({ onClose }) {
       
       {/* Form Container */}
       <div className="relative dark:bg-[#0a0a0a] bg-white border border-[#38C2D9]/30 w-full max-w-lg rounded-[2.5rem] p-8 shadow-2xl shadow-[#38C2D9]/10">
-        <h2 className="text-2xl font-black italic mb-6">POST YOUR <span className="text-[#38C2D9]">FEEDBACK</span></h2>
+        <h2 className="text-2xl font-black mb-6">POST YOUR <span className="text-[#38C2D9]">FEEDBACK</span></h2>
         
         <div className="space-y-6">
           <div>
-            <label className="text-[10px] uppercase font-bold text-gray-500 tracking-widest block mb-2">Rate Your Experience</label>
+            <label className="text-[10px] uppercase font-bold dark:text-gray-500 text-gray-700 tracking-widest block mb-2">Rate Your Experience</label>
             <div className="flex gap-2 text-3xl text-gray-700">
               {[1, 2, 3, 4, 5].map((s) => (
                 <button key={s} className="hover:text-yellow-400 transition-colors">★</button>
@@ -129,19 +129,19 @@ function ReviewModal({ onClose }) {
 
     <div>
   <label className="text-[10px] uppercase font-bold text-gray-500 tracking-widest block mb-2">Game / Experience</label>
-  <select className="w-full dark:bg-black/40 bg-white/40 border border-white/10 rounded-xl p-4 text-sm text-white focus:border-[#38C2D9] outline-none appearance-none cursor-pointer">
-    <option className="dark:bg-black/40 bg-white/40 text-gray-400">Select an experience...</option>
-    <option className="dark:bg-black/40 bg-white/40 text-white" value="vr">VR Games</option>
-    <option className="dark:bg-black/40 bg-white/40 text-white" value="pc">PC Arena</option>
-    <option className="dark:bg-black/40 bg-white/40 text-white" value="retro">Retro Zone</option>
+  <select className="w-full dark:bg-black/40 bg-white/40 border dark:border-white/10 border-black/10 rounded-xl p-4 text-sm text-white focus:border-[#38C2D9] outline-none appearance-none cursor-pointer">
+    <option className="dark:bg-black/40 bg-white/40 dark:text-gray-400 text-gray-700">Select an experience...</option>
+    <option className="dark:bg-black/40 bg-white/40 dark:text-white text-black" value="vr">VR Games</option>
+    <option className="dark:bg-black/40 bg-white/40 dark:text-white text-black" value="pc">PC Arena</option>
+    <option className="dark:bg-black/40 bg-white/40 dark:text-white text-black" value="retro">Retro Zone</option>
   </select>
 </div>
 
           <div>
-            <label className="text-[10px] uppercase font-bold text-gray-500 tracking-widest block mb-2">Your Review</label>
+            <label className="text-[10px] uppercase font-bold dark:text-gray-500 text-gray-700 tracking-widest block mb-2">Your Review</label>
             <textarea 
               placeholder="What did you think of Pixoul?"
-              className="w-full dark:bg-black/40 bg-white/40 border border-white/10 rounded-2xl p-4 h-40 text-sm focus:border-[#38C2D9] outline-none transition-all resize-none"
+              className="w-full dark:bg-black/40 bg-white/40 border dark:border-white/10 border-black/10 rounded-2xl p-4 h-40 text-sm focus:border-[#38C2D9] outline-none transition-all resize-none"
             />
           </div>
 

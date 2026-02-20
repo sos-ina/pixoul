@@ -33,8 +33,9 @@ export default function CharacterCard({ name, image, description }) {
         <div
           className="
             absolute inset-0
-            bg-gradient-to-t
-            from-black via-black/40 to-transparent
+            dark:bg-gradient-to-t
+            dark:from-black dark:via-black/40 dark:to-transparent
+            bg-gradient-to-t from-white/30 via-white/20 to-transparent
           "
         />
 

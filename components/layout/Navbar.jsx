@@ -63,9 +63,9 @@ export default function Navbar() {
 
   return (
     <nav
-      className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/40 border-b border-white/5 text-black dark:text-white"
+      className="fixed top-0 left-0 w-full z-50 backdrop-blur-md dark:bg-black/40 bg-white/40 border-b border-white/5 text-black dark:text-white"
     >
-      <div>
+      <div className="flex gap-4">
         <ThemeToggle />
         <LanguageToggle />
       </div>
@@ -75,7 +75,7 @@ export default function Navbar() {
         {/* Logo */}
         <div className="flex items-center gap-2">
           <Link href="/">
-            <img src="/logos/Pixoul Logo.ico" alt="Pixoul Logo" className="h-full w-auto" />
+            <img src="/logos/Pixoul Logo.ico" alt="Pixoul Logo" className="h-20 w-auto" />
           </Link>
         </div>
 
@@ -147,7 +147,7 @@ export default function Navbar() {
         {/* Right Buttons */}
         <div className="flex items-center gap-3 sm:gap-4">
           <CartIcon />
-          <BookNowButton className="hidden sm:block" />
+          {/*<BookNowButton className="hidden sm:block" />*/}
 
           {/* Dynamic Login/Profile Link */}
           <Link href={isLoggedIn ? "/community/player-profile" : "/login"}>
@@ -345,9 +345,6 @@ export default function Navbar() {
             </Link>
           </li>
 
-          <li className="py-4">
-            <BookNowButton className="w-full" />
-          </li>
         </ul>
       </div>
     </nav>

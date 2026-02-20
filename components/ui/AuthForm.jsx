@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Input } from './Input';
 import { useRouter } from "next/navigation";
+import Link from 'next/link';
 
 export default function AuthForm() {
   const router = useRouter();
@@ -88,7 +89,7 @@ export default function AuthForm() {
         ) : (
           <div className="flex items-start space-x-2 pt-2">
             <input type="checkbox" required className="mt-1 accent-[#38C2D9]" />
-            <label className="text-[10px] text-gray-400 leading-tight uppercase">Click here to agree to terms and conditions</label>
+            <label className="text-[10px] text-gray-400 leading-tight uppercase"><Link href="/terms">Click here to agree to terms and conditions</Link></label>
           </div>
         )}
 
