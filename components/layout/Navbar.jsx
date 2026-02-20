@@ -67,7 +67,7 @@ export default function Navbar() {
     >
       
 
-      <div className="max-w-7xl h-[80px] mx-auto px-4 sm:px-6 lg:px-8 py-3 md:py-4 flex items-center justify-between">
+      <div className="max-w-screen-xl h-[80px] mx-auto px-4 sm:px-6 lg:px-8 py-3 md:py-4 flex items-center justify-between">
 
         {/* Logo */}
         <div className="flex items-center gap-2">
@@ -75,10 +75,12 @@ export default function Navbar() {
             <img src="/logos/Pixoul Logo.ico" alt="Pixoul Logo" className="h-full w-auto" />
           </Link>
         </div>
-
-        <Link href="/virtual-tour">
+        <div className="flex gap 2">
+           <Link href="/virtual-tour">
           <img src="/logos/360 icon.png" alt="3D icon" className="h-8 w-8 sm:h-9 sm:w-9 border border-[#007EC6] rounded cursor-pointer" />
-        </Link>
+          </Link>
+        </div>
+       
 
         {/* Desktop Navigation Links */}
         <ul className="hidden lg:flex gap-6 xl:gap-8 text-sm xl:text-base items-center">
@@ -172,7 +174,7 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-  <div className="flex gap-4 justify-end px-8">
+  <div className="flex gap-4 justify-end px-8 max-w-screen-xl mx-auto">
         <ThemeToggle />
         <LanguageToggle />
       </div>
@@ -230,6 +232,14 @@ export default function Navbar() {
                 </Link>
               </div>
             )}
+          </li>
+
+           <li>
+            <Link href="/birthday" onClick={closeMobileMenu}>
+              <div className={`py-3 px-2 transition-colors border-b border-gray-700 ${pathname === "/birthday" ? 'text-[#38C2D9]' : 'text-black dark:text-white hover:text-[#007EC6]'}`}>
+                Birthday
+              </div>
+            </Link>
           </li>
 
           <li className="border-b border-gray-700">
@@ -338,14 +348,6 @@ export default function Navbar() {
                 </Link>
               </div>
             )}
-          </li>
-
-          <li>
-            <Link href="/birthday" onClick={closeMobileMenu}>
-              <div className={`py-3 px-2 transition-colors border-b border-gray-700 ${pathname === "/birthday" ? 'text-[#38C2D9]' : 'text-black dark:text-white hover:text-[#007EC6]'}`}>
-                Birthday
-              </div>
-            </Link>
           </li>
 
         </ul>

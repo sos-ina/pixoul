@@ -8,9 +8,9 @@ export default function VirtualTourPage() {
   return (
     <>
     <div className='py-12'>
-
-    </div>
       <Title align="center">360° Virtual Tour</Title>
+    </div>
+      
 
       <div style={{ width: "100%", height : "100vh" }}>
         
