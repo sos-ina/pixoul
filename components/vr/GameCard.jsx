@@ -1,10 +1,15 @@
+"use client"
+
 import Link from "next/link";
 import BookNowButton from '@/components/ui/BookNowButton';
 import { routes } from "@/lib/routes";
 import AddToSessionButton from "@/components/cart/AddToSession";
+import { useState } from "react";
 
 
 export default function GameCard({ experience }) {
+  const [hours, setHours] = useState(1);
+
   const {
     experience_id,
     title,
@@ -15,6 +20,8 @@ export default function GameCard({ experience }) {
 
     can_book,
     has_details,
+
+    isHourly = experience.booking_type === "hourly",
 
     duration_minutes,
     min_players,
@@ -101,7 +108,7 @@ export default function GameCard({ experience }) {
           </h3>
 
           <h3 className="text-md font-semibold leading-tight text-[#38C2D9]">
-            AED {price}
+            AED {isHourly ? price * hours : price}
           </h3>
         </div>
 
@@ -113,7 +120,41 @@ export default function GameCard({ experience }) {
             <span>{min_players}–{max_players} players</span>
           )}
           {min_age && <span>{min_age}+</span>}
+
         </div>
+        <div>
+          {isHourly && (
+              <div className="mt-2">
+                <label className="text-xs text-gray-500 dark:text-gray-400 block mb-1">
+                  Select Hours
+                </label>
+
+                <select
+                  value={hours}
+                  onChange={(e) => setHours(Number(e.target.value))}
+                  className="
+                    w-full
+                    px-3 py-2
+                    text-sm
+                    dark:bg-black/70
+                    bg-white
+                    border
+                    dark:border-white/20
+                    border-black/20
+                    focus:outline-none
+                    focus:border-[#38C2D9]
+                  "
+                >
+                  {[1, 2, 3, 4].map((hr) => (
+                    <option key={hr} value={hr}>
+                      {hr} hour{hr > 1 ? "s" : ""}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+        </div>
+
 
         {/* ACTIONS */}
         <div className="mt-4 flex gap-3">
@@ -121,9 +162,13 @@ export default function GameCard({ experience }) {
           {/* BOOK NOW (only if allowed) */}
           {can_book && (
             <AddToSessionButton
-              className="px-4 py-2 text-sm"
-              experience={experience}
-            />
+                  className="px-4 py-2 text-sm"
+                  experience={{
+                    ...experience,
+                    selected_hours: isHourly ? hours : null,
+                    total_price: isHourly ? price * hours : price,
+                  }}
+                />
           )}
 
           {/* LEARN MORE (only if meaningful) */}

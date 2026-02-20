@@ -1,5 +1,4 @@
 import Hero from '@/components/ui/Hero';
-import Link from "next/link";
 import CallToActionBanner from "@/components/ui/CTA";
 import GameGrid from '@/components/vr/GameGrid';
 import Title from '@/components/ui/Title';
@@ -8,108 +7,48 @@ export const metadata = {
   title: " PC Experience | Pixoul Gaming",
 };
 
-
 export const pcGames = [
   {
-    experience_id: "fortnite",
-    title: "Fortnite",
-    slug: "fortnite",
+    experience_id: "training-room",
+    slug: "training-room",
+    title: "Training Room",
     category_name: "pc",
-    image_url: "/images/PG-0272.jpg",
-    genre: "battle royale",
-
+    image_url: "/images/PG-0316.jpg",
+    genre: "pc gaming",
     can_book: true,
     has_details: false,
-
-    duration_minutes: null,
-    min_players: 1,
-    max_players: 4,
-    min_age: 10,
+    booking_type: "hourly",
+    min_hours: 1,
+    max_hours: 6,
+    price: 20,
   },
-
   {
-    experience_id: "valorant",
-    title: "Valorant",
-    slug: "valorant",
+    experience_id: "vip-room",
+    slug: "vip-room",
+    title: "VIP Room",
     category_name: "pc",
-    image_url: "/images/PG-0272.jpg",
-    genre: "tactical shooter",
-
+    image_url: "/images/PG-0316.jpg",
+    genre: "pc gaming",
     can_book: true,
     has_details: false,
-
-    duration_minutes: null,
-    min_players: 1,
-    max_players: 5,
-    min_age: 12,
+    booking_type: "hourly",
+    min_hours: 1,
+    max_hours: 5,
+    price: 35,
   },
-
   {
-    experience_id: "fifa",
-    title: "EA Sports FC",
-    slug: "ea-sports-fc",
+    experience_id: "private-room",
+    slug: "private-room",
+    title: "Private Room",
     category_name: "pc",
-    image_url: "/images/PG-0272.jpg",
-    genre: "sports",
-
+    image_url: "/images/PG-0316.jpg",
+    genre: "pc gaming",
     can_book: true,
     has_details: false,
-
-    duration_minutes: null,
-    min_players: 1,
-    max_players: 4,
-    min_age: 3,
-  },
-
-  {
-    experience_id: "minecraft",
-    title: "Minecraft",
-    slug: "minecraft",
-    category_name: "pc",
-    image_url: "/images/PG-0272.jpg",
-    genre: "sandbox",
-
-    can_book: true,
-    has_details: false,
-
-    duration_minutes: null,
-    min_players: 1,
-    max_players: 8,
-    min_age: 7,
-  },
-
-  {
-    experience_id: "call-of-duty",
-    title: "Call of Duty",
-    slug: "call-of-duty",
-    category_name: "pc",
-    image_url: "/images/PG-0272.jpg",
-    genre: "shooter",
-
-    can_book: true,
-    has_details: false,
-
-    duration_minutes: null,
-    min_players: 1,
-    max_players: 6,
-    min_age: 16,
-  },
-
-  {
-    experience_id: "rocket-league",
-    title: "Rocket League",
-    slug: "rocket-league",
-    category_name: "pc",
-    image_url: "/images/PG-0272.jpg",
-    genre: "sports / arcade",
-
-    can_book: true,
-    has_details: false,
-
-    duration_minutes: null,
-    min_players: 1,
-    max_players: 4,
-    min_age: 7,
+    booking_type: "hourly",
+    min_hours: 1,
+    max_hours: 5,
+    price: 50,
   },
 ];
 

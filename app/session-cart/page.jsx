@@ -6,7 +6,10 @@ import { Trash2, Plus, Minus } from "lucide-react";
 import { useCart } from "@/components/cart/SessionCartProvider";
 
 export default function SessionPage() {
-  const { items, removeExperience, updateQuantity, total } = useCart();
+  const { items, removeExperience, updateQuantity, updateHours, total } = useCart();
+
+  const getCartItemKey = (game) =>
+    `${game.experience_id}-${game.booking_type === "hourly" ? game.selected_hours : "fixed"}`;
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-20">
@@ -27,7 +30,7 @@ export default function SessionPage() {
           <div className="space-y-6">
             {items.map((game) => (
               <div
-                key={game.experience_id}
+                key={getCartItemKey(game)}
                 className="border border-gray-200 dark:border-gray-800 p-6 rounded-lg hover:border-[#38C2D9] transition"
               >
                 <div className="flex flex-col gap-4 sm:flex-row">
@@ -60,16 +63,24 @@ export default function SessionPage() {
                             </span>
                           )}
                         </div>
-                        {game.duration_minutes != null && (
-                          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                            Duration: {game.duration_minutes} minutes
-                          </p>
-                        )}
+                       {game.booking_type === "hourly" ? (
+                            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                              Hours: {game.selected_hours}
+                            </p>
+                          ) : (
+                            game.duration_minutes != null && (
+                              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                                Duration: {game.duration_minutes} minutes
+                              </p>
+                            )
+                          )}
                       </div>
 
                       {/* Remove Button */}
                       <button
-                        onClick={() => removeExperience(game.experience_id)}
+                        onClick={() =>
+  removeExperience(game.experience_id, game.selected_hours)
+}
                         className="p-2 text-red-500 hover:bg-red-50 dark:hover:bg-red-950 rounded transition"
                         aria-label="Remove from cart"
                         type="button"
@@ -82,47 +93,108 @@ export default function SessionPage() {
                     <div className="flex items-center justify-between mt-auto pt-3 border-t border-gray-200 dark:border-gray-800">
                       {/* Quantity Controls */}
                       <div className="flex items-center gap-3">
-                        <span className="text-sm text-gray-600 dark:text-gray-400">
-                          Quantity:
-                        </span>
-                        <div className="flex items-center gap-2 border border-gray-300 dark:border-gray-700 rounded">
-                          <button
-                            onClick={() =>
-                              updateQuantity(game.experience_id, game.quantity - 1)
-                            }
-                            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed"
-                            disabled={game.quantity <= 1}
-                            aria-label="Decrease quantity"
-                            type="button"
-                          >
-                            <Minus size={16} />
-                          </button>
-                          <span className="px-4 font-semibold min-w-[2rem] text-center">
-                            {game.quantity}
-                          </span>
-                          <button
-                            onClick={() =>
-                              updateQuantity(game.experience_id, game.quantity + 1)
-                            }
-                            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-900 transition"
-                            aria-label="Increase quantity"
-                            type="button"
-                          >
-                            <Plus size={16} />
-                          </button>
-                        </div>
-                      </div>
+
+  {game.booking_type === "hourly" ? (
+    <>
+      <span className="text-sm text-gray-600 dark:text-gray-400">
+        Hours:
+      </span>
+
+      <div className="flex items-center gap-2 border border-gray-300 dark:border-gray-700 rounded">
+        <button
+          onClick={() =>
+            updateHours(
+              game.experience_id,
+              game.selected_hours,
+              game.selected_hours - 1
+            )
+          }
+          disabled={game.selected_hours <= game.min_hours}
+          className="p-2 hover:bg-gray-100 dark:hover:bg-gray-900 transition"
+          type="button"
+        >
+          <Minus size={16} />
+        </button>
+
+        <span className="px-4 font-semibold min-w-[2rem] text-center">
+          {game.selected_hours}
+        </span>
+
+        <button
+          onClick={() =>
+            updateHours(
+              game.experience_id,
+              game.selected_hours,
+              game.selected_hours + 1
+            )
+          }
+          disabled={game.selected_hours >= game.max_hours}
+          className="p-2 hover:bg-gray-100 dark:hover:bg-gray-900 transition"
+          type="button"
+        >
+          <Plus size={16} />
+        </button>
+      </div>
+    </>
+  ) : (
+    <>
+      <span className="text-sm text-gray-600 dark:text-gray-400">
+        Quantity:
+      </span>
+
+      <div className="flex items-center gap-2 border border-gray-300 dark:border-gray-700 rounded">
+        <button
+          onClick={() =>
+            updateQuantity(
+              game.experience_id,
+              game.quantity - 1,
+              game.selected_hours ?? null
+            )
+          }
+          disabled={game.quantity <= 1}
+          className="p-2 hover:bg-gray-100 dark:hover:bg-gray-900 transition"
+          type="button"
+        >
+          <Minus size={16} />
+        </button>
+
+        <span className="px-4 font-semibold min-w-[2rem] text-center">
+          {game.quantity}
+        </span>
+
+        <button
+          onClick={() =>
+            updateQuantity(
+              game.experience_id,
+              game.quantity + 1,
+              game.selected_hours ?? null
+            )
+          }
+          className="p-2 hover:bg-gray-100 dark:hover:bg-gray-900 transition"
+          type="button"
+        >
+          <Plus size={16} />
+        </button>
+      </div>
+    </>
+  )}
+</div>
 
                       {/* Price */}
                       <div className="text-right">
                         <p className="text-xl font-bold">
-                          AED {game.price * game.quantity}
+                          AED {
+                              game.booking_type === "hourly"
+                                ? game.total_price
+                                : game.price * game.quantity
+                            }
                         </p>
-                        {game.quantity > 1 && (
-                          <p className="text-xs text-gray-500 dark:text-gray-400">
-                            AED {game.price} each
-                          </p>
-                        )}
+                        
+                        {game.booking_type !== "hourly" && game.quantity > 1 && (
+                            <p className="text-xs text-gray-500 dark:text-gray-400">
+                              AED {game.price} each
+                            </p>
+                          )}
                       </div>
                     </div>
                   </div>

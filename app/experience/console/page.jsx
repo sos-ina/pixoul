@@ -24,6 +24,9 @@ export const consoleGames = [
     can_book: true,
     has_details: true,
 
+    booking_type: "hourly", 
+    price_per_hour: 35,  
+
     duration_minutes: 60,
     min_players: 1,
     max_players: 4,

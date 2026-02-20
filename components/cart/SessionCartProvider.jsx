@@ -14,12 +14,48 @@ export function CartProvider({ children }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
+  const getCartItemKey = (item) =>
+    `${item.experience_id}-${item.booking_type === "hourly" ? item.selected_hours : "fixed"}`;
+
+  const normalizeCartItems = (cartItems) => {
+    const merged = new Map();
+
+    cartItems.forEach((item) => {
+      const key = getCartItemKey(item);
+      const current = merged.get(key);
+
+      if (!current) {
+        merged.set(key, {
+          ...item,
+          quantity: item.quantity ?? 1,
+          total_price:
+            item.booking_type === "hourly"
+              ? (item.price ?? 0) * (item.selected_hours ?? 1)
+              : item.total_price,
+        });
+        return;
+      }
+
+      const quantity = (current.quantity ?? 1) + (item.quantity ?? 1);
+      merged.set(key, {
+        ...current,
+        quantity,
+        total_price:
+          current.booking_type === "hourly"
+            ? (current.price ?? 0) * (current.selected_hours ?? 1)
+            : current.total_price,
+      });
+    });
+
+    return Array.from(merged.values());
+  };
+
   // Load from localStorage on mount
   useEffect(() => {
     const stored = localStorage.getItem("pixoul-cart");
     if (stored) {
       try {
-        setItems(JSON.parse(stored));
+        setItems(normalizeCartItems(JSON.parse(stored)));
       } catch (e) {
         console.error("Failed to parse cart:", e);
       }
@@ -37,10 +73,15 @@ export function CartProvider({ children }) {
   // Add experience
   function addExperience(exp, quantity = 1) {
     setItems((prev) => {
-      const existing = prev.find((x) => x.experience_id === exp.experience_id);
+      const existing = prev.find(
+  (x) =>
+    x.experience_id === exp.experience_id &&
+    x.selected_hours === exp.selected_hours
+);
       if (existing) {
         return prev.map((x) =>
-          x.experience_id === exp.experience_id
+          x.experience_id === exp.experience_id &&
+          x.selected_hours === exp.selected_hours
             ? { ...x, quantity: x.quantity + quantity }
             : x
         );
@@ -50,19 +91,74 @@ export function CartProvider({ children }) {
   }
 
   // Update quantity
-  function updateQuantity(id, quantity) {
-    if (quantity <= 0) {
-      removeExperience(id);
-      return;
-    }
+  function updateQuantity(id, quantity, selectedHours = null) {
+    if (quantity < 1) return;
     setItems((prev) =>
-      prev.map((x) => (x.experience_id === id ? { ...x, quantity } : x))
+      prev.map((item) =>
+        item.experience_id === id &&
+        (selectedHours === null || item.selected_hours === selectedHours)
+          ? { ...item, quantity }
+          : item
+      )
     );
   }
 
+  // Update hours for hourly bookings
+  function updateHours(id, currentHours, newHours) {
+    if (newHours < 1) return;
+    if (currentHours === newHours) return;
+
+    setItems((prev) => {
+      const sourceItem = prev.find(
+        (item) => item.experience_id === id && item.selected_hours === currentHours
+      );
+
+      if (!sourceItem) return prev;
+
+      const targetItem = prev.find(
+        (item) => item.experience_id === id && item.selected_hours === newHours
+      );
+
+      if (targetItem) {
+        return prev
+          .filter(
+            (item) =>
+              !(item.experience_id === id && item.selected_hours === currentHours)
+          )
+          .map((item) =>
+            item.experience_id === id && item.selected_hours === newHours
+              ? {
+                  ...item,
+                  quantity: item.quantity + sourceItem.quantity,
+                  total_price: item.price * newHours,
+                }
+              : item
+          );
+      }
+
+      return prev.map((item) =>
+        item.experience_id === id && item.selected_hours === currentHours
+          ? {
+              ...item,
+              selected_hours: newHours,
+              total_price: item.price * newHours,
+            }
+          : item
+      );
+    });
+  }
+
   // Remove experience
-  function removeExperience(id) {
-    setItems((prev) => prev.filter((x) => x.experience_id !== id));
+  function removeExperience(id, selectedHours = null) {
+    setItems((prev) =>
+      prev.filter(
+        (x) =>
+          !(
+            x.experience_id === id &&
+            (selectedHours === null || x.selected_hours === selectedHours)
+          )
+      )
+    );
   }
 
   // Clear cart
@@ -71,7 +167,12 @@ export function CartProvider({ children }) {
   }
 
   // Calculate totals
-  const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+ const total = items.reduce((sum, item) => {
+  if (item.booking_type === "hourly") {
+    return sum + item.total_price;
+  }
+  return sum + item.price * item.quantity;
+}, 0);
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
@@ -81,6 +182,7 @@ export function CartProvider({ children }) {
         addExperience,
         removeExperience,
         updateQuantity,
+        updateHours,
         clearCart,
         total,
         itemCount,
@@ -137,7 +239,7 @@ export function CartProvider({ children }) {
               ) : (
                 items.map((item) => (
                   <div
-                    key={item.experience_id}
+                    key={getCartItemKey(item)}
                     className="border border-gray-200 dark:border-gray-800 rounded-lg p-4"
                   >
                     <div className="flex gap-4">
@@ -164,7 +266,7 @@ export function CartProvider({ children }) {
                             </div>
                           </div>
                           <button
-                            onClick={() => removeExperience(item.experience_id)}
+                            onClick={() => removeExperience(item.experience_id, item.selected_hours)}
                             className="p-2 text-red-500 hover:bg-red-50 dark:hover:bg-red-950 rounded ml-2"
                           >
                             <Trash2 size={18} />
@@ -172,21 +274,25 @@ export function CartProvider({ children }) {
                         </div>
 
                         <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-                          Duration: {item.duration_minutes} minutes
+                            {item.booking_type === "hourly" ? (
+                              <>Hours: {item.selected_hours}</>
+                            ) : (
+                              <>Duration: {item.duration_minutes} minutes</>
+                            )}
                         </p>
 
                         <div className="flex items-center justify-between">
                           {/* Quantity */}
                           <div className="flex items-center gap-2 border border-gray-300 dark:border-gray-700 rounded">
                             <button
-                              onClick={() => updateQuantity(item.experience_id, item.quantity - 1)}
+                              onClick={() => updateQuantity(item.experience_id, item.quantity - 1, item.selected_hours ?? null)}
                               className="p-2 hover:bg-gray-100 dark:hover:bg-gray-900"
                             >
                               <Minus size={16} />
                             </button>
                             <span className="px-3 font-semibold">{item.quantity}</span>
                             <button
-                              onClick={() => updateQuantity(item.experience_id, item.quantity + 1)}
+                              onClick={() => updateQuantity(item.experience_id, item.quantity + 1, item.selected_hours ?? null)}
                               className="p-2 hover:bg-gray-100 dark:hover:bg-gray-900"
                             >
                               <Plus size={16} />
@@ -195,7 +301,13 @@ export function CartProvider({ children }) {
 
                           {/* Price */}
                           <div className="text-right">
-                            <p className="text-lg font-bold">AED {item.price * item.quantity}</p>
+                           <p className="text-lg font-bold">
+                                  AED {
+                                    item.booking_type === "hourly"
+                                      ? item.total_price
+                                      : item.price * item.quantity
+                                  }
+                                </p>
                             {item.quantity > 1 && (
                               <p className="text-xs text-gray-500">AED {item.price} each</p>
                             )}
