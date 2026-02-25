@@ -3,7 +3,7 @@ export default function TechnologyBlock({ title, children }) {
     <div
       className="
         border border-white/10
-        bg-black/70
+        bg-white/70 dark:bg-black/70
         px-6 py-6
       "
     >

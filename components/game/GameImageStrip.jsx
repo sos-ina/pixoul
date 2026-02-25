@@ -32,7 +32,7 @@ export default function GameImageStrip({ images }) {
               />
 
               {/* Overlay */}
-              <div className="absolute inset-0 bg-black/20" />
+              <div className="absolute inset-0 bg-white/20 dark:bg-black/20" />
             </div>
           ))}
         </div>

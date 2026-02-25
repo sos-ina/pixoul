@@ -3,7 +3,7 @@ import GameCard from "./GameCard";
 export default function GameGrid({ experiences, title }) {
   if (!experiences || experiences.length === 0) {
     return (
-      <div className="py-20 text-center text-gray-400">
+      <div className="py-20 text-center dark:text-gray-400 text-gray-600">
         No experiences available.
       </div>
     );

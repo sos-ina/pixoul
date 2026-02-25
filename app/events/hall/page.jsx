@@ -128,19 +128,19 @@ export default function HallPage() {
             <h2 className="text-3xl font-semibold mb-6">
               Set the Stage. Embrace the Applause.
             </h2>
-            <p className="text-gray-300 leading-relaxed mb-6">
+            <p className="dark:text-gray-300 text-gray-600 leading-relaxed mb-6">
                 Designed to elevate, you can now experience organizing an occasion in a 
                 plug & play venue, making it effortless to book and deliver your event. 
                 The Hall seamlessly blends cutting-edge technology with impeccable hospitality to 
                 provide an unforgettable experience.
             </p>
-            <p className="text-gray-300 leading-relaxed mb-6">
+            <p className="dark:text-gray-300 text-gray-600 leading-relaxed mb-6">
                 From entertainment, corporate conferences to intimate gatherings, 
                 our versatile space caters to your every need making it simpler and trouble-free. 
                 The Hall is here to make your event a successful story!
             </p>
 
-            <p className="text-gray-400 leading-relaxed mb-6">
+            <p className="dark:text-gray-400 text-gray-500 leading-relaxed mb-6">
 
               Book with confidence and let Pixoul deliver an unforgettable event
               experience — simple, seamless, and future-ready.
@@ -172,7 +172,7 @@ export default function HallPage() {
               <div
                 key={service.title}
                 className="
-                  bg-black/70
+                  dark:bg-black/70 bg-white/70
                   border border-white/10
                   p-6
                   rounded-none
@@ -184,7 +184,7 @@ export default function HallPage() {
                 <h3 className="text-lg font-semibold mb-3 text-[#38C2D9]">
                   {service.title}
                 </h3>
-                <p className="text-sm text-gray-400 leading-relaxed">
+                <p className="text-sm dark:text-gray-400 text-gray-600 leading-relaxed">
                   {service.description}
                 </p>
               </div>

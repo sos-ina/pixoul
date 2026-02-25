@@ -4,7 +4,7 @@ import FooterColumn from "../ui/FootColumn";
 
 export default function Footer() {
   return (
-    <footer className="bg-black border-t border-white/10">
+    <footer className="bg-white dark:bg-black border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 lg:gap-10">
 
         {/* Column 1: Logo */}
@@ -16,7 +16,7 @@ export default function Footer() {
             className="h-[200px] w-auto"
           />
         </div>
-          <p className="text-xs sm:text-sm md:text-sm text-gray-400">
+          <p className="text-xs sm:text-sm md:text-sm dark:text-gray-400 text-gray-600">
             Immersive experiences beyond reality.
           </p>
         </div>
@@ -55,7 +55,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-white/10 text-center py-4 md:py-6 px-4 text-xs sm:text-sm md:text-sm text-gray-500">
+      <div className="border-t border-white/10 text-center py-4 md:py-6 px-4 text-xs sm:text-sm md:text-sm dark:text-gray-500 text-gray-700">
         © {new Date().getFullYear()} PixoulGaming. All rights reserved.
       </div>
     </footer>
