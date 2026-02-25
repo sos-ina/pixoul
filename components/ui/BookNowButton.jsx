@@ -1,35 +1,39 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { routes } from "@/lib/routes";
 
-export default function BookNowButton({ onClick, className = "" }) {
+export default function BookNowButton({ className = "" }) {
   const router = useRouter();
+
   return (
     <button
-      onClick={() => router.push(routes.bookExperience(experienceId))}
+      onClick={() => router.push('/mission-bundles')} // Pointing to your new page
       className={`
         relative
-        px-5 py-2
-        bg-[#38C2D9
-        text-white
-        font-semibold
-        tracking-wide
-        rounded-none
+        px-6 py-2.5
+        bg-[#38C2D9] 
+        text-black
+        font-black
+        italic
+        uppercase
+        text-[10px]
+        tracking-widest
+        rounded-sm
         border
         border-[#38C2D9]
         overflow-hidden
         transition-all
         duration-300
+        hover:bg-[#38C2D9]
+        hover:border-[#38C2D9]
+        hover:text-white
+        group
         ${className}
       `}
     >
-      {/* Shimmer edge */}
-      <span className="absolute inset-0 pointer-events-none shimmer-border"></span>
+      {/* Shimmer Effect */}
+      <span className="absolute inset-0 transition-transform duration-500 -translate-x-full pointer-events-none bg-white/20 group-hover:translate-x-full"></span>
 
-      {/* Text */}
-      <span className="relative z-10">
-        Book Now
-      </span>
+      <span className="relative z-10">View Mission Bundles</span>
     </button>
   );
 }
