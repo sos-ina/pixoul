@@ -97,7 +97,7 @@ export default function Home() {
           <Link href="/"><BookNowButton className="px-8 py-4 text-base" /></Link>
 
           {/* Secondary CTA */}
-          <Link href="/experience/vr">
+          <Link href="/experience/all">
           <button className="
             px-8 py-4
             border border-[#38C2D9]
@@ -132,8 +132,8 @@ export default function Home() {
       highlight="PLAY?"
       description="Book your session now and experience the future of gaming. Walk-ins welcome, but reservations guarantee your spot."
       primaryAction={{
-        label: "Book Now",
-        href: "/experience/vr/battle-rush",
+        label: "Explore Games",
+        href: "/experience/all",
       }}
     />
 

@@ -6,7 +6,7 @@ export default function CharacterCard({ name, image, description }) {
       className="
         group
         relative
-        bg-white/90 
+        bg-[#F1F5F9] 
         dark:bg-black/90
         border 
         border-white/10

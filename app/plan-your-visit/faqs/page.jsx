@@ -58,8 +58,18 @@ export default function FAQPage() {
         
         {/* Header */}
         <div className="mb-16">
-          <h2 className="text-[#38C2D9] text-xs font-black uppercase tracking-[0.5em] mb-4 text-center">Support</h2>
-          <h1 className="text-6xl font-black tracking-tighter text-center uppercase">
+          <h2 className="
+          text-[#38C2D9] 
+          text-xs 
+          font-black 
+          uppercase tracking-[0.5em] 
+          mb-4 text-center">
+            Support</h2>
+          <h1 className="text-6xl 
+          font-black 
+          tracking-tighter 
+          text-center 
+          uppercase">
             Frequently Asked <span className="text-[#38C2D9]">Questions</span>
           </h1>
         </div>

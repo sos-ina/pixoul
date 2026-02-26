@@ -14,7 +14,7 @@ export const arcadeGames = [
     genre: "arcade",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -32,7 +32,7 @@ export const arcadeGames = [
     genre: "fighting",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -50,7 +50,7 @@ export const arcadeGames = [
     genre: "fighting",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -68,7 +68,7 @@ export const arcadeGames = [
     genre: "sports",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -86,7 +86,7 @@ export const arcadeGames = [
     genre: "classic",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -104,7 +104,7 @@ export const arcadeGames = [
     genre: "platform",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -122,7 +122,7 @@ export const arcadeGames = [
     genre: "fighting",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -140,7 +140,7 @@ export const arcadeGames = [
     genre: "racing",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -158,7 +158,7 @@ export const arcadeGames = [
     genre: "action",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -176,7 +176,7 @@ export const arcadeGames = [
     genre: "fighting",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -194,7 +194,7 @@ export const arcadeGames = [
     genre: "adventure",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -212,7 +212,7 @@ export const arcadeGames = [
     genre: "racing",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -230,7 +230,7 @@ export const arcadeGames = [
     genre: "sports",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -256,7 +256,7 @@ export default function ArcadeGamesPage(){
             <div className="flex flex-col items-center justify-center h-full text-center px-6">
 
         {/* Main headline */}
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white dark:text-white">
          KINETIC  
           <br />
           <span className="text-[#38C2D9]">ARENA</span>
@@ -281,7 +281,7 @@ export default function ArcadeGamesPage(){
               description="Try our Pixoul Pass! Get access to multiple experiences at a discounted rate. Perfect for first-timers."
               primaryAction={{
                 label: "View All Games",
-                href: "/",
+                href: "/experience/all",
               }}
             />
 

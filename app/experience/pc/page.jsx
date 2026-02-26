@@ -68,7 +68,7 @@ export default function PcGamesPage(){
             <div className="flex flex-col items-center justify-center h-full text-center px-6">
 
         {/* Main headline */}
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white dark:text-white">
           THE MASTER 
           <br />
           <span className="text-[#38C2D9]">RIG</span>
@@ -93,7 +93,7 @@ export default function PcGamesPage(){
               description="Try our Pixoul Pass! Get access to multiple experiences at a discounted rate. Perfect for first-timers."
               primaryAction={{
                 label: "View All Games",
-                href: "/",
+                href: "/experience/all",
               }}
             />
 

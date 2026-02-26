@@ -18,7 +18,7 @@ export const allExperiences = [
     genre: "gaming",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 60,
     min_players: 1,
@@ -36,7 +36,7 @@ export const allExperiences = [
     genre: "premium",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 60,
     min_players: 1,
@@ -57,7 +57,7 @@ export const allExperiences = [
     genre: "racing",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -256,7 +256,7 @@ export const allExperiences = [
     genre: "sports",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 2,
@@ -274,7 +274,7 @@ export const allExperiences = [
     genre: "sports",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 2,
@@ -292,7 +292,7 @@ export const allExperiences = [
     genre: "whack-a-mole",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 8,
     min_players: 1,
@@ -310,7 +310,7 @@ export const allExperiences = [
     genre: "strength",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 5,
     min_players: 1,
@@ -328,7 +328,7 @@ export const allExperiences = [
     genre: "bowling",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -346,7 +346,7 @@ export const allExperiences = [
     genre: "action",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -364,7 +364,7 @@ export const allExperiences = [
     genre: "skill",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 8,
     min_players: 1,
@@ -382,7 +382,7 @@ export const allExperiences = [
     genre: "action",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -400,7 +400,7 @@ export const allExperiences = [
     genre: "skill",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 8,
     min_players: 1,
@@ -418,7 +418,7 @@ export const allExperiences = [
     genre: "basketball",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 8,
     min_players: 1,
@@ -436,7 +436,7 @@ export const allExperiences = [
     genre: "classic",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -454,7 +454,7 @@ export const allExperiences = [
     genre: "prize",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -472,7 +472,7 @@ export const allExperiences = [
     genre: "family",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -490,7 +490,7 @@ export const allExperiences = [
     genre: "tickets",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 8,
     min_players: 1,
@@ -508,7 +508,7 @@ export const allExperiences = [
     genre: "tickets",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 8,
     min_players: 1,
@@ -526,7 +526,7 @@ export const allExperiences = [
     genre: "shooting",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -544,7 +544,7 @@ export const allExperiences = [
     genre: "kids",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -562,7 +562,7 @@ export const allExperiences = [
     genre: "racing",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -580,7 +580,7 @@ export const allExperiences = [
     genre: "kids",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -598,7 +598,7 @@ export const allExperiences = [
     genre: "shooting",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -616,7 +616,7 @@ export const allExperiences = [
     genre: "fishing",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -634,7 +634,7 @@ export const allExperiences = [
     genre: "shooting",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -652,7 +652,7 @@ export const allExperiences = [
     genre: "bowling",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -699,11 +699,11 @@ export default function AllGamesPage(){
 
 
         <CallToActionBanner
-              title="Make Your Choice!"
-              highlight="Choice!"
-              description="Ready to dive in? Book your gaming experience today and embark on an unforgettable adventure!"
+              title="Ready to Level Up?"
+              highlight="Level Up?"
+              description="Select from our VR bundles, Console packages, or VIP PC rooms. Your mission starts here."
               primaryAction={{
-                label: "Book Now",
+                label: "View Packages",
                 href: "/",
               }}
             />

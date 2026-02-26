@@ -1,3 +1,5 @@
+ 
+
 "use client"
 
 import Link from "next/link";
@@ -36,16 +38,15 @@ export default function GameCard({ experience }) {
   return (
     <div
       className="
-        group
-        relative
-        dark:bg-black/80
+        group relative 
+        overflow-hidden
+        dark:bg-gradient-to-br dark:from-black dark:via-[#0a1f2d] dark:to-black
         bg-[#F1F5F9]
         border border-white/10
-        transition
-        overflow-hidden
-
-        hover:border-[#38C2D9]/70
-        hover:shadow-[0_0_40px_rgba(56,194,217,0.15)]
+        transition-all duration-500 ease-out
+        hover:-translate-y-3
+        hover:border-[#38C2D9]/80
+        hover:shadow-[0_0_35px_rgba(56,194,217,0.35)]
       "
     >
       {/* IMAGE */}

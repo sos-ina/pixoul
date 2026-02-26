@@ -4,6 +4,7 @@ import StorySection from "@/components/story/StorySection";
 import TechnologyBlock from "@/components/story/TechnologyBlock";
 import CharactersGrid from "@/components/story/CharactersGrid";
 import Hero from "@/components/ui/Hero";
+import Link from "next/link";
 
 export default function VRStoryPage() {
   const characters = [
@@ -130,6 +131,7 @@ export default function VRStoryPage() {
 
       {/* CHARACTERS */}
       <CharactersGrid characters={characters} />
+      <p className="justify-center text-[#38C2D9] hover:underline font-semibold px-10"><Link href="/experience/vr">← Back to VR Experience Page</Link></p>
     </>
   );
 }

@@ -20,7 +20,7 @@ export const retroGames = [
     genre: "sports",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 2,
@@ -38,7 +38,7 @@ export const retroGames = [
     genre: "sports",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 2,
@@ -56,7 +56,7 @@ export const retroGames = [
     genre: "whack-a-mole",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 8,
     min_players: 1,
@@ -74,7 +74,7 @@ export const retroGames = [
     genre: "strength",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 5,
     min_players: 1,
@@ -92,7 +92,7 @@ export const retroGames = [
     genre: "bowling",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -110,7 +110,7 @@ export const retroGames = [
     genre: "action",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -128,7 +128,7 @@ export const retroGames = [
     genre: "skill",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 8,
     min_players: 1,
@@ -146,7 +146,7 @@ export const retroGames = [
     genre: "action",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -164,7 +164,7 @@ export const retroGames = [
     genre: "skill",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 8,
     min_players: 1,
@@ -182,7 +182,7 @@ export const retroGames = [
     genre: "basketball",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 8,
     min_players: 1,
@@ -200,7 +200,7 @@ export const retroGames = [
     genre: "classic",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -218,7 +218,7 @@ export const retroGames = [
     genre: "prize",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -236,7 +236,7 @@ export const retroGames = [
     genre: "family",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -254,7 +254,7 @@ export const retroGames = [
     genre: "tickets",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 8,
     min_players: 1,
@@ -272,7 +272,7 @@ export const retroGames = [
     genre: "tickets",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 8,
     min_players: 1,
@@ -290,7 +290,7 @@ export const retroGames = [
     genre: "shooting",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -308,7 +308,7 @@ export const retroGames = [
     genre: "kids",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -326,7 +326,7 @@ export const retroGames = [
     genre: "racing",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -344,7 +344,7 @@ export const retroGames = [
     genre: "kids",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -362,7 +362,7 @@ export const retroGames = [
     genre: "shooting",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -380,7 +380,7 @@ export const retroGames = [
     genre: "fishing",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -398,7 +398,7 @@ export const retroGames = [
     genre: "shooting",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -416,7 +416,7 @@ export const retroGames = [
     genre: "bowling",
 
     can_book: true,
-    has_details: true,
+    has_details: false,
 
     duration_minutes: 10,
     min_players: 1,
@@ -440,7 +440,7 @@ export default function RetroGamesPage(){
             <div className="flex flex-col items-center justify-center h-full text-center px-6">
 
         {/* Main headline */}
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white dark:text-white">
           LEGACY 
           <br />
           <span className="text-[#38C2D9]">PROTOCOL</span>
@@ -454,7 +454,7 @@ export default function RetroGamesPage(){
         </Hero>
 
 
-        <Title align="center">Our Retro Games</Title>
+        <Title align="center">Our Redemption Games</Title>
 
         <GameGrid experiences={retroGames} />
 
@@ -465,7 +465,7 @@ export default function RetroGamesPage(){
               description="Try our Pixoul Pass! Get access to multiple experiences at a discounted rate. Perfect for first-timers."
               primaryAction={{
                 label: "View All Games",
-                href: "/",
+                href: "/experience/all",
               }}
             />
 

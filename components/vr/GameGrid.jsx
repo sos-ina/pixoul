@@ -29,9 +29,9 @@ export default function GameGrid({ experiences, title }) {
             gap-6
           "
         >
-          {experiences.map((exp) => (
+          {experiences.map((exp, index) => (
             <GameCard
-              key={exp.experience_id}
+              key={`${exp.experience_id ?? exp.slug ?? exp.title ?? "experience"}-${index}`}
               experience={exp}
             />
           ))}

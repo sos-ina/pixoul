@@ -4,7 +4,8 @@ import { useCart } from "./SessionCartProvider";
 import { useState } from "react";
 import { Check, ShoppingCart } from "lucide-react";
 
-export default function AddToSessionButton({ experience, className = "" }) {
+export default function AddToSessionButton(
+  { experience, className = "" }) {
   const { addExperience, items } = useCart();
   const [justAdded, setJustAdded] = useState(false);
 
@@ -32,7 +33,7 @@ export default function AddToSessionButton({ experience, className = "" }) {
         `}
       >
         <Check size={18} />
-        Added!
+        Added
       </button>
     );
   }
