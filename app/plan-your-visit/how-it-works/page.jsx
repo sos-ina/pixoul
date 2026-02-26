@@ -35,7 +35,7 @@ export default function HowItWorks() {
           <h1 className="text-7xl font-black uppercase tracking-tighter mb-6">
             How Pixoul <span className="text-[#38C2D9]">Works</span>
           </h1>
-            <p className="max-w-2xl text-gray-400 leading-relaxed text-lg">
+            <p className="max-w-2xl text-lg leading-relaxed text-gray-400">
             From the moment you arrive, your journey begins. Choose your experience, gear up with our 
             fully wireless VR technology, and step into an immersive world where every mission, movement, 
             and decision shapes your adventure.
@@ -43,7 +43,7 @@ export default function HowItWorks() {
         </div>
 
         {/* The 3-Step Process Grid */}
-        <div className="grid md:grid-cols-3 gap-12 mb-32">
+        <div className="grid gap-12 mb-32 md:grid-cols-3">
           {steps.map((step) => (
             <div key={step.num} className="group relative p-8 dark:bg-white/5 bg-black/5 border dark:border-white/10 border-black/10 rounded-[2.5rem] hover:border-[#38C2D9]/50 transition-all">
               <div className="text-5xl font-black italic dark:text-white/5 text-black/5 absolute top-6 right-8">{step.num}</div>
@@ -60,17 +60,17 @@ export default function HowItWorks() {
         {/* Call to Action Section */}
         <div className="bg-gradient-to-br from-[#111] to-black border border-white/10 rounded-[3rem] p-12 flex flex-col md:flex-row items-center justify-between gap-8 mt-20">
           <div className="text-center md:text-left">
-            <h2 className="text-3xl font-black italic uppercase mb-2">Ready to Join the Resistance?</h2>
-            <p className="text-gray-400 text-sm">Experience double the immersion of any other hub in the region.</p>
+            <h2 className="mb-2 text-3xl italic font-black uppercase">Ready to Join the Resistance?</h2>
+            <p className="text-sm text-gray-400">Experience double the immersion of any other hub in the region.</p>
           </div>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/plan-your-visit/pricing">
+            <Link href="/mission-bundles">
               <button className="bg-[#38C2D9] text-black px-10 py-4 rounded-2xl font-black uppercase text-xs hover:scale-105 transition-all italic">
                 View Pricing
               </button>
             </Link>
             <Link href="/community/challenges">
-              <button className="bg-white/5 border border-white/10 hover:bg-white/10 text-white px-10 py-4 rounded-2xl font-black uppercase text-xs transition-all italic">
+              <button className="px-10 py-4 text-xs italic font-black text-white uppercase transition-all border bg-white/5 border-white/10 hover:bg-white/10 rounded-2xl">
                 Challenge Hub
               </button>
             </Link>
