@@ -40,7 +40,6 @@ function CartIcon() {
 export default function Navbar() {
   const pathname = usePathname();
   const [openDropdown, setOpenDropdown] = useState(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const timeoutRef = useRef(null);
@@ -55,10 +54,6 @@ export default function Navbar() {
     timeoutRef.current = setTimeout(() => {
       setOpenDropdown(null);
     }, 200);
-  };
-
-  const toggleDropdown = (dropdownName) => {
-    setOpenDropdown(openDropdown === dropdownName ? null : dropdownName);
   };
 
   return (
