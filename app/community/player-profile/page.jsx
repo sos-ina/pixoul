@@ -1,8 +1,69 @@
-import React from 'react';
+"use client";
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { authAPI, statsAPI } from '@/lib/api/experiences';
 
 // This is your main page for /community/player-profile
 export default function PlayerProfilePage() {
+  const [user, setUser] = useState(null);
+  const [stats, setStats] = useState(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const load = async () => {
+      try {
+        const me = await authAPI.getCurrentUser();
+        if (cancelled) return;
+        setUser(me?.user || null);
+
+        const st = await statsAPI.getMyStats();
+        if (cancelled) return;
+        setStats(st?.stats || null);
+      } catch {
+        if (!cancelled) setUser(null);
+        if (!cancelled) setStats(null);
+      }
+    };
+
+    load();
+    const onAuthChanged = () => load();
+    window.addEventListener('auth:changed', onAuthChanged);
+    return () => {
+      cancelled = true;
+      window.removeEventListener('auth:changed', onAuthChanged);
+    };
+  }, []);
+
+  const displayName = user?.display_name || user?.username || 'PLAYER';
+  const subtitle = user?.username ? `@${user.username}` : 'PIXOUL ELITE MEMBER';
+
+  const statCards = [
+    {
+      label: 'Global Rank',
+      val: stats?.globalRank ? `#${stats.globalRank.toLocaleString()}` : '—',
+      sub: stats?.globalRank ? 'Leaderboard' : 'No data yet',
+    },
+    {
+      label: 'Total XP',
+      val: typeof stats?.totalXp === 'number' ? stats.totalXp.toLocaleString() : '—',
+      sub: 'Based on bookings',
+    },
+    {
+      label: 'Wins',
+      val: typeof stats?.wins === 'number' ? stats.wins.toLocaleString() : '—',
+      sub: 'Non-cancelled bookings',
+    },
+    {
+      label: 'Achievements',
+      val:
+        stats?.achievements?.unlocked !== undefined
+          ? `${stats.achievements.unlocked}/${stats.achievements.total || 50}`
+          : '—',
+      sub: 'Unlocked',
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] dark:bg-black bg-white dark:text-white text-black p-4 md:p-10 font-sans">
       <div className="max-w-6xl mx-auto space-y-16">
@@ -12,13 +73,17 @@ export default function PlayerProfilePage() {
           {/* Identity Card */}
           <div className="dark:bg-gradient-to-b dark:from-gray-900 dark:to-black bg-white border border-white/10 p-8 rounded-[2rem] text-center shadow-2xl">
             <div className="relative w-32 h-32 mx-auto mb-6">
-              <div className="w-full h-full rounded-full dark:bg-gray-800 bg-white border-4 border-[#38C2D9] animate-pulse-slow"></div>
-              <div className="absolute -bottom-2 -right-2 bg-[#38C2D9] dark:text-black text-white text-xs font-black px-3 py-1 rounded-full">
+              <div className="w-full h-full rounded-full bg-gray-800 border-4 border-[#38C2D9] animate-pulse-slow overflow-hidden">
+                {user?.avatar_url ? (
+                  <img src={user.avatar_url} alt="avatar" className="w-full h-full object-cover" />
+                ) : null}
+              </div>
+              <div className="absolute -bottom-2 -right-2 bg-[#38C2D9] text-black text-xs font-black px-3 py-1 rounded-full">
                 LVL 24
               </div>
             </div>
-            <h1 className="text-3xl font-black tracking-tighter uppercase">Shadow_Player</h1>
-            <p className="text-[#38C2D9] font-mono text-sm mt-1">PIXOUL ELITE MEMBER</p>
+            <h1 className="text-3xl font-black tracking-tighter uppercase">{displayName}</h1>
+            <p className="text-[#38C2D9] font-mono text-sm mt-1">{subtitle}</p>
            <Link href="/community/player-profile/settings">
               <button className="w-full mt-6 py-3 border border-[#38C2D9] text-[#38C2D9] rounded-xl font-bold text-xs uppercase hover:bg-[#38C2D9] hover:text-black transition-all">
                 Edit Settings
@@ -28,12 +93,7 @@ export default function PlayerProfilePage() {
 
           {/* Rapid Stats Grid */}
           <div className="lg:col-span-2 grid grid-cols-2 gap-4 h-full">
-            {[
-              { label: 'Global Rank', val: '#1,204', sub: 'Top 5%' },
-              { label: 'Total XP', val: '45,200', sub: '+1.2k today' },
-              { label: 'Wins', val: '842', sub: '68% Win Rate' },
-              { label: 'Achievements', val: '14/50', sub: 'Rare Unlocked' }
-            ].map((s, i) => (
+            {statCards.map((s, i) => (
               <div key={i} className="bg-white/5 border border-white/5 p-6 rounded-[1.5rem] hover:border-[#38C2D9]/50 transition-colors group">
                 <p className="text-gray-500 text-[10px] uppercase tracking-widest font-bold mb-2">{s.label}</p>
                 <p className="text-3xl font-black group-hover:text-[#38C2D9] transition-colors">{s.val}</p>

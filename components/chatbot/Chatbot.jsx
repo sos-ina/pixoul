@@ -4,11 +4,15 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { intents } from "@/lib/chatbotIntents";
-import ChatBotIcon from "@/public/logos/chat-icon.png";
+import ChatBotIcon from "./Image/ChatBot.png";
 
-const GREETING_MESSAGE = "Hi! I can help you navigate Pixoul. What are you looking for?";
+const GREETING_MESSAGE =
+  "Hi! I\'m the Pixoul Assistant. Ask me anything about Pixoul — VR games, events, birthday parties, or the community.";
 const FALLBACK_MESSAGE =
-  "I can help you navigate the site. Try asking about VR games, events, or the community.";
+  "Sorry — that\'s outside my scope. I\'m the Pixoul Assistant and I can only help with Pixoul-related questions. For help, contact Pixoul at +971 2 418 6699.";
+
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api";
 
 function escapeRegExp(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -80,8 +84,7 @@ export default function Chatbot() {
 
     const intent = resolveIntent(userText);
 
-    const shouldCallApi =
-      !intent || intent.type === "casual" || intent.type === "recommendation";
+    const shouldCallApi = intent?.type === "recommendation";
 
     const loadingId = `${Date.now()}-${Math.random().toString(16).slice(2)}`;
 
@@ -92,7 +95,7 @@ export default function Chatbot() {
         return [...next, { id: loadingId, from: "bot", text: "Thinking..." }];
       }
 
-      return [...next, { from: "bot", text: intent.response }];
+      return [...next, { from: "bot", text: intent?.response || FALLBACK_MESSAGE }];
     });
 
     if (intent?.route) {
@@ -106,7 +109,7 @@ export default function Chatbot() {
 
     setIsLoading(true);
     try {
-      const resp = await fetch("/api/chat", {
+      const resp = await fetch(`${API_BASE_URL}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userText }),
@@ -124,7 +127,7 @@ export default function Chatbot() {
       setMessages((prev) =>
         prev.map((m) =>
           m.id === loadingId
-            ? { ...m, text: "Sorry, I'm having trouble right now. Please try again. For now I can only help you navigate the site." }
+            ? { ...m, text: "Sorry — I\'m having trouble right now. Please try again. If you need support, contact Pixoul at +971 2 418 6699." }
             : m
         )
       );
@@ -188,7 +191,7 @@ export default function Chatbot() {
               type="button"
               onClick={sendMessage}
               disabled={!canSend || isLoading}
-              className="rounded-xl bg-white text-black px-3 py-2 text-sm font-semibold disabled:opacity-50"
+              className="rounded-xl bg-white dark:bg-black text-black dark:text-white px-3 py-2 text-sm font-semibold disabled:opacity-50"
             >
               Send
             </button>
