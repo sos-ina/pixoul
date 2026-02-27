@@ -4,7 +4,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { intents } from "@/lib/chatbotIntents";
-import ChatBotIcon from "./Image/ChatBot.png";
+import ChatBotIcon from "@/public/logos/chat-icon.png";
+
 
 const GREETING_MESSAGE =
   "Hi! I\'m the Pixoul Assistant. Ask me anything about Pixoul — VR games, events, birthday parties, or the community.";

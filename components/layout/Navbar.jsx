@@ -42,25 +42,13 @@ export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const [openDropdown, setOpenDropdown] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-<<<<<<< HEAD
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const timeoutRef = useRef(null);
-  const closeMobileMenu = () => {
-    setMobileMenuOpen(false);
-    setOpenDropdown(null);
-  };
-  const toggleDropdown = (dropdownName) => {
-    setOpenDropdown((prev) => (prev === dropdownName ? null : dropdownName));
-  };
-=======
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
 
   const timeoutRef = useRef(null);
   const profileMenuRef = useRef(null);
   const closeMobileMenu = () => setMobileMenuOpen(false);
->>>>>>> origin/chatbot
 
   const refreshAuth = async () => {
     const token = typeof window !== "undefined" ? localStorage.getItem("auth_token") : null;
@@ -120,6 +108,10 @@ export default function Navbar() {
     timeoutRef.current = setTimeout(() => {
       setOpenDropdown(null);
     }, 200);
+  };
+
+  const toggleDropdown = (dropdownName) => {
+    setOpenDropdown((prev) => (prev === dropdownName ? null : dropdownName));
   };
 
   return (
