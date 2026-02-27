@@ -12,7 +12,8 @@ export default function AuthForm() {
     .card {
       position: relative;
       width: 800px;
-      height: 480px;
+      min-height: 520px;
+      height: auto;
 
       overflow: hidden;
       border: 1px solid rgba(0,212,255,0.18);
@@ -36,19 +37,25 @@ export default function AuthForm() {
 
     /* ”€”€ FORMS LAYER (behind overlay) ”€”€ */
     .forms-area {
-      position: absolute;
-      inset: 0;
+      position: relative;
+      width: 100%;
       display: flex;
+      align-items: stretch;
+      z-index: 10;
     }
 
     .form-half {
       width: 50%;
-      height: 100%;
       background: #0a0a0a;
       display: flex;
       flex-direction: column;
+      justify-content: flex-start;
+      padding: 34px 50px;
+      overflow: auto;
+    }
+
+    .form-half.login-half {
       justify-content: center;
-      padding: 44px 50px;
     }
 
     .form-title {
@@ -141,10 +148,11 @@ export default function AuthForm() {
     .overlay {
       position: absolute;
       top: 0;
+      bottom: 0;
       left: 50%;
       width: 50%;
-      height: 100%;
       z-index: 20;
+
       transition: transform 0.5s cubic-bezier(0.65,0,0.35,1);
       background: linear-gradient(140deg, #041e26 0%, #062c38 55%, #041820 100%);
       border-left: 1px solid rgba(0,212,255,0.14);
@@ -243,6 +251,65 @@ export default function AuthForm() {
     .ov-btn:hover::before { transform: translateX(0); }
     .ov-btn:hover { color: #080808; }
     .ov-btn span { position: relative; z-index: 1; }
+
+    .pw-rules {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.02);
+      border-radius: 10px;
+      font-family: 'Rajdhani', sans-serif;
+    }
+    .pw-rule {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      line-height: 1.35;
+      color: rgba(255,255,255,0.55);
+      margin: 6px 0;
+    }
+    .pw-rule .icon {
+      width: 16px;
+      display: inline-flex;
+      justify-content: center;
+      font-family: 'Orbitron', monospace;
+      font-size: 12px;
+      letter-spacing: 0;
+    }
+    .pw-rule.ok { color: rgba(74,222,128,0.95); }
+    .pw-rule.bad { color: rgba(248,113,113,0.95); }
+    .pw-hint { font-size: 11px; color: rgba(255,255,255,0.30); margin-top: 8px; }
+
+    @media (max-width: 1024px) {
+      .card { width: min(760px, 92vw); }
+      .form-half { padding: 30px 38px; }
+      .overlay { padding: 44px 40px; }
+      .ov-title { font-size: 24px; }
+      .ov-text { font-size: 12px; }
+    }
+
+    @media (max-width: 860px) {
+      .card { width: 94vw; }
+      .form-half { padding: 28px 28px; }
+      .overlay { padding: 40px 34px; border-top-left-radius: 110px; border-bottom-left-radius: 110px; }
+      .overlay.slide-left { border-top-right-radius: 110px; border-bottom-right-radius: 110px; }
+      .form-title { font-size: 18px; }
+      .field input { font-size: 14px; }
+      .submit-btn { font-size: 10px; }
+    }
+
+    @media (max-width: 720px) {
+      .card { width: 96vw; min-height: 0; }
+      .form-half { padding: 24px 20px; }
+      .field label { letter-spacing: 2px; }
+      .overlay { padding: 30px 22px; border-top-left-radius: 90px; border-bottom-left-radius: 90px; }
+      .overlay.slide-left { border-top-right-radius: 90px; border-bottom-right-radius: 90px; }
+      .ov-logo { font-size: 16px; margin-bottom: 28px; }
+      .ov-title { font-size: 20px; }
+      .ov-text { font-size: 11px; margin-bottom: 26px; }
+      .pw-rule { font-size: 11px; }
+    }
   `;
 
   const router = useRouter();
@@ -260,6 +327,16 @@ export default function AuthForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [emailConfirmOpen, setEmailConfirmOpen] = useState(false);
   const [emailConfirmAddress, setEmailConfirmAddress] = useState("");
+
+  const passwordChecks = useMemo(() => {
+    const pw = String(regData.password || "");
+    return {
+      hasLower: /[a-z]/.test(pw),
+      hasUpper: /[A-Z]/.test(pw),
+      hasNumber: /\d/.test(pw),
+      hasSpecial: /[^A-Za-z0-9]/.test(pw),
+    };
+  }, [regData.password]);
 
   const overlayContent = useMemo(() => {
     return mode === "login"
@@ -343,7 +420,7 @@ export default function AuthForm() {
         <div className="br4" />
 
         <div className="forms-area">
-          <div className="form-half">
+          <div className="form-half login-half">
             <div className="form-title">Sign In</div>
             <div className="form-sub">Welcome back, player</div>
             <form onSubmit={handleLogin}>
@@ -437,6 +514,25 @@ export default function AuthForm() {
                     setRegData((p) => ({ ...p, password: e.target.value }))
                   }
                 />
+                <div className="pw-rules" aria-label="Password requirements">
+                  <div className={`pw-rule ${passwordChecks.hasUpper ? "ok" : "bad"}`}>
+                    <span className="icon">{passwordChecks.hasUpper ? "✓" : "✕"}</span>
+                    <span>At least 1 capital letter (A–Z)</span>
+                  </div>
+                  <div className={`pw-rule ${passwordChecks.hasLower ? "ok" : "bad"}`}>
+                    <span className="icon">{passwordChecks.hasLower ? "✓" : "✕"}</span>
+                    <span>At least 1 small letter (a–z)</span>
+                  </div>
+                  <div className={`pw-rule ${passwordChecks.hasNumber ? "ok" : "bad"}`}>
+                    <span className="icon">{passwordChecks.hasNumber ? "✓" : "✕"}</span>
+                    <span>At least 1 number (0–9)</span>
+                  </div>
+                  <div className={`pw-rule ${passwordChecks.hasSpecial ? "ok" : "bad"}`}>
+                    <span className="icon">{passwordChecks.hasSpecial ? "✓" : "✕"}</span>
+                    <span>At least 1 special character (e.g. ! @ # $ %)</span>
+                  </div>
+                  
+                </div>
               </div>
               <button
                 type="submit"
