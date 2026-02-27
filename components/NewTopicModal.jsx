@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function NewTopicModal({ onClose, categories }) {
   // 1. STATE FOR INPUTS (To keep it empty or reset it)
@@ -71,7 +71,6 @@ export default function NewTopicModal({ onClose, categories }) {
             <button 
               className="flex-1 bg-[#38C2D9] text-black font-black py-4 rounded-xl hover:bg-white transition-all uppercase italic"
               onClick={() => {
-                console.log("Posting:", { title, selectedCategory, message });
                 onClose(); // Close after "posting"
               }}
             >

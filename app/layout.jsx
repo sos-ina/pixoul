@@ -1,7 +1,6 @@
 
 import "./globals.css";
-import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
+import AppChrome from "../components/layout/AppChrome";
 import { CartProvider } from "@/components/cart/SessionCartProvider";
 import Chatbot from "@/components/chatbot/Chatbot";
 
@@ -22,12 +21,8 @@ export default function RootLayout({ children }) {
         <Providers>
 
           <CartProvider>
-          <Navbar />
-          <main className="pt-20">
-            {children}
-          </main>
+          <AppChrome>{children}</AppChrome>
           <Chatbot />
-          <Footer />
         </CartProvider>
         </Providers>
       </body>

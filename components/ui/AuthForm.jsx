@@ -1,105 +1,471 @@
-"use client";
-import { useState } from 'react';
-import { Input } from './Input';
+﻿"use client";
+import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
+import { authAPI } from "@/lib/api/experiences";
+import EmailConfirmationModal from "@/components/ui/EmailConfirmationModal";
 
 export default function AuthForm() {
+  const styles = `
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600&display=swap');
+
+    /* ”€”€ CARD ”€”€ */
+    .card {
+      position: relative;
+      width: 800px;
+      height: 480px;
+
+      overflow: hidden;
+      border: 1px solid rgba(0,212,255,0.18);
+      box-shadow: 0 0 60px rgba(0,212,255,0.06), 0 0 1px rgba(0,212,255,0.2) inset;
+      animation: cardIn 0.7s cubic-bezier(0.22,1,0.36,1) both;
+    }
+
+    /* corner brackets */
+    .br1,.br2,.br3,.br4 {
+      position: absolute;
+      width: 16px; height: 16px;
+      border-color: #00d4ff;
+      border-style: solid;
+      z-index: 30;
+      pointer-events: none;
+    }
+    .br1 { top:0; left:0; border-width: 2px 0 0 2px; }
+    .br2 { top:0; right:0; border-width: 2px 2px 0 0; }
+    .br3 { bottom:0; right:0; border-width: 0 2px 2px 0; }
+    .br4 { bottom:0; left:0; border-width: 0 0 2px 2px; }
+
+    /* ”€”€ FORMS LAYER (behind overlay) ”€”€ */
+    .forms-area {
+      position: absolute;
+      inset: 0;
+      display: flex;
+    }
+
+    .form-half {
+      width: 50%;
+      height: 100%;
+      background: #0a0a0a;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 44px 50px;
+    }
+
+    .form-title {
+      font-family: 'Orbitron', monospace;
+      font-size: 20px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .form-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.28);
+      margin-bottom: 26px;
+      letter-spacing: 0.5px;
+    }
+
+    .field { margin-bottom: 15px; }
+    .field label {
+      display: block;
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(0,212,255,0.55);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    .field input {
+      width: 100%;
+      background: rgba(0,212,255,0.03);
+      border: 1px solid rgba(0,212,255,0.12);
+      color: white;
+      padding: 11px 14px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+    .field input:focus {
+      border-color: rgba(0,212,255,0.45);
+      background: rgba(0,212,255,0.06);
+      box-shadow: 0 0 0 1px rgba(0,212,255,0.08);
+    }
+    .field input::placeholder { color: rgba(255,255,255,0.18); }
+
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      background: transparent;
+      border: 1px solid #00d4ff;
+      color: #00d4ff;
+      font-family: 'Orbitron', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.3s;
+    }
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #00d4ff;
+      transform: translateX(-101%);
+      transition: transform 0.35s cubic-bezier(0.65,0,0.35,1);
+      z-index: 0;
+    }
+    .submit-btn:hover::before { transform: translateX(0); }
+    .submit-btn:hover { color: #080808; }
+    .submit-btn.ok::before { transform: translateX(0); }
+    .submit-btn.ok { color: #080808; }
+    .submit-btn span { position: relative; z-index: 1; }
+
+    .forgot {
+      margin-top: 12px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.22);
+      cursor: pointer;
+      letter-spacing: 0.4px;
+      transition: color 0.2s;
+      text-align: center;
+    }
+    .forgot:hover { color: #00d4ff; }
+
+    /* ”€”€ SLIDING OVERLAY ”€”€ */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 50%;
+      height: 100%;
+      z-index: 20;
+      transition: transform 0.5s cubic-bezier(0.65,0,0.35,1);
+      background: linear-gradient(140deg, #041e26 0%, #062c38 55%, #041820 100%);
+      border-left: 1px solid rgba(0,212,255,0.14);
+      border-top-left-radius: 140px;
+      border-bottom-left-radius: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 50px 48px;
+      overflow: hidden;
+    }
+    .overlay.slide-left {
+      transform: translateX(-100%);
+      border-left: none;
+      border-right: 1px solid rgba(0,212,255,0.14);
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-top-right-radius: 140px;
+      border-bottom-right-radius: 140px;
+    }
+
+    .overlay::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; right: -80px;
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, rgba(0,212,255,0.09), transparent 65%);
+      pointer-events: none;
+    }
+
+    .ov-logo {
+      font-family: 'Orbitron', monospace;
+      font-size: 19px;
+      font-weight: 900;
+      color: white;
+      letter-spacing: 3px;
+      margin-bottom: 44px;
+    }
+    .ov-logo span { color: #00d4ff; }
+
+    .ov-eyebrow {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(0,212,255,0.65);
+      margin-bottom: 10px;
+    }
+    .ov-title {
+      font-family: 'Orbitron', monospace;
+      font-size: 26px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.15;
+      text-transform: uppercase;
+      margin-bottom: 0;
+    }
+    .ov-title .c { color: #00d4ff; }
+    .ov-bar {
+      width: 36px; height: 2px;
+      background: linear-gradient(90deg, #00d4ff, transparent);
+      margin: 16px 0;
+    }
+    .ov-text {
+      font-size: 13px;
+      color: rgba(255,255,255,0.38);
+      line-height: 1.7;
+      font-weight: 300;
+      letter-spacing: 0.3px;
+      margin-bottom: 36px;
+    }
+    .ov-btn {
+      padding: 11px 32px;
+      background: transparent;
+      border: 1px solid #00d4ff;
+      color: #00d4ff;
+      font-family: 'Orbitron', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.3s;
+    }
+    .ov-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #00d4ff;
+      transform: translateX(-101%);
+      transition: transform 0.3s cubic-bezier(0.65,0,0.35,1);
+      z-index: 0;
+    }
+    .ov-btn:hover::before { transform: translateX(0); }
+    .ov-btn:hover { color: #080808; }
+    .ov-btn span { position: relative; z-index: 1; }
+  `;
+
   const router = useRouter();
-  const [isLogin, setIsLogin] = useState(true);
-  
-  // State for inputs (Add these to capture data)
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [mode, setMode] = useState("login");
+  const [loginData, setLoginData] = useState({ emailOrUsername: "", password: "" });
+  const [regData, setRegData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const [loginOk, setLoginOk] = useState(false);
 
-  const brand = { teal: '#38C2D9', purple: '#B04198', blue: '#007EC6' };
+  const [regOk, setRegOk] = useState(false);
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [emailConfirmOpen, setEmailConfirmOpen] = useState(false);
+  const [emailConfirmAddress, setEmailConfirmAddress] = useState("");
 
-  // This function handles the button click
-  const handleSubmit = async (e) => {
+  const overlayContent = useMemo(() => {
+    return mode === "login"
+      ? {
+          eyebrow: "New here?",
+          titleTop: "Start your",
+          titleAccent: "Journey",
+          text: "Create an account and step into next-gen VR and gaming experiences.",
+          btnLabel: "Sign Up",
+          action: () => setMode("register"),
+        }
+      : {
+          eyebrow: "Already a player?",
+          titleTop: "Good to have",
+          titleAccent: "You Back",
+          text: "Sign in to your account and continue where you left off.",
+          btnLabel: "Sign In",
+          action: () => setMode("login"),
+        };
+  }, [mode]);
+
+  const handleLogin = async (e) => {
     e.preventDefault();
+    if (isLoading) return;
+    setError("");
+    setIsLoading(true);
 
-    // 1. Logic for Sign In or Registration would happen here
-    if (isLogin) {
-      console.log("Logging in with:", email, password);
-      // After successful login:
-      router.push("/"); // Redirect to Home or Dashboard
-    } else {
-      console.log("Registering user...");
-      // For registration, you'd usually trigger the email verification here
-      alert("Registration successful! Please check your email to verify your account.");
-      router.push("/login"); 
+    try {
+      const result = await authAPI.login(loginData.emailOrUsername, loginData.password);
+      if (result?.token) {
+        localStorage.setItem("auth_token", result.token);
+        window.dispatchEvent(new Event("auth:changed"));
+      }
+
+      setLoginOk(true);
+      setTimeout(() => setLoginOk(false), 1200);
+      router.push("/");
+    } catch (err) {
+      setError(err?.message || "Login failed");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleReg = async (e) => {
+    e.preventDefault();
+    if (isLoading) return;
+    setError("");
+    setIsLoading(true);
+
+    try {
+      await authAPI.register({
+        username: regData.username,
+        email: regData.email,
+        password: regData.password,
+      });
+
+      setRegOk(true);
+      setTimeout(() => setRegOk(false), 1200);
+      setEmailConfirmAddress(regData.email);
+      setEmailConfirmOpen(true);
+    } catch (err) {
+      setError(err?.message || "Registration failed");
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <div className="w-full max-w-md p-8 bg-[#1A1A1A]/90 backdrop-blur-xl border border-white/5 rounded-sm shadow-2xl">
-      {/* Tabs */}
-      <div className="flex mb-8 border-b border-white/10">
-        {['SIGN IN', 'JOIN'].map((tab) => (
-          <button
-            key={tab}
-            type="button" // Use type="button" so it doesn't submit the form
-            onClick={() => setIsLogin(tab === 'SIGN IN')}
-            className={`flex-1 pb-4 text-xs font-bold tracking-widest transition-all ${
-              (isLogin && tab === 'SIGN IN') || (!isLogin && tab === 'JOIN')
-                ? 'border-b-2 text-white'
-                : 'text-gray-500 hover:text-gray-300'
-            }`}
-            style={{ borderBottomColor: ((isLogin && tab === 'SIGN IN') || (!isLogin && tab === 'JOIN')) ? brand.teal : 'transparent' }}
-          >
-            {tab}
-          </button>
-        ))}
-      </div>
+    <>
+      <EmailConfirmationModal
+        isOpen={emailConfirmOpen}
+        email={emailConfirmAddress}
+        onClose={() => setEmailConfirmOpen(false)}
+      />
+      <style>{styles}</style>
+      <div className="card">
+        <div className="br1" />
+        <div className="br2" />
+        <div className="br3" />
+        <div className="br4" />
 
-      {/* ONE Form tag that handles everything */}
-      <form className="space-y-5" onSubmit={handleSubmit}>
-        {!isLogin && (
-          <>
-            <div className="flex gap-4">
-              <Input label="First Name" placeholder="First Name" />
-              <Input label="Last Name" placeholder="Last Name" />
+        <div className="forms-area">
+          <div className="form-half">
+            <div className="form-title">Sign In</div>
+            <div className="form-sub">Welcome back, player</div>
+            <form onSubmit={handleLogin}>
+              <div className="field">
+                <label>Email or Username</label>
+                <input
+                  type="text"
+                  placeholder="player@pixoul.com"
+                  value={loginData.emailOrUsername}
+                  onChange={(e) =>
+                    setLoginData((p) => ({
+                      ...p,
+                      emailOrUsername: e.target.value,
+                    }))
+                  }
+                />
+              </div>
+              <div className="field">
+                <label>Password</label>
+                <input
+                  type="password"
+                  placeholder="€¢€¢€¢€¢€¢€¢€¢€¢"
+                  value={loginData.password}
+                  onChange={(e) =>
+                    setLoginData((p) => ({ ...p, password: e.target.value }))
+                  }
+                />
+              </div>
+              {error ? (
+                <div style={{ color: "#f87171", fontSize: 12, marginTop: 8 }}>
+                  {error}
+                </div>
+              ) : null}
+              <button
+                type="submit"
+                className={`submit-btn${loginOk ? " ok" : ""}`}
+                disabled={isLoading}
+              >
+                <span>{loginOk ? "Welcome Back œ“" : "Enter"}</span>
+              </button>
+            </form>
+            <div
+              className="forgot"
+              onClick={() => router.push("/forgot-password")}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  router.push("/forgot-password");
+                }
+              }}
+            >
+              Forgot password?
             </div>
-            <Input label="Birth Date" type="date" />
-            <Input label="Country" placeholder="Select Country" />
-          </>
-        )}
-
-        <Input 
-          label="Email" 
-          type="email" 
-          placeholder="Email Address" 
-          value={email}
-          onChange={(e) => setEmail(e.target.value)} 
-        />
-        <Input 
-          label="Password" 
-          type="password" 
-          placeholder="••••••••" 
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        
-        {!isLogin && <Input label="Confirm Password" type="password" placeholder="••••••••" />}
-
-        {isLogin ? (
-          <div className="text-center">
-            <button type="button" className="text-[11px] text-[#007EC6] hover:underline uppercase tracking-tighter">Forgot Password?</button>
           </div>
-        ) : (
-          <div className="flex items-start space-x-2 pt-2">
-            <input type="checkbox" required className="mt-1 accent-[#38C2D9]" />
-            <label className="text-[10px] text-gray-400 leading-tight uppercase">Click here to agree to terms and conditions</label>
-          </div>
-        )}
 
-        <button 
-          type="submit"
-          className="w-full py-4 font-bold tracking-[0.2em] text-white transition-transform active:scale-[0.98] uppercase text-sm"
-          style={{ background: `linear-gradient(90deg, ${brand.teal}, ${brand.blue})` }}
-        >
-          {isLogin ? 'Login' : 'Register'}
-        </button>
-      </form>
-    </div>
+          <div className="form-half">
+            <div className="form-title">Create Account</div>
+            <div className="form-sub">Join the future of play</div>
+            <form onSubmit={handleReg}>
+              <div className="field">
+                <label>Username</label>
+                <input
+                  type="text"
+                  placeholder="GamerTag"
+                  value={regData.username}
+                  onChange={(e) =>
+                    setRegData((p) => ({ ...p, username: e.target.value }))
+                  }
+                />
+              </div>
+              <div className="field">
+                <label>Email</label>
+                <input
+                  type="email"
+                  placeholder="player@pixoul.com"
+                  value={regData.email}
+                  onChange={(e) =>
+                    setRegData((p) => ({ ...p, email: e.target.value }))
+                  }
+                />
+              </div>
+              <div className="field">
+                <label>Password</label>
+                <input
+                  type="password"
+                  placeholder="€¢€¢€¢€¢€¢€¢€¢€¢"
+                  value={regData.password}
+                  onChange={(e) =>
+                    setRegData((p) => ({ ...p, password: e.target.value }))
+                  }
+                />
+              </div>
+              <button
+                type="submit"
+                className={`submit-btn${regOk ? " ok" : ""}`}
+                disabled={isLoading}
+              >
+                <span>{regOk ? "Account Created œ“" : "Register"}</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div className={`overlay${mode === "register" ? " slide-left" : ""}`}>
+          <div className="ov-logo">
+            PIX<span>OUL</span>
+          </div>
+          <div className="ov-eyebrow">{overlayContent.eyebrow}</div>
+          <div className="ov-title">
+            {overlayContent.titleTop}
+            <br />
+            <span className="c">{overlayContent.titleAccent}</span>
+          </div>
+          <div className="ov-bar" />
+          <p className="ov-text">{overlayContent.text}</p>
+          <button className="ov-btn" onClick={overlayContent.action} type="button">
+            <span>{overlayContent.btnLabel}</span>
+          </button>
+        </div>
+      </div>
+    </>
   );
 }

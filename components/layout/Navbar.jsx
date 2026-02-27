@@ -1,6 +1,6 @@
 "use client";
-import { useState, useRef } from "react";
-import { usePathname } from "next/navigation";
+import { useState, useRef, useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import Dropdown from "../ui/Dropdown";
 import NavItem from "../ui/NavItem";
 import Link from "next/link";
@@ -8,6 +8,7 @@ import BookNowButton from '../ui/BookNowButton';
 import { useCart } from "@/components/cart/SessionCartProvider";
 import ThemeToggle from "../ui/ThemeToggle";
 import LanguageToggle from "../ui/LanguageToggle";
+import { authAPI } from "@/lib/api/experiences";
 
 function CartIcon() {
   const { items } = useCart();
@@ -39,12 +40,64 @@ function CartIcon() {
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [openDropdown, setOpenDropdown] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [profileMenuOpen, setProfileMenuOpen] = useState(false);
 
   const timeoutRef = useRef(null);
+  const profileMenuRef = useRef(null);
   const closeMobileMenu = () => setMobileMenuOpen(false);
+
+  const refreshAuth = async () => {
+    const token = typeof window !== "undefined" ? localStorage.getItem("auth_token") : null;
+    if (!token) {
+      setIsLoggedIn(false);
+      return;
+    }
+
+    try {
+      const me = await authAPI.getCurrentUser();
+      setIsLoggedIn(!!me?.user?.user_id);
+    } catch {
+      setIsLoggedIn(false);
+    }
+  };
+
+  useEffect(() => {
+    refreshAuth();
+
+    const handler = () => refreshAuth();
+    window.addEventListener("auth:changed", handler);
+    return () => window.removeEventListener("auth:changed", handler);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const onMouseDown = (e) => {
+      if (!profileMenuOpen) return;
+      const el = profileMenuRef.current;
+      if (!el) return;
+      if (!el.contains(e.target)) setProfileMenuOpen(false);
+    };
+
+    document.addEventListener("mousedown", onMouseDown);
+    return () => document.removeEventListener("mousedown", onMouseDown);
+  }, [profileMenuOpen]);
+
+  const handleLogout = async () => {
+    try {
+      await authAPI.logout();
+    } catch {
+      // ignore
+    }
+
+    localStorage.removeItem("auth_token");
+    setProfileMenuOpen(false);
+    window.dispatchEvent(new Event("auth:changed"));
+    router.push("/");
+  };
 
   const handleMouseEnter = (dropdownName) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -152,15 +205,58 @@ export default function Navbar() {
           <BookNowButton className="hidden sm:block" />
 
           {/* Dynamic Login/Profile Link */}
-          <Link href={isLoggedIn ? "/community/player-profile" : "/login"}>
-            <div className="relative group">
-              <img
-                src="/logos/profile.png"
-                alt="profile icon"
-                className={`h-8 w-8 sm:h-9 sm:w-9 border rounded transition-all cursor-pointer shadow-md ${isLoggedIn ? 'border-green-500 shadow-green-500/20' : 'border-[#007EC6] hover:border-[#38C2D9] shadow-[#38C2D9]/20'}`}
-              />
+          {isLoggedIn ? (
+            <div className="relative" ref={profileMenuRef}>
+              <button
+                type="button"
+                onClick={() => setProfileMenuOpen((p) => !p)}
+                className="relative group"
+                aria-label="Open profile menu"
+              >
+                <img
+                  src="/logos/profile.png"
+                  alt="profile icon"
+                  className={`h-8 w-8 sm:h-9 sm:w-9 border rounded transition-all cursor-pointer shadow-md border-green-500 shadow-green-500/20`}
+                />
+              </button>
+
+              {profileMenuOpen ? (
+                <div className="absolute right-0 mt-2 w-48 rounded-xl border border-white/10 bg-[#0a0a0a]/95 backdrop-blur-md shadow-2xl overflow-hidden">
+                  <Link
+                    href="/community/player-profile"
+                    onClick={() => setProfileMenuOpen(false)}
+                    className="block px-4 py-3 text-sm text-white/90 hover:bg-white/5"
+                  >
+                    Profile
+                  </Link>
+                  <Link
+                    href="/community/player-profile/settings"
+                    onClick={() => setProfileMenuOpen(false)}
+                    className="block px-4 py-3 text-sm text-white/90 hover:bg-white/5"
+                  >
+                    Edit Settings
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={handleLogout}
+                    className="w-full text-left px-4 py-3 text-sm text-pink-300 hover:bg-white/5"
+                  >
+                    Logout
+                  </button>
+                </div>
+              ) : null}
             </div>
-          </Link>
+          ) : (
+            <Link href="/login">
+              <div className="relative group">
+                <img
+                  src="/logos/profile.png"
+                  alt="profile icon"
+                  className="h-8 w-8 sm:h-9 sm:w-9 border rounded transition-all cursor-pointer shadow-md border-[#007EC6] hover:border-[#38C2D9] shadow-[#38C2D9]/20"
+                />
+              </div>
+            </Link>
+          )}
 
           {/* Mobile Menu Button */}
           <button

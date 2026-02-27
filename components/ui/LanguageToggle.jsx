@@ -29,15 +29,7 @@ export default function LanguageToggle() {
     <button
       onClick={toggleLanguage}
       disabled={isPending}
-      className="
-        border border-gray-300 dark:border-gray-700
-        px-3 py-2
-        text-sm
-        hover:border-[#38C2D9]
-        transition
-        disabled:opacity-50
-        disabled:cursor-not-allowed
-      "
+      className="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm hover:border-[#38C2D9] transition disabled:opacity-50 disabled:cursor-not-allowed"
       aria-label={`Switch to ${currentLocale === 'en' ? 'Arabic' : 'English'}`}
     >
       {currentLocale === 'en' ? 'العربية' : 'English'}
