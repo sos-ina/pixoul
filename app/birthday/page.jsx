@@ -1,16 +1,21 @@
+"use client";
+
+import { useState } from "react";
 import Hero from "@/components/ui/Hero";
 import Title from "@/components/ui/Title";
 import CallToActionBanner from "@/components/ui/CTA";
 import ExploreGrid from '@/components/ui/ExploreGrid';
 
-//import BlurModal from "@/components/ui/BlurModal";
-//import BirthdayBookingForm from "@/components/forms/BirthdayBookingForm";
 
-export const metadata = {
-  title: "Birthday Parties | Pixoul Gaming",
-};
+//import BlurModal from "@/components/ui/BlurModal";
+import BirthdayBookingForm from "@/components/forms/BirthdayBookingForm";
+
+//export const metadata = {
+  //title: "Birthday Parties | Pixoul Gaming",
+//};
 
 export default function BirthdayPartiesPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   // Venue Cards (links to existing venue pages)
   const venues = [
     {
@@ -38,22 +43,20 @@ export default function BirthdayPartiesPage() {
 
   // Birthday Packages Preview
   const packages = [
-    {
-      title: "Starter Party Pack",
-      description: "Perfect for small groups with VR + arcade access.",
-    },
-    {
-      title: "MegaVerse Birthday Experience",
-      description:
-        "Step into Pixoul’s VR storyline with immersive adventures and characters.",
-    },
-    {
-      title: "VIP Premium Celebration",
-      description:
-        "Private lounge, catering upgrades, premium support, and unforgettable luxury.",
-    },
-  ];
-
+  {
+    title: "Weekday Birthday Bash",
+    price: "199",
+    unit: "per kid",
+    description: "Celebrate during the week for a high-energy VR and gaming experience at a great value.",
+  },
+  {
+    title: "Weekend Birthday Bash",
+    price: "235",
+    unit: "per kid",
+    description: "The ultimate weekend celebration featuring full access to our immersive adventures and arcade.",
+  },
+];
+  
   return (
     <>
       {/* HERO */}
@@ -70,22 +73,15 @@ export default function BirthdayPartiesPage() {
           </p>
 
           <div className="flex gap-4">
-            <a
-              href="/session-cart"
-              className="
-                px-8 py-3
-                bg-[#38C2D9]
-                dark:text-black text-white
-                font-semibold
-                hover:bg-[#2fa8bb]
-                transition
-              "
-            >
-              Build Your Party
-            </a>
+             <button
+          onClick={() => setIsModalOpen(true)}
+          className="px-8 py-3 bg-[#38C2D9]"
+          >
+          Build Your Party
+        </button>
 
-            <a
-              href="/events/hall"
+            <button
+              onClick={() => window.location.href = "#venues"}
               className="
                 px-8 py-3
                 border border-white/20
@@ -95,13 +91,13 @@ export default function BirthdayPartiesPage() {
               "
             >
               Explore Venues
-            </a>
+            </button>
           </div>
         </div>
       </Hero>
 
       {/* ABOUT */}
-      <section className="py-20">
+      <section className="py-12">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <Title align="center">Why Pixoul Birthdays?</Title>
 
@@ -136,44 +132,56 @@ export default function BirthdayPartiesPage() {
       </section>
 
       {/* PACKAGES */}
-      <section className="py-20 dark:bg-black/40 bg-white/40">
-        <div className="max-w-6xl mx-auto px-6">
-          <Title align="center">Birthday Packages</Title>
+      <section className="py-12 dark:bg-black/40 bg-white/40">
+  <div className="max-w-5xl mx-auto px-6">
+    <Title align="center">Birthday Bash Packages</Title>
 
-          <p className="dark:text-gray-400 text-gray-600 text-center max-w-2xl mx-auto mt-4 mb-12">
-            Choose a ready-made celebration package or build your own custom
-            Pixoul birthday experience.
-          </p>
+    <p className="dark:text-gray-400 text-gray-600 text-center max-w-2xl mx-auto mt-4 mb-12">
+      Choose the perfect celebration package for your big day at Pixoul Gaming.
+    </p>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {packages.map((pkg) => (
-              <div
-                key={pkg.title}
-                className="
-                  dark:bg-black/70 bg-white/70
-                  border border-white/10
-                  p-8
-                  hover:border-[#38C2D9]/70
-                  transition
-                  shadow-[0_0_30px_rgba(56,194,217,0.10)]
-                "
-              >
-                <h3 className="text-lg font-semibold text-[#38C2D9] mb-3">
-                  {pkg.title}
-                </h3>
-                <p className="text-sm dark:text-gray-200 text-gray-600 leading-relaxed">
-                  {pkg.description}
-                </p>
-              </div>
-            ))}
+    {/* Changed grid-cols-3 to grid-cols-2 since we only have two packages */}
+    <div className="grid md:grid-cols-2 gap-8">
+      {packages.map((pkg) => (
+        <div
+          key={pkg.title}
+          className="
+            dark:bg-black/70 bg-white/70 
+            border border-white/10 
+            p-10 /* Increased padding for a more premium feel */
+            hover:border-[#38C2D9]/70 
+            transition 
+            shadow-[0_0_30px_rgba(56,194,217,0.10)]
+            flex flex-col items-center text-center
+          "
+        >
+          <h3 className="text-2xl font-bold text-[#38C2D9] mb-4 uppercase tracking-tight">
+            {pkg.title}
+          </h3>
+
+          {/* Price Display */}
+          <div className="flex items-baseline gap-1 mb-6">
+            <span className="text-4xl font-black dark:text-white text-gray-900">
+              {pkg.price} AED
+            </span>
+            <span className="text-sm dark:text-gray-400 text-gray-500 uppercase">
+              / {pkg.unit}
+            </span>
           </div>
+
+          <p className="text-sm dark:text-gray-300 text-gray-600 leading-relaxed mb-8">
+            {pkg.description}
+          </p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* VENUE OPTIONS */}
-      <section className="py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <Title align="center">Choose Your Venue</Title>
+      <section className="py-12" id="venues">
+        <div className="max-w-6xl mx-auto px-6" >
+          <Title align="center">Your Venues</Title>
 
           <p className="dark:text-gray-400 text-gray-600 text-center max-w-2xl mx-auto mt-4 mb-12">
             Birthday parties can be hosted across Pixoul’s premium spaces. Select
@@ -187,15 +195,21 @@ export default function BirthdayPartiesPage() {
       </section>
 
       {/* FINAL CTA */}
+      {/* CTA */}
       <CallToActionBanner
         title="Ready to Celebrate at Pixoul?"
         highlight="at Pixoul?"
-        description="Build your birthday session today or contact our events team for custom packages."
+        description="Build your birthday session today."
         primaryAction={{
           label: "Book For Your Birthday",
-          href: "/birthday/form",
+          onClick: () => setIsModalOpen(true),
         }}
       />
+
+      {/* MODAL */}
+      {isModalOpen && (
+        <BirthdayBookingForm onClose={() => setIsModalOpen(false)} />
+      )}
     </>
   );
 }

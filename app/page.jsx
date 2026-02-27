@@ -94,7 +94,7 @@ export default function Home() {
         <div className="flex flex-wrap gap-4 justify-center">
 
           {/* Primary CTA */}
-          <Link href="/"><BookNowButton className="px-8 py-4 text-base" /></Link>
+          <Link href="/mission-bundles"><BookNowButton className="px-8 py-4 text-base" /></Link>
 
           {/* Secondary CTA */}
           <Link href="/experience/all">
@@ -123,9 +123,10 @@ export default function Home() {
       <ExploreGrid items={exploreItems} />
 
 
-      
+      <div className="py-12">
       <Title align="center">Inside the Pixoul Experience</Title>
       <ImageCarousel items={carouselItems} />
+     </div> 
 
       <CallToActionBanner
       title="READY TO PLAY?"

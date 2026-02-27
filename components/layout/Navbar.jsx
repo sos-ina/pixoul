@@ -41,9 +41,16 @@ export default function Navbar() {
   const pathname = usePathname();
   const [openDropdown, setOpenDropdown] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const timeoutRef = useRef(null);
-  const closeMobileMenu = () => setMobileMenuOpen(false);
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+    setOpenDropdown(null);
+  };
+  const toggleDropdown = (dropdownName) => {
+    setOpenDropdown((prev) => (prev === dropdownName ? null : dropdownName));
+  };
 
   const handleMouseEnter = (dropdownName) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -133,6 +140,9 @@ export default function Navbar() {
                 <Link href="/plan-your-visit/how-it-works" onClick={() => setOpenDropdown(null)} className="dropdown-item block">How Pixoul Works</Link>
                 <Link href="/plan-your-visit/pricing" onClick={() => setOpenDropdown(null)} className="dropdown-item block">Pricing</Link>
                 <Link href="/plan-your-visit/faqs" onClick={() => setOpenDropdown(null)} className="dropdown-item block">FAQs</Link>
+                <Link href="/plan-your-visit/mission-vision" onClick={() => setOpenDropdown(null)} className="dropdown-item block">Mission & Vision</Link>
+                <Link href="/plan-your-visit/our-story" onClick={() => setOpenDropdown(null)} className="dropdown-item block">Our Story</Link>
+                <Link href="/plan-your-visit/reach" onClick={() => setOpenDropdown(null)} className="dropdown-item block">Contact Us</Link>
               </Dropdown>
             </NavItem>
           </div>

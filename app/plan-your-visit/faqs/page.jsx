@@ -78,7 +78,14 @@ export default function FAQPage() {
         <div className="space-y-12">
           {faqData.map((section, sIdx) => (
             <div key={sIdx}>
-              <h3 className="text-[#38C2D9] text-[10px] font-black uppercase tracking-widest mb-6 border-b dark:border-white/10 border-black/10 pb-2">
+              <h3 className="
+              text-[#38C2D9] 
+              text-[10px] 
+              font-black 
+              uppercase 
+              tracking-widest mb-6 
+              border-b 
+              dark:border-white/10 border-black/10 pb-2">
                 {section.category}
               </h3>
               <div className="space-y-4">

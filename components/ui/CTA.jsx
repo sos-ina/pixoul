@@ -8,7 +8,7 @@ export default function CallToActionBanner({
   children,
 }) {
   return (
-    <section className="py-15">
+    <section className="py-12">
       <div className="max-w-7xl mx-auto px-6">
 
         <div
@@ -51,22 +51,42 @@ export default function CallToActionBanner({
           {/* Actions */}
           <div className="flex justify-center gap-4">
             {primaryAction && (
-              <Link
-                href={primaryAction.href}
-                className="
-                  px-10 py-4
-                  text-lg
-                  font-semibold
-                  border border-[#38C2D9]
-                  text-black
-                  dark:text-white
-                  rounded-none
-                  hover:bg-[#38C2D9]/10
-                  transition
-                "
-              >
-                {primaryAction.label}
-              </Link>
+              primaryAction.onClick ? (
+                <button
+                  onClick={primaryAction.onClick}
+                  type="button"
+                  className="
+                    px-10 py-4
+                    text-lg
+                    font-semibold
+                    border border-[#38C2D9]
+                    text-black
+                    dark:text-white
+                    rounded-none
+                    hover:bg-[#38C2D9]/10
+                    transition
+                  "
+                >
+                  {primaryAction.label}
+                </button>
+              ) : (
+                <Link
+                  href={primaryAction.href}
+                  className="
+                    px-10 py-4
+                    text-lg
+                    font-semibold
+                    border border-[#38C2D9]
+                    text-black
+                    dark:text-white
+                    rounded-none
+                    hover:bg-[#38C2D9]/10
+                    transition
+                  "
+                >
+                  {primaryAction.label}
+                </Link>
+              )
             )}
 
             {/* Optional extra buttons */}

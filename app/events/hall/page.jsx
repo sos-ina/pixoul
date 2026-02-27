@@ -120,7 +120,7 @@ export default function HallPage() {
       
 
       {/* ABOUT */}
-      <section className="py-15">
+      <section className="py-12">
         <div className="max-w-6xl mx-auto px-6">
 
           {/* Text */}
@@ -161,7 +161,7 @@ export default function HallPage() {
       </section>
 
       {/* SERVICES GRID */}
-      <section className="py-15">
+      <section className="py-12">
         <div className="max-w-6xl mx-auto px-6 ">
           <h2 className="text-3xl font-bold mb-12 text-center">
             Event Services Included
@@ -208,7 +208,7 @@ export default function HallPage() {
       />
 
       {/* GALLERY */}
-      <section className="py-15">
+      <section className="py-12">
         <div>
           <Title align="center">Gallery</Title>
           <ImageCarousel items={galleryImages} />

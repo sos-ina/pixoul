@@ -16,7 +16,7 @@ export default function ImageCarousel({ items }) {
   const activeItem = items[current];
 
   return (
-    <section className="relative w-full h-[70vh] overflow-hidden">
+    <section className="relative w-full h-[70vh] overflow-hidden py-12">
 
       {/* Image */}
       <img

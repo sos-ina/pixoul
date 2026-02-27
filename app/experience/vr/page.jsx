@@ -248,10 +248,11 @@ export default function VrGamesPage(){
         ]}
         storyHref="/experience/vr/story"
       />
-
+        <div className='py-12' >
         <Title align="center">Our VR Games</Title>
 
         <GameGrid experiences={experiences} />
+        </div>
 
 
         <CallToActionBanner

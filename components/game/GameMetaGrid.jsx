@@ -2,7 +2,7 @@ import GameMetaCard from "./GameMetaCard";
 
 export default function GameMetaGrid({ meta }) {
   return (
-    <section className="py-15">
+    <section className="py-12">
       <div className="max-w-5xl mx-auto px-6">
 
         <div className="
