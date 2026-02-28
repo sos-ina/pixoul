@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { intents } from "@/lib/chatbotIntents";
-import ChatBotIcon from "@/public/logos/chat-icon.png";
+import ChatBotIcon from "./Image/ChatBot.png";
 
 
 const GREETING_MESSAGE =
@@ -14,6 +14,9 @@ const FALLBACK_MESSAGE =
 
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api";
+
+const CHAT_API_BASE_URL =
+  process.env.NEXT_PUBLIC_CHAT_API_URL || API_BASE_URL;
 
 function escapeRegExp(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -85,21 +88,29 @@ export default function Chatbot() {
 
     const intent = resolveIntent(userText);
 
-    const shouldCallApi = intent?.type === "recommendation";
+    const wantsNavigation =
+      !!intent?.route &&
+      /\b(go to|take me|open|navigate|show me|bring me)\b/i.test(userText);
+
+    const shouldCallApi = !intent || !intent?.route || !wantsNavigation;
 
     const loadingId = `${Date.now()}-${Math.random().toString(16).slice(2)}`;
 
     setMessages((prev) => {
       const next = [...prev, { from: "user", text: userText }];
 
+      if (intent?.route && wantsNavigation) {
+        return [...next, { from: "bot", text: intent?.response || FALLBACK_MESSAGE }];
+      }
+
       if (shouldCallApi) {
         return [...next, { id: loadingId, from: "bot", text: "Thinking..." }];
       }
 
-      return [...next, { from: "bot", text: intent?.response || FALLBACK_MESSAGE }];
+      return [...next, { from: "bot", text: FALLBACK_MESSAGE }];
     });
 
-    if (intent?.route) {
+    if (intent?.route && wantsNavigation) {
       setTimeout(() => {
         router.push(intent.route);
       }, 150);
@@ -110,15 +121,30 @@ export default function Chatbot() {
 
     setIsLoading(true);
     try {
-      const resp = await fetch(`${API_BASE_URL}/chat`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: userText }),
-      });
+      const history = [...messages, { from: "user", text: userText }]
+        .filter((m) => m?.from && typeof m?.text === "string" && m.text && m.text !== "Thinking...")
+        .slice(-12);
 
-      const data = await resp.json().catch(() => null);
-      const reply = typeof data?.reply === "string" ? data.reply : "";
+      async function fetchChat(baseUrl) {
+        const resp = await fetch(`${baseUrl}/chat`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: userText, history }),
+        });
 
+        const data = await resp.json().catch(() => null);
+        const reply = typeof data?.reply === "string" ? data.reply : "";
+        return { ok: resp.ok, reply };
+      }
+
+      let result = await fetchChat(CHAT_API_BASE_URL);
+      if (!result?.ok || !result?.reply) {
+        if (API_BASE_URL && API_BASE_URL !== CHAT_API_BASE_URL) {
+          result = await fetchChat(API_BASE_URL);
+        }
+      }
+
+      const reply = result?.reply || "";
       if (!reply) throw new Error("chat_failed");
 
       setMessages((prev) =>

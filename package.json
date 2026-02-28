@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently -k \"next dev\" \"npm run backend:dev\"",
+    "dev": "concurrently \"next dev\" \"npm run backend:dev\" \"npm run chatbot:dev\"",
     "backend:dev": "node --watch Backend/server.js",
+    "chatbot:dev": "py -m uvicorn --app-dir python-chatbot main:app --reload --port 8000",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
