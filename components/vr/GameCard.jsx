@@ -40,7 +40,7 @@ export default function GameCard({ experience }) {
       className="
         group relative 
         overflow-hidden
-        dark:bg-gradient-to-br dark:from-black dark:via-[#0a1f2d] dark:to-black
+        dark:bg-gradient-to-br dark:from-black dark:via-[#0b1c1f] dark:to-black
         bg-[#F1F5F9]
         border border-white/10
         transition-all duration-500 ease-out

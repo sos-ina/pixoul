@@ -52,7 +52,7 @@ export default function MissionVision() {
           </div>
 
           {/* Vision */}
-          <div className="relative p-12 dark:bg-[#111] bg-black/5 border border-white/10 rounded-sm overflow-hidden group hover:border-[#38C2D9]/50 transition-all">
+          <div className="relative p-12 dark:bg-[#111] bg-black/5 border border-white/10 rounded-none overflow-hidden group hover:border-[#38C2D9]/50 transition-all">
             <div className="absolute top-0 right-0 p-8 italic font-black text-black dark:text-white select-none text-7xl opacity-5">VISION</div>
             <h3 className="text-[#38C2D9] text-2xl font-black italic uppercase mb-6 tracking-widest">Our Vision</h3>
             <p className="text-lg italic font-bold leading-relaxed text-black/70 dark:text-white/80">

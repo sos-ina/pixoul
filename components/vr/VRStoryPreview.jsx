@@ -22,7 +22,7 @@ export default function VRStoryPreview({
           {/* Accent line */}
           <div
             className="
-              absolute top-0 left-1/2 transform -translate-x-1/2 h-[2px] w-32
+              absolute top-0 left-1/19 transform -translate-x-1/2 h-[2px] w-32
               bg-gradient-to-r from-[#38C2D9] to-transparent
             "
           />

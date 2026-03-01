@@ -58,19 +58,19 @@ export default function HowItWorks() {
         <StoryTimeline />
 
         {/* Call to Action Section */}
-        <div className="bg-black/5 dark:bg-gradient-to-br dark:from-[#111] dark:to-black border border-black/10 dark:border-white/10 rounded-[3rem] p-12 flex flex-col md:flex-row items-center justify-between gap-8 mt-20">
+        <div className="bg-black/5 dark:bg-gradient-to-br dark:from-[#111] dark:to-black border border-black/10 dark:border-white/10 rounded-none p-12 flex flex-col md:flex-row items-center justify-between gap-8 mt-20">
           <div className="text-center md:text-left">
             <h2 className="mb-2 text-3xl italic font-black uppercase">Ready to Join the Resistance?</h2>
             <p className="text-sm text-black/60 dark:text-white/70">Experience double the immersion of any other hub in the region.</p>
           </div>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/mission-bundles">
-              <button className="bg-[#38C2D9] text-black px-10 py-4 rounded-2xl font-black uppercase text-xs hover:scale-105 transition-all italic">
+              <button className="bg-[#38C2D9] text-black px-10 py-4 rounded-none font-black uppercase text-xs hover:scale-105 transition-all italic">
                 View Pricing
               </button>
             </Link>
             <Link href="/community/challenges">
-              <button className="px-10 py-4 text-xs italic font-black text-black dark:text-white uppercase transition-all border bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/10 rounded-2xl">
+              <button className="px-10 py-4 text-xs italic font-black text-black dark:text-white uppercase transition-all border bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/10 rounded-none">
                 Challenge Hub
               </button>
             </Link>

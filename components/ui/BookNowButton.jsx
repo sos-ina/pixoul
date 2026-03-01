@@ -9,7 +9,7 @@ export default function BookNowButton({ className = "" }) {
       onClick={() => router.push('/mission-bundles')} // Pointing to your new page
       className={`
         relative
-        px-4 py-2
+        px-3 py-1.5
         bg-[#38C2D9] 
         dark:text-black text-black
         font-black
@@ -33,7 +33,7 @@ export default function BookNowButton({ className = "" }) {
       {/* Shimmer Effect */}
       <span className="absolute inset-0 transition-transform duration-500 -translate-x-full pointer-events-none bg-white/20 group-hover:translate-x-full"></span>
 
-      <span className="relative z-10">View Packages</span>
+      <span className="relative z-10">Packages</span>
     </button>
   );
 }

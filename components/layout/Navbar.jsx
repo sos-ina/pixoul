@@ -12,7 +12,7 @@ import { authAPI } from "@/lib/api/experiences";
 
 const LanguageToggle = dynamic(() => import("../ui/LanguageToggle"), {
   ssr: false,
-  loading: () => <div className="w-[88px] h-[42px]" aria-hidden="true" />,
+  loading: () => <div className="w-14 h-9 shrink-0" aria-hidden="true" />,
 });
 
 function CartIcon() {
@@ -23,7 +23,7 @@ function CartIcon() {
       <img
         src="/logos/cart.png"
         alt="cart"
-        className="h-8 w-8 sm:h-9 sm:w-9 border border-[#007EC6] rounded"
+        className="h-7 w-7 sm:h-8 sm:w-8 border border-[#007EC6] rounded shrink-0"
       />
 
       {items.length > 0 && (
@@ -124,28 +124,22 @@ export default function Navbar() {
     >
       
 
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 h-[80px] flex items-center justify-between overflow-visible
-      ">
+      <div className="w-full max-w-[100%] mx-auto px-3 sm:px-4 lg:px-6 h-[72px] flex items-center justify-between gap-2 min-w-0">
 
-        {/* Logo */}
+        {/* Logo + Virtual Tour */}
         <div className="flex items-center gap-2 flex-shrink-0">
           <Link href="/">
-            <img src="/logos/Pixoul Logo.ico" alt="Pixoul Logo" 
-            className="h-[110px] w-auto object-contain -translate-y-2 flex-shrink-0" />
+            <img src="/logos/Pixoul Logo .png" alt="Pixoul Logo" 
+            className="h-[42px] w-auto object-contain flex-shrink-0" />
           </Link>
-
-        </div>
-
-        <div className="flex items-center gap-2 flex-shrink-0 px-2">
-          <Link href="/virtual-tour">
-          <img src="/logos/360 icon.png" alt="3D icon" 
-          className="h-8 w-8 sm:h-9 sm:w-9 border border-[#007EC6] rounded cursor-pointer" />
+          <Link href="/virtual-tour" className="flex-shrink-0">
+            <img src="/logos/360 icon.png" alt="3D icon" 
+            className="h-7 w-7 sm:h-8 sm:w-8 border border-[#007EC6] rounded cursor-pointer" />
           </Link>
         </div>
-       
 
         {/* Desktop Navigation Links */}
-        <ul className="hidden lg:flex flex-1 justify-center items-center gap-4 lg:gap-5 xl:gap-7 text-sm xl:text-base">
+        <ul className="hidden lg:flex flex-1 min-w-0 justify-center items-center gap-2 lg:gap-3 xl:gap-4 text-xs sm:text-sm">
           <NavItem href="/" label="Home" isActive={pathname === "/"} />
 
           {/* Experiences */}
@@ -200,7 +194,6 @@ export default function Navbar() {
                 <Link href="/plan-your-visit/how-it-works" onClick={() => setOpenDropdown(null)} className="dropdown-item block">How Pixoul Works</Link>
                 <Link href="/plan-your-visit/pricing" onClick={() => setOpenDropdown(null)} className="dropdown-item block">Pricing</Link>
                 <Link href="/plan-your-visit/faqs" onClick={() => setOpenDropdown(null)} className="dropdown-item block">FAQs</Link>
-                <Link href="/plan-your-visit/mission-vision" onClick={() => setOpenDropdown(null)} className="dropdown-item block">Mission & Vision</Link>
                 <Link href="/plan-your-visit/our-story" onClick={() => setOpenDropdown(null)} className="dropdown-item block">Our Story</Link>
                 <Link href="/plan-your-visit/reach" onClick={() => setOpenDropdown(null)} className="dropdown-item block">Contact Us</Link>
                 <Link href="/plan-your-visit/facilities" onClick={() => setOpenDropdown(null)} className="dropdown-item block">Facilities</Link> 
@@ -210,9 +203,12 @@ export default function Navbar() {
         </ul>
 
         {/* Right Buttons */}
-        <div className="flex items-center gap-2 sm:gap-3 md:gap-4 px-2 flex-shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-2 lg:gap-3 flex-shrink-0">
+          <div className="hidden sm:flex items-center gap-1.5">
+            <ThemeToggle />
+            <LanguageToggle />
+          </div>
           <CartIcon />
-          {/*<BookNowButton className="hidden sm:block" />*/}
           <BookNowButton />
 
           {/* Dynamic Login/Profile Link */}
@@ -227,7 +223,7 @@ export default function Navbar() {
                 <img
                   src="/logos/profile.png"
                   alt="profile icon"
-                  className={`h-8 w-8 sm:h-9 sm:w-9 border rounded transition-all cursor-pointer shadow-md border-green-500 shadow-green-500/20`}
+                  className="h-7 w-7 sm:h-8 sm:w-8 border rounded transition-all cursor-pointer shadow-md border-green-500 shadow-green-500/20 shrink-0"
                 />
               </button>
 
@@ -263,7 +259,7 @@ export default function Navbar() {
                 <img
                   src="/logos/profile.png"
                   alt="profile icon"
-                  className="h-8 w-8 sm:h-9 sm:w-9 border rounded transition-all cursor-pointer shadow-md border-[#007EC6] hover:border-[#38C2D9] shadow-[#38C2D9]/20"
+                  className="h-7 w-7 sm:h-8 sm:w-8 border rounded transition-all cursor-pointer shadow-md border-[#007EC6] hover:border-[#38C2D9] shadow-[#38C2D9]/20 shrink-0"
                 />
               </div>
             </Link>
@@ -283,10 +279,6 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-  <div className="flex gap-4 justify-end px-4 sm:px-6 lg:px-8 max-w-screen-xl mx-auto">
-        <ThemeToggle />
-        <LanguageToggle />
-      </div>
       {/* Mobile Menu */}
       <div className=
       {`
@@ -301,6 +293,10 @@ export default function Navbar() {
     transition-all duration-300 
     ${mobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}
   `}>
+        <div className="flex sm:hidden items-center gap-2 px-4 py-3 border-b border-black/10 dark:border-white/10">
+          <ThemeToggle />
+          <LanguageToggle />
+        </div>
         <ul className="flex flex-col px-4 py-4 gap-2">
           <li>
             <Link href="/" onClick={closeMobileMenu}>
@@ -331,25 +327,25 @@ export default function Navbar() {
             {openDropdown === "experiences" && (
               <div className="pl-4 pb-2">
                 <Link href="/experience/vr" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9]">VR Games</p>
+                  <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9]">VR Games</span>
                 </Link>
                 <Link href="/experience/pc" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9]">PC Games</p>
+                  <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9]">PC Games</span>
                 </Link>
                 <Link href="/experience/retro" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9]">Retro Games</p>
+                  <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9]">Retro Games</span>
                 </Link>
                 <Link href="/experience/console" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9]">Console Games</p>
+                  <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9]">Console Games</span>
                 </Link>
                 <Link href="/experience/arcade" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9]">Arcade Games</p>
+                  <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9]">Arcade Games</span>
                 </Link>
                 <Link href="/experience/sport" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9]">Sport</p>
+                  <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9]">Sport</span>
                 </Link>
                 <Link href="/experience/all" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9]">All Games</p>
+                  <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9]">All Games</span>
                 </Link>
               </div>
             )}
@@ -384,19 +380,19 @@ export default function Navbar() {
             {openDropdown === "eventsGroups" && (
               <div className="pl-4 pb-2">
                 <Link href="/events/hall" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">The Hall</p>
+                  <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">The Hall</span>
                 </Link>
                 <Link href="/events/social-room" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Social Room</p>
+                  <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Social Room</span>
                 </Link>
                 <Link href="/events/vip-lounge" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">VIP Lounge</p>
+                  <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">VIP Lounge</span>
                 </Link>
                 <Link href="/events/observation-deck" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Observation Deck</p>
+                  <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Observation Deck</span>
                 </Link>
                 <Link href="/events/school-visit" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">School Visit</p>
+                  <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">School Visit</span>
                 </Link>
               </div>
             )}
@@ -423,16 +419,16 @@ export default function Navbar() {
             {openDropdown === "community" && (
               <div className="pl-4 pb-2">
                 <Link href="/community/player-profile" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Player Profile</p>
+                  <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Player Profile</span>
                 </Link>
                 <Link href="/community/reviews" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Reviews</p>
+                  <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Reviews</span>
                 </Link>
                 <Link href="/community/forums" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Forums</p>
+                  <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Forums</span>
                 </Link>
                 <Link href="/community/challenges" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Challenges</p>
+                  <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Challenges</span>
                 </Link>
               </div>
             )}
@@ -459,25 +455,22 @@ export default function Navbar() {
             {openDropdown === "planYourVisit" && (
               <div className="pl-4 pb-2">
                 <Link href="/plan-your-visit/how-it-works" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">How Pixoul Works</p>
+                  <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">How Pixoul Works</span>
                 </Link>
                 <Link href="/plan-your-visit/pricing" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Pricing</p>
+                  <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Pricing</span>
                 </Link>
                 <Link href="/plan-your-visit/faqs" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">FAQs</p>
-                </Link>
-                <Link href="/plan-your-visit/mission-vision" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Mission & Vision</p>
+                  <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">FAQs</span>
                 </Link>
                 <Link href="/plan-your-visit/our-story" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Our Story</p>
+                  <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Our Story</span>
                 </Link>
                 <Link href="/plan-your-visit/reach" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Contact Us</p>
+                  <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Contact Us</span>
                 </Link>
                 <Link href="/plan-your-visit/facilities" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Facilities</p>
+                  <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Facilities</span>
                 </Link>
               </div>
             )}

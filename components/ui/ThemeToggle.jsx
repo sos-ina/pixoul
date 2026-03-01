@@ -11,7 +11,7 @@ export default function ThemeToggle() {
   useEffect(() => setMounted(true), []);
 
   if (!mounted) {
-    return <div className="p-2 w-[42px] h-[42px]" />; // Placeholder to prevent layout shift
+    return <div className="w-9 h-9 shrink-0" aria-hidden="true" />; // Placeholder to prevent layout shift
   }
 
   const isDark = resolvedTheme === "dark";
@@ -25,18 +25,10 @@ export default function ThemeToggle() {
     <button
       type="button"
       onClick={handleToggle}
-      className="
-      px-4 py-2 
-      border 
-      border-gray-300 
-      dark:border-gray-700 rounded 
-      bg-white/60 
-      dark:bg-black/60
-      hover:bg-gray-100 
-      dark:hover:bg-gray-800"
+      className="p-2 border border-gray-300 dark:border-gray-700 rounded bg-white/60 dark:bg-black/60 hover:bg-gray-100 dark:hover:bg-gray-800 shrink-0"
       aria-label="Toggle theme"
     >
-      {isDark ? <Moon  size={18} /> : <Sun size={18} />}
+      {isDark ? <Moon size={16} /> : <Sun size={16} />}
     </button>
   );
 }

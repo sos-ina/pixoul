@@ -123,7 +123,7 @@ export default function LanguageToggle() {
   };
 
   if (!mounted) {
-    return <div className="w-[88px] h-[42px]" aria-hidden="true" />;
+    return <div className="w-14 h-9 shrink-0" aria-hidden="true" />;
   }
 
   return (
@@ -136,19 +136,7 @@ export default function LanguageToggle() {
       <button
         onClick={switchLanguage}
         translate="no"
-        className="notranslate
-          border 
-          border-gray-300 
-          dark:border-gray-700
-          bg-white/60
-          dark:bg-black/60
-          px-4 py-2
-          text-sm font-medium
-          hover:border-[#38C2D9]
-          hover:text-[#38C2D9]
-          transition-all
-          rounded
-        "
+        className="notranslate border border-gray-300 dark:border-gray-700 bg-white/60 dark:bg-black/60 px-2.5 py-1.5 text-xs font-medium hover:border-[#38C2D9] hover:text-[#38C2D9] transition-all rounded shrink-0"
         aria-label={lang === 'en' ? 'Switch language to Arabic' : 'Switch language to English'}
       >
         <span className="notranslate" translate="no">

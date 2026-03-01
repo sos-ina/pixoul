@@ -23,9 +23,9 @@ export default function Footer() {
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-2">
             <img
-              src="/logos/Pixoul Logo.ico"
+              src="/logos/Pixoul Logo .png"
               alt="Pixoul Logo"
-              className="h-[110px] sm:h-[130px] w-auto object-contain"
+              className="h-[42px] w-auto object-contain"
             />
           </div>
 
@@ -146,21 +146,10 @@ export default function Footer() {
       <input
         type="email"
         placeholder="Your email"
-        className="
-          w-full px-3 py-2 rounded-l
-          bg-white dark:bg-black
-          border border-black/10 dark:border-white/20
-          focus:outline-none focus:ring-2 focus:ring-[#38C2D9]/40
-          text-sm
-        "
+        className="w-full px-3 py-2 rounded-l bg-white dark:bg-black border border-black/10 dark:border-white/20 focus:outline-none focus:ring-2 focus:ring-[#38C2D9]/40 text-sm"
       />
       <button
-        className="
-          px-4 py-2 rounded-r
-          bg-[#38C2D9] text-black
-          text-sm font-semibold
-          hover:opacity-90 transition
-        "
+        className="px-4 py-2 rounded-r bg-[#38C2D9] text-black text-sm font-semibold hover:opacity-90 transition"
       >
         Send
       </button>
@@ -187,13 +176,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   aria-label={s.name}
                   title={s.name}
-                  className="
-                    inline-flex items-center justify-center
-                    h-10 w-10 rounded-none
-                    border border-black/10 dark:border-white/10
-                    bg-black/[0.02] dark:bg-white/[0.04]
-                    hover:scale-[1.04] transition
-                  "
+                  className="inline-flex items-center justify-center h-10 w-10 rounded-none border border-black/10 dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.04] hover:scale-[1.04] transition"
                 >
                   <img
                     src={s.icon}

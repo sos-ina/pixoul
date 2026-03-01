@@ -19,7 +19,7 @@ export default function AppChrome({ children }) {
   return (
     <>
       {!hideChrome && <Navbar />}
-      <main className={hideChrome ? "" : "pt-20"}>{children}</main>
+      <div className={hideChrome ? "" : "pt-[72px]"}>{children}</div>
       {!hideChrome && <Footer />}
     </>
   );

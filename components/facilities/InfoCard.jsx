@@ -1,4 +1,4 @@
-function InfoCard({ title, items }) {
+export default function InfoCard({ title, items }) {
   return (
     <div className="rounded-none border border-black/10 dark:border-white/10 bg-white/70 dark:bg-white/[0.04] backdrop-blur-md shadow-sm p-6 sm:p-7">
       <h3 className="text-lg sm:text-xl font-semibold text-black dark:text-white">

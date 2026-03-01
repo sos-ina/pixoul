@@ -48,9 +48,9 @@ export default function ThreadPage() {
         </div>
 
         {/* --- Main Topic Post --- */}
-        <div className="bg-black/5 dark:bg-white/5 border border-[#38C2D9]/20 rounded-[2.5rem] p-8 mb-10 shadow-[0_0_30px_rgba(56,194,217,0.05)]">
+        <div className="bg-black/5 dark:bg-white/5 border border-[#38C2D9]/20 rounded-none p-8 mb-10 shadow-[0_0_30px_rgba(56,194,217,0.05)]">
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-12 h-12 bg-[#38C2D9] rounded-2xl flex items-center justify-center font-black text-black">
+            <div className="w-12 h-12 bg-[#38C2D9] rounded-none flex items-center justify-center font-black text-black">
               SX
             </div>
             <div>
@@ -96,11 +96,11 @@ export default function ThreadPage() {
             value={replyText}
             onChange={(e) => setReplyText(e.target.value)}
             placeholder="Write your reply..."
-            className="w-full bg-black/40 border border-white/5 rounded-2xl p-5 h-32 text-white focus:border-[#38C2D9] outline-none transition-all resize-none mb-4 placeholder:text-gray-700"
+            className="w-full bg-black/40 border border-white/5 rounded-none p-5 h-32 text-white focus:border-[#38C2D9] outline-none transition-all resize-none mb-4 placeholder:text-gray-700"
           />
           
           <div className="flex justify-end">
-            <button className="bg-[#38C2D9] text-black font-black px-10 py-4 rounded-xl text-xs uppercase italic hover:scale-105 transition-all active:scale-95 shadow-[0_0_20px_rgba(56,194,217,0.2)]">
+            <button className="bg-[#38C2D9] text-black font-black px-10 py-4 rounded-none text-xs uppercase italic hover:scale-105 transition-all active:scale-95 shadow-[0_0_20px_rgba(56,194,217,0.2)]">
               Send Reply
             </button>
           </div>

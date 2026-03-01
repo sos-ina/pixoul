@@ -30,7 +30,7 @@ export default function NavItem({
     </>
   );
 
-  const wrapperClass = "relative dark:text-white text-black hover:text-[#38C2D9] cursor-pointer transition-colors text-sm lg:text-sm xl:text-base whitespace-nowrap flex items-center gap-1 py-2 text-black dark:text-white dark:hover:text-[#38C2D9]";
+  const wrapperClass = "relative dark:text-white text-black hover:text-[#38C2D9] cursor-pointer transition-colors text-xs sm:text-sm whitespace-nowrap flex items-center gap-1 py-1.5 text-black dark:text-white dark:hover:text-[#38C2D9]";
 
   return (
     <li className="relative group list-none">
