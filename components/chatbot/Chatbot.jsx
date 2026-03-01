@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { intents } from "@/lib/chatbotIntents";
-import ChatBotIcon from "./Image/ChatBot.png";
+import ChatBotIcon from "@/public/logos/chat-icon.png";
 
 
 const GREETING_MESSAGE =
@@ -164,7 +164,7 @@ export default function Chatbot() {
   }
 
   return (
-    <div className="fixed right-4 top-[60%] -translate-y-1/2 z-[60] fort-lato">
+    <div className="fixed right-4 top-[60%] -translate-y-1/2 z-[60] font-lato">
       <div className="flex flex-col items-center">
         {isOpen && (
           <div className="mb-3 w-[22rem] max-w-[calc(100vw-2rem)] rounded-2xl border border-white/10 dark:bg-black/90 bg-white/90 backdrop-blur-md shadow-2xl">
@@ -194,8 +194,8 @@ export default function Chatbot() {
                 <div
                   className={
                     m.from === "user"
-                      ? "max-w-[85%] rounded-2xl rounded-br-md bg-[#007EC6] px-3 py-2 text-sm dark:text-white text-dark"
-                      : "max-w-[85%] rounded-2xl rounded-bl-md bg-white/10 px-3 py-2 text-sm dark:text-white text-dark"
+                      ? "max-w-[85%] rounded-2xl rounded-br-md bg-[#38C2D9] px-3 py-2 text-sm text-black dark:text-white"
+                      : "max-w-[85%] rounded-2xl rounded-bl-md bg-white/10 px-3 py-2 text-sm text-black dark:text-white"
                   }
                 >
                   {m.text}

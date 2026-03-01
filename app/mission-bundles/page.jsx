@@ -39,15 +39,15 @@ export default function MissionBundlesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white pt-28 px-6 pb-24">
+    <div className="min-h-screen bg-white dark:bg-[#0a0a0a] text-black dark:text-white pt-28 px-6 pb-24">
       <div className="mx-auto max-w-7xl">
         
         {/* Header */}
         <div className="mb-16 text-center">
-          <h1 className="mb-4 text-6xl italic font-black tracking-tighter uppercase">
+          <h1 className="mb-4 text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter uppercase">
             Mission <span className="text-[#38C2D9]">Bundles</span>
           </h1>
-          <p className="text-gray-400 font-bold uppercase tracking-[0.3em] text-xs">
+          <p className="text-black/60 dark:text-white/70 font-bold uppercase tracking-[0.3em] text-xs">
             Top-up your credits & unlock the metaverse
           </p>
         </div>
@@ -57,13 +57,13 @@ export default function MissionBundlesPage() {
           {bundles.map((bundle, idx) => (
             <div 
               key={idx}
-              className="relative transition-all duration-500 border border-white/10 
+              className="relative transition-all duration-500 border border border-black/10 dark:border-white/10 
               group hover:-translate-y-3
               hover:ring-2 hover:ring-[#ffffff] hover:ring-offset-0 hover:shadow-[0_0_10px_#38C2D9]"
             >
               {/* Card Body */}
               <div 
-                className="relative bg-[#111] p-8 h-full border-b-4 transition-all group-hover:shadow-[0_20px_50px_rgba(255,0,229,0.2)]"
+                className="relative bg-white dark:bg-[#111] p-8 h-full border-b-4 transition-all group-hover:shadow-[0_20px_50px_rgba(255,0,229,0.2)]"
                 style={{ 
                   borderBottomColor: bundle.accent,
                   clipPath: 'polygon(0 0, 100% 0, 100% 90%, 85% 100%, 0 100%)' 
@@ -81,14 +81,14 @@ export default function MissionBundlesPage() {
                       {bundle.name.split(' ')[0]} <br/>
                       <span style={{ color: bundle.accent }}>{bundle.name.split(' ').slice(1).join(' ')}</span>
                     </h3>
-                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-8">
+                    <p className="text-[10px] text-black/60 dark:text-white/60 font-bold uppercase tracking-widest mb-8">
                       {bundle.credits}
                     </p>
                   </div>
 
                   <div className="mt-8">
                     <div className="flex items-baseline gap-1 mb-1">
-                      <span className="text-sm italic font-bold text-gray-500">AED</span>
+                      <span className="text-sm italic font-bold text-black/50 dark:text-white/50">AED</span>
                       <span className="text-5xl italic font-black">{bundle.price}</span>
                     </div>
                     <p className="text-[9px] font-black uppercase text-[#38C2D9] mb-6 tracking-wider">
@@ -96,7 +96,7 @@ export default function MissionBundlesPage() {
                     </p>
                     
                     <button 
-                      className="w-full py-4 font-black uppercase text-[10px] tracking-widest italic transition-all border bg-white/7 border-white/23 hover:bg-white hover:text-black"
+                      className="w-full py-4 font-black uppercase text-[10px] tracking-widest italic transition-all border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 hover:bg-white hover:text-black"
                     >
                       Select Bundle
                     </button>

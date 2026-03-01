@@ -49,8 +49,8 @@ export default function AuthCallbackPage() {
   }, [params, router]);
 
   return (
-    <div className="min-h-screen bg-[#0D0D0D] text-white flex items-center justify-center px-6">
-      <div className="max-w-lg w-full text-center border border-white/10 bg-white/5 p-8 rounded-2xl">
+    <div className="min-h-screen bg-white dark:bg-[#0D0D0D] text-black dark:text-white flex items-center justify-center px-6">
+      <div className="max-w-lg w-full text-center border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 p-8 rounded-none">
         <div className="text-sm text-white/70" style={{ fontFamily: "Orbitron, monospace" }}>
           {message}
         </div>

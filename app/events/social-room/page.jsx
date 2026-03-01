@@ -1,17 +1,18 @@
+"use client";
 import Hero from "@/components/ui/Hero";
 import StatGrid from "@/components/ui/StatGrid";
 import CallToActionBanner from "@/components/ui/CTA";
 import ImageCarousel from "@/components/ui/ImageCarousel";
-import BookNowButton from "@/components/ui/BookNowButton";
 import Title from "@/components/ui/Title";
 
 import EventTypeGrid from "@/components/events/EventTypeGrid";
+import { useState } from "react";
+import SocialRoomBookingForm from "@/components/forms/SocialRoomBookingForm";
 
-export const metadata = {
-  title: "Social Room | Pixoul Events",
-};
 
 export default function SocialRoomPage() {
+  const [isBookingFormOpen, setIsBookingFormOpen] = useState(false);
+
   // Stats Data
   const stats = [
     { label: "Capacity", value: "15–25 Guests" },
@@ -106,10 +107,18 @@ export default function SocialRoomPage() {
             <span className="text-[#38C2D9]">SOCIAL ROOM</span>
           </h1>
 
-          <p className="text-gray-300 max-w-2xl mb-10 text-base md:text-lg">
+          <p className="text-black/70 dark:text-gray-300 max-w-2xl mb-10 text-base md:text-lg">
             A relaxed and immersive space built for celebrations, gatherings,
             and unforgettable group moments at Pixoul.
           </p>
+          <div className="flex gap-4">
+             <button
+           onClick={() => setIsBookingFormOpen(true)}
+          className="px-6 py-3 sm:px-8 sm:py-3 rounded-none bg-[#38C2D9] text-black font-semibold hover:brightness-110 transition focus:outline-none focus:ring-2 focus:ring-[#38C2D9]/40"
+          >
+          Request Booking
+        </button>
+        </div>
         </div>
       </Hero>
 
@@ -117,20 +126,20 @@ export default function SocialRoomPage() {
       <StatGrid stats={stats} />
 
       {/* ABOUT */}
-      <section className="py-15">
-        <div className="max-w-6xl mx-auto px-6 text-center max-w-3xl">
-          <h2 className="text-3xl font-semibold mb-6">
+      <section className="py-12 md:py-16 bg-white dark:bg-black/40">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-semibold mb-6 text-black dark:text-white">
             A Space Designed for Connection
           </h2>
 
-          <p className="text-gray-300 leading-relaxed mb-6">
+          <p className="text-black/70 dark:text-gray-300 leading-relaxed mb-6">
             The Social Room is Pixoul’s dedicated venue for smaller events,
             casual celebrations, and private gatherings. Whether you're hosting
             a birthday, meeting friends, or booking a private session, this
             space provides the perfect atmosphere.
           </p>
 
-          <p className="text-gray-400 leading-relaxed mb-10">
+          <p className="text-black/60 dark:text-gray-400 leading-relaxed mb-10">
             Enjoy comfort, immersive lighting, and easy access to Pixoul’s
             gaming experiences — all in one social hub.
           </p>
@@ -138,16 +147,11 @@ export default function SocialRoomPage() {
           {/* EVENT TYPES */}
           <Title align="center">Perfect For</Title>
           <EventTypeGrid types={eventTypes} />
-
-          {/* BOOK BUTTON */}
-          <div className="flex justify-center mt-10">
-            <BookNowButton className="px-10 py-4 text-lg" />
-          </div>
         </div>
       </section>
 
       {/* SERVICES */}
-      <section className="py-15">
+      <section className="py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-bold mb-12 text-center">
             Social Room Features
@@ -158,8 +162,8 @@ export default function SocialRoomPage() {
               <div
                 key={service.title}
                 className="
-                  bg-black/70
-                  border border-white/10
+                  bg-white dark:bg-black/70
+                  border border-black/10 dark:border-white/10
                   p-6
                   rounded-none
                   hover:border-[#38C2D9]/70
@@ -170,7 +174,7 @@ export default function SocialRoomPage() {
                 <h3 className="text-lg font-semibold mb-3 text-[#38C2D9]">
                   {service.title}
                 </h3>
-                <p className="text-sm text-gray-400 leading-relaxed">
+                <p className="text-sm text-black/60 dark:text-gray-400 leading-relaxed">
                   {service.description}
                 </p>
               </div>
@@ -179,19 +183,9 @@ export default function SocialRoomPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <CallToActionBanner
-        title="Host Your Next Gathering at Pixoul"
-        highlight="Social Room"
-        description="A premium space for birthdays, meetups, and unforgettable group nights."
-        primaryAction={{
-          label: "Book the Social Room",
-          href: "/book?venue=social-room",
-        }}
-      />
 
       {/* GALLERY */}
-      <section className="py-15">
+      <section className="py-12 md:py-16 bg-white dark:bg-black/40">
         <div>
           <Title align="center">Gallery</Title>
           <ImageCarousel items={galleryImages} />
@@ -204,10 +198,14 @@ export default function SocialRoomPage() {
         highlight="Pixoul"
         description="Reserve the Social Room and create your own immersive celebration."
         primaryAction={{
-          label: "Reserve Now",
-          href: "/book?venue=social-room",
+          label: "Book the Social Room",
+          onClick: () => setIsBookingFormOpen(true),
         }}
       />
+       {/* MODAL */}
+      {isBookingFormOpen && (
+        <SocialRoomBookingForm onClose={() => setIsBookingFormOpen(false)} />
+      )}
     </>
   );
 }

@@ -62,12 +62,12 @@ export default function BirthdayPartiesPage() {
       {/* HERO */}
       <Hero imageSrc="/images/birthday.jpg" overlay={true}>
         <div className="flex flex-col items-center justify-center h-full text-center px-6">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white dark:text-white">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
             BIRTHDAY PARTIES AT{" "}
             <span className="text-[#38C2D9]">PIXOUL</span>
           </h1>
 
-          <p className="text-gray-300  max-w-2xl mb-10 text-base md:text-lg">
+          <p className="text-white/80 max-w-2xl mb-10 text-base md:text-lg">
             Celebrate your next birthday inside Abu Dhabi’s most immersive VR and
             gaming universe — where parties become adventures.
           </p>
@@ -75,21 +75,14 @@ export default function BirthdayPartiesPage() {
           <div className="flex gap-4">
              <button
           onClick={() => setIsModalOpen(true)}
-          className="px-8 py-3 bg-[#38C2D9]"
+          className="px-6 py-3 sm:px-8 sm:py-3 rounded-none bg-[#38C2D9] text-black font-semibold hover:brightness-110 transition focus:outline-none focus:ring-2 focus:ring-[#38C2D9]/40"
           >
           Build Your Party
         </button>
 
             <button
-              onClick={() => window.location.href = "#venues"}
-              className="
-                px-8 py-3
-                border border-white/20
-                hover:border-[#38C2D9]
-                hover:text-[#38C2D9]
-                transition
-              "
-            >
+              onClick={() => document.getElementById("venues")?.scrollIntoView({ behavior: "smooth" })}
+              className="px-6 py-3 sm:px-8 sm:py-3 rounded-none border border-white/30 text-white hover:border-[#38C2D9] hover:text-[#38C2D9] hover:bg-white/10 transition">
               Explore Venues
             </button>
           </div>
@@ -116,8 +109,8 @@ export default function BirthdayPartiesPage() {
               <div
                 key={point}
                 className="
-                  dark:bg-black/70 bg-white/70
-                  border border-white/10
+                  bg-white/80 dark:bg-black/70
+                  border border-black/10 dark:border-white/10
                   p-6
                   hover:border-[#38C2D9]/70
                   transition
@@ -146,9 +139,9 @@ export default function BirthdayPartiesPage() {
         <div
           key={pkg.title}
           className="
-            dark:bg-black/70 bg-white/70 
-            border border-white/10 
-            p-10 /* Increased padding for a more premium feel */
+            bg-white/80 dark:bg-black/70
+            border border-black/10 dark:border-white/10
+            p-6 sm:p-8 md:p-10 /* Increased padding for a more premium feel */
             hover:border-[#38C2D9]/70 
             transition 
             shadow-[0_0_30px_rgba(56,194,217,0.10)]
@@ -161,7 +154,7 @@ export default function BirthdayPartiesPage() {
 
           {/* Price Display */}
           <div className="flex items-baseline gap-1 mb-6">
-            <span className="text-4xl font-black dark:text-white text-gray-900">
+            <span className="text-3xl sm:text-4xl font-black dark:text-white text-gray-900">
               {pkg.price} AED
             </span>
             <span className="text-sm dark:text-gray-400 text-gray-500 uppercase">
@@ -177,6 +170,19 @@ export default function BirthdayPartiesPage() {
     </div>
   </div>
 </section>
+<div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+ 
+
+  {/* Secondary */}
+  <a
+    href="https://pixoulgaming.com/wp-content/uploads/2025/02/pixoul-birthday-bash-package.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="px-6 py-3 rounded-none border border-[#38C2D9] text-[#38C2D9] font-semibold hover:bg-[#38C2D9] hover:text-black transition text-center"
+  >
+    Download Brochure (PDF)
+  </a>
+</div>
 
       {/* VENUE OPTIONS */}
       <section className="py-12" id="venues">

@@ -213,7 +213,7 @@ export function CartProvider({ children }) {
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-900 rounded-lg"
+                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-900 rounded-none"
               >
                 <X size={24} />
               </button>
@@ -240,7 +240,7 @@ export function CartProvider({ children }) {
                 items.map((item) => (
                   <div
                     key={getCartItemKey(item)}
-                    className="border border-gray-200 dark:border-gray-800 rounded-lg p-4"
+                    className="border border-gray-200 dark:border-gray-800 rounded-none p-4"
                   >
                     <div className="flex gap-4">
                       {/* Image */}

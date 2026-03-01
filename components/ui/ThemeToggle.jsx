@@ -10,18 +10,6 @@ export default function ThemeToggle() {
 
   useEffect(() => setMounted(true), []);
 
-  /* Sync class to <html> so Tailwind dark: works (next-themes does this too; ensure it sticks) */
-  useEffect(() => {
-    if (!mounted) return;
-    const root = document.documentElement;
-    const isDark = resolvedTheme === "dark";
-    if (isDark) {
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-    }
-  }, [mounted, resolvedTheme]);
-
   if (!mounted) {
     return <div className="p-2 w-[42px] h-[42px]" />; // Placeholder to prevent layout shift
   }

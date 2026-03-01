@@ -6,6 +6,7 @@ export default function StatCard({ value, label, description, link }) {
       href={link}
       className={`
         relative
+        rounded-none
         border dark:border-white/10 border-black/10
         dark:bg-black/40 bg-white/40
         backdrop-blur-md

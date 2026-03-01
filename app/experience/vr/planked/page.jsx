@@ -33,12 +33,12 @@ export default function PlankedPage() {
       />
 
       {/* TITLE */}
-      <section className="py-12">
+      <section className="py-12 md:py-16 bg-white dark:bg-[#0a0a0a] text-black dark:text-white">
         <div className="max-w-5xl mx-auto px-6">
           <h1 className="text-4xl font-bold mb-4">
             PLANKED!
           </h1>
-          <p className="dark:text-gray-400 text-gray-700 max-w-2xl">
+          <p className="dark:text-white/70 text-black/70 max-w-2xl">
             A nerve-shredding VR challenge where balance, reflexes, and fear
             collide high above Hexa City.
           </p>

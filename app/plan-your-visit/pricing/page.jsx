@@ -33,16 +33,16 @@ export default function PricingPage() {
   ];
 
   return (
-    <div className="min-h-screen dark:bg-[#0a0a0a] dark:text-white bg-white text-black pt-31 px-6 pb-24">
+    <div className="min-h-screen dark:bg-[#0a0a0a] dark:text-white bg-white text-black pt-28 px-6 pb-24">
       <div className="max-w-6xl mx-auto">
         
         {/* Header */}
         <div className="text-center mb-20">
           <h2 className="text-[#38C2D9] text-xs font-black uppercase tracking-[0.5em] mb-4">Investment</h2>
-          <h1 className="text-7xl font-black  uppercase tracking-tighter mb-6">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-black  uppercase tracking-tighter mb-6">
             Access <span className="text-[#38C2D9]">Tiers</span>
           </h1>
-          <p className="max-w-xl mx-auto dark:text-gray-400 text-gray-500 text-sm leading-relaxed">
+          <p className="max-w-xl mx-auto text-black/60 dark:text-white/70 text-sm leading-relaxed">
             Entry to Pixoul Gaming is free. Choose your mission level below to begin your journey into the metaverse.
           </p>
         </div>
@@ -52,10 +52,10 @@ export default function PricingPage() {
           {priceOptions.map((tier, idx) => (
             <div 
               key={idx} 
-              className={`relative p-10 rounded-[3rem] border transition-all duration-500 ${
+              className={`relative p-10 rounded-none border transition-all duration-500 ${
                 tier.highlight 
-                ? 'bg-[#38C2D9]/5 border-[#38C2D9] shadow-[0_0_40px_rgba(56,194,217,0.1)]' 
-                : 'bg-white/5 dark:border-white/10 border-black/10 dark:hover:border-white/20 hover:border-black/20'
+                ? 'bg-[#38C2D9]/5 dark:bg-[#38C2D9]/10 border-[#38C2D9] shadow-[0_0_40px_rgba(56,194,217,0.1)]' 
+                : 'bg-black/5 dark:bg-white/5 border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20'
               }`}
             >
               {tier.highlight && (
@@ -66,20 +66,20 @@ export default function PricingPage() {
 
               <h3 className="text-2xl font-black italic uppercase mb-2">{tier.title}</h3>
               <div className="flex items-baseline gap-1 mb-8">
-                <span className="text-sm font-bold text-gray-500 italic">AED</span>
+                <span className="text-sm font-bold text-black/60 dark:text-white/70 italic">AED</span>
                 <span className="text-6xl font-black italic">{tier.price}</span>
-                <span className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-2">{tier.unit}</span>
+                <span className="text-xs font-bold text-black/60 dark:text-white/70 uppercase tracking-widest ml-2">{tier.unit}</span>
               </div>
 
               <ul className="space-y-4 mb-10">
                 {tier.features.map((feature, fIdx) => (
-                  <li key={fIdx} className="flex items-center gap-3 text-sm dark:text-gray-300 text-gray-500">
+                  <li key={fIdx} className="flex items-center gap-3 text-sm text-black/60 dark:text-white/70">
                     <span className="text-[#38C2D9]">▶</span> {feature}
                   </li>
                 ))}
               </ul>
 
-              <button className={`w-full py-5 rounded-2xl font-black uppercase text-xs transition-all italic ${
+              <button className={`w-full py-5 rounded-none font-black uppercase text-xs transition-all italic ${
                 tier.highlight 
                 ? 'bg-[#38C2D9] text-black hover:scale-[1.02]' 
                 : 'dark:bg-white/10 dark:text-white dark:hover:bg-white/20 bg-black/10 text-black hover:bg-black/20'
@@ -91,22 +91,22 @@ export default function PricingPage() {
         </div>
 
         {/* Additional Rates (Esports & Retro) */}
-        <div className="bg-white/[0.02] border dark:border-white/5 border-black/10 rounded-[3rem] p-12">
-          <h4 className="text-center text-[10px] font-black uppercase tracking-[0.5em] text-gray-500 mb-10">Other Experiences</h4>
+        <div className="bg-white/[0.02] border dark:border-white/5 border-black/10 rounded-none p-12">
+          <h4 className="text-center text-[10px] font-black uppercase tracking-[0.5em] text-black/60 dark:text-white/70 mb-10">Other Experiences</h4>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             <div className="text-center">
-              <p className="text-gray-400 text-[10px] font-black uppercase mb-1">Retro Zone</p>
+              <p className="text-black/50 dark:text-white/60 text-[10px] font-black uppercase mb-1">Retro Zone</p>
               <p className="text-2xl font-black italic uppercase">Classic Arcade</p>
               <p className="text-[9px] text-[#38C2D9] font-bold mt-2">Pay Per Play</p>
             </div>
-            <div className="text-center border-x border-white/5">
-              <p className="text-gray-400 text-[10px] font-black uppercase mb-1">Esports Academy</p>
+            <div className="text-center border-x border-black/10 dark:border-white/5">
+              <p className="text-black/50 dark:text-white/60 text-[10px] font-black uppercase mb-1">Esports Academy</p>
               <p className="text-2xl font-black italic uppercase">Pro Training</p>
               <p className="text-[9px] text-[#38C2D9] font-bold mt-2">Certified Courses</p>
             </div>
             <div className="text-center">
-              <p className="text-gray-400 text-[10px] font-black uppercase mb-1">Mobile Gaming</p>
-              <p className="text-2xl font-black italic uppercase">Device Rental</p>
+              <p className="text-black/50 dark:text-white/60 text-[10px] font-black uppercase mb-1">Mobile Gaming</p>
+              <p className="text-2xl font-black italic upperca se">Device Rental</p>
               <p className="text-[9px] text-[#38C2D9] font-bold mt-2">High-Spec Mobile</p>
             </div>
           </div>
@@ -115,7 +115,7 @@ export default function PricingPage() {
         {/* FAQ Link Button */}
         <div className="mt-16 text-center">
           <Link href="/plan-your-visit/faqs">
-            <button className="text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-[#38C2D9] transition-colors">
+            <button className="text-[10px] font-black uppercase tracking-widest text-black/60 dark:text-white/70 hover:text-[#38C2D9] transition-colors">
               Have questions about PCR or Age limits? View FAQs →
             </button>
           </Link>

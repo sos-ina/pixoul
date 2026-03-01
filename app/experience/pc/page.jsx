@@ -75,7 +75,7 @@ export default function PcGamesPage(){
         </h1>
 
         {/* Supporting text */}
-        <p className="text-gray-300 max-w-2xl mb-10 text-base md:text-lg">
+        <p className="text-white/80 max-w-2xl mb-10 text-base md:text-lg">
           Unlocked framerates and ultra-spec graphics. Command the battlefield with the precision of high-performance hardware.
         </p>
         </div>

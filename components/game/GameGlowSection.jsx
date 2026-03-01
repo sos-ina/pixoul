@@ -1,13 +1,13 @@
 export default function GameGlowSection({ children }) {
   return (
-    <section className="py-12 bg-white/60 dark:bg-black/60">
+    <section className="py-12 bg-white/5 dark:bg-black/40">
       <div className="max-w-5xl mx-auto px-6">
 
         <div
           className="
             border 
             dark:border-white/10
-            border-black/10s
+            border-black/10
             px-8 py-12
             relative
           "

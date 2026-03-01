@@ -106,19 +106,19 @@ export default function ResetPasswordPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0D0D0D] text-white flex items-center justify-center px-6">
-      <div className="max-w-lg w-full border border-white/10 bg-white/5 p-8 rounded-2xl">
+    <div className="min-h-screen bg-white dark:bg-[#0D0D0D] text-black dark:text-white flex items-center justify-center px-6">
+      <div className="max-w-lg w-full border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 p-8 rounded-none">
         <div className="text-xl font-semibold" style={{ fontFamily: "Orbitron, monospace" }}>
           Reset Password
         </div>
-        <div className="text-sm text-white/70 mt-2">Choose a new password for your account.</div>
+        <div className="text-sm text-black/70 dark:text-white/70 mt-2">Choose a new password for your account.</div>
 
         <form onSubmit={onSubmit} className="mt-6 space-y-4">
           <div>
-            <label className="block text-xs text-white/70 mb-2">New Password</label>
+            <label className="block text-xs text-black/70 dark:text-white/70 mb-2">New Password</label>
             <input
               type="password"
-              className="w-full bg-black/40 border border-white/10 rounded-md px-4 py-3 outline-none"
+              className="w-full bg-white/40 dark:bg-black/40 border dark:border-white/10 border-black/10 rounded-none px-4 py-3 outline-none"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter new password"
@@ -126,10 +126,10 @@ export default function ResetPasswordPage() {
           </div>
 
           <div>
-            <label className="block text-xs text-white/70 mb-2">Confirm Password</label>
+            <label className="block text-xs text-black/70 dark:text-white/70 mb-2">Confirm Password</label>
             <input
               type="password"
-              className="w-full bg-black/40 border border-white/10 rounded-md px-4 py-3 outline-none"
+              className="w-full bg-white/40 dark:bg-black/40 border dark:border-white/10 border-black/10 rounded-none px-4 py-3 outline-none"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="Confirm new password"
@@ -137,12 +137,12 @@ export default function ResetPasswordPage() {
           </div>
 
           {error ? <div className="text-sm text-red-400">{error}</div> : null}
-          {message ? <div className="text-sm text-white/70">{message}</div> : null}
+          {message ? <div className="text-sm text-black/70 dark:text-white/70">{message}</div> : null}
 
           <button
             type="submit"
             disabled={isLoading || !tokensChecked || !tokens}
-            className="w-full mt-2 px-4 py-3 rounded-md border border-cyan-400 text-cyan-300 hover:bg-cyan-400/10 disabled:opacity-50"
+            className="w-full mt-2 px-4 py-3 rounded-none border border-[#38C2D9] text-[#38C2D9] hover:bg-[#38C2D9]/10 disabled:opacity-50"
             style={{ fontFamily: "Orbitron, monospace" }}
           >
             {isLoading ? "Updating..." : "Update Password"}
@@ -151,7 +151,7 @@ export default function ResetPasswordPage() {
 
         <button
           type="button"
-          className="mt-4 w-full text-sm text-white/60 hover:text-cyan-300"
+          className="mt-4 w-full text-sm text-black/60 dark:text-white/60 hover:text-[#38C2D9]"
           onClick={() => router.push("/login")}
         >
           Back to Login

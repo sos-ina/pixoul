@@ -84,7 +84,7 @@ export default function VRStoryPage() {
       </StorySection>
 
       <div className="py-12 flex items-center justify-center text-center">
-        <img src="/images/story.jpeg" alt="Pixoul story mode" className="w-200 rounded-lg shadow-lg" />
+        <img src="/images/story.jpeg" alt="Pixoul story mode" className="w-200 rounded-none shadow-lg" />
       </div>
 
       {/* TECHNOLOGY */}

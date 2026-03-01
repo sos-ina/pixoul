@@ -1,5 +1,4 @@
 import Hero from '@/components/ui/Hero';
-import Link from "next/link";
 import CallToActionBanner from "@/components/ui/CTA";
 import GameGrid from '@/components/vr/GameGrid';
 import Title from '@/components/ui/Title';
@@ -447,7 +446,7 @@ export default function RetroGamesPage(){
         </h1>
 
         {/* Supporting text */}
-        <p className="text-gray-300 max-w-2xl mb-10 text-base md:text-lg">
+        <p className="text-white/80 max-w-2xl mb-10 text-base md:text-lg">
           Where it all began. Revisit the 8-bit classics and 16-bit legends that defined a generation of play.
         </p>
         </div>

@@ -22,48 +22,48 @@ export default function ForumsPage() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
           <div>
             <h1 className="text-5xl font-black uppercase tracking-tighter">Community <span className="text-[#38C2D9]">Forums</span></h1>
-            <p className="text-gray-500 mt-2 uppercase text-xs font-bold tracking-widest">Connect • Strategize • Dominate</p>
+            <p className="text-black/60 dark:text-gray-500 mt-2 uppercase text-xs font-bold tracking-widest">Connect • Strategize • Dominate</p>
           </div>
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="bg-[#38C2D9] text-black font-black px-8 py-4 rounded-xl text-sm hover:bg-white transition-all uppercase italic shadow-[0_0_20px_rgba(56,194,217,0.1)]"
+            className="bg-[#38C2D9] text-black font-black px-8 py-4 rounded-none text-sm hover:bg-[#38C2D9]/80 transition-all uppercase italic shadow-[0_0_20px_rgba(56,194,217,0.1)]"
           >
             + Start New Topic
           </button>
         </div>
 
         {/* Categories List */}
-        <div className="space-y-4">
+        <div className="space-y-4"> 
           {categories.map((cat) => (
             /* WRAP THE ENTIRE CARD IN A LINK */
             <Link 
               key={cat.id} 
               href={`/community/forums/${cat.id}`} 
-              className="bg-white/5 border dark:border-white/10 border-black/10 p-6 rounded-[2rem] flex items-center justify-between hover:border-[#38C2D9]/50 hover:bg-white/[0.02] transition-all cursor-pointer group block"
+              className="bg-black/5 dark:bg-white/5 border dark:border-white/10 border-black/10 p-6 rounded-none flex items-center justify-between hover:border-[#38C2D9]/50 hover:bg-black/[0.07] dark:hover:bg-white/[0.05] transition-all cursor-pointer group block"
             >
               <div className="flex items-center gap-6">
-                <div className="w-14 h-14 dark:bg-black bg-white rounded-2xl border dark:border-white/10 border-black/10 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 bg-white dark:bg-black/40 rounded-none border dark:border-white/10 border-black/10 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
                   {cat.icon}
                 </div>
                 <div>
                   <h3 className="text-xl font-bold group-hover:text-[#38C2D9] transition-colors">{cat.title}</h3>
-                  <p className="text-gray-500 text-sm mt-1">{cat.desc}</p>
+                  <p className="text-black/60 dark:text-gray-500 text-sm mt-1">{cat.desc}</p>
                 </div>
               </div>
 
               <div className="hidden md:flex gap-12 text-center mr-8">
                 <div>
-                  <p className="text-xs text-gray-500 uppercase font-black">Topics</p>
+                  <p className="text-xs text-black/60 dark:text-gray-500 uppercase font-black">Topics</p>
                   <p className="font-mono text-lg">{cat.topics}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 uppercase font-black">Posts</p>
+                  <p className="text-xs text-black/60 dark:text-gray-500 uppercase font-black">Posts</p>
                   <p className="font-mono text-lg">{cat.posts}</p>
                 </div>
                 <div className="w-32 text-right">
                   <p className="text-[10px] text-[#38C2D9] font-black uppercase">Latest Activity</p>
                   <p className="text-xs truncate">by Shadow_X</p>
-                  <p className="text-[10px] text-gray-600">5 mins ago</p>
+                  <p className="text-[10px] text-black/50 dark:text-gray-600">5 mins ago</p>
                 </div>
               </div>
             </Link>

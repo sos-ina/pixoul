@@ -1,17 +1,16 @@
+"use client";
 import Hero from "@/components/ui/Hero";
 import StatGrid from "@/components/ui/StatGrid";
 import CallToActionBanner from "@/components/ui/CTA";
 import ImageCarousel from "@/components/ui/ImageCarousel";
-import BookNowButton from "@/components/ui/BookNowButton";
 import Title from "@/components/ui/Title";
+import { useState } from "react";
 
 import EventTypeGrid from "@/components/events/EventTypeGrid";
-
-export const metadata = {
-  title: "Observation Deck | Pixoul Events",
-};
+import ObservationDeckBookingForm from "@/components/forms/ObservationDeckBookingForm";
 
 export default function ObservationDeckPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   // Stats Data
   const stats = [
     { label: "Capacity", value: "20–35 Guests" },
@@ -106,10 +105,18 @@ export default function ObservationDeckPage() {
             <span className="text-[#38C2D9]">OBSERVATION DECK</span>
           </h1>
 
-          <p className="text-gray-300 max-w-2xl mb-10 text-base md:text-lg">
+          <p className="text-white/80 max-w-2xl mb-10 text-base md:text-lg">
             A futuristic elevated venue space built for group discovery,
             private gatherings, and unforgettable Pixoul experiences.
           </p>
+          <div className="flex gap-4">
+             <button
+          onClick={() => setIsModalOpen(true)}
+          className="px-6 py-3 sm:px-8 sm:py-3 rounded-none bg-[#38C2D9] text-black font-semibold hover:brightness-110 transition focus:outline-none focus:ring-2 focus:ring-[#38C2D9]/40"
+          >
+          Request Booking
+        </button>
+        </div>
         </div>
       </Hero>
 
@@ -117,13 +124,13 @@ export default function ObservationDeckPage() {
       <StatGrid stats={stats} />
 
       {/* ABOUT */}
-      <section className="py-15">
-        <div className="max-w-6xl mx-auto px-6 text-center max-w-3xl">
+      <section className="py-12 md:py-16">
+        <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-semibold mb-6">
             A New Perspective on Events
           </h2>
 
-          <p className="dark:text-gray-300 text-gray-600 leading-relaxed mb-6">
+          <p className="dark:text-white/80 text-gray-600 leading-relaxed mb-6">
             The Observation Deck is one of Pixoul’s most unique venues — a space
             designed for guests who want something elevated, immersive, and
             visually unforgettable.
@@ -139,15 +146,11 @@ export default function ObservationDeckPage() {
           <Title align="center">Perfect For</Title>
           <EventTypeGrid types={eventTypes} />
 
-          {/* BOOK BUTTON */}
-          <div className="flex justify-center mt-10">
-            <BookNowButton className="px-10 py-4 text-lg" />
-          </div>
         </div>
       </section>
 
       {/* SERVICES */}
-      <section className="py-15">
+      <section className="py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-bold mb-12 text-center">
             Observation Deck Features
@@ -179,19 +182,8 @@ export default function ObservationDeckPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <CallToActionBanner
-        title="Host an Elevated Experience"
-        highlight="Observation Deck"
-        description="A unique venue for school groups, private bookings, and unforgettable gatherings."
-        primaryAction={{
-          label: "Book the Observation Deck",
-          href: "/book?venue=observation-deck",
-        }}
-      />
-
       {/* GALLERY */}
-      <section className="py-15">
+      <section className="py-12 md:py-16">
         <div>
           <Title align="center">Gallery</Title>
           <ImageCarousel items={galleryImages} />
@@ -200,14 +192,18 @@ export default function ObservationDeckPage() {
 
       {/* FINAL CTA */}
       <CallToActionBanner
-        title="Discover Events From a New Perspective"
-        highlight="Pixoul"
+        title="Host at the Observation Deck"
+        highlight="Observation Deck"
         description="Reserve the Observation Deck and create something unforgettable above the ordinary."
-        primaryAction={{
+         primaryAction={{
           label: "Reserve Now",
-          href: "/book?venue=observation-deck",
+          onClick: () => setIsModalOpen(true),
         }}
       />
+        {/* MODAL */}
+      {isModalOpen && (
+        <ObservationDeckBookingForm onClose={() => setIsModalOpen(false)} />
+      )}
     </>
   );
 }

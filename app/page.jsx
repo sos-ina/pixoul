@@ -78,14 +78,14 @@ export default function Home() {
         </span>
 
         {/* Main headline */}
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white dark:text-white">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
           WELCOME TO THE
           <br />
           <span className="text-[#38C2D9]">FUTURE OF PLAY</span>
         </h1>
 
         {/* Supporting text */}
-        <p className="text-gray-300 max-w-2xl mb-10 text-base md:text-lg">
+        <p className="text-white/80 max-w-2xl mb-10 text-base md:text-lg">
           Experience next generation virtual reality, gaming, and events
           designed to thrill, connect, and inspire.
         </p>
@@ -94,19 +94,21 @@ export default function Home() {
         <div className="flex flex-wrap gap-4 justify-center">
 
           {/* Primary CTA */}
-          <Link href="/mission-bundles"><BookNowButton className="px-8 py-4 text-base" /></Link>
+          <Link href="/mission-bundles"><BookNowButton className="px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base" /></Link>
 
           {/* Secondary CTA */}
           <Link href="/experience/all">
           <button className="
-            px-8 py-4
+            px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base
             border border-[#38C2D9]
-            text-white
+            text-white hover:bg-[#38C2D9]/10
             rounded-none
             tracking-wide
             hover:bg-[#38C2D9]/10
+            hover:border-[#38C2D9] hover:text-[#38C2D9]
             transition
           ">
+
              Explore Experiences
           </button>
           </Link>

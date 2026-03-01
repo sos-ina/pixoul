@@ -14,11 +14,11 @@ export default function ChallengesHub() {
       <div className="max-w-6xl mx-auto">
         
         {/* Header Section */}
-        <div className="dark:bg-gradient-to-br dark:from-[#111] dark:to-black bg-whiteborder border-white/10 rounded-[3rem] p-10 mb-12 flex flex-col md:flex-row justify-between items-center shadow-2xl relative overflow-hidden">
+        <div className="dark:bg-gradient-to-br dark:from-[#111] dark:to-black bg-white border border-black/10 dark:border-white/10 rounded-none p-6 sm:p-8 md:p-10 mb-12 flex flex-col md:flex-row justify-between items-center shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#38C2D9]/5 blur-[100px] rounded-full"></div>
           <div className="relative z-10">
             <h1 className="text-6xl font-black uppercase tracking-tighter mb-2">Challenge <span className="text-[#38C2D9]">Hub</span></h1>
-            <p className="text-gray-500 font-bold uppercase text-[10px] tracking-[0.3em]">Level up your Pixoul ranking</p>
+            <p className="text-black/60 dark:text-gray-500 font-bold uppercase text-[10px] tracking-[0.3em]">Level up your Pixoul ranking</p>
           </div>
           <div className="flex gap-10 mt-8 md:mt-0 relative z-10">
             <div className="text-center">
@@ -26,8 +26,8 @@ export default function ChallengesHub() {
               <p className="text-[10px] uppercase text-gray-500 font-black tracking-widest">Rank</p>
             </div>
             <div className="text-center">
-              <p className="text-4xl font-black dark:text-white text-balck">12.4k</p>
-              <p className="text-[10px] uppercase text-gray-500 font-black tracking-widest">Total XP</p>
+              <p className="text-4xl font-black dark:text-white text-black">12.4k</p>
+              <p className="text-[10px] uppercase text-black/60 dark:text-gray-500 font-black tracking-widest">Total XP</p>
             </div>
           </div>
         </div>
@@ -40,12 +40,12 @@ export default function ChallengesHub() {
               href={`/community/challenges/${m.id}`} // THE CORRECT NESTED PATH
               className="group">
                 
-              <div className="bg-white/[0.02] border dark:border-white/30 border-black/30 p-8 rounded-[2.5rem] hover:border-[#38C2D9]/50 hover:bg-white/[0.05] transition-all duration-500 cursor-pointer h-full flex flex-col">
+              <div className="bg-black/[0.02] dark:bg-white/[0.02] hover:bg-black/[0.04] dark:hover:bg-white/[0.05] p-8 rounded-none border border-black/10 dark:border-white/10 hover:border-[#38C2D9]/50 transition-all duration-500 cursor-pointer h-full flex flex-col">
                 <div className="flex justify-between items-start mb-8">
-                  <div className="w-16 h-16 bg-black rounded-2xl flex items-center justify-center text-4xl border border-white/5 group-hover:scale-110 group-hover:border-[#38C2D9]/30 transition-all">
+                  <div className="w-16 h-16 rounded-none flex items-center justify-center text-4xl bg-black/10 dark:bg-black/40 border border-black/10 dark:border-white/10 group-hover:scale-110 group-hover:border-[#38C2D9]/30 transition-all">
                     {m.icon}
                   </div>
-                  <span className="text-[9px] font-black bg-white/5 text-gray-400 border border-white/10 px-4 py-1.5 rounded-full uppercase tracking-widest">
+                  <span className="text-[9px] font-black bg-black/5 dark:bg-white/5 text-black/60 dark:text-gray-300 border border-black/10 dark:border-white/10 px-4 py-1.5 rounded-full uppercase tracking-widest">
                     {m.category}
                   </span>
                 </div>
@@ -53,16 +53,16 @@ export default function ChallengesHub() {
                 <h3 className="text-2xl font-black italic uppercase mb-2 group-hover:text-[#38C2D9] transition-colors tracking-tight">
                   {m.title}
                 </h3>
-                <p className="text-gray-500 text-[10px] font-black uppercase tracking-widest mb-10">
-                  Reward: <span className="text-white">{m.reward}</span>
+                <p className="text-black/60 dark:text-gray-500 text-[10px] font-black uppercase tracking-widest mb-10">
+                  Reward: <span className="text-black dark:text-white">{m.reward}</span>
                 </p>
 
                 <div className="mt-auto">
-                  <div className="flex justify-between text-[10px] font-black uppercase mb-3 tracking-widest text-gray-500">
+                  <div className="flex justify-between text-[10px] font-black uppercase mb-3 tracking-widest text-black/60 dark:text-gray-500">
                     <span>Progress</span>
-                    <span className="text-white">{m.progress}%</span>
+                    <span className="text-black dark:text-white">{m.progress}%</span>
                   </div>
-                  <div className="w-full h-2 bg-black rounded-full overflow-hidden border border-white/5 p-[2px]">
+                  <div className="w-full h-2 rounded-full overflow-hidden bg-black/10 dark:bg-black/40 border border-black/10 dark:border-white/5 p-[2px]">
                     <div 
                       className="h-full bg-gradient-to-r from-[#38C2D9] to-blue-500 rounded-full transition-all duration-1000"
                       style={{ width: `${m.progress}%` }}

@@ -57,7 +57,7 @@ export default function FAQPage() {
       <div className="max-w-4xl mx-auto">
         
         {/* Header */}
-        <div className="mb-16">
+        <div className="mb-10 sm:mb-16">
           <h2 className="
           text-[#38C2D9] 
           text-xs 
@@ -65,7 +65,7 @@ export default function FAQPage() {
           uppercase tracking-[0.5em] 
           mb-4 text-center">
             Support</h2>
-          <h1 className="text-6xl 
+          <h1 className="text-3xl sm:text-4xl md:text-6xl 
           font-black 
           tracking-tighter 
           text-center 
@@ -82,7 +82,6 @@ export default function FAQPage() {
               text-[#38C2D9] 
               text-[10px] 
               font-black 
-              uppercase 
               tracking-widest mb-6 
               border-b 
               dark:border-white/10 border-black/10 pb-2">
@@ -90,12 +89,12 @@ export default function FAQPage() {
               </h3>
               <div className="space-y-4">
                 {section.questions.map((item, qIdx) => (
-                  <details key={qIdx} className="overflow-hidden transition-all border group dark:bg-white/5 bg-black/5 dark:border-white/10 border-black/10 rounded-2xl hover:border-[#38C2D9]/50">
+                  <details key={qIdx} className="overflow-hidden transition-all border group dark:bg-white/5 bg-black/5 dark:border-white/10 border-black/10 rounded-none hover:border-[#38C2D9]/50">
                     <summary className="flex items-center justify-between p-6 text-sm italic font-bold tracking-tight uppercase list-none cursor-pointer">
                       {item.q}
                       <span className="text-[#38C2D9] group-open:rotate-45 transition-transform">+</span>
                     </summary>
-                    <div className="p-6 pt-0 text-sm leading-relaxed dark:text-gray-400 text-gray-500 border-t dark:border-white/5 border-black/10">
+                    <div className="p-6 pt-0 text-sm leading-relaxed text-black/60 dark:text-gray-400 border-t dark:border-white/5 border-black/10">
                       {item.a}
                     </div>
                   </details>
@@ -106,14 +105,14 @@ export default function FAQPage() {
         </div>
 
        {/* Contact Footer */}
-        <div className="mt-20 p-10 bg-gradient-to-r from-[#38C2D9]/10 to-transparent border border-[#38C2D9]/20 rounded-[3rem] text-center">
+        <div className="mt-20 p-10 bg-gradient-to-r from-[#38C2D9]/10 to-transparent border border-[#38C2D9]/20 rounded-none text-center">
           <h4 className="mb-2 text-xl italic font-black uppercase">Still need help?</h4>
-          <p className="mb-6 text-xs font-medium text-gray-400">Contact our mission control for private events or educational tours.</p>
+          <p className="mb-6 text-xs font-medium text-black/60 dark:text-gray-400">Contact our mission control for private events or educational tours.</p>
           <div className="flex flex-wrap justify-center gap-4 text-[10px] font-black uppercase">
             {/* General Inquiries */}
             <a 
               href="mailto:info@pixoulgaming.com" 
-              className="px-4 py-2 bg-white/5 rounded-full border border-white/10 hover:border-[#38C2D9] hover:text-[#38C2D9] transition-all"
+              className="px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full border border-black/10 dark:border-white/10 hover:border-[#38C2D9] hover:text-[#38C2D9] transition-all"
             >
               info@pixoulgaming.com
             </a>
@@ -121,7 +120,7 @@ export default function FAQPage() {
             {/* Private Events & Arena Booking */}
             <a 
               href="mailto:events@pixoulgaming.com" 
-              className="px-4 py-2 bg-white/5 rounded-full border border-white/10 hover:border-[#38C2D9] hover:text-[#38C2D9] transition-all"
+              className="px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full border border-black/10 dark:border-white/10 hover:border-[#38C2D9] hover:text-[#38C2D9] transition-all"
             >
             events@pixoulgaming.com
           </a>

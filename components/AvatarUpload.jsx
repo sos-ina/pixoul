@@ -73,7 +73,7 @@ export default function AvatarUpload({ userId, onUploadSuccess }) {
         accept="image/*"
         onChange={handleFileChange}
         disabled={isUploading}
-        className="w-full bg-black/40 border border-white/10 rounded-xl p-4 text-white focus:border-[#38C2D9] outline-none transition-all"
+        className="w-full bg-black/40 border border-white/10 rounded-none p-4 text-white focus:border-[#38C2D9] outline-none transition-all"
       />
 
       {isUploading ? (

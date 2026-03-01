@@ -1,5 +1,4 @@
 import Hero from '@/components/ui/Hero';
-import Link from "next/link";
 import CallToActionBanner from "@/components/ui/CTA";
 import GameGrid from '@/components/vr/GameGrid';
 import Title from '@/components/ui/Title';

@@ -39,7 +39,7 @@ export default function ThreadPage() {
       <div className="max-w-4xl mx-auto">
         
         {/* Navigation Breadcrumbs */}
-        <div className="flex gap-2 text-[10px] uppercase font-bold text-gray-500 mb-8">
+        <div className="flex gap-2 text-[10px] uppercase font-bold text-black/60 dark:text-gray-500 mb-8">
           <Link href="/community/forums" className="hover:text-[#38C2D9]">Forums</Link>
           <span>/</span>
           <Link href="/community/forums/general" className="hover:text-[#38C2D9]">General</Link>
@@ -48,47 +48,48 @@ export default function ThreadPage() {
         </div>
 
         {/* --- Main Topic Post --- */}
-        <div className="bg-white/5 border border-[#38C2D9]/20 rounded-[2.5rem] p-8 mb-10 shadow-[0_0_30px_rgba(56,194,217,0.05)]">
+        <div className="bg-black/5 dark:bg-white/5 border border-[#38C2D9]/20 rounded-[2.5rem] p-8 mb-10 shadow-[0_0_30px_rgba(56,194,217,0.05)]">
           <div className="flex items-center gap-4 mb-6">
             <div className="w-12 h-12 bg-[#38C2D9] rounded-2xl flex items-center justify-center font-black text-black">
               SX
             </div>
             <div>
-              <h1 className="text-3xl font-black italic uppercase tracking-tighter">New Haptic Vests in the VR Zone</h1>
-              <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Started by Shadow_X • 3 hours ago</p>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-black italic uppercase tracking-tighter">New Haptic Vests in the VR Zone</h1>
+              <p className="text-[10px] text-black/60 dark:text-gray-500 font-bold uppercase tracking-widest">Started by Shadow_X • 3 hours ago</p>
             </div>
           </div>
-          <p className="text-gray-300 leading-relaxed text-lg">
+          <p className="text-black/70 dark:text-gray-300 leading-relaxed text-lg">
             Just spent 2 hours in the VR Arena. The new haptic integration is a game changer for immersion. 
             Has anyone else noticed the difference in the recoil feedback?
           </p>
         </div>
 
         {/* --- Replies Section --- */}
-        <div className="space-y-6 mb-10 relative before:absolute before:left-6 before:top-0 before:bottom-0 before:w-[1px] before:bg-white/10">
+        <div className="space-y-6 mb-10 relative before:absolute before:left-6 before:top-0 before:bottom-0 before:w-[1px] before:bg-black/10 dark:before:bg-white/10">
           {replies.map((msg) => (
             <div key={msg.id} className="relative pl-14">
-              <div className={`bg-white/[0.03] border ${msg.isAdmin ? 'border-[#38C2D9]/30' : 'border-white/5'} rounded-3xl p-6 transition-hover hover:bg-white/[0.05]`}>
+              <div 
+              className={`bg-black/[0.02] dark:bg-white/[0.03] border ${msg.isAdmin ? 'border-[#38C2D9]/30' : 'border-black/10 dark:border-white/10'} rounded-none p-6 transition-all hover:bg-black/[0.04] dark:hover:bg-white/[0.05]`}>
                 <div className="flex justify-between items-center mb-4">
                   <div className="flex items-center gap-3">
                     <span className="font-bold text-[#38C2D9]">{msg.user}</span>
-                    <span className="text-[8px] bg-white/10 px-2 py-0.5 rounded-full uppercase font-black text-gray-400">
+                    <span className="text-[8px] bg-black/5 dark:bg-white/10 px-2 py-0.5 rounded-full uppercase font-black text-black/60 dark:text-gray-300">
                       {msg.rank}
                     </span>
                   </div>
-                  <span className="text-[10px] text-gray-600 font-mono">{msg.time}</span>
+                  <span className="text-[10px] text-black/50 dark:text-gray-600 font-mono">{msg.time}</span>
                 </div>
-                <p className="text-gray-400 text-sm leading-relaxed">{msg.text}</p>
+                <p className="text-black/70 dark:text-gray-400 text-sm leading-relaxed">{msg.text}</p>
               </div>
             </div>
           ))}
         </div>
 
         {/* --- The Reply Input (Texting UI) --- */}
-        <div className="bg-[#111] border border-white/10 rounded-[2.5rem] p-8 mt-12">
+        <div className="bg-black/5 dark:bg-[#111] border border-black/10 dark:border-white/10 rounded-none p-8 mt-12">
           <div className="flex items-center gap-2 mb-4 ml-2">
             <div className="w-2 h-2 bg-[#38C2D9] rounded-full animate-pulse"></div>
-            <h3 className="text-xs font-black uppercase tracking-widest text-gray-400">Join the conversation</h3>
+            <h3 className="text-xs font-black uppercase tracking-widest text-black/70 dark:text-gray-400">Join the conversation</h3>
           </div>
           
           <textarea 

@@ -6,16 +6,16 @@ export const metadata = {
 
 export default function TermsPage() {
   return (
-    <section className="py-20">
+    <section className="min-h-screen bg-white dark:bg-[#0a0a0a] text-black dark:text-white pt-12 pb-20">
       <div className="max-w-5xl mx-auto px-6">
 
-        <Title align="center">Terms & Conditions</Title>
+        <Title align="left">Terms & Conditions</Title>
 
-        <div className="mt-12 space-y-10 text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300">
+        <div className="mt-12 space-y-6 sm:space-y-8 text-sm md:text-base leading-relaxed text-black/70 dark:text-white/70">
 
           {/* 1 */}
           <div>
-            <h2 className="text-xl font-semibold mb-4 text-[#38C2D9]">
+            <h2 className="text-lg sm:text-xl font-bold mb-3 text-[#38C2D9] uppercase tracking-wide">
               1. General Admission
             </h2>
             <p>
@@ -28,7 +28,7 @@ export default function TermsPage() {
 
           {/* 2 */}
           <div>
-            <h2 className="text-xl font-semibold mb-4 text-[#38C2D9]">
+            <h2 className="text-lg sm:text-xl font-bold mb-3 text-[#38C2D9] uppercase tracking-wide">
               2. Age & Supervision
             </h2>
             <p>
@@ -40,7 +40,7 @@ export default function TermsPage() {
 
           {/* 3 */}
           <div>
-            <h2 className="text-xl font-semibold mb-4 text-[#38C2D9]">
+            <h2 className="text-lg sm:text-xl font-bold mb-3 text-[#38C2D9] uppercase tracking-wide">
               3. Health & Safety
             </h2>
             <p>
@@ -54,7 +54,7 @@ export default function TermsPage() {
 
           {/* 4 */}
           <div>
-            <h2 className="text-xl font-semibold mb-4 text-[#38C2D9]">
+            <h2 className="text-lg sm:text-xl font-bold mb-3 text-[#38C2D9] uppercase tracking-wide">
               4. Conduct
             </h2>
             <p>
@@ -67,7 +67,7 @@ export default function TermsPage() {
 
           {/* 5 */}
           <div>
-            <h2 className="text-xl font-semibold mb-4 text-[#38C2D9]">
+            <h2 className="text-lg sm:text-xl font-bold mb-3 text-[#38C2D9] uppercase tracking-wide">
               5. Bookings & Payments
             </h2>
             <p>
@@ -81,7 +81,7 @@ export default function TermsPage() {
 
           {/* 6 */}
           <div>
-            <h2 className="text-xl font-semibold mb-4 text-[#38C2D9]">
+            <h2 className="text-lg sm:text-xl font-bold mb-3 text-[#38C2D9] uppercase tracking-wide">
               6. Refund & Cancellation Policy
             </h2>
             <p>
@@ -94,7 +94,7 @@ export default function TermsPage() {
 
           {/* 7 */}
           <div>
-            <h2 className="text-xl font-semibold mb-4 text-[#38C2D9]">
+            <h2 className="text-lg sm:text-xl font-bold mb-3 text-[#38C2D9] uppercase tracking-wide">
               7. Liability
             </h2>
             <p>
@@ -107,7 +107,7 @@ export default function TermsPage() {
 
           {/* 8 */}
           <div>
-            <h2 className="text-xl font-semibold mb-4 text-[#38C2D9]">
+            <h2 className="text-lg sm:text-xl font-bold mb-3 text-[#38C2D9] uppercase tracking-wide">
               8. Personal Belongings
             </h2>
             <p>
@@ -118,7 +118,7 @@ export default function TermsPage() {
 
           {/* 9 */}
           <div>
-            <h2 className="text-xl font-semibold mb-4 text-[#38C2D9]">
+            <h2 className="text-lg sm:text-xl font-bold mb-3 text-[#38C2D9] uppercase tracking-wide">
               9. Photography & Media
             </h2>
             <p>
@@ -130,7 +130,7 @@ export default function TermsPage() {
 
           {/* 10 */}
           <div>
-            <h2 className="text-xl font-semibold mb-4 text-[#38C2D9]">
+            <h2 className="text-lg sm:text-xl font-bold mb-3 text-[#38C2D9] uppercase tracking-wide">
               10. Modifications
             </h2>
             <p>

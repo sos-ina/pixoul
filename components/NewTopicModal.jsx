@@ -17,7 +17,7 @@ export default function NewTopicModal({ onClose, categories }) {
       ></div>
 
         {/* Modal Content */}
-      <div className="relative bg-[#111] border border-white/10 w-full max-w-2xl rounded-[2.5rem] p-8 md:p-12 shadow-2xl">
+      <div className="relative bg-white dark:bg-[#111] text-black dark:text-white border border-black/10 dark:border-white/10 w-full max-w-2xl rounded-none p-8 md:p-12 shadow-2xl">
         <div className="mb-8">
           <h2 className="text-3xl font-black italic uppercase">Start a <span className="text-[#38C2D9]">New Topic</span></h2>
           <p className="text-gray-500 text-xs uppercase font-bold tracking-widest mt-2">Post to the Pixoul community</p>
@@ -32,7 +32,7 @@ export default function NewTopicModal({ onClose, categories }) {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Give your topic a clear name..."
-              className="w-full dark:bg-black/40 bg-white/40 border border-white/10 rounded-xl p-4 text-white focus:border-[#38C2D9] outline-none transition-all"
+              className="w-full bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-none p-4 text-black dark:text-white focus:border-[#38C2D9] outline-none transition-all"
             />
           </div>
 
@@ -42,12 +42,12 @@ export default function NewTopicModal({ onClose, categories }) {
             <select 
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="w-full dark:bg-black/40 bg-white/40 border border-white/10 rounded-xl p-4 text-white focus:border-[#38C2D9] outline-none appearance-none cursor-pointer"
+              className="w-full bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-none p-4 text-black dark:text-white focus:border-[#38C2D9] outline-none appearance-none cursor-pointer"
             >
               {/* --- HERE ARE YOUR OPTIONS --- */}
-              <option value="" disabled className="bg-[#111]">Choose a category...</option>
+              <option value="" disabled className="bg-white text-black dark:bg-[#111] dark:text-white">Choose a category...</option>
               {categories.map(cat => (
-                <option key={cat.id} value={cat.id} className="bg-[#111]">
+                <option key={cat.id} value={cat.id} className="bg-white text-black dark:bg-[#111] dark:text-white">
                   {cat.title}
                 </option>
               ))}
@@ -62,14 +62,14 @@ export default function NewTopicModal({ onClose, categories }) {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="What's on your mind?"
-              className="w-full dark:bg-black/40 bg-white/40 border border-white/10 rounded-2xl p-4 h-48 text-white focus:border-[#38C2D9] outline-none transition-all resize-none"
+              className="w-full bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-none p-4 h-48 text-black dark:text-white focus:border-[#38C2D9] outline-none transition-all resize-none"
             />
           </div>
 
           {/* Buttons */}
           <div className="flex gap-4 pt-4">
             <button 
-              className="flex-1 bg-[#38C2D9] text-black font-black py-4 rounded-xl hover:bg-white transition-all uppercase italic"
+              className="flex-1 bg-[#38C2D9] text-black font-black py-4 rounded-none hover:bg-white transition-all uppercase italic"
               onClick={() => {
                 onClose(); // Close after "posting"
               }}
@@ -78,7 +78,7 @@ export default function NewTopicModal({ onClose, categories }) {
             </button>
             <button 
               onClick={onClose}
-              className="px-8 text-gray-500 font-bold hover:text-white transition-colors uppercase text-xs"
+              className="px-8 text-black/60 dark:text-gray-500 font-bold hover:text-black dark:hover:text-white transition-colors uppercase text-xs"
             >
               Cancel
             </button>

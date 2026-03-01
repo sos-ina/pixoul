@@ -19,7 +19,9 @@ export default function GameImageStrip({ images }) {
               className="
                 relative
                 overflow-hidden
-                border border-white/10
+                border 
+                dark:border-white/10
+                border-black/10
               "
             >
               <img

@@ -7,7 +7,7 @@ export const metadata = {
 export default function VirtualTourPage() {
   return (
     <>
-    <div className='py-10'>
+    <div className='py-12 md:py-16 bg-white dark:bg-[#0a0a0a] text-black dark:text-white'>
       <Title align="center">360° Virtual Tour</Title>
     </div>
       

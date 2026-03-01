@@ -1,18 +1,19 @@
+"use client";
 import Hero from "@/components/ui/Hero";
 import StatGrid from "@/components/ui/StatGrid";
 import CallToActionBanner from "@/components/ui/CTA";
 
 import ImageCarousel from "@/components/ui/ImageCarousel";
-import BookNowButton from "@/components/ui/BookNowButton";
 import Title from "@/components/ui/Title";
 import EventTypeGrid from "@/components/events/EventTypeGrid";
+import TheHallBookingForm from "@/components/forms/TheHallBookingForm";
+import { useState } from "react";
 
 
-export const metadata = {
-  title: "The Hall | Pixoul Events",
-};
+
 
 export default function HallPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
     // Stats Data 
   const stats = [
@@ -101,15 +102,25 @@ export default function HallPage() {
           WELCOME TO THE
           <br />
           <span className="text-[#38C2D9]">THE HALL</span>
+
         </h1>
 
         {/* Supporting text */}
-        <p className="text-gray-300 max-w-2xl mb-10 text-base md:text-lg">
+        <p className="text-white/80 max-w-2xl mb-10 text-base md:text-lg">
           Abu Dhabi’s best multipurpose event venue — designed to elevate
             every occasion with cutting-edge technology and impeccable
             hospitality.
         </p>
+        <div className="flex gap-4">
+             <button
+          onClick={() => setIsModalOpen(true)}
+          className="px-6 py-3 sm:px-8 sm:py-3 rounded-none bg-[#38C2D9] text-black font-semibold hover:brightness-110 transition focus:outline-none focus:ring-2 focus:ring-[#38C2D9]/40"
+          >
+          Request Booking
+        </button>
         </div>
+        </div>
+          
 
       </Hero>
 
@@ -125,7 +136,7 @@ export default function HallPage() {
 
           {/* Text */}
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl font-semibold mb-6">
+            <h2 className="text-3xl font-semibold mb-6 text-black dark:text-white">
               Set the Stage. Embrace the Applause.
             </h2>
             <p className="dark:text-gray-300 text-gray-600 leading-relaxed mb-6">
@@ -151,11 +162,6 @@ export default function HallPage() {
 </h3>
 
         <EventTypeGrid types={eventTypes} />
-
-
-            <div className="flex justify-center">
-              <BookNowButton className="px-10 py-4 text-lg" />
-            </div>
           </div>
         </div>
       </section>
@@ -163,7 +169,7 @@ export default function HallPage() {
       {/* SERVICES GRID */}
       <section className="py-12">
         <div className="max-w-6xl mx-auto px-6 ">
-          <h2 className="text-3xl font-bold mb-12 text-center">
+          <h2 className="text-3xl font-bold mb-12 text-center text-black dark:text-white">
             Event Services Included
           </h2>
 
@@ -176,7 +182,7 @@ export default function HallPage() {
                   border 
                   dark:border-white/10
                   border-black/10
-                  p-6
+                  p-5 sm:p-6
                   rounded-none
                   hover:border-[#38C2D9]/70
                   transition
@@ -197,15 +203,49 @@ export default function HallPage() {
 
 
       {/* FACT SHEET CTA */}
-      <CallToActionBanner
-        title="Download Our Fact Sheet"
-        highlight="Fact Sheet"
-        description="Discover why The Hall is the perfect choice for your next event."
-        primaryAction={{
-        label: "Download Now",
-        href: "https://thehall.ae/wp-content/uploads/2024/06/The-Hall-Fact-Sheet-2024.pdf",
-      }}
-      />
+      {/* FACT SHEET (COMPACT ROW) */}
+<section className="py-6">
+  <div className="max-w-6xl mx-auto px-6">
+    <div
+      className="
+        flex flex-col sm:flex-row 
+        items-center justify-between 
+        gap-4 
+        border border-black/10 dark:border-white/10 
+        rounded-none
+        px-5 py-4 
+        bg-white/60 dark:bg-black/50
+      "
+    >
+      {/* Text */}
+      <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 text-center sm:text-left">
+        Need detailed venue specs, layout, and capacity info?{" "}
+        <span className="text-[#38C2D9] font-medium">
+          Download the full fact sheet.
+        </span>
+      </p>
+
+      {/* Button */}
+      <a
+        href="https://thehall.ae/wp-content/uploads/2024/06/The-Hall-Fact-Sheet-2024.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="
+          px-5 py-2.5 
+          rounded-none 
+          border border-[#38C2D9] 
+          text-[#38C2D9] 
+          font-medium 
+          text-sm
+          hover:bg-[#38C2D9] hover:text-black 
+          transition
+        "
+      >
+        Download PDF
+      </a>
+    </div>
+  </div>
+</section>
 
       {/* GALLERY */}
       <section className="py-12">
@@ -222,10 +262,15 @@ export default function HallPage() {
       highlight="The Hall"
       description="The possibilities are endless with our unparalleled event services."
       primaryAction={{
-        label: "Book The Hall",
-        href: "/",
-      }}
+          label: "Book The Hall",
+          onClick: () => setIsModalOpen(true),
+        }}
     />
+
+    {/* MODAL */}
+      {isModalOpen && (
+        <TheHallBookingForm onClose={() => setIsModalOpen(false)} />
+      )}
     </>
 
     

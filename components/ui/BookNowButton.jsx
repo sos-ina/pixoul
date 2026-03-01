@@ -17,7 +17,7 @@ export default function BookNowButton({ className = "" }) {
         uppercase
         text-[10px]
         tracking-widest
-        rounded-sm
+        rounded-none
         border
         border-[#38C2D9]
         overflow-hidden

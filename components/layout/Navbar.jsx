@@ -1,14 +1,19 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
 import Dropdown from "../ui/Dropdown";
 import NavItem from "../ui/NavItem";
 import Link from "next/link";
 import BookNowButton from '../ui/BookNowButton';
 import { useCart } from "@/components/cart/SessionCartProvider";
 import ThemeToggle from "../ui/ThemeToggle";
-import LanguageToggle from "../ui/LanguageToggle";
 import { authAPI } from "@/lib/api/experiences";
+
+const LanguageToggle = dynamic(() => import("../ui/LanguageToggle"), {
+  ssr: false,
+  loading: () => <div className="w-[88px] h-[42px]" aria-hidden="true" />,
+});
 
 function CartIcon() {
   const { items } = useCart();
@@ -115,28 +120,32 @@ export default function Navbar() {
   };
 
   return (
-    <nav
-      className="fixed top-0 left-0 w-full z-50 backdrop-blur-md dark:bg-black/40 bg-white/40 border-b border-white/5 text-black dark:text-white"
+    <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-white/40 dark:bg-black/40 border-b border-black/10 dark:border-white/10 text-black dark:text-white"
     >
       
 
-      <div className="max-w-screen-xl h-[80px] mx-auto px-4 sm:px-6 lg:px-8 py-3 md:py-4 flex items-center justify-between">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 h-[80px] flex items-center justify-between overflow-visible
+      ">
 
         {/* Logo */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-shrink-0">
           <Link href="/">
-            <img src="/logos/Pixoul Logo.ico" alt="Pixoul Logo" className="h-full w-auto" />
+            <img src="/logos/Pixoul Logo.ico" alt="Pixoul Logo" 
+            className="h-[110px] w-auto object-contain -translate-y-2 flex-shrink-0" />
           </Link>
+
         </div>
-        <div className="flex gap 2 px-2">
-           <Link href="/virtual-tour">
-          <img src="/logos/360 icon.png" alt="3D icon" className="h-8 w-8 sm:h-9 sm:w-9 border border-[#007EC6] rounded cursor-pointer" />
+
+        <div className="flex items-center gap-2 flex-shrink-0 px-2">
+          <Link href="/virtual-tour">
+          <img src="/logos/360 icon.png" alt="3D icon" 
+          className="h-8 w-8 sm:h-9 sm:w-9 border border-[#007EC6] rounded cursor-pointer" />
           </Link>
         </div>
        
 
         {/* Desktop Navigation Links */}
-        <ul className="hidden lg:flex gap-6 xl:gap-8 text-sm xl:text-base items-center">
+        <ul className="hidden lg:flex flex-1 justify-center items-center gap-4 lg:gap-5 xl:gap-7 text-sm xl:text-base">
           <NavItem href="/" label="Home" isActive={pathname === "/"} />
 
           {/* Experiences */}
@@ -194,13 +203,14 @@ export default function Navbar() {
                 <Link href="/plan-your-visit/mission-vision" onClick={() => setOpenDropdown(null)} className="dropdown-item block">Mission & Vision</Link>
                 <Link href="/plan-your-visit/our-story" onClick={() => setOpenDropdown(null)} className="dropdown-item block">Our Story</Link>
                 <Link href="/plan-your-visit/reach" onClick={() => setOpenDropdown(null)} className="dropdown-item block">Contact Us</Link>
+                <Link href="/plan-your-visit/facilities" onClick={() => setOpenDropdown(null)} className="dropdown-item block">Facilities</Link> 
               </Dropdown>
             </NavItem>
           </div>
         </ul>
 
         {/* Right Buttons */}
-        <div className="flex items-center gap-3 sm:gap-4 px-2">
+        <div className="flex items-center gap-2 sm:gap-3 md:gap-4 px-2 flex-shrink-0">
           <CartIcon />
           {/*<BookNowButton className="hidden sm:block" />*/}
           <BookNowButton />
@@ -222,18 +232,18 @@ export default function Navbar() {
               </button>
 
               {profileMenuOpen ? (
-                <div className="absolute right-0 mt-2 w-48 rounded-xl border border-white/10 bg-[#0a0a0a]/95 backdrop-blur-md shadow-2xl overflow-hidden">
+                <div className="absolute right-0 mt-2 w-48 rounded-none border border-white/10 bg-white/95 dark:bg-[#0a0a0a]/95 text-black dark:text-white backdrop-blur-md shadow-2xl overflow-hidden">
                   <Link
                     href="/community/player-profile"
                     onClick={() => setProfileMenuOpen(false)}
-                    className="block px-4 py-3 text-sm text-white/90 hover:bg-white/5"
+                    className="block px-4 py-3 text-sm text-black/80 dark:text-white/90 hover:bg-black/5 dark:hover:bg-white/5"
                   >
                     Profile
                   </Link>
                   <Link
                     href="/community/player-profile/settings"
                     onClick={() => setProfileMenuOpen(false)}
-                    className="block px-4 py-3 text-sm text-white/90 hover:bg-white/5"
+                    className="block px-4 py-3 text-sm text-black/80 dark:text-white/90 hover:bg-black/5 dark:hover:bg-white/5"
                   >
                     Edit Settings
                   </Link>
@@ -273,24 +283,36 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-  <div className="flex gap-4 justify-end px-8 max-w-screen-xl mx-auto">
+  <div className="flex gap-4 justify-end px-4 sm:px-6 lg:px-8 max-w-screen-xl mx-auto">
         <ThemeToggle />
         <LanguageToggle />
       </div>
       {/* Mobile Menu */}
-      <div className={`lg:hidden fixed top-[80px] left-0 w-full bg-white/95 dark:bg-black/95 backdrop-blur-md border-t border-white/5 transition-all duration-300 ${mobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+      <div className=
+      {`
+    lg:hidden 
+    absolute 
+    top-full 
+    left-0 
+    w-full 
+    bg-white/95 dark:bg-black/95 
+    backdrop-blur-md 
+    border-t border-white/5 
+    transition-all duration-300 
+    ${mobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}
+  `}>
         <ul className="flex flex-col px-4 py-4 gap-2">
           <li>
             <Link href="/" onClick={closeMobileMenu}>
-              <div className={`py-3 px-2 transition-colors border-b border-gray-700 ${pathname === "/" ? 'text-[#38C2D9]' : 'text-black dark:text-white hover:text-[#007EC6]'}`}>
+              <div className={`py-3 px-2 transition-colors border-b border-black/10 dark:border-white/10 ${pathname === "/" ? 'text-[#38C2D9]' : 'text-black dark:text-white hover:text-[#38C2D9]'}`}>
                 Home
               </div>
             </Link>
           </li>
 
-          <li className="border-b border-gray-700">
+          <li className="border-b border-black/10 dark:border-white/10">
             <button
-              className="w-full text-left py-3 px-2 text-black dark:text-white hover:text-[#007EC6] transition-colors flex justify-between items-center"
+              className="w-full text-left py-3 px-2 text-black dark:text-white hover:text-[#38C2D9] transition-colors flex justify-between items-center"
               onClick={() => toggleDropdown("experiences")}
             >
               <span className={`inline-block relative ${pathname.includes("/experience") ? 'text-[#38C2D9]' : ''}`}>
@@ -309,25 +331,25 @@ export default function Navbar() {
             {openDropdown === "experiences" && (
               <div className="pl-4 pb-2">
                 <Link href="/experience/vr" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6]">VR Games</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9]">VR Games</p>
                 </Link>
                 <Link href="/experience/pc" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6]">PC Games</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9]">PC Games</p>
                 </Link>
                 <Link href="/experience/retro" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6]">Retro Games</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9]">Retro Games</p>
                 </Link>
                 <Link href="/experience/console" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6]">Console Games</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9]">Console Games</p>
                 </Link>
                 <Link href="/experience/arcade" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6]">Arcade Games</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9]">Arcade Games</p>
                 </Link>
                 <Link href="/experience/sport" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6]">Sport</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9]">Sport</p>
                 </Link>
                 <Link href="/experience/all" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6]">All Games</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9]">All Games</p>
                 </Link>
               </div>
             )}
@@ -335,15 +357,15 @@ export default function Navbar() {
 
            <li>
             <Link href="/birthday" onClick={closeMobileMenu}>
-              <div className={`py-3 px-2 transition-colors border-b border-gray-700 ${pathname === "/birthday" ? 'text-[#38C2D9]' : 'text-black dark:text-white hover:text-[#007EC6]'}`}>
+              <div className={`py-3 px-2 transition-colors border-b border-black/10 dark:border-white/10 ${pathname === "/birthday" ? 'text-[#38C2D9]' : 'text-black dark:text-white hover:text-[#38C2D9]'}`}>
                 Birthday
               </div>
             </Link>
           </li>
 
-          <li className="border-b border-gray-700">
+          <li className="border-b border-black/10 dark:border-white/10">
             <button
-              className="w-full text-left py-3 px-2 text-black dark:text-white hover:text-[#007EC6] transition-colors flex justify-between items-center"
+              className="w-full text-left py-3 px-2 text-black dark:text-white hover:text-[#38C2D9] transition-colors flex justify-between items-center"
               onClick={() => toggleDropdown("eventsGroups")}
             >
               <span className={`inline-block relative ${pathname.includes("/events") ? 'text-[#38C2D9]' : ''}`}>
@@ -362,27 +384,27 @@ export default function Navbar() {
             {openDropdown === "eventsGroups" && (
               <div className="pl-4 pb-2">
                 <Link href="/events/hall" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer">The Hall</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">The Hall</p>
                 </Link>
                 <Link href="/events/social-room" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer">Social Room</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Social Room</p>
                 </Link>
                 <Link href="/events/vip-lounge" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer">VIP Lounge</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">VIP Lounge</p>
                 </Link>
                 <Link href="/events/observation-deck" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer">Observation Deck</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Observation Deck</p>
                 </Link>
                 <Link href="/events/school-visit" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer">School Visit</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">School Visit</p>
                 </Link>
               </div>
             )}
           </li>
 
-          <li className="border-b border-gray-700">
+          <li className="border-b border-black/10 dark:border-white/10">
             <button
-              className="w-full text-left py-3 px-2 text-black dark:text-white hover:text-[#007EC6] transition-colors flex justify-between items-center"
+              className="w-full text-left py-3 px-2 text-black dark:text-white hover:text-[#38C2D9] transition-colors flex justify-between items-center"
               onClick={() => toggleDropdown("community")}
             >
               <span className={`inline-block relative ${pathname.includes("/community") ? 'text-[#38C2D9]' : ''}`}>
@@ -401,24 +423,24 @@ export default function Navbar() {
             {openDropdown === "community" && (
               <div className="pl-4 pb-2">
                 <Link href="/community/player-profile" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer">Player Profile</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Player Profile</p>
                 </Link>
                 <Link href="/community/reviews" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer">Reviews</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Reviews</p>
                 </Link>
                 <Link href="/community/forums" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer">Forums</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Forums</p>
                 </Link>
                 <Link href="/community/challenges" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer">Challenges</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Challenges</p>
                 </Link>
               </div>
             )}
           </li>
 
-          <li className="border-b border-gray-700">
+          <li className="border-b border-black/10 dark:border-white/10">
             <button
-              className="w-full text-left py-3 px-2 text-black dark:text-white hover:text-[#007EC6] transition-colors flex justify-between items-center"
+              className="w-full text-left py-3 px-2 text-black dark:text-white hover:text-[#38C2D9] transition-colors flex justify-between items-center"
               onClick={() => toggleDropdown("planYourVisit")}
             >
               <span className={`inline-block relative ${pathname.includes("/plan") ? 'text-[#38C2D9]' : ''}`}>
@@ -437,13 +459,25 @@ export default function Navbar() {
             {openDropdown === "planYourVisit" && (
               <div className="pl-4 pb-2">
                 <Link href="/plan-your-visit/how-it-works" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer">How Pixoul Works</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">How Pixoul Works</p>
                 </Link>
                 <Link href="/plan-your-visit/pricing" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer">Pricing</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Pricing</p>
                 </Link>
                 <Link href="/plan-your-visit/faqs" onClick={closeMobileMenu}>
-                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#007EC6] cursor-pointer">FAQs</p>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">FAQs</p>
+                </Link>
+                <Link href="/plan-your-visit/mission-vision" onClick={closeMobileMenu}>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Mission & Vision</p>
+                </Link>
+                <Link href="/plan-your-visit/our-story" onClick={closeMobileMenu}>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Our Story</p>
+                </Link>
+                <Link href="/plan-your-visit/reach" onClick={closeMobileMenu}>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Contact Us</p>
+                </Link>
+                <Link href="/plan-your-visit/facilities" onClick={closeMobileMenu}>
+                  <p className="py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Facilities</p>
                 </Link>
               </div>
             )}

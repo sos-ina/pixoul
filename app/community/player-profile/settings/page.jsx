@@ -154,28 +154,28 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white pt-28 px-6">
-      <div className="max-w-3xl mx-auto bg-white/5 border border-white/10 rounded-[2rem] p-8 md:p-12">
+    <div className="min-h-screen bg-white dark:bg-[#0a0a0a] text-black dark:text-white pt-28 px-6">
+      <div className="max-w-3xl mx-auto bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-none p-8 md:p-12">
         <h1 className="text-3xl font-black uppercase italic mb-8">Edit <span className="text-[#38C2D9]">Profile</span></h1>
 
         <div className="space-y-8">
           {/* Avatar Change */}
           <div className="flex items-center gap-6 pb-8 border-b border-white/5">
-            <div className="w-20 h-20 rounded-full border-2 border-[#38C2D9] bg-gray-800 overflow-hidden flex items-center justify-center">
+            <div className="w-20 h-20 rounded-full border-2 border-[#38C2D9] bg-black/10 dark:bg-black/40 overflow-hidden flex items-center justify-center">
               {form.avatarUrl ? (
                 <img src={form.avatarUrl} alt="avatar" className="w-full h-full object-cover" />
               ) : (
                 <span className="text-2xl">👤</span>
               )}
             </div>
-            <label className="text-xs font-bold py-2 px-4 bg-white/10 rounded-lg hover:bg-[#38C2D9] hover:text-black transition-all cursor-pointer">
+            <label className="text-xs font-bold py-2 px-4 bg-black/10 dark:bg-white/10 rounded-none hover:bg-[#38C2D9] hover:text-black transition-all cursor-pointer">
               {isUploading ? 'UPLOADING...' : 'CHANGE AVATAR'}
               <input type="file" accept="image/*" onChange={handleAvatarChange} className="hidden" disabled={isUploading} />
             </label>
           </div>
 
           {isLoading ? (
-            <div className="text-sm text-white/50">Loading...</div>
+            <div className="text-sm text-black/60 dark:text-white/50">Loading...</div>
           ) : null}
           {status.type === 'error' ? (
             <div className="text-sm text-pink-400">{status.message}</div>
@@ -187,33 +187,33 @@ export default function SettingsPage() {
           {/* Form Fields */}
           <div className="grid gap-6">
             <div className="flex flex-col gap-2">
-              <label className="text-[10px] uppercase font-black tracking-widest text-gray-400">Gamer Tag</label>
+              <label className="text-[10px] uppercase font-black tracking-widest text-black/60 dark:text-gray-400">Gamer Tag</label>
               <input 
                 type="text" 
                 value={user?.username || ''} 
                 readOnly
-                className="bg-black/50 border border-white/10 rounded-xl p-4 outline-none transition-all text-white/70"
+                className="bg-white/60 dark:bg-black/50 border border-black/10 dark:border-white/10 rounded-none p-4 outline-none transition-all text-black/60 dark:text-white/70"
               />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
-                <label className="text-[10px] uppercase font-black tracking-widest text-gray-400">Display Name</label>
+                <label className="text-[10px] uppercase font-black tracking-widest text-black/60 dark:text-gray-400">Display Name</label>
                 <input
                   type="text"
                   value={form.displayName}
                   onChange={(e) => setForm((p) => ({ ...p, displayName: e.target.value }))}
-                  className="bg-black/50 border border-white/10 rounded-xl p-4 focus:border-[#38C2D9] outline-none transition-all"
+                  className="bg-white/60 dark:bg-black/50 border border-black/10 dark:border-white/10 rounded-none p-4 focus:border-[#38C2D9] outline-none transition-all"
                 />
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-[10px] uppercase font-black tracking-widest text-gray-400">Country</label>
+                <label className="text-[10px] uppercase font-black tracking-widest text-black/60 dark:text-gray-400">Country</label>
                 <input
                   type="text"
                   value={form.country}
                   onChange={(e) => setForm((p) => ({ ...p, country: e.target.value }))}
-                  className="bg-black/50 border border-white/10 rounded-xl p-4 focus:border-[#38C2D9] outline-none transition-all"
+                  className="bg-white/60 dark:bg-black/50 border border-black/10 dark:border-white/10 rounded-none p-4 focus:border-[#38C2D9] outline-none transition-all"
                 />
               </div>
             </div>
@@ -224,32 +224,32 @@ export default function SettingsPage() {
                 type="date"
                 value={form.dateOfBirth}
                 onChange={(e) => setForm((p) => ({ ...p, dateOfBirth: e.target.value }))}
-                className="bg-black/50 border border-white/10 rounded-xl p-4 focus:border-[#38C2D9] outline-none transition-all"
+                className="bg-white/60 dark:bg-black/50 border border-black/10 dark:border-white/10 rounded-none p-4 focus:border-[#38C2D9] outline-none transition-all"
               />
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="text-[10px] uppercase font-black tracking-widest text-gray-400">Bio</label>
+              <label className="text-[10px] uppercase font-black tracking-widest text-black/60 dark:text-gray-400">Bio</label>
               <textarea 
                 placeholder="Tell the community about yourself..."
                 value={form.bio}
                 onChange={(e) => setForm((p) => ({ ...p, bio: e.target.value }))}
-                className="bg-black/50 border border-white/10 rounded-xl p-4 h-32 focus:border-[#38C2D9] outline-none transition-all"
+                className="bg-white/60 dark:bg-black/50 border border-black/10 dark:border-white/10 rounded-none p-4 h-32 focus:border-[#38C2D9] outline-none transition-all"
               />
             </div>
           </div>
 
-          <div className="flex gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <button
               onClick={handleSave}
               disabled={isLoading || isUploading}
-              className="flex-1 bg-[#38C2D9] text-black font-black py-4 rounded-xl hover:scale-[1.02] transition-transform disabled:opacity-60"
+              className="flex-1 bg-[#38C2D9] text-black font-black py-4 rounded-none hover:scale-[1.02] transition-transform disabled:opacity-60"
             >
               SAVE CHANGES
             </button>
             <button 
               onClick={() => window.history.back()}
-              className="px-8 border border-white/10 rounded-xl font-bold text-sm hover:bg-red-500/20 hover:border-red-500/50 transition-all"
+              className="px-6 sm:px-8 border border-black/10 dark:border-white/10 rounded-none font-bold text-sm hover:bg-red-500/20 hover:border-red-500/50 transition-all"
             >
               CANCEL
             </button>

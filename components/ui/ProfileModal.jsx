@@ -93,7 +93,7 @@ export default function ProfileModal({ isOpen, onClose, onLoggedOut }) {
     <div className="fixed inset-0 z-[40] flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/40" onClick={onClose} />
 
-      <div className="relative w-full max-w-2xl bg-[#111] border border-[#38C2D9]/30 rounded-[2.5rem] p-8 md:p-12 shadow-2xl text-white">
+      <div className="relative w-full max-w-2xl bg-[#111] border border-[#38C2D9]/30 rounded-none p-8 md:p-12 shadow-2xl text-white">
         <div className="mb-8">
           <h2 className="text-3xl font-black italic uppercase">
             Profile <span className="text-[#38C2D9]">Settings</span>
@@ -123,7 +123,7 @@ export default function ProfileModal({ isOpen, onClose, onLoggedOut }) {
               <input
                 value={user?.email || ""}
                 readOnly
-                className="bg-black/50 border border-white/10 rounded-xl p-4 text-white/70 outline-none"
+                className="bg-black/50 border border-white/10 rounded-none p-4 text-white/70 outline-none"
               />
             </div>
 
@@ -134,7 +134,7 @@ export default function ProfileModal({ isOpen, onClose, onLoggedOut }) {
               <input
                 value={user?.username || ""}
                 readOnly
-                className="bg-black/50 border border-white/10 rounded-xl p-4 text-white/70 outline-none"
+                className="bg-black/50 border border-white/10 rounded-none p-4 text-white/70 outline-none"
               />
             </div>
           </div>
@@ -143,7 +143,7 @@ export default function ProfileModal({ isOpen, onClose, onLoggedOut }) {
             <img
               src={form.avatarUrl || "/logos/profile.png"}
               alt="avatar"
-              className="w-[100px] h-[100px] object-cover border border-[#38C2D9]/50 rounded-2xl bg-black/40"
+              className="w-[100px] h-[100px] object-cover border border-[#38C2D9]/50 rounded-none bg-black/40"
             />
 
             <div className="flex-1">
@@ -162,7 +162,7 @@ export default function ProfileModal({ isOpen, onClose, onLoggedOut }) {
               <input
                 value={form.displayName}
                 onChange={(e) => setForm((p) => ({ ...p, displayName: e.target.value }))}
-                className="bg-black/50 border border-white/10 rounded-xl p-4 focus:border-[#38C2D9] outline-none transition-all"
+                className="bg-black/50 border border-white/10 rounded-none p-4 focus:border-[#38C2D9] outline-none transition-all"
               />
             </div>
 
@@ -173,7 +173,7 @@ export default function ProfileModal({ isOpen, onClose, onLoggedOut }) {
               <input
                 value={form.country}
                 onChange={(e) => setForm((p) => ({ ...p, country: e.target.value }))}
-                className="bg-black/50 border border-white/10 rounded-xl p-4 focus:border-[#38C2D9] outline-none transition-all"
+                className="bg-black/50 border border-white/10 rounded-none p-4 focus:border-[#38C2D9] outline-none transition-all"
               />
             </div>
 
@@ -185,7 +185,7 @@ export default function ProfileModal({ isOpen, onClose, onLoggedOut }) {
                 type="date"
                 value={form.dateOfBirth}
                 onChange={(e) => setForm((p) => ({ ...p, dateOfBirth: e.target.value }))}
-                className="bg-black/50 border border-white/10 rounded-xl p-4 focus:border-[#38C2D9] outline-none transition-all"
+                className="bg-black/50 border border-white/10 rounded-none p-4 focus:border-[#38C2D9] outline-none transition-all"
               />
             </div>
 
@@ -196,7 +196,7 @@ export default function ProfileModal({ isOpen, onClose, onLoggedOut }) {
               <textarea
                 value={form.bio}
                 onChange={(e) => setForm((p) => ({ ...p, bio: e.target.value }))}
-                className="bg-black/50 border border-white/10 rounded-2xl p-4 h-28 focus:border-[#38C2D9] outline-none transition-all resize-none"
+                className="bg-black/50 border border-white/10 rounded-none p-4 h-28 focus:border-[#38C2D9] outline-none transition-all resize-none"
               />
             </div>
           </div>
@@ -205,13 +205,13 @@ export default function ProfileModal({ isOpen, onClose, onLoggedOut }) {
             <button
               onClick={saveChanges}
               disabled={isLoading}
-              className="flex-1 bg-[#38C2D9] text-black font-black py-4 rounded-xl hover:scale-[1.02] transition-transform disabled:opacity-60"
+              className="flex-1 bg-[#38C2D9] text-black font-black py-4 rounded-none hover:scale-[1.02] transition-transform disabled:opacity-60"
             >
               Save Changes
             </button>
             <button
               onClick={logout}
-              className="px-8 border border-[#ff006e]/40 text-[#ff006e] rounded-xl font-bold text-sm hover:bg-[#ff006e]/10 hover:border-[#ff006e]/70 transition-all"
+              className="px-8 border border-[#ff006e]/40 text-[#ff006e] rounded-none font-bold text-sm hover:bg-[#ff006e]/10 hover:border-[#ff006e]/70 transition-all"
             >
               Logout
             </button>

@@ -25,7 +25,7 @@ export default function AddToSessionButton(
         disabled
         className={`
           px-4 py-2 text-sm
-          bg-[#B04198]
+          bg-[#38C2D9]/90
           text-white
           flex items-center gap-2 justify-center
           rounded-none

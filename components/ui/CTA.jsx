@@ -20,6 +20,7 @@ export default function CallToActionBanner({
             bg-gradient-to-r from-slate-200 via-sky-100 to-purple-80
             border 
             dark:border-white/10
+            rounded-none
             border-black/10
             shadow-[0_0_60px_rgba(56,194,217,0.15)]
           "

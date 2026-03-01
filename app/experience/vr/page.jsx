@@ -248,7 +248,7 @@ export default function VrGamesPage(){
         ]}
         storyHref="/experience/vr/story"
       />
-        <div className='py-12' >
+        <div className='py-12 md:py-16 bg-white dark:bg-[#0a0a0a] text-black dark:text-white' >
         <Title align="center">Our VR Games</Title>
 
         <GameGrid experiences={experiences} />

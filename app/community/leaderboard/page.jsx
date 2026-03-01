@@ -11,27 +11,28 @@ export default function GlobalLeaderboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white pt-28 px-6 pb-20">
+    <div className="min-h-screen bg-white dark:bg-[#0a0a0a] text-black dark:text-white pt-28 px-6 pb-20">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-[#38C2D9] text-xs font-black uppercase tracking-[0.5em] mb-4">Hall of Fame</h2>
           <h1 className="text-6xl font-black italic uppercase tracking-tighter">Global <span className="text-[#38C2D9]">Rankings</span></h1>
         </div>
 
-        <div className="bg-white/5 border border-white/10 rounded-[3rem] overflow-hidden">
+        <div className="bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-none overflow-hidden">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-white/10 bg-white/[0.02]">
-                <th className="p-6 text-[10px] font-black uppercase tracking-widest text-gray-500">Rank</th>
-                <th className="p-6 text-[10px] font-black uppercase tracking-widest text-gray-500">Player</th>
-                <th className="p-6 text-[10px] font-black uppercase tracking-widest text-gray-500">Level</th>
-                <th className="p-6 text-[10px] font-black uppercase tracking-widest text-gray-500">Total XP</th>
-                <th className="p-6 text-[10px] font-black uppercase tracking-widest text-gray-500 text-right">Wins</th>
+
+              <tr className="border-b border-black/10 dark:border-white/10 bg-black/[0.03] dark:bg-white/[0.02]">
+                <th className="p-6 text-[10px] font-black uppercase tracking-widest text-black/60 dark:text-gray-500">Rank</th>
+                <th className="p-6 text-[10px] font-black uppercase tracking-widest text-black/60 dark:text-gray-500">Player</th>
+                <th className="p-6 text-[10px] font-black uppercase tracking-widest text-black/60 dark:text-gray-500">Level</th>
+                <th className="p-6 text-[10px] font-black uppercase tracking-widest text-black/60 dark:text-gray-500">Total XP</th>
+                <th className="p-6 text-[10px] font-black uppercase tracking-widest text-black/60 dark:text-gray-500 text-right">Wins</th>
               </tr>
             </thead>
             <tbody>
               {players.map((player) => (
-                <tr key={player.rank} className="border-b border-white/5 hover:bg-white/[0.02] transition-colors group">
+                <tr key={player.rank} className="border-b border-black/10 dark:border-white/10 hover:bg-black/[0.04] dark:hover:bg-white/[0.03] transition-colors group">
                   <td className="p-6 font-black italic text-xl">
                     {player.rank === 1 ? <span className="text-yellow-500">01</span> : `0${player.rank}`}
                   </td>
@@ -41,7 +42,7 @@ export default function GlobalLeaderboard() {
                       <span className="font-bold group-hover:text-[#38C2D9] transition-colors">{player.name}</span>
                     </div>
                   </td>
-                  <td className="p-6 font-mono text-sm text-gray-400">LVL {player.level}</td>
+                  <td className="p-6 font-mono text-sm text-black/60 dark:text-gray-400">LVL {player.level}</td>
                   <td className="p-6 font-bold text-[#38C2D9]">{player.xp}</td>
                   <td className="p-6 text-right font-black italic">{player.wins}</td>
                 </tr>

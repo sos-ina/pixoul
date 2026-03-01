@@ -1,5 +1,4 @@
 import Hero from '@/components/ui/Hero';
-import Link from "next/link";
 import CallToActionBanner from "@/components/ui/CTA";
 import GameGrid from '@/components/vr/GameGrid';
 import Title from '@/components/ui/Title';
@@ -263,7 +262,7 @@ export default function ArcadeGamesPage(){
         </h1>
 
         {/* Supporting text */}
-        <p className="text-gray-300 max-w-2xl mb-10 text-base md:text-lg">
+        <p className="text-white/80 max-w-2xl mb-10 text-base md:text-lg">
           High-score chasing in its purest form. Experience the neon-drenched thrill of lightning-fast reflexes and classic coin-op mastery.
         </p>
         </div>

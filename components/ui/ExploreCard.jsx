@@ -45,7 +45,7 @@ export default function ExploreCard({
 
         <Link
           href={href}
-          className="inline-block w-fit px-4 py-2 text-sm border border-[#38C2D9] dark:text-white text-white rounded-sm hover:bg-[#38C2D9] hover:dark:text-black hover:text-white transition"
+          className="inline-block w-fit px-4 py-2 text-sm border border-[#38C2D9] dark:text-white text-white rounded-none hover:bg-[#38C2D9] hover:dark:text-black hover:text-white transition"
         >
           Learn More
         </Link>

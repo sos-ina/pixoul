@@ -1,17 +1,18 @@
+"use client";
+
 import Hero from "@/components/ui/Hero";
 import StatGrid from "@/components/ui/StatGrid";
 import CallToActionBanner from "@/components/ui/CTA";
 import ImageCarousel from "@/components/ui/ImageCarousel";
-import BookNowButton from "@/components/ui/BookNowButton";
 import Title from "@/components/ui/Title";
 
 import EventTypeGrid from "@/components/events/EventTypeGrid";
-
-export const metadata = {
-  title: "VIP Lounge | Pixoul Events",
-};
+import VIPLoungeBookingForm from "@/components/forms/VIPLoungeBookingForm";
+import { useState } from "react";
 
 export default function VipLoungePage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   // Stats Data
   const stats = [
     { label: "Capacity", value: "8–15 Guests" },
@@ -106,10 +107,19 @@ export default function VipLoungePage() {
             <span className="text-[#38C2D9]">VIP LOUNGE</span>
           </h1>
 
-          <p className="text-gray-300 max-w-2xl mb-10 text-base md:text-lg">
+          <p className="text-gray-600 dark:text-white/80 max-w-2xl mb-10 text-base md:text-lg">
             A private and premium space crafted for elite gatherings,
             unforgettable celebrations, and exclusive Pixoul experiences.
           </p>
+
+          <div className="flex gap-4">
+             <button
+          onClick={() => setIsModalOpen(true)}
+          className="px-6 py-3 sm:px-8 sm:py-3 rounded-none bg-[#38C2D9] text-black font-semibold hover:brightness-110 transition focus:outline-none focus:ring-2 focus:ring-[#38C2D9]/40"
+          >
+          Request Booking
+        </button>
+        </div>
         </div>
       </Hero>
 
@@ -117,18 +127,18 @@ export default function VipLoungePage() {
       <StatGrid stats={stats} />
 
       {/* ABOUT */}
-      <section className="py-15">
+      <section className="py-12 md:py-16 ">
         <div className="max-w-6xl mx-auto px-6 text-center max-w-3xl">
           <h2 className="text-3xl font-semibold mb-6">
             Exclusivity Meets Immersion
           </h2>
 
-          <p className="text-gray-300 leading-relaxed mb-6">
+          <p className="text-gray-600 dark:text-white/80 leading-relaxed mb-6">
             The VIP Lounge is Pixoul’s most private and premium venue space —
             designed for guests who want an elevated event experience.
           </p>
 
-          <p className="text-gray-400 leading-relaxed mb-10">
+          <p className="text-gray-500 dark:text-gray-400 leading-relaxed mb-10">
             Whether you're hosting a corporate gathering, celebrating in style,
             or reserving a luxury gaming night, the VIP Lounge delivers comfort,
             privacy, and futuristic atmosphere.
@@ -137,16 +147,11 @@ export default function VipLoungePage() {
           {/* EVENT TYPES */}
           <Title align="center">Perfect For</Title>
           <EventTypeGrid types={eventTypes} />
-
-          {/* BOOK BUTTON */}
-          <div className="flex justify-center mt-10">
-            <BookNowButton className="px-10 py-4 text-lg" />
-          </div>
         </div>
       </section>
 
       {/* SERVICES */}
-      <section className="py-15">
+      <section className="py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-bold mb-12 text-center">
             VIP Lounge Features
@@ -162,7 +167,7 @@ export default function VipLoungePage() {
                   border 
                   dark:border-white/10
                   border-black/10
-                  p-6
+                  p-6 sm:p-8
                   rounded-none
                   hover:border-[#38C2D9]/70
                   transition
@@ -172,7 +177,7 @@ export default function VipLoungePage() {
                 <h3 className="text-lg font-semibold mb-3 text-[#38C2D9]">
                   {service.title}
                 </h3>
-                <p className="text-sm text-gray-400 leading-relaxed">
+                <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
                   {service.description}
                 </p>
               </div>
@@ -181,19 +186,10 @@ export default function VipLoungePage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <CallToActionBanner
-        title="Reserve the VIP Lounge Experience"
-        highlight="VIP Lounge"
-        description="Host your next private or corporate gathering in Pixoul’s most exclusive space."
-        primaryAction={{
-          label: "Book the VIP Lounge",
-          href: "/book?venue=vip-lounge",
-        }}
-      />
+      
 
       {/* GALLERY */}
-      <section className="py-15">
+      <section className="py-12 md:py-16">
         <div>
           <Title align="center">Gallery</Title>
           <ImageCarousel items={galleryImages} />
@@ -202,14 +198,16 @@ export default function VipLoungePage() {
 
       {/* FINAL CTA */}
       <CallToActionBanner
-        title="Luxury Hosting, Pixoul Style"
-        highlight="Exclusive"
-        description="Step into the VIP Lounge and create an unforgettable premium event experience."
+        title="Reserve the VIP Lounge Experience"
+        highlight="VIP Lounge"
+        description="Host your next private or corporate gathering in Pixoul’s most exclusive space."
         primaryAction={{
-          label: "Reserve Now",
-          href: "/book?venue=vip-lounge",
+          label: "Book the VIP Lounge",
+          onClick: () => setIsModalOpen(true),
         }}
       />
+      
+      {isModalOpen && <VIPLoungeBookingForm onClose={() => setIsModalOpen(false)} />}
     </>
   );
 }
