@@ -4,16 +4,24 @@ import { useCart } from "./SessionCartProvider";
 import { useState } from "react";
 import { Check, ShoppingCart } from "lucide-react";
 
-export default function AddToSessionButton(
-  { experience, className = "" }) {
+export default function AddToSessionButton({ experience, className = "" }) {
   const { addExperience, items } = useCart();
   const [justAdded, setJustAdded] = useState(false);
 
-  const cartItem = items.find((x) => x.experience_id === experience.experience_id);
+  // Match by hours variant too (important for hourly experiences)
+  const cartItem = items.find(
+    (x) =>
+      x.type !== "package" &&
+      x.experience_id === experience.experience_id &&
+      (x.booking_type === "hourly"
+        ? x.selected_hours === experience.selected_hours
+        : true)
+  );
+
   const isInCart = !!cartItem;
 
   const handleAdd = () => {
-    addExperience(experience);
+    addExperience({ type: "experience", ...experience });
     setJustAdded(true);
     setTimeout(() => setJustAdded(false), 2000);
   };
@@ -31,6 +39,7 @@ export default function AddToSessionButton(
           rounded-none
           ${className}
         `}
+        type="button"
       >
         <Check size={18} />
         Added
@@ -52,9 +61,10 @@ export default function AddToSessionButton(
         flex items-center gap-2 justify-center
         ${className}
       `}
+      type="button"
     >
       <ShoppingCart size={18} />
-      {isInCart ? `Add Another (${cartItem.quantity})` : "Add to Cart"}
+      {isInCart ? `Add Another (${cartItem.quantity ?? 1})` : "Add to Cart"}
     </button>
   );
 }

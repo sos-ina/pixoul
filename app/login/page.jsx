@@ -1,5 +1,9 @@
 import AuthForm from '@/components/ui/AuthForm';
 
+export const metadata = {
+  title: "Login | Pixoul Gaming",
+};
+
 export default function LoginPage() {
   return (
     <div className="relative w-full min-h-[calc(100vh-80px)] flex flex-col items-center justify-center bg-white dark:bg-[#0D0D0D]">

@@ -39,7 +39,7 @@ export default function Footer() {
               <span aria-hidden>📞</span> <span>02 418 6699</span>
             </p>
             <p className="flex items-center gap-2">
-              <span aria-hidden>📍</span> <span>Abu Dhabi, UAE</span>
+              <span aria-hidden>📍</span> <span><Link href="https://maps.app.goo.gl/sWiciak2xR2L4CNw7" className="hover:text-[#38C2D9]">Abu Dhabi, UAE</Link></span>
             </p>
           </div>
           

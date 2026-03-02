@@ -209,7 +209,7 @@ export default function Navbar() {
             <LanguageToggle />
           </div>
           <CartIcon />
-          <BookNowButton />
+          <BookNowButton  className="rounded"/>
 
           {/* Dynamic Login/Profile Link */}
           {isLoggedIn ? (

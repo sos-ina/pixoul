@@ -8,43 +8,55 @@ import Image from "next/image";
 // Context for cart state
 const CartContext = createContext();
 
-// Provider + Sidebar in one component
 export function CartProvider({ children }) {
   const [items, setItems] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  const getCartItemKey = (item) =>
-    `${item.experience_id}-${item.booking_type === "hourly" ? item.selected_hours : "fixed"}`;
+  // Supports both packages + experiences
+  const getCartItemKey = (item) => {
+    if (item.type === "package") return `package-${item.package_id}`;
+    // experience
+    return `exp-${item.experience_id}-${item.booking_type === "hourly" ? item.selected_hours : "fixed"}`;
+  };
 
+  // Merge duplicates safely (and compute hourly totals)
   const normalizeCartItems = (cartItems) => {
     const merged = new Map();
 
-    cartItems.forEach((item) => {
+    (cartItems ?? []).forEach((raw) => {
+      const item = {
+        ...raw,
+        // Default type to experience for backward-compat with old localStorage
+        type: raw?.type ?? "experience",
+        quantity: raw?.quantity ?? 1,
+      };
+
       const key = getCartItemKey(item);
       const current = merged.get(key);
 
+      // Compute total_price for hourly experiences
+      if (item.type === "experience" && item.booking_type === "hourly") {
+        item.total_price = (item.price ?? 0) * (item.selected_hours ?? 1);
+      }
+
       if (!current) {
-        merged.set(key, {
-          ...item,
-          quantity: item.quantity ?? 1,
-          total_price:
-            item.booking_type === "hourly"
-              ? (item.price ?? 0) * (item.selected_hours ?? 1)
-              : item.total_price,
-        });
+        merged.set(key, item);
         return;
       }
 
-      const quantity = (current.quantity ?? 1) + (item.quantity ?? 1);
-      merged.set(key, {
-        ...current,
-        quantity,
-        total_price:
-          current.booking_type === "hourly"
-            ? (current.price ?? 0) * (current.selected_hours ?? 1)
-            : current.total_price,
-      });
+      // Merge quantities
+      const newQty = (current.quantity ?? 1) + (item.quantity ?? 1);
+
+      // Keep a sensible merged object
+      const mergedItem = { ...current, quantity: newQty };
+
+      // Recompute hourly total_price (per-item, not multiplied by quantity, matching your existing behavior)
+      if (mergedItem.type === "experience" && mergedItem.booking_type === "hourly") {
+        mergedItem.total_price = (mergedItem.price ?? 0) * (mergedItem.selected_hours ?? 1);
+      }
+
+      merged.set(key, mergedItem);
     });
 
     return Array.from(merged.values());
@@ -70,78 +82,138 @@ export function CartProvider({ children }) {
     }
   }, [items, isLoaded]);
 
-  // Add experience
+  // ----------------------------
+  // Add experience (game)
+  // ----------------------------
   function addExperience(exp, quantity = 1) {
+    const normalized = { type: "experience", ...exp };
+
     setItems((prev) => {
       const existing = prev.find(
-  (x) =>
-    x.experience_id === exp.experience_id &&
-    x.selected_hours === exp.selected_hours
-);
+        (x) =>
+          x.type === "experience" &&
+          x.experience_id === normalized.experience_id &&
+          x.selected_hours === normalized.selected_hours
+      );
+
       if (existing) {
         return prev.map((x) =>
-          x.experience_id === exp.experience_id &&
-          x.selected_hours === exp.selected_hours
-            ? { ...x, quantity: x.quantity + quantity }
+          x.type === "experience" &&
+          x.experience_id === normalized.experience_id &&
+          x.selected_hours === normalized.selected_hours
+            ? { ...x, quantity: (x.quantity ?? 1) + quantity }
             : x
         );
       }
-      return [...prev, { ...exp, quantity }];
+
+      return [...prev, { ...normalized, quantity }];
     });
   }
 
-  // Update quantity
-  function updateQuantity(id, quantity, selectedHours = null) {
+  // ----------------------------
+  // Add package
+  // ----------------------------
+  function addPackage(pkg, quantity = 1) {
+    const normalized = {
+      type: "package",
+      package_id: pkg.package_id,
+      title: pkg.title,
+      price: Number(pkg.price ?? 0),
+      image_url: pkg.image_url ?? null,
+      description: pkg.description ?? null,
+      meta: pkg.meta ?? {},
+    };
+
+    setItems((prev) => {
+      const existing = prev.find(
+        (x) => x.type === "package" && x.package_id === normalized.package_id
+      );
+
+      if (existing) {
+        return prev.map((x) =>
+          x.type === "package" && x.package_id === normalized.package_id
+            ? { ...x, quantity: (x.quantity ?? 1) + quantity }
+            : x
+        );
+      }
+
+      return [...prev, { ...normalized, quantity }];
+    });
+  }
+
+  // Update quantity (experience OR package)
+  function updateQuantity(id, quantity, selectedHours = null, type = "experience") {
     if (quantity < 1) return;
+
     setItems((prev) =>
-      prev.map((item) =>
-        item.experience_id === id &&
-        (selectedHours === null || item.selected_hours === selectedHours)
+      prev.map((item) => {
+        if (type === "package") {
+          return item.type === "package" && item.package_id === id ? { ...item, quantity } : item;
+        }
+
+        return item.type === "experience" &&
+          item.experience_id === id &&
+          (selectedHours === null || item.selected_hours === selectedHours)
           ? { ...item, quantity }
-          : item
-      )
+          : item;
+      })
     );
   }
 
-  // Update hours for hourly bookings
+  // Update hours (hourly experiences only)
   function updateHours(id, currentHours, newHours) {
     if (newHours < 1) return;
-    if (currentHours === newHours) return;
 
     setItems((prev) => {
       const sourceItem = prev.find(
-        (item) => item.experience_id === id && item.selected_hours === currentHours
+        (item) =>
+          item.type === "experience" &&
+          item.experience_id === id &&
+          item.selected_hours === currentHours
       );
 
       if (!sourceItem) return prev;
 
-      const targetItem = prev.find(
-        (item) => item.experience_id === id && item.selected_hours === newHours
+      // If changing to a hours variant that already exists, merge quantities
+      const targetExists = prev.some(
+        (item) =>
+          item.type === "experience" &&
+          item.experience_id === id &&
+          item.selected_hours === newHours
       );
 
-      if (targetItem) {
+      if (targetExists) {
         return prev
           .filter(
             (item) =>
-              !(item.experience_id === id && item.selected_hours === currentHours)
+              !(
+                item.type === "experience" &&
+                item.experience_id === id &&
+                item.selected_hours === currentHours
+              )
           )
           .map((item) =>
-            item.experience_id === id && item.selected_hours === newHours
+            item.type === "experience" &&
+            item.experience_id === id &&
+            item.selected_hours === newHours
               ? {
                   ...item,
-                  quantity: item.quantity + sourceItem.quantity,
-                  total_price: item.price * newHours,
+                  quantity: (item.quantity ?? 1) + (sourceItem.quantity ?? 1),
+                  total_price: (item.price ?? 0) * newHours,
                 }
               : item
           );
       }
 
+      // Otherwise update the existing item hours
       return prev.map((item) =>
-        item.experience_id === id && item.selected_hours === currentHours
+        item.type === "experience" &&
+        item.experience_id === id &&
+        item.selected_hours === currentHours
           ? {
               ...item,
               selected_hours: newHours,
-              total_price: item.price * newHours,
+              total_price: (item.price ?? 0) * newHours,
             }
           : item
       );
@@ -154,6 +226,7 @@ export function CartProvider({ children }) {
       prev.filter(
         (x) =>
           !(
+            x.type === "experience" &&
             x.experience_id === id &&
             (selectedHours === null || x.selected_hours === selectedHours)
           )
@@ -161,26 +234,36 @@ export function CartProvider({ children }) {
     );
   }
 
+  // Remove package
+  function removePackage(packageId) {
+    setItems((prev) => prev.filter((x) => !(x.type === "package" && x.package_id === packageId)));
+  }
+
   // Clear cart
   function clearCart() {
     setItems([]);
   }
 
-  // Calculate totals
- const total = items.reduce((sum, item) => {
-  if (item.booking_type === "hourly") {
-    return sum + item.total_price;
-  }
-  return sum + item.price * item.quantity;
-}, 0);
-  const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
+  // Totals
+  const total = items.reduce((sum, item) => {
+    if (item.type === "package") {
+      return sum + (Number(item.price ?? 0) * (item.quantity ?? 1));
+    }
+    // experience
+    if (item.booking_type === "hourly") return sum + (Number(item.total_price ?? 0));
+    return sum + (Number(item.price ?? 0) * (item.quantity ?? 1));
+  }, 0);
+
+  const itemCount = items.reduce((sum, item) => sum + (item.quantity ?? 1), 0);
 
   return (
     <CartContext.Provider
       value={{
         items,
         addExperience,
+        addPackage,
         removeExperience,
+        removePackage,
         updateQuantity,
         updateHours,
         clearCart,
@@ -208,12 +291,13 @@ export function CartProvider({ children }) {
               <div>
                 <h2 className="text-2xl font-bold">Your Cart</h2>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  {itemCount} {itemCount === 1 ? "experience" : "experiences"}
+                  {itemCount} {itemCount === 1 ? "item" : "items"}
                 </p>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
                 className="p-2 hover:bg-gray-100 dark:hover:bg-gray-900 rounded-none"
+                type="button"
               >
                 <X size={24} />
               </button>
@@ -226,7 +310,7 @@ export function CartProvider({ children }) {
                   <ShoppingCart size={64} className="text-gray-300 dark:text-gray-700 mb-4" />
                   <h3 className="text-xl font-semibold mb-2">Your cart is empty</h3>
                   <p className="text-gray-500 dark:text-gray-400 mb-6">
-                    Start adding experiences!
+                    Start adding experiences or packages!
                   </p>
                   <Link
                     href="/experience/vr"
@@ -244,72 +328,133 @@ export function CartProvider({ children }) {
                   >
                     <div className="flex gap-4">
                       {/* Image */}
-                      <div className="relative w-24 h-24 flex-shrink-0 bg-gray-100 dark:bg-gray-900 rounded overflow-hidden">
-                        <Image
-                          src={item.image_url}
-                          alt={item.title}
-                          fill
-                          className="object-cover"
+                      <div className="relative w-full sm:w-40 h-32 bg-black/5 dark:bg-black/40 border border-black/10 dark:border-white/10 rounded overflow-hidden flex-shrink-0">
+                          {typeof item.image_url === "string" && item.image_url.trim().length > 0 ? (
+                          <Image
+                            src={item.image_url}
+                            alt={item.title}
+                            fill
+                            className="object-cover"
+                            sizes="96px"
                         />
-                      </div>
+                        ) : item.type === "package" ? (
+                          <PackageImageFallback title={item.title} />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-xs text-black/40 dark:text-white/40">
+                              No Image
+                          </div>
+                        )}
+                        </div>
 
                       {/* Details */}
                       <div className="flex-1">
                         <div className="flex items-start justify-between mb-2">
                           <div className="flex-1">
                             <h3 className="font-bold text-lg">{item.title}</h3>
-                            <div className="flex items-center gap-2 mt-1">
-                              <span className="px-2 py-0.5 text-xs font-semibold bg-[#38C2D9]/10 text-[#38C2D9] rounded uppercase">
-                                {item.category_name}
-                              </span>
-                              <span className="text-xs text-gray-500">{item.genre}</span>
-                            </div>
+
+                            {item.type === "package" ? (
+                              <p className="text-xs text-gray-500 mt-1">Package</p>
+                            ) : (
+                              <p className="text-xs text-gray-500 mt-1">
+                                {item.booking_type === "hourly"
+                                  ? `Hours: ${item.selected_hours}`
+                                  : item.duration_minutes != null
+                                  ? `Duration: ${item.duration_minutes} min`
+                                  : null}
+                              </p>
+                            )}
                           </div>
+
                           <button
-                            onClick={() => removeExperience(item.experience_id, item.selected_hours)}
+                            onClick={() => {
+                              if (item.type === "package") removePackage(item.package_id);
+                              else removeExperience(item.experience_id, item.selected_hours);
+                            }}
                             className="p-2 text-red-500 hover:bg-red-50 dark:hover:bg-red-950 rounded ml-2"
+                            type="button"
                           >
                             <Trash2 size={18} />
                           </button>
                         </div>
 
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-                            {item.booking_type === "hourly" ? (
-                              <>Hours: {item.selected_hours}</>
-                            ) : (
-                              <>Duration: {item.duration_minutes} minutes</>
-                            )}
-                        </p>
+                        {/* Controls + Price */}
+                        <div className="flex items-center justify-between mt-3">
+                          {item.type === "package" ? (
+                            <div className="flex items-center gap-2 border border-gray-300 dark:border-gray-700 rounded">
+                              <button
+                                onClick={() => updateQuantity(item.package_id, (item.quantity ?? 1) - 1, null, "package")}
+                                disabled={(item.quantity ?? 1) <= 1}
+                                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-900 disabled:opacity-40 disabled:cursor-not-allowed"
+                                type="button"
+                              >
+                                <Minus size={16} />
+                              </button>
+                              <span className="px-3 font-semibold">{item.quantity ?? 1}</span>
+                              <button
+                                onClick={() => updateQuantity(item.package_id, (item.quantity ?? 1) + 1, null, "package")}
+                                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-900"
+                                type="button"
+                              >
+                                <Plus size={16} />
+                              </button>
+                            </div>
+                          ) : item.booking_type === "hourly" ? (
+                            <div className="flex items-center gap-2 border border-gray-300 dark:border-gray-700 rounded">
+                              <button
+                                onClick={() =>
+                                  updateHours(item.experience_id, item.selected_hours, item.selected_hours - 1)
+                                }
+                                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-900 disabled:opacity-40 disabled:cursor-not-allowed"
+                                disabled={item.selected_hours <= (item.min_hours ?? 1)}
+                                type="button"
+                              >
+                                <Minus size={16} />
+                              </button>
+                              <span className="px-3 font-semibold">{item.selected_hours}</span>
+                              <button
+                                onClick={() =>
+                                  updateHours(item.experience_id, item.selected_hours, item.selected_hours + 1)
+                                }
+                                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-900 disabled:opacity-40 disabled:cursor-not-allowed"
+                                disabled={item.max_hours != null && item.selected_hours >= item.max_hours}
+                                type="button"
+                              >
+                                <Plus size={16} />
+                              </button>
+                            </div>
+                          ) : (
+                            <div className="flex items-center gap-2 border border-gray-300 dark:border-gray-700 rounded">
+                              <button
+                                onClick={() => updateQuantity(item.experience_id, (item.quantity ?? 1) - 1, item.selected_hours ?? null, "experience")}
+                                disabled={(item.quantity ?? 1) <= 1}
+                                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-900 disabled:opacity-40 disabled:cursor-not-allowed"
+                                type="button"
+                              >
+                                <Minus size={16} />
+                              </button>
+                              <span className="px-3 font-semibold">{item.quantity ?? 1}</span>
+                              <button
+                                onClick={() => updateQuantity(item.experience_id, (item.quantity ?? 1) + 1, item.selected_hours ?? null, "experience")}
+                                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-900"
+                                type="button"
+                              >
+                                <Plus size={16} />
+                              </button>
+                            </div>
+                          )}
 
-                        <div className="flex items-center justify-between">
-                          {/* Quantity */}
-                          <div className="flex items-center gap-2 border border-gray-300 dark:border-gray-700 rounded">
-                            <button
-                              onClick={() => updateQuantity(item.experience_id, item.quantity - 1, item.selected_hours ?? null)}
-                              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-900"
-                            >
-                              <Minus size={16} />
-                            </button>
-                            <span className="px-3 font-semibold">{item.quantity}</span>
-                            <button
-                              onClick={() => updateQuantity(item.experience_id, item.quantity + 1, item.selected_hours ?? null)}
-                              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-900"
-                            >
-                              <Plus size={16} />
-                            </button>
-                          </div>
-
-                          {/* Price */}
                           <div className="text-right">
-                           <p className="text-lg font-bold">
-                                  AED {
-                                    item.booking_type === "hourly"
-                                      ? item.total_price
-                                      : item.price * item.quantity
-                                  }
-                                </p>
-                            {item.quantity > 1 && (
-                              <p className="text-xs text-gray-500">AED {item.price} each</p>
+                            <p className="text-lg font-bold">
+                              AED{" "}
+                              {item.type === "package"
+                                ? Number(item.price ?? 0) * (item.quantity ?? 1)
+                                : item.booking_type === "hourly"
+                                ? Number(item.total_price ?? 0)
+                                : Number(item.price ?? 0) * (item.quantity ?? 1)}
+                            </p>
+
+                            {item.type === "package" && (item.quantity ?? 1) > 1 && (
+                              <p className="text-xs text-gray-500">AED {Number(item.price ?? 0)} each</p>
                             )}
                           </div>
                         </div>
@@ -339,6 +484,7 @@ export function CartProvider({ children }) {
                     if (confirm("Clear cart?")) clearCart();
                   }}
                   className="block w-full border-2 border-red-500 text-red-500 text-center py-3 font-semibold hover:bg-red-500 hover:text-white"
+                  type="button"
                 >
                   Clear Cart
                 </button>
@@ -351,6 +497,28 @@ export function CartProvider({ children }) {
   );
 }
 
+function PackageImageFallback({ title }) {
+  const initials = String(title || "PKG")
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0].toUpperCase())
+    .join("");
+
+  return (
+    <div className="w-full h-full flex items-center justify-center bg-black/10 dark:bg-white/10 border border-black/10 dark:border-white/10">
+      <div className="text-center">
+        <div className="text-xl font-black tracking-widest text-[#38C2D9]">
+          {initials}
+        </div>
+        <div className="text-[10px] uppercase tracking-[0.25em] text-black/50 dark:text-white/50 mt-1">
+          Package
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // Cart Button (use in Navbar)
 export function CartButton() {
   const { itemCount, setIsOpen } = useCart();
@@ -359,6 +527,7 @@ export function CartButton() {
     <button
       onClick={() => setIsOpen(true)}
       className="relative p-2 border border-[#38C2D9] text-[#38C2D9] hover:bg-[#38C2D9] hover:text-black transition"
+      type="button"
     >
       <ShoppingCart size={20} />
       {itemCount > 0 && (

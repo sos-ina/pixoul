@@ -4,6 +4,8 @@ import { createClient } from '@/utils/supabase/client';
 import { authAPI, profileAPI } from '@/lib/api/experiences';
 import { useRouter } from 'next/navigation';
 
+
+
 export default function SettingsPage() {
   const supabase = useMemo(() => createClient(), []);
   const router = useRouter();

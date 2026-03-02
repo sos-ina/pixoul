@@ -167,8 +167,8 @@ export default function Chatbot() {
     <div className="fixed right-4 top-[60%] -translate-y-1/2 z-[60] font-lato">
       <div className="flex flex-col items-center">
         {isOpen && (
-          <div className="mb-3 w-[22rem] max-w-[calc(100vw-2rem)] rounded-2xl border border-white/10 dark:bg-black/90 bg-white/90 backdrop-blur-md shadow-2xl">
-          <div className="flex items-center justify-between px-4 py-3 border-b dark:border-white/10 border-white/10">
+          <div className="mb-3 w-[22rem] max-w-[calc(100vw-2rem)] rounded-2xl border border-black/10 dark:border-white/10 dark:bg-black/90 bg-white/95 backdrop-blur-md shadow-2xl">
+          <div className="flex items-center justify-between px-4 py-3 border-b border-black/10 dark:border-white/10">
             <div className="text-sm font-semibold">Pixoul Assistant</div>
             <button
               type="button"
@@ -194,8 +194,8 @@ export default function Chatbot() {
                 <div
                   className={
                     m.from === "user"
-                      ? "max-w-[85%] rounded-2xl rounded-br-md bg-[#38C2D9] px-3 py-2 text-sm text-black dark:text-white"
-                      : "max-w-[85%] rounded-2xl rounded-bl-md bg-white/10 px-3 py-2 text-sm text-black dark:text-white"
+                      ? "max-w-[85%] rounded-2xl rounded-br-md bg-[#38C2D9] border border-[#2aaac0] px-3 py-2 text-sm text-black dark:text-white"
+                      : "max-w-[85%] rounded-2xl rounded-bl-md bg-black/5 border border-black/10 dark:bg-white/10 dark:border-white/10 px-3 py-2 text-sm text-black dark:text-white"
                   }
                 >
                   {m.text}
@@ -204,7 +204,7 @@ export default function Chatbot() {
             ))}
           </div>
 
-          <div className="flex items-center gap-2 px-4 py-3 border-t border-white/10">
+          <div className="flex items-center gap-2 px-4 py-3 border-t border-black/10 dark:border-white/10">
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
@@ -212,13 +212,13 @@ export default function Chatbot() {
                 if (e.key === "Enter") sendMessage();
               }}
               placeholder="Type a message..."
-              className="flex-1 rounded-xl bg-black/40 border border-white/10 px-3 py-2 text-sm outline-none focus:border-white/30"
+              className="flex-1 rounded-xl bg-black/5 dark:bg-black/40 border border-black/15 dark:border-white/10 px-3 py-2 text-sm text-black dark:text-white placeholder:text-black/40 dark:placeholder:text-white/40 outline-none focus:border-[#38C2D9]"
             />
             <button
               type="button"
               onClick={sendMessage}
               disabled={!canSend || isLoading}
-              className="rounded-xl bg-white dark:bg-black text-black dark:text-white px-3 py-2 text-sm font-semibold disabled:opacity-50"
+              className="rounded-xl bg-[#38C2D9] text-black px-3 py-2 text-sm font-semibold hover:bg-[#38C2D9]/90 disabled:opacity-50"
             >
               Send
             </button>

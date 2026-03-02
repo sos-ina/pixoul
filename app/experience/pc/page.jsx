@@ -21,6 +21,7 @@ export const pcGames = [
     min_hours: 1,
     max_hours: 6,
     price: 20,
+    hourly_price_map: { 1: 20, 2: 35, 3: 50, 4: 60, 5: 70, 6: 80 },
   },
   {
     experience_id: "vip-room",
@@ -35,6 +36,7 @@ export const pcGames = [
     min_hours: 1,
     max_hours: 5,
     price: 35,
+    hourly_price_map: { 1: 35, 2: 60, 3: 85, 4: 100, 5: 115, 6: 130 }
   },
   {
     experience_id: "private-room",
@@ -49,6 +51,7 @@ export const pcGames = [
     min_hours: 1,
     max_hours: 5,
     price: 50,
+    hourly_price_map: { 1: 50, 2: 90, 3: 120, 4: 150, 5: 180 }
   },
 ];
 
