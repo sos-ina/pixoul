@@ -7,7 +7,10 @@ export const metadata = {
 export default function VirtualTourPage() {
   return (
     <>
+    <div className='py-10'>
       <Title align="center">360° Virtual Tour</Title>
+    </div>
+      
 
       <div style={{ width: "100%", height : "100vh" }}>
         

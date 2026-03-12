@@ -1,0 +1,85 @@
+{
+  "currency": "AED",
+  "notes": [
+    "Prices including VAT",
+    "Pay & Play validity: 365 days",
+    "Source: in-venue pricing list"
+  ],
+  "categories": {
+    "redemption_games": [
+      {"name": "Air Hockey", "price": 12},
+      {"name": "Air Hockey Mini", "price": 12},
+      {"name": "Angry Bird Whacker", "price": 12},
+      {"name": "Boxer Premium LED", "price": 10},
+      {"name": "Coco Bowl", "price": 14},
+      {"name": "Crater Raiders", "price": 12},
+      {"name": "Power Roll", "price": 18},
+      {"name": "Robot Storm", "price": 12},
+      {"name": "Rock And Ball", "price": 10},
+      {"name": "Rock The Rim", "price": 10},
+      {"name": "Skeeball Glow", "price": 10},
+      {"name": "Skill Cut Winner", "price": 30},
+      {"name": "Snow Day", "price": 12},
+      {"name": "Ticket Circus", "price": 14},
+      {"name": "Ticket Monster", "price": 14},
+      {"name": "Shooting Mania", "price": 15},
+      {"name": "Fire Truck", "price": 12},
+      {"name": "Route Diner", "price": 12},
+      {"name": "Kiddy Krusin", "price": 12},
+      {"name": "Air Canades", "price": 12},
+      {"name": "AirShip Fishing", "price": 12},
+      {"name": "Storm Shot", "price": 15},
+      {"name": "Lane Master", "price": 12}
+    ],
+    "arcades": [
+      {"name": "Michael Jackson", "price": 6},
+      {"name": "Mike Tyson", "price": 6},
+      {"name": "Mortal Kombat", "price": 6},
+      {"name": "NBA", "price": 6},
+      {"name": "Pac-Man", "price": 6},
+      {"name": "Sonic the Hedgehog", "price": 6},
+      {"name": "Street Fighter", "price": 6},
+      {"name": "Super Mario Kart", "price": 6},
+      {"name": "Teenage Mutant Ninja Turtles", "price": 6},
+      {"name": "Tekken", "price": 6},
+      {"name": "The Simpsons", "price": 6},
+      {"name": "Daytona", "price": 12},
+      {"name": "Soccer", "price": 20}
+    ],
+    "console": [
+      {"name": "PS5", "price": 35, "unit": "AED/HR"}
+    ],
+    "esports": [
+      {"name": "Regular PC", "price": 20, "unit": "AED/HR"},
+      {"name": "VIP Room", "price": 35, "unit": "AED/HR"}
+    ],
+    "formula_racing": [
+      {"name": "F1", "price": 50, "unit": "AED/10 min"}
+    ],
+    "vr_games": [
+      {"name": "Battle Rush", "price": 35},
+      {"name": "Hexa Looper", "price": 35},
+      {"name": "Operation B", "price": 35},
+      {"name": "Para shift", "price": 35},
+      {"name": "Planked", "price": 35},
+      {"name": "Solosol", "price": 35},
+      {"name": "The Lift", "price": 35},
+      {"name": "Transformers", "price": 35}
+    ],
+    "birthday_bash_packages": [
+      {"name": "Weekdays", "price": 199, "unit": "AED/KID"},
+      {"name": "Weekends", "price": 235, "unit": "AED/KID"}
+    ],
+    "social_gaming_room": [
+      {"name": "Package 1 (1 Hour)", "price": 150, "unit": "AED"},
+      {"name": "Package 2 (2 Hours)", "price": 250, "unit": "AED"}
+    ],
+    "pay_and_play": [
+      {"name": "Ultimate 1000 + 10 Free VR Games", "price": 1000, "unit": "AED"},
+      {"name": "Elite Bundle 700 + 7 Free VR Games", "price": 735, "unit": "AED"},
+      {"name": "Pro Gamer Fuel 500 + 5 Free VR Games", "price": 525, "unit": "AED"},
+      {"name": "Gamers Choice 300 + 3 Free VR Games", "price": 315, "unit": "AED"},
+      {"name": "Starter Pack 200", "price": 210, "unit": "AED"}
+    ]
+  }
+}

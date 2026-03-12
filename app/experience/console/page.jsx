@@ -10,106 +10,28 @@ export const metadata = {
 
 
 export const consoleGames = [
+  // =========================
+  // Console Game
+  // =========================
   {
-    experience_id: "tekken-7",
-    title: "Tekken 7",
-    slug: "tekken-7",
-    category_name: "console",
-    image_url: "https://placehold.net/default.png",
-    genre: "fighting",
+    experience_id: "ps5-1-hour",
+    title: "1 Hour PS5",
+    slug: "ps5-1-hour",
+    category_name: "console-game",
+    image_url: "/images/PS5.png",
+    genre: "console",
 
-    can_book: false,
-    has_details: false,
+    can_book: true,
+    has_details: true,
 
-    duration_minutes: null,
-    min_players: 1,
-    max_players: 2,
-    min_age: 12,
-  },
+    booking_type: "hourly", 
+    price_per_hour: 35,  
 
-  {
-    experience_id: "mortal-kombat-11",
-    title: "Mortal Kombat 11",
-    slug: "mortal-kombat-11",
-    category_name: "console",
-    image_url: "https://placehold.net/default.png",
-    genre: "fighting",
-
-    can_book: false,
-    has_details: false,
-
-    duration_minutes: null,
-    min_players: 1,
-    max_players: 2,
-    min_age: 18,
-  },
-
-  {
-    experience_id: "gran-turismo",
-    title: "Gran Turismo",
-    slug: "gran-turismo",
-    category_name: "console",
-    image_url: "https://placehold.net/default.png",
-    genre: "racing",
-
-    can_book: false,
-    has_details: false,
-
-    duration_minutes: null,
-    min_players: 1,
-    max_players: 2,
-    min_age: 3,
-  },
-
-  {
-    experience_id: "nba-2k",
-    title: "NBA 2K",
-    slug: "nba-2k",
-    category_name: "console",
-    image_url: "https://placehold.net/default.png",
-    genre: "sports",
-
-    can_book: false,
-    has_details: false,
-
-    duration_minutes: null,
+    duration_minutes: 60,
     min_players: 1,
     max_players: 4,
-    min_age: 3,
-  },
-
-  {
-    experience_id: "call-of-duty-console",
-    title: "Call of Duty",
-    slug: "call-of-duty-console",
-    category_name: "console",
-    image_url: "https://placehold.net/default.png",
-    genre: "shooter",
-
-    can_book: false,
-    has_details: false,
-
-    duration_minutes: null,
-    min_players: 1,
-    max_players: 4,
-    min_age: 18,
-  },
-
-  {
-    experience_id: "fifa-console",
-    title: "EA Sports FC",
-    slug: "ea-sports-fc-console",
-    category_name: "console",
-    image_url: "https://placehold.net/default.png",
-    genre: "sports",
-
-    can_book: false,
-    has_details: false,
-
-    duration_minutes: null,
-    min_players: 1,
-    max_players: 4,
-    min_age: 3,
+    min_age: 7,
+    price: 35,
   },
 ];
 
@@ -129,7 +51,7 @@ export default function ConsoleGamesPage(){
             <div className="flex flex-col items-center justify-center h-full text-center px-6">
 
         {/* Main headline */}
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white dark:text-white">
           NEXT-GEN  
           <br />
           <span className="text-[#38C2D9]">REACH</span>
@@ -154,7 +76,7 @@ export default function ConsoleGamesPage(){
               description="Try our Pixoul Pass! Get access to multiple experiences at a discounted rate. Perfect for first-timers."
               primaryAction={{
                 label: "View All Games",
-                href: "/",
+                href: "/experience/all",
               }}
             />
 

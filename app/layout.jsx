@@ -1,8 +1,10 @@
 
 import "./globals.css";
-import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
-import { SessionCartProvider } from "@/components/cart/SessionCartProvider";
+import AppChrome from "../components/layout/AppChrome";
+import { CartProvider } from "@/components/cart/SessionCartProvider";
+import Chatbot from "@/components/chatbot/Chatbot";
+
+import { Providers } from "./providers";
 
 
 export const metadata = {
@@ -11,18 +13,19 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+ 
   return (
-    <html lang="en">
-      <body className="bg-black text-white">
-        <SessionCartProvider>
-          <Navbar />
-          <main className="pt-20">
-            {children}
-          </main>
-          <Footer />
-        </SessionCartProvider>
+    <html lang="en"  suppressHydrationWarning>
+       
+      <body suppressHydrationWarning className="bg-white text-black dark:bg-black dark:text-white">
+        <Providers>
+
+          <CartProvider>
+          <AppChrome>{children}</AppChrome>
+          <Chatbot />
+        </CartProvider>
+        </Providers>
       </body>
     </html>
   );
 }
-

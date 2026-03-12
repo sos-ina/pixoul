@@ -78,7 +78,7 @@ export default function Home() {
         </span>
 
         {/* Main headline */}
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white dark:text-white">
           WELCOME TO THE
           <br />
           <span className="text-[#38C2D9]">FUTURE OF PLAY</span>
@@ -94,10 +94,10 @@ export default function Home() {
         <div className="flex flex-wrap gap-4 justify-center">
 
           {/* Primary CTA */}
-          <Link href="/"><BookNowButton className="px-8 py-4 text-base" /></Link>
+          <Link href="/mission-bundles"><BookNowButton className="px-8 py-4 text-base" /></Link>
 
           {/* Secondary CTA */}
-          <Link href="/experience/vr">
+          <Link href="/experience/all">
           <button className="
             px-8 py-4
             border border-[#38C2D9]
@@ -123,20 +123,21 @@ export default function Home() {
       <ExploreGrid items={exploreItems} />
 
 
-      
+      <div className="py-12">
       <Title align="center">Inside the Pixoul Experience</Title>
       <ImageCarousel items={carouselItems} />
+     </div> 
 
       <CallToActionBanner
       title="READY TO PLAY?"
       highlight="PLAY?"
       description="Book your session now and experience the future of gaming. Walk-ins welcome, but reservations guarantee your spot."
       primaryAction={{
-        label: "Book Now",
-        href: "/experience/vr/battle-rush",
+        label: "Explore Games",
+        href: "/experience/all",
       }}
     />
-      
+
 
     
     </>

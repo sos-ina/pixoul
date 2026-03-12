@@ -4,6 +4,7 @@ import StorySection from "@/components/story/StorySection";
 import TechnologyBlock from "@/components/story/TechnologyBlock";
 import CharactersGrid from "@/components/story/CharactersGrid";
 import Hero from "@/components/ui/Hero";
+import Link from "next/link";
 
 export default function VRStoryPage() {
   const characters = [
@@ -59,7 +60,7 @@ export default function VRStoryPage() {
           videoSrc="/videos/Pixoul_Metaverse_Trailer.mp4" 
           overlay={true}
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
          The Pixoul Megaverse</h1>
           </Hero>
    
@@ -81,6 +82,10 @@ export default function VRStoryPage() {
           fate of the world in your hands.
         </p>
       </StorySection>
+
+      <div className="py-12 flex items-center justify-center text-center">
+        <img src="/images/story.jpeg" alt="Pixoul story mode" className="w-200 rounded-lg shadow-lg" />
+      </div>
 
       {/* TECHNOLOGY */}
       <StorySection title="Technology">
@@ -126,6 +131,7 @@ export default function VRStoryPage() {
 
       {/* CHARACTERS */}
       <CharactersGrid characters={characters} />
+      <p className="justify-center text-[#38C2D9] hover:underline font-semibold px-10"><Link href="/experience/vr">← Back to VR Experience Page</Link></p>
     </>
   );
 }

@@ -6,8 +6,11 @@ export default function CharacterCard({ name, image, description }) {
       className="
         group
         relative
-        bg-black/90
-        border border-white/10
+        bg-[#F1F5F9] 
+        dark:bg-black/90
+        border 
+        border-white/10
+        dark:border-black/10
         overflow-hidden
         transition
         hover:border-[#38C2D9]/60
@@ -30,8 +33,9 @@ export default function CharacterCard({ name, image, description }) {
         <div
           className="
             absolute inset-0
-            bg-gradient-to-t
-            from-black via-black/40 to-transparent
+            dark:bg-gradient-to-t
+            dark:from-black dark:via-black/40 dark:to-transparent
+            bg-gradient-to-t from-white/30 via-white/20 to-transparent
           "
         />
 
@@ -64,7 +68,7 @@ export default function CharacterCard({ name, image, description }) {
         <div className="h-px w-12 bg-[#38C2D9]/60 mb-3" />
 
         {/* Description */}
-        <p className="text-sm text-gray-300 leading-relaxed">
+        <p className="text-sm text-black dark:text-gray-300 leading-relaxed">
           {description}
         </p>
       </div>

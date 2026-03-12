@@ -6,14 +6,14 @@ export default function VRStoryPreview({
   storyHref,
 }) {
   return (
-    <section className="py-20 relative w-full hover:shadow-[0_0_60px_rgba(56,194,217,0.15)] transition">
+    <section className="py-12 relative w-full hover:shadow-[0_0_60px_rgba(56,194,217,0.15)] transition">
       <div className="flex items-center justify-center px-4 sm:px-6">
 
         <div
           className="
             relative
             border border-white/10
-            bg-black/70
+            dark:bg-black/70 bg-white/70
             px-8 py-16
             w-full
             text-center
@@ -28,7 +28,7 @@ export default function VRStoryPreview({
           />
 
           {/* Eyebrow */}
-          <p className="text-xs uppercase tracking-widest text-gray-400 mb-4">
+          <p className="text-xs uppercase tracking-widest dark:text-gray-400 text-gray-600 mb-4">
             A Fractured Digital Reality Where Worlds Collide 
           </p>
 
@@ -38,7 +38,7 @@ export default function VRStoryPreview({
           </h2>
 
           {/* Description */}
-          <div className="text-gray-300 space-y-4 leading-relaxed mx-auto">
+          <div className="dark:text-gray-300 text-gray-600 space-y-4 leading-relaxed mx-auto">
             {description.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
             ))}

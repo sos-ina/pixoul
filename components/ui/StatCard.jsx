@@ -6,8 +6,8 @@ export default function StatCard({ value, label, description, link }) {
       href={link}
       className={`
         relative
-        border border-white/10
-        bg-black/40
+        border dark:border-white/10 border-black/10
+        dark:bg-black/40 bg-white/40
         backdrop-blur-md
         p-4 sm:p-5 md:p-6 lg:p-8
         flex flex-col items-center justify-center
@@ -26,7 +26,7 @@ export default function StatCard({ value, label, description, link }) {
       </div>
 
       {description && (
-        <p className="text-xs sm:text-sm md:text-sm text-gray-400 mt-2 md:mt-3">
+        <p className="text-xs sm:text-sm md:text-sm dark:text-gray-400 text-gray-600 mt-2 md:mt-3">
           {description}
         </p>
       )}

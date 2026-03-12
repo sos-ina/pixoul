@@ -24,7 +24,7 @@ export default function SchoolVisitPage() {
         overlay={true}
       >
         <div className="flex flex-col items-center justify-center h-full text-center px-6">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
             EDUCATIONAL{" "}
             <span className="text-[#38C2D9]">FIELD TRIPS</span>
           </h1>
@@ -44,18 +44,18 @@ export default function SchoolVisitPage() {
         <div className="max-w-5xl mx-auto px-6 text-center">
           <Title align="center">A Guided Visit Into the Future</Title>
 
-          <p className="text-gray-300 leading-relaxed mt-6">
+          <p className="dark:text-gray-300 text-gray-600 leading-relaxed mt-6">
             Have you ever wondered what powers the technological advances of the
             21st century?
           </p>
 
-          <p className="text-gray-400 leading-relaxed mt-4">
+          <p className="dark:text-gray-400 text-gray-500 leading-relaxed mt-4">
             Pixoul Academy invites schools across the UAE to explore the science
             behind computers, programming, video games, and Esports — through a
             safe, immersive, hands-on educational journey.
           </p>
 
-          <p className="text-gray-500 italic mt-8">
+          <p className="dark:text-gray-400 text-gray-500 italic mt-8">
             “If we teach today as we taught yesterday, we rob our children of
             tomorrow.” — John Dewey
           </p>
@@ -63,7 +63,7 @@ export default function SchoolVisitPage() {
       </section>
 
       {/* PROGRAM HIGHLIGHTS */}
-      <section className="py-15 bg-black/40">
+      <section className="py-15 dark:bg-black/40 bg-white/40">
         <div className="max-w-6xl mx-auto px-6">
           <Title align="center">What Students Will Experience</Title>
 
@@ -85,8 +85,8 @@ export default function SchoolVisitPage() {
               <div
                 key={item.title}
                 className="
-                  bg-black/70
-                  border border-white/10
+                  dark:bg-black/70 bg-white/70
+                  border dark:border-white/10 border-black/10
                   p-6
                   rounded-none
                   hover:border-[#38C2D9]/70
@@ -97,7 +97,7 @@ export default function SchoolVisitPage() {
                 <h3 className="text-lg font-semibold text-[#38C2D9] mb-3">
                   {item.title}
                 </h3>
-                <p className="text-sm text-gray-400 leading-relaxed">
+                <p className="text-sm dark:text-gray-400 text-gray-600 leading-relaxed">
                   {item.desc}
                 </p>
               </div>
@@ -111,41 +111,41 @@ export default function SchoolVisitPage() {
         <div className="max-w-6xl mx-auto px-6 text-center">
           <Title align="center">Program Overview</Title>
 
-          <p className="text-gray-400 mt-6 max-w-3xl mx-auto">
+          <p className="dark:text-gray-400 text-gray-500 mt-6 max-w-3xl mx-auto">
             Daily guided sessions include Virtual Reality, Programming, Esports,
             and Multiplayer Gaming experiences.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 mt-12">
-            <div className="border border-white/10 p-8 bg-black/60">
+            <div className="border dark:border-white/10 border-black/10 p-8 dark:bg-black/60 bg-white/60">
               <h3 className="text-xl font-semibold text-[#38C2D9] mb-4">
                 Monday – Thursday
               </h3>
-              <p className="text-gray-300">8:45 AM – 10:45 AM</p>
-              <p className="text-gray-300">11:00 AM – 1:00 PM</p>
+              <p className="dark:text-gray-300 text-gray-500">8:45 AM – 10:45 AM</p>
+              <p className="dark:text-gray-300 text-gray-500">11:00 AM – 1:00 PM</p>
             </div>
 
-            <div className="border border-white/10 p-8 bg-black/60">
+            <div className="border dark:border-white/10 border-black/10 p-8 dark:bg-black/60 bg-white/60">
               <h3 className="text-xl font-semibold text-[#38C2D9] mb-4">
                 Fantastic Fridays
               </h3>
-              <p className="text-gray-300">9:00 AM – 11:30 AM</p>
+              <p className="dark:text-gray-300 text-gray-500">9:00 AM – 11:30 AM</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* BOOKING RULES */}
-      <section className="py-15 bg-black/40">
+      <section className="py-15 dark:bg-black/40 bg-white/40">
         <div className="max-w-6xl mx-auto px-6">
           <Title align="center">Booking Requirements</Title>
 
           <div className="grid md:grid-cols-2 gap-8 mt-12 text-gray-300">
-            <div className="border border-white/10 p-8 bg-black/60">
+            <div className="border dark:border-white/10 border-black/10 p-8 dark:bg-black/60 bg-white/60">
               <h3 className="text-lg font-semibold text-[#38C2D9] mb-4">
                 Important Notes
               </h3>
-              <ul className="space-y-3 text-sm text-gray-400">
+              <ul className="space-y-3 text-sm dark:text-gray-400 text-gray-600">
                 <li>• Minimum group size: 30 students</li>
                 <li>• Book at least one week in advance</li>
                 <li>• Payment is processed on the day of the visit</li>
@@ -153,15 +153,15 @@ export default function SchoolVisitPage() {
               </ul>
             </div>
 
-            <div className="border border-white/10 p-8 bg-black/60">
+            <div className="border dark:border-white/10 border-black/10 p-8 dark:bg-black/60 bg-white/60">
               <h3 className="text-lg font-semibold text-[#38C2D9] mb-4">
                 Contact to Book
               </h3>
-              <p className="text-gray-400 text-sm mb-4">
+              <p className="dark:text-gray-400 text-gray-500 text-sm mb-4">
                 To arrange your school visit, email or call us with:
               </p>
 
-              <p className="text-gray-300 text-sm">
+              <p className="dark:text-gray-400 text-gray-500 text-sm">
                 📞 +971 52 104 0469 <br />
                 ✉️ education@pixoulgaming.com
               </p>

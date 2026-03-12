@@ -1,10 +1,17 @@
+ 
+
+"use client"
+
 import Link from "next/link";
 import BookNowButton from '@/components/ui/BookNowButton';
 import { routes } from "@/lib/routes";
 import AddToSessionButton from "@/components/cart/AddToSession";
+import { useState } from "react";
 
 
 export default function GameCard({ experience }) {
+  const [hours, setHours] = useState(1);
+
   const {
     experience_id,
     title,
@@ -16,10 +23,13 @@ export default function GameCard({ experience }) {
     can_book,
     has_details,
 
+    isHourly = experience.booking_type === "hourly",
+
     duration_minutes,
     min_players,
     max_players,
     min_age,
+      price,
   } = experience;
 
   const categorySlug = category_name.toLowerCase();
@@ -28,15 +38,15 @@ export default function GameCard({ experience }) {
   return (
     <div
       className="
-        group
-        relative
-        bg-black/80
-        border border-white/10
-        transition
+        group relative 
         overflow-hidden
-
-        hover:border-[#38C2D9]/70
-        hover:shadow-[0_0_40px_rgba(56,194,217,0.15)]
+        dark:bg-gradient-to-br dark:from-black dark:via-[#0a1f2d] dark:to-black
+        bg-[#F1F5F9]
+        border border-white/10
+        transition-all duration-500 ease-out
+        hover:-translate-y-3
+        hover:border-[#38C2D9]/80
+        hover:shadow-[0_0_35px_rgba(56,194,217,0.35)]
       "
     >
       {/* IMAGE */}
@@ -53,7 +63,8 @@ export default function GameCard({ experience }) {
         />
 
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/40" />
+        {/*dark:bg-black/40 bg-white/20*/}
+        <div className="absolute inset-0 " />
 
         {/* CATEGORY TAG */}
         <div
@@ -63,7 +74,8 @@ export default function GameCard({ experience }) {
             uppercase tracking-widest
             px-2 py-1
             border border-white/30
-            bg-black/60
+            dark:bg-black/60
+            bg-white/60
           "
         >
           {category_name}
@@ -79,7 +91,7 @@ export default function GameCard({ experience }) {
               px-2 py-1
               border border-red-400/50
               text-red-400
-              bg-black/60
+              dark:bg-black/60 bg-white/60
             "
           >
             Walk-In Only
@@ -90,19 +102,60 @@ export default function GameCard({ experience }) {
       {/* CONTENT */}
       <div className="p-4 flex flex-col gap-3">
 
-        {/* TITLE */}
-        <h3 className="text-lg font-semibold leading-tight">
-          {title}
-        </h3>
+        {/* TITLE  and price*/}
+        <div className="flex items-center justify-between">
+          <h3 className="text-lg font-semibold leading-tight">
+            {title}
+          </h3>
+
+          <h3 className="text-md font-semibold leading-tight text-[#38C2D9]">
+            AED {isHourly ? price * hours : price}
+          </h3>
+        </div>
+
 
         {/* META */}
-        <div className="text-xs text-gray-400 flex gap-4">
+        <div className="text-xs dark:text-gray-400 text-gray-600 flex gap-4">
           {duration_minutes && <span>{duration_minutes} min</span>}
           {min_players && max_players && (
             <span>{min_players}–{max_players} players</span>
           )}
           {min_age && <span>{min_age}+</span>}
+
         </div>
+        <div>
+          {isHourly && (
+              <div className="mt-2">
+                <label className="text-xs text-gray-500 dark:text-gray-400 block mb-1">
+                  Select Hours
+                </label>
+
+                <select
+                  value={hours}
+                  onChange={(e) => setHours(Number(e.target.value))}
+                  className="
+                    w-full
+                    px-3 py-2
+                    text-sm
+                    dark:bg-black/70
+                    bg-white
+                    border
+                    dark:border-white/20
+                    border-black/20
+                    focus:outline-none
+                    focus:border-[#38C2D9]
+                  "
+                >
+                  {[1, 2, 3, 4].map((hr) => (
+                    <option key={hr} value={hr}>
+                      {hr} hour{hr > 1 ? "s" : ""}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+        </div>
+
 
         {/* ACTIONS */}
         <div className="mt-4 flex gap-3">
@@ -110,9 +163,13 @@ export default function GameCard({ experience }) {
           {/* BOOK NOW (only if allowed) */}
           {can_book && (
             <AddToSessionButton
-              className="px-4 py-2 text-sm"
-              experience={experience}
-            />
+                  className="px-4 py-2 text-sm"
+                  experience={{
+                    ...experience,
+                    selected_hours: isHourly ? hours : null,
+                    total_price: isHourly ? price * hours : price,
+                  }}
+                />
           )}
 
           {/* LEARN MORE (only if meaningful) */}
@@ -121,10 +178,13 @@ export default function GameCard({ experience }) {
               href={routes.experience(categorySlug, slug)}
               className="
                 px-4 py-2 text-sm
-                border border-white/30
+                border 
+                dark:border-white/30
+                border-black/30
                 hover:border-[#38C2D9]
                 hover:text-[#38C2D9]
                 transition
+
               "
             >
               Learn More

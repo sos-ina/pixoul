@@ -30,8 +30,9 @@ export default function Hero({
       )}
 
       {/* Overlay */}
+      {/* dark:bg-black/60 bg-black/60 */}
       {overlay && (
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 " />
       )}
 
       {/* Content (YOU control this) */}

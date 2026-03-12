@@ -1,16 +1,19 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
+  darkMode: "class",
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,jsx,ts,tsx}",
+    "./components/**/*.{js,jsx,ts,tsx}",
+    "./pages/**/*.{js,jsx,ts,tsx,mdx}",
   ],
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Klapt', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Lato', 'Amiri', 'sans-serif'],
+        lato: ["Lato", "sans-serif"],
+        klapt: ["Klapt", "sans-serif"],
+        amiri: ["Amiri", "serif"],
       },
     },
   },
   plugins: [],
-}
+};

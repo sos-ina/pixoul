@@ -6,107 +6,240 @@ import Title from '@/components/ui/Title';
 
 export const arcadeGames = [
   {
-    experience_id: "air-hockey",
-    title: "Air Hockey",
-    slug: "air-hockey",
-    category_name: "arcade",
-    image_url: "/images/PG-0151.jpg",
-    genre: "arcade sports",
+    experience_id: "michael-jackson",
+    title: "Michael Jackson",
+    slug: "michael-jackson",
+    category_name: "arcades",
+    image_url: "/images/MICHAEL-JACKSON.png",
+    genre: "arcade",
 
-    can_book: false,
+    can_book: true,
     has_details: false,
 
-    duration_minutes: null,
-    min_players: 2,
-    max_players: 2,
-    min_age: 6,
-  },
-
-  {
-    experience_id: "basketball-hoops",
-    title: "Basketball Hoops",
-    slug: "basketball-hoops",
-    category_name: "arcade",
-    image_url: "/images/PG-0151.jpg",
-    genre: "arcade sports",
-
-    can_book: false,
-    has_details: false,
-
-    duration_minutes: null,
-    min_players: 1,
-    max_players: 2,
-    min_age: 6,
-  },
-
-  {
-    experience_id: "boxing-machine",
-    title: "Boxing Machine",
-    slug: "boxing-machine",
-    category_name: "arcade",
-    image_url: "/images/PG-0151.jpg",
-    genre: "reaction / strength",
-
-    can_book: false,
-    has_details: false,
-
-    duration_minutes: null,
-    min_players: 1,
-    max_players: 1,
-    min_age: 10,
-  },
-
-  {
-    experience_id: "whack-a-mole",
-    title: "Whack-A-Mole",
-    slug: "whack-a-mole",
-    category_name: "arcade",
-    image_url: "/images/PG-0151.jpg",
-    genre: "reaction",
-
-    can_book: false,
-    has_details: false,
-
-    duration_minutes: null,
-    min_players: 1,
-    max_players: 1,
-    min_age: 5,
-  },
-
-  {
-    experience_id: "claw-machine",
-    title: "Claw Machine",
-    slug: "claw-machine",
-    category_name: "arcade",
-    image_url: "/images/PG-0151.jpg",
-    genre: "skill / luck",
-
-    can_book: false,
-    has_details: false,
-
-    duration_minutes: null,
-    min_players: 1,
-    max_players: 1,
-    min_age: 4,
-  },
-
-  {
-    experience_id: "racing-arcade",
-    title: "Racing Arcade",
-    slug: "racing-arcade",
-    category_name: "arcade",
-    image_url: "/images/PG-0151.jpg",
-    genre: "racing",
-
-    can_book: false,
-    has_details: false,
-
-    duration_minutes: null,
+    duration_minutes: 10,
     min_players: 1,
     max_players: 2,
     min_age: 7,
+    price: 6,
   },
-];
+
+  {
+    experience_id: "mike-tyson",
+    title: "Mike Tyson",
+    slug: "mike-tyson",
+    category_name: "arcades",
+    image_url: "/images/MIKE-TYSON.png",
+    genre: "fighting",
+
+    can_book: true,
+    has_details: false,
+
+    duration_minutes: 10,
+    min_players: 1,
+    max_players: 2,
+    min_age: 10,
+    price: 6,
+  },
+
+  {
+    experience_id: "mortal-kombbat",
+    title: "Mortal Kombbat",
+    slug: "mortal-kombbat",
+    category_name: "arcades",
+    image_url: "/images/MORTAL-KOMBBAT.png",
+    genre: "fighting",
+
+    can_book: true,
+    has_details: false,
+
+    duration_minutes: 10,
+    min_players: 1,
+    max_players: 2,
+    min_age: 13,
+    price: 6,
+  },
+
+  {
+    experience_id: "nba",
+    title: "NBA",
+    slug: "nba",
+    category_name: "arcades",
+    image_url: "/images/NBA.png",
+    genre: "sports",
+
+    can_book: true,
+    has_details: false,
+
+    duration_minutes: 10,
+    min_players: 1,
+    max_players: 4,
+    min_age: 7,
+    price: 6,
+  },
+
+  {
+    experience_id: "pac-man",
+    title: "Pac-Man",
+    slug: "pac-man",
+    category_name: "arcades",
+    image_url: "/images/PAC-MAN.png",
+    genre: "classic",
+
+    can_book: true,
+    has_details: false,
+
+    duration_minutes: 10,
+    min_players: 1,
+    max_players: 1,
+    min_age: 6,
+    price: 6,
+  },
+
+  {
+    experience_id: "sonic-the-hedgehog",
+    title: "Sonic the Hedgehog",
+    slug: "sonic-the-hedgehog",
+    category_name: "arcades",
+    image_url: "/images/SONIC.png",
+    genre: "platform",
+
+    can_book: true,
+    has_details: false,
+
+    duration_minutes: 10,
+    min_players: 1,
+    max_players: 1,
+    min_age: 6,
+    price: 6,
+  },
+
+  {
+    experience_id: "street-fighter",
+    title: "Street Fighter",
+    slug: "street-fighter",
+    category_name: "arcades",
+    image_url: "/images/STREET-FIGHTER.png",
+    genre: "fighting",
+
+    can_book: true,
+    has_details: false,
+
+    duration_minutes: 10,
+    min_players: 1,
+    max_players: 2,
+    min_age: 12,
+    price: 6,
+  },
+
+  {
+    experience_id: "super-mario-kart",
+    title: "Super Mario Kart",
+    slug: "super-mario-kart",
+    category_name: "arcades",
+    image_url: "/images/SUPER-MARIO-KART.png",
+    genre: "racing",
+
+    can_book: true,
+    has_details: false,
+
+    duration_minutes: 10,
+    min_players: 1,
+    max_players: 4,
+    min_age: 7,
+    price: 6,
+  },
+
+  {
+    experience_id: "teenage-mutant-ninja-turtles",
+    title: "Teenage Mutant Ninja Turtles",
+    slug: "teenage-mutant-ninja-turtles",
+    category_name: "arcades",
+    image_url: "/images/TMNT.png",
+    genre: "action",
+
+    can_book: true,
+    has_details: false,
+
+    duration_minutes: 10,
+    min_players: 1,
+    max_players: 4,
+    min_age: 10,
+    price: 6,
+  },
+
+  {
+    experience_id: "tekken",
+    title: "Tekken",
+    slug: "tekken",
+    category_name: "arcades",
+    image_url: "/images/TEKKEN.png",
+    genre: "fighting",
+
+    can_book: true,
+    has_details: false,
+
+    duration_minutes: 10,
+    min_players: 1,
+    max_players: 2,
+    min_age: 13,
+    price: 6,
+  },
+
+  {
+    experience_id: "the-simpsons",
+    title: "The Simpsons",
+    slug: "the-simpsons",
+    category_name: "arcades",
+    image_url: "/images/THE-SIMPSONS.png",
+    genre: "adventure",
+
+    can_book: true,
+    has_details: false,
+
+    duration_minutes: 10,
+    min_players: 1,
+    max_players: 4,
+    min_age: 8,
+    price: 6,
+  },
+
+  {
+    experience_id: "daytona",
+    title: "Daytona",
+    slug: "daytona",
+    category_name: "arcades",
+    image_url: "/images/DAYTONA.png",
+    genre: "racing",
+
+    can_book: true,
+    has_details: false,
+
+    duration_minutes: 10,
+    min_players: 1,
+    max_players: 2,
+    min_age: 8,
+    price: 12,
+  },
+
+  {
+    experience_id: "soccer",
+    title: "SOCCER",
+    slug: "soccer",
+    category_name: "arcades",
+    image_url: "/images/SOCCER.png",
+    genre: "sports",
+
+    can_book: true,
+    has_details: false,
+
+    duration_minutes: 10,
+    min_players: 1,
+    max_players: 4,
+    min_age: 7,
+    price: 20,
+  },
+]
+
 
 export const metadata = {
   title: " Arcade Experience | Pixoul Gaming",
@@ -123,7 +256,7 @@ export default function ArcadeGamesPage(){
             <div className="flex flex-col items-center justify-center h-full text-center px-6">
 
         {/* Main headline */}
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white dark:text-white">
          KINETIC  
           <br />
           <span className="text-[#38C2D9]">ARENA</span>
@@ -148,7 +281,7 @@ export default function ArcadeGamesPage(){
               description="Try our Pixoul Pass! Get access to multiple experiences at a discounted rate. Perfect for first-timers."
               primaryAction={{
                 label: "View All Games",
-                href: "/",
+                href: "/experience/all",
               }}
             />
 

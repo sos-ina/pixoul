@@ -2,9 +2,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
 
 @import "tailwindcss";
+
+@theme {
+  --font-lato: "Lato", sans-serif;
+  --font-klapt: "Klapt", sans-serif;
+  --font-amiri: "Amiri", serif;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Tailwind v4: enable dark: variant when .dark is on html (required for next-themes) */
+@custom-variant dark (&:where(.dark, .dark *));
 
 button {
   appearance: none;
@@ -24,7 +36,10 @@ button {
 
   unicode-range: 
     U+0041-005A,  /* A–Z */
-    U+0061-007A;  /* a–z */
+    U+0061-007A,  /* a–z */
+
+    U+0600-06FF;  /* Arabic */
+
 }
 
 @font-face {
@@ -35,8 +50,10 @@ button {
   font-display: swap;
 
   unicode-range: 
-    U+0041-005A,  /* A–Z */
-    U+0061-007A;  /* a–z */
+   U+0041-005A,  /* A–Z */
+    U+0061-007A,  /* a–z */
+
+    U+0600-06FF;  /* Arabic */
 }
 
 @font-face {
@@ -48,7 +65,9 @@ button {
 
   unicode-range: 
     U+0041-005A,  /* A–Z */
-    U+0061-007A;  /* a–z */
+    U+0061-007A,  /* a–z */
+
+    U+0600-06FF;  /* Arabic */
 }
 
 @font-face {
@@ -60,7 +79,9 @@ button {
 
   unicode-range: 
     U+0041-005A,  /* A–Z */
-    U+0061-007A;  /* a–z */
+    U+0061-007A,  /* a–z */
+
+    U+0600-06FF;  /* Arabic */
 }
 
 /* Browser Normalization - keeps existing sizes */
@@ -70,17 +91,18 @@ html {
   text-rendering: optimizeLegibility;
   -webkit-text-size-adjust: 100%;
   scrollbar-gutter: stable;
+  @apply bg-[#F1F5F9] text-black dark:bg-black dark:text-white;
 }
 
 body {
-  background-color: #000;
-  color: #fff;
   font-family: 'Klapt', 'Lato', 'Amiri', sans-serif;
-  @apply bg-black text-white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
   overflow-x: hidden;
+
+  top: 0 !important; 
+  position: static !important;
 }
 
 * {
@@ -135,5 +157,84 @@ body {
   padding-bottom: 2px;
 }
 
+
+
+
+
+
+/* Add RTL support */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Flip elements that need to be mirrored in RTL */
+[dir="rtl"] .flex-row {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .border-l {
+  border-left: none;
+  border-right: 1px solid;
+}
+
+/* Keep numbers LTR in RTL context */
+[dir="rtl"] .ltr-numbers {
+  direction: ltr;
+  display: inline-block;
+}
+
+
+/* RTL support when page is translated */
+html[dir="rtl"] {
+  direction: rtl;
+}
+
+html[dir="rtl"] body {
+  text-align: right;
+}
+
+/* Fix navbar in RTL */
+html[dir="rtl"] nav {
+  flex-direction: row-reverse;
+}
+
+/* Fix cart sidebar in RTL */
+html[dir="rtl"] .cart-sidebar {
+  left: 0;
+  right: auto;
+  border-left: none;
+  border-right: 1px solid #38C2D9;
+}
+
+/* Keep prices/numbers LTR even in RTL */
+html[dir="rtl"] .price,
+html[dir="rtl"] .number {
+  direction: ltr;
+  display: inline-block;
+}
+
+
+.goog-te-banner-frame.skiptranslate,
+.skiptranslate.goog-te-banner-frame,
+.VIpgJd-ZVi9od-ORHb,
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+}
+
+body.translated-ltr,
+body.translated-rtl,
+html.translated-ltr,
+html.translated-rtl,
+body,
+html {
+  top: 0 !important;
+  margin-top: 0 !important;
+}
 
 

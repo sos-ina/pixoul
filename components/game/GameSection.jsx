@@ -1,6 +1,6 @@
 export default function GameSection({ title, children }) {
   return (
-    <section className="py-15">
+    <section className="py-12">
       <div className="max-w-5xl mx-auto px-6">
 
         {title && (
@@ -9,7 +9,7 @@ export default function GameSection({ title, children }) {
           </h2>
         )}
 
-        <div className="text-gray-300 leading-relaxed space-y-4">
+        <div className="dark:text-gray-300 text-gray-600 leading-relaxed space-y-4">
           {children}
         </div>
 
