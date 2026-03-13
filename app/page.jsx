@@ -31,7 +31,7 @@ const exploreItems = [
     title: "Birthday Parties",
     description: "Unforgettable celebrations for all ages.",
     image: "images/birthday.jpg",
-    href: "/events/vip-lounge",
+    href: "/birthday",
   },
   {
     title: "The Hall",

@@ -168,6 +168,7 @@ export default function Navbar() {
                 <Link href="/events/vip-lounge" onClick={() => setOpenDropdown(null)} className="dropdown-item block">VIP Lounge</Link>
                 <Link href="/events/observation-deck" onClick={() => setOpenDropdown(null)} className="dropdown-item block">Observation Deck</Link>
                 <Link href="/events/school-visit" onClick={() => setOpenDropdown(null)} className="dropdown-item block">School Visit</Link>
+                <Link href="/events/academy" onClick={() => setOpenDropdown(null)} className="dropdown-item block">Academy</Link>
               </Dropdown>
             </NavItem>
           </div>
@@ -183,6 +184,7 @@ export default function Navbar() {
                 <Link href="/community/reviews" onClick={() => setOpenDropdown(null)} className="dropdown-item block">Reviews</Link>
                 <Link href="/community/forums" onClick={() => setOpenDropdown(null)} className="dropdown-item block">Forums</Link>
                 <Link href="/community/challenges" onClick={() => setOpenDropdown(null)} className="dropdown-item block">Challenges</Link>
+                <Link href="/community/tournaments" onClick={() => setOpenDropdown(null)} className="dropdown-item block">Tournaments</Link>
               </Dropdown>
             </NavItem>
           </div>
@@ -394,6 +396,9 @@ export default function Navbar() {
                 <Link href="/events/school-visit" onClick={closeMobileMenu}>
                   <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">School Visit</span>
                 </Link>
+                <Link href="/events/academy" onClick={closeMobileMenu}>
+                  <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Academy</span>
+                </Link>
               </div>
             )}
           </li>
@@ -429,6 +434,9 @@ export default function Navbar() {
                 </Link>
                 <Link href="/community/challenges" onClick={closeMobileMenu}>
                   <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Challenges</span>
+                </Link>
+                <Link href="/community/tournaments" onClick={closeMobileMenu}>
+                  <span className="block py-2 text-gray-600 dark:text-gray-300 hover:text-[#38C2D9] cursor-pointer">Tournaments</span>
                 </Link>
               </div>
             )}
